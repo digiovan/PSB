@@ -56,3 +56,12 @@ ring_plane_user_map['LHC50_DB_B'] = ['Ring 3 H',
                                      'Ring 3 V',
                                      'Ring 4 V']
 
+ring_plane_user_map['LHC25_DB_A'] = ['Ring 1 H',
+                                     'Ring 2 H',
+                                     'Ring 3 H',
+                                     'Ring 4 H',
+                                     'Ring 1 V',
+                                     'Ring 2 V',
+                                     'Ring 3 V',
+                                     'Ring 4 V']
+
