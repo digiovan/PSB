@@ -19,10 +19,10 @@ def getTrajectories(filename):
     reader = csv.reader(csvfile_noaverage, delimiter=";")
     
     header1 = reader.next()
-    print header1
+    #print header1
     
     header2 = reader.next()
-    print header2
+    #print header2
     
     trajectories = {}
     
@@ -37,8 +37,12 @@ def getTrajectories(filename):
             trajectories[date] = {}
          
         ring_plane = ''        
-        # somehow the files produced by Abdel have an empty entry at the end... that's why the -1
-        for icol in range(2,len(row)-1):
+     
+        for icol in range(2,len(row)):
+            # somehow the files produced by Abdel have an empty entry at the end... that's why the safety check here...
+            if row[icol] == "":
+                continue
+                
             #print row[icol]
             
             # need to strip the white spaces if any 
@@ -62,6 +66,8 @@ def getTrajectories(filename):
 def calcAverage(traj,ring_plane):
     average_bpms = ordered_dict()
     n_points = len(traj.keys())
+    #print n_points
+    #print traj
     for date in traj.keys():
     
         #print "==================================="
@@ -156,16 +162,16 @@ for m in mandatories:
 
 list_of_csvfiles = commands.getoutput( 'ls %s | grep csv' % opts.FOLDER ).split()
 
-user = ''
+user = opts.FOLDER.replace('/','')
 for i in range( len(list_of_csvfiles) ):
     name_array = list_of_csvfiles[i].split('_')
     
-    if not user.strip():
-        user = name_array[4]
+    #if not user.strip():
+    #    user = name_array[4]
     
-    if (user != name_array[4]):
-        print 'error, two different users in the files: %s vs %s' % (date,name_array[4])
-        exit(-1)
+    #if (user != name_array[4]):
+    #    print 'error, two different users in the files: %s vs %s' % (date,name_array[4])
+    #    exit(-1)
         
     list_of_csvfiles[i] = opts.FOLDER + "/" + list_of_csvfiles[i]
     list_of_csvfiles[i] = list_of_csvfiles[i].replace('//','/')
@@ -174,12 +180,12 @@ for i in range( len(list_of_csvfiles) ):
 
 import mapping
 
-ring_plane_list = mapping.ring_plane_user_map['ISOHRS']
+ring_plane_list = mapping.ring_plane_user_map[user]
 
 
 # root.gROOT.SetBatch(True) 
 
-colors = [root.kBlack,root.kRed,root.kAzure+2,root.kViolet,root.kOrange,root.kGreen]
+colors = [root.kBlack,root.kRed+2,root.kAzure+2,root.kViolet,root.kOrange,root.kGreen]
 canvases = []
 max = -999.
 
@@ -191,7 +197,7 @@ for ring_plane in ring_plane_list:
 
     canvas.SetGridy()
 
-    leg = root.TLegend(0.15, 0.71, 0.65, 0.88)
+    leg = root.TLegend(0.15, 0.71, 0.40, 0.88)
     leg.SetBorderSize(1)
     leg.SetFillColor(0)
     leg.SetTextSize(0.025)
@@ -211,6 +217,7 @@ for ring_plane in ring_plane_list:
 
         if not hAxes:
             hAxes = gethAxes(average_bpms, ring_plane)
+            SetOwnership( hAxes, 0 )   # 0 = release (not keep), 1 = keep, ot
             hAxes.SetTitle( user + ": " + ring_plane )
             hAxes.Draw("")
 
@@ -230,11 +237,12 @@ for ring_plane in ring_plane_list:
             tline.Draw()
             tlines.append(tline)
 
+        gOrbit.SetLineWidth  (3)
         gOrbit.SetLineColor  (colors[iColor])
         gOrbit.SetMarkerColor(colors[iColor])
         gOrbit.SetFillColor  (colors[iColor])
         iColor+=1
-        gOrbit.Draw("LP3")
+        gOrbit.Draw("L")
 
         leg.AddEntry(gOrbit, date, "l")
         leg.Draw()

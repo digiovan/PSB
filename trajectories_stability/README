@@ -1,0 +1,9 @@
+
+python -i ./trajectories.py -f ISOHRS/
+python -i ./trajectories.py -f TOF/
+python -i ./trajectories.py -f AD/
+python -i ./trajectories.py -f EAST1/
+python -i ./trajectories.py -f EAST2/
+python -i ./trajectories.py -f SFTPRO/
+python -i ./trajectories.py -f LHC50_DB_A/
+python -i ./trajectories.py -f LHC50_DB_B/
