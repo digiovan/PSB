@@ -65,3 +65,7 @@ ring_plane_user_map['LHC25_DB_A'] = ['Ring 1 H',
                                      'Ring 3 V',
                                      'Ring 4 V']
 
+ring_plane_user_map['LHC25_DB_B'] = ['Ring 3 H',
+                                     'Ring 4 H',
+                                     'Ring 3 V',
+                                     'Ring 4 V']

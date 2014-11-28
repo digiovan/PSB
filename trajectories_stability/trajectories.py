@@ -185,7 +185,7 @@ ring_plane_list = mapping.ring_plane_user_map[user]
 
 # root.gROOT.SetBatch(True) 
 
-colors = [root.kBlack,root.kRed+2,root.kAzure+2,root.kViolet,root.kOrange,root.kGreen]
+colors = [root.kBlack,root.kRed+2,root.kAzure+2,root.kViolet,root.kOrange+2,root.kGreen+2,root.kBlue,root.kGray+2]
 canvases = []
 max = -999.
 
