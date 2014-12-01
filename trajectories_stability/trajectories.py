@@ -126,7 +126,9 @@ def gethAxes(average_bpms, ring_plane):
 
     id = 0
     for bpm in average_bpms.order():
-        hDummy.GetXaxis().SetBinLabel( id+1, bpm )
+        hDummy.GetXaxis().SetBinLabel ( id+1, bpm )
+        hDummy.GetXaxis().SetLabelSize( 0.04 )
+        hDummy.GetXaxis().SetTickSize ( 0 )
         id += 1
 
     return hDummy
@@ -146,6 +148,18 @@ parser.add_option('-f', '--folder',
                   help='specify the folder',
                   dest='FOLDER',
                   action='store')
+
+parser.add_option('-s', '--save',
+                  help='save the plots',
+                  dest='SAVE',
+                  default = False, 
+                  action = 'store_true')
+
+parser.add_option('-b', '--batch',
+                  help='do not show the plots',
+                  dest='BATCH',
+                  default = False, 
+                  action = 'store_true')
 
 # get the options
 (opts, args) = parser.parse_args()
@@ -182,10 +196,11 @@ import mapping
 
 ring_plane_list = mapping.ring_plane_user_map[user]
 
+if (opts.BATCH):
+    root.gROOT.SetBatch(True) 
 
-# root.gROOT.SetBatch(True) 
-
-colors = [root.kBlack,root.kRed+2,root.kAzure+2,root.kViolet,root.kOrange+2,root.kGreen+2,root.kBlue,root.kGray+2]
+colors = [root.kBlack,root.kRed+2,root.kAzure+2,root.kViolet,root.kOrange+2,root.kGreen+2,root.kBlue,root.kGray+2,root.kCyan,root.kYellow+4,
+          root.kSpring+2,root.kTeal,root.kPink,root.kMagenta,root.kRed-5,root.kPink-5,root.kTeal-5,root.kCyan-5]
 canvases = []
 max = -999.
 
@@ -197,7 +212,7 @@ for ring_plane in ring_plane_list:
 
     canvas.SetGridy()
 
-    leg = root.TLegend(0.15, 0.71, 0.40, 0.88)
+    leg = root.TLegend(0.15, 0.65, 0.40, 0.93)
     leg.SetBorderSize(1)
     leg.SetFillColor(0)
     leg.SetTextSize(0.025)
@@ -227,7 +242,7 @@ for ring_plane in ring_plane_list:
 
         maxOrbit = getAbsMax(gOrbit)
         if (maxOrbit > max):
-            max = maxOrbit + 10
+            max = maxOrbit + 15
         hAxes.GetYaxis().SetRangeUser(-max,max)
 
         tlines = []
@@ -249,8 +264,8 @@ for ring_plane in ring_plane_list:
 
         canvas.Update()
 
-    #if (opts.SAVE):
-    #    canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s_olav.png"  % (r,corr.replace(".","_"),kick,p,r) )
-    #    canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s_olav.root" % (r,corr.replace(".","_"),kick,p,r) )
+    if (opts.SAVE):
+        canvas.SaveAs("plots/trajectories_%s_%s.png" % (user,ring_plane.replace(" ","_"))  )
+        canvas.SaveAs("plots/trajectories_%s_%s.root" % (user,ring_plane.replace(" ","_")) )
         
     canvases.append(canvas)

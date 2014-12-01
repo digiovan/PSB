@@ -3,6 +3,15 @@
 
 ring_plane_user_map = {}
 
+ring_plane_user_map['ISOGPS'] = ['Ring 1 H',
+                                 'Ring 2 H',
+                                 'Ring 3 H',
+                                 'Ring 4 H',
+                                 'Ring 1 V',
+                                 'Ring 2 V',
+                                 'Ring 3 V',
+                                 'Ring 4 V']
+
 ring_plane_user_map['ISOHRS'] = ['Ring 1 H',
                                  'Ring 2 H',
                                  'Ring 3 H',
@@ -69,3 +78,6 @@ ring_plane_user_map['LHC25_DB_B'] = ['Ring 3 H',
                                      'Ring 4 H',
                                      'Ring 3 V',
                                      'Ring 4 V']
+
+ring_plane_user_map['LHCINDIV'] = ['Ring 3 H',
+                                   'Ring 3 V']
