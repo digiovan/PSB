@@ -1,0 +1,32 @@
+Loogbook of the week-end
+
+ * Friday afternoon   -> save traj (20:22)
+ * Friday night       -> save traj (00:23)
+ * Saturday morning   -> save traj (07:26)
+                         save traj (12:20)
+ * Saturday afternoon -> save traj (19:48)
+                         SFTPRO and AD steering (ring 2 and 4 vertically!). BT1.SMV10 regulation changed.
+                         see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059878 (entry #13,14,15)
+
+ * Saturday night   -> save traj (21:50)			 
+ * Sunday morning   -> save traj (06:31)
+ * Sunday afternoon -> save traj (14.58)
+                       Jose changed the gain of the pick-up from gain 1 to gain 0 on ISOGPS
+                       to remove the reflexion signal on BTY.BPM152.
+                       see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059905 (entry #4).
+ 
+                    -> save traj (16.43)
+                       Trajectories change according to the value of the septum from Elena.
+                       see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059905 (entry #5).
+                     
+                    Vertical steering ring 1 and 4 on LHC2a, see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059905 (entry #6).  
+                    Vertical steering on the LHC1A r1 and R4, see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059905 (entry #7).  
+
+                    -> save traj (20.21)
+ * Sunday night     -> save traj (02.46)
+
+
+Btw, the issue with the BT4.SMV10 is still there. J-M. Cravero is supposed to intervene the afternoon of 08/12/2014.
+
+Btw, the issue with the BT.BHZ10 from last weeks is still there...
+

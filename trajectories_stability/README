@@ -1,5 +1,6 @@
 
-python -i ./trajectories.py -f ISOHRS/
+python -i ./trajectories.py -f ISOGPS/
+#python -i ./trajectories.py -f ISOHRS/
 
 python -i ./trajectories.py -f TOF/
 
@@ -12,7 +13,7 @@ python -i ./trajectories.py -f SFTPRO/
 
 python -i ./trajectories.py -f LHC25_DB_A/
 python -i ./trajectories.py -f LHC25_DB_B/
-python -i ./trajectories.py -f LHC50_DB_A/
-python -i ./trajectories.py -f LHC50_DB_B/
+#python -i ./trajectories.py -f LHC50_DB_A/
+#python -i ./trajectories.py -f LHC50_DB_B/
 
 

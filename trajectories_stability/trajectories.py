@@ -174,7 +174,7 @@ for m in mandatories:
         exit(-1)
 
 
-list_of_csvfiles = commands.getoutput( 'ls %s | grep csv' % opts.FOLDER ).split()
+list_of_csvfiles = commands.getoutput( 'ls -l %s | grep csv | awk \'{print $9}\'' % opts.FOLDER ).split()
 
 user = opts.FOLDER.replace('/','')
 for i in range( len(list_of_csvfiles) ):

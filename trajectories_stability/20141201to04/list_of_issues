@@ -1,0 +1,10 @@
+
+on Wednesday 3rd December Yu reported the trajectories for ISOGPS have changed without him steering anything.
+The BLM were cutting the beam-> he was forced to re-steer, see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059741 (entry #10).
+
+on Wednesday afternoon, myself with Nicolas and Elena investigated a bit further and found that the trajectories have been back to its "expected" state (before Yu had to resteer), again without touching anything intentionally, see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1059764 (entry #11).
+
+Something like an element pulsing without realizing seemed to happen. We put several elements under surveillance, without any luck until the week-end when it was found the culprit in BT4.SMV10, see folder 20141205to08.
+
+Btw, the issue with the BT.BHZ10 from last week is still there...
+
