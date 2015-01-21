@@ -33,11 +33,14 @@ def getSurveyData(survey_file):
             z = float(survey_data[5])
             
             if ("START" in name):
-                x_start = x
-                y_start = y
-                x_previous = x
-                y_previous = y
-            
+                if (x_start == -999 and y_start == -999):
+                    x_start = x
+                    y_start = y
+                    x_previous = x
+                    y_previous = y
+                else:
+                    continue
+
             if (x_start == -999 or y_start == -999):
                 continue
                 
@@ -48,7 +51,7 @@ def getSurveyData(survey_file):
     
             # do not care about the STARTing point(s)
             if (L > 0):
-                #print name, L, z
+                # print name, L, z
                 line_length.append(L)
                 line_height.append(z)
             
@@ -83,71 +86,91 @@ import math
 from array import array
 
 import optparse
-# parser = optparse.OptionParser()
-# 
-# # define the options
-# parser.add_option('-f', '--folder',
-#                   help='specify the folder',
-#                   dest='FOLDER',
-#                   action='store')
-# 
-# parser.add_option('-s', '--save',
-#                   help='save the plots',
-#                   dest='SAVE',
-#                   default = False, 
-#                   action = 'store_true')
-# 
-# parser.add_option('-b', '--batch',
-#                   help='do not show the plots',
-#                   dest='BATCH',
-#                   default = False, 
-#                   action = 'store_true')
-# 
-# # get the options
-# (opts, args) = parser.parse_args()
-# 
-# 
-# # Sanity check: Making sure all mandatory options appeared
-# mandatories = ['FOLDER']
-# for m in mandatories:
-#     if not opts.__dict__[m]:
-#         print "at least the mandatory option %s is missing\n" % m
-#         parser.print_help()
-#         exit(-1)
-# 
+parser = optparse.OptionParser()
+
+# define the options
+parser.add_option('-f', '--folder',
+                  help='specify the folder',
+                  dest='FOLDER',
+                  action='store')
+
+parser.add_option('-s', '--save',
+                  help='save the plots',
+                  dest='SAVE',
+                  default = False, 
+                  action = 'store_true')
+
+parser.add_option('-b', '--batch',
+                  help='do not show the plots',
+                  dest='BATCH',
+                  default = False, 
+                  action = 'store_true')
+
+# get the options
+(opts, args) = parser.parse_args()
+
+
+# Sanity check: Making sure all mandatory options appeared
+mandatories = ['FOLDER']
+for m in mandatories:
+    if not opts.__dict__[m]:
+        print "at least the mandatory option %s is missing\n" % m
+        print "\nExamples: python -i ./bpms_offsets.py -f PSB-PS/2014/out/"
+        print   "          python -i ./bpms_offsets.py -f Linac2-PSB/2014/out/\n"
+        parser.print_help()
+        exit(-1)
+
+if (opts.BATCH):
+    root.gROOT.SetBatch(True)
 
 #folder = "PSB-PS/2014/out/"
-#folder = "test_bt_btp_strengths"
-#folder = "test_bt_dump_strengths"
-#folder = "test_bt_hor_emit_largeDx"
-folder = "test_bt_hor_emit_smallDx"
+#folder = "Linac2-PSB/2014/out/"
 
-BT_lines = ["BT1","BT2","BT3","BT4"]
+folder = opts.FOLDER
+
+rings = ["1","2","3","4"]
 
 colors   = {}
-colors["BT1"] = root.kRed   +2
-colors["BT2"] = root.kAzure +2
-colors["BT3"] = root.kGreen +2
-colors["BT4"] = root.kOrange+2
+colors["1"] = root.kRed   +2
+colors["2"] = root.kAzure +2
+colors["3"] = root.kGreen +2
+colors["4"] = root.kOrange+2
 
-BT_graphs = []
+r_graphs = []
+title_graph = ""
+save_name = ""
 
-for BT in BT_lines:
+for r in rings:
     
-    survey_file = open(folder + ('/%s.survey' % BT) , 'r')
+    # unfortunately there is a different convention for the naming of the 
+    # transfer line files...
+    survey_file = ""
+    if ("PSB-PS" in folder):
+        survey_file = open(folder + ('/BT%s.survey'   % r) , 'r')
+        title_graph = "BT Lines"
+        save_name   = "BT_Lines"
+    if ("Linac2-PSB" in folder):
+        survey_file = open(folder + ('/ltltbbi%s.sur' % r) , 'r')
+        title_graph = "LT-LTB-BI Lines"
+        save_name   = "LT-LTB-BI_Lines"
+        
+    if (survey_file == ""):
+        print "the folder was not properly defined"
+        exit(-1)
+
     graph = getSurveyData(survey_file)    
 
 
     #print len(line_length), len(line_height)
 
     graph.SetLineWidth  (3)
-    graph.SetLineColor  (colors[BT])
-    graph.SetMarkerColor(colors[BT])
-    graph.SetFillColor  (colors[BT])
+    graph.SetLineColor  (colors[r])
+    graph.SetMarkerColor(colors[r])
+    graph.SetFillColor  (colors[r])
     
-    BT_graphs.append( graph )
+    r_graphs.append( graph )
 
-canvas = root.TCanvas("canvas","",0,0,1100,850)
+canvas = root.TCanvas("canvas","",0,0,1200,850)
 canvas.cd()
     
 canvas.SetGridx()
@@ -155,16 +178,26 @@ canvas.SetGridy()
 
 z_ring3 = 2433.660000 
 
-# BT4 is +360 mm w.r.t. ring 3
-# BT2 is -360 mm w.r.t. ring 3
-# BT1 is -720 mm w.r.t. ring 3
+# r4 is +360 mm w.r.t. ring 3
+# r2 is -360 mm w.r.t. ring 3
+# r1 is -720 mm w.r.t. ring 3
 # So just to fit the 4 lines in one graph I move 1 (0.5) m below (above) ring 3 
-BT_graphs[0].GetYaxis().SetRangeUser(z_ring3-1,z_ring3+0.5)
+r_graphs[0].GetYaxis().SetRangeUser(z_ring3-1,z_ring3+0.5)
+r_graphs[0].GetYaxis().SetTitle("Vertical Position [mm]")
+r_graphs[0].GetYaxis().SetTitleOffset(1.5)
 
-BT_graphs[0].SetTitle ("BT Lines")
-BT_graphs[0].Draw("AL")
-BT_graphs[1].Draw("L")
-BT_graphs[2].Draw("L")
-BT_graphs[3].Draw("L")
+r_graphs[0].GetXaxis().SetTitle("Longitudinal Position [mm]")
+r_graphs[0].GetXaxis().SetTitleOffset(1.2)
+
+r_graphs[0].SetTitle (title_graph)
+
+r_graphs[0].Draw("AL")
+r_graphs[1].Draw("L")
+r_graphs[2].Draw("L")
+r_graphs[3].Draw("L")
     
 canvas.Update()
+
+if (opts.SAVE):
+    canvas.SaveAs( "png/"+save_name+".png" )    
+    canvas.SaveAs("root/"+save_name+".root")

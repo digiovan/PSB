@@ -1,0 +1,16 @@
+angledvt30 = 0.001945670949;
+none = 0;
+lbiqno30 = 0.462;
+kbi.qno30 = 0.30134;
+lbiqno40 = 0.462;
+kbi.qno40 = -0.9814;
+bi.dvt30: vkicker,l:= 0,kick:=tan ( angledvt30 ) ;
+bi.qno30: quadrupole,l:=lbiqno30 ,k1:=kbi.qno30 ;
+bi.qno40: quadrupole,l:=lbiqno40 ,k1:=kbi.qno40 ;
+bi.end: marker;
+bi_matching_seq: sequence, l = 10;
+bi.dvt30, at = 0.5;
+bi.qno30, at = 1.708695;
+bi.qno40, at = 2.958149;
+bi.end: marker, at = 10;
+endsequence;

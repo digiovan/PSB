@@ -1,0 +1,233 @@
+ title, 'Calculate crossing point';
+
+option, echo, info;
+
+ calculatecenter(filename, element): macro = {
+
+    option, -echo, -info, -warn;
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+!   write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the center point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+    if ( row < 1 ) { print, text="Error: row is less than 1. Stop"; stop; }
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos0.x = Z;
+    pos0.y = X;
+    pos0mech.x = sqrt((Z-1901.3500115040836)^2+(X-2066.0754107345238)^2); !  1901.3500115040836 and 2066.0754107345238 represents the starting point of the BI line
+    pos0mech.y = Y;
+!   value, pos0.x, pos0.y;
+!   value, pos0mech.x, pos0mech.y;
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos1.x = Z;
+    pos1.y = X;
+    pos1mech.x = sqrt((Z-1901.3500115040836)^2+(X-2066.0754107345238)^2); !  1901.3500115040836 and 2066.0754107345238 represents the starting point of the BI line
+    pos1mech.y = Y;
+!   value, pos1.x, pos1.y;
+!   value, pos1mech.x, pos1mech.y;
+    x.center = (pos0.x+pos1.x)/2;
+    y.center = (pos0.y+pos1.y)/2;
+!   value, x.center,  y.center ;
+
+    delete,table=mysurvey;
+    delete,table=mysurveyrow;
+
+    option, echo, info, warn;
+
+};
+
+
+
+
+ calculateSEQandSURVEY: macro = {
+
+
+        set,  format="10.07f";
+
+        call, file="SAVE_BImechanical_seq.madx";  ! This contains all the deflection points
+        call, file="SAVE_matching_parameters.madx";  ! Contains dl
+        system, "madx < BI_calculate_angles.madx > /dev/null";  ! Saves the file: matching_angle_position.prt
+
+
+        system, "rm BI1.seq 2> /dev/null";
+        system, "rm BI2.seq 2> /dev/null";
+        system, "rm BI3.seq 2> /dev/null";
+        system, "rm BI4.seq 2> /dev/null";
+
+        system, "madx < BI1.madx > /dev/null";    ! BI1.madx will re-calculate BI1.seq
+        system, "madx < BI2.madx > /dev/null";    ! BI2.madx will re-calculate BI2.seq
+        system, "madx < BI3.madx > /dev/null";    ! BI3.madx will re-calculate BI3.seq
+        system, "madx < BI4.madx > /dev/null";    ! BI4.madx will re-calculate BI4.seq
+
+
+        system, "rm BI1.survey 2> /dev/null";
+        system, "rm BI2.survey 2> /dev/null";
+        system, "rm BI3.survey 2> /dev/null";
+        system, "rm BI4.survey 2> /dev/null";
+
+        system, "madx < BI1_survey.madx > /dev/null"; ! this will calculate the survey of BI1
+        system, "madx < BI2_survey.madx > /dev/null"; ! this will calculate the survey of BI2
+        system, "madx < BI3_survey.madx > /dev/null"; ! this will calculate the survey of BI3
+        system, "madx < BI4_survey.madx > /dev/null"; ! this will calculate the survey of BI4
+
+};
+
+
+
+
+!------------------------------------------------------------------------------------
+! Initialization
+!------------------------------------------------------------------------------------
+
+call, file="BImechanical.seq";
+
+
+!------------------------------------------------------------------------------------
+! Matching macro.
+!------------------------------------------------------------------------------------
+
+ matchdeflect : macro={
+
+        exec, calculateSEQandSURVEY;
+
+
+        system, "rm file_name_row 2> /dev/null";
+
+        value, BI.DVT30.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI.DVT30 );
+        option, -info;
+        DVT30.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DVT30.middle  ;
+
+        value, BI.QNO30.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI.QNO30 );
+        option, -info;
+        QNO30.middle = (pos0mech.x+pos1mech.x)/2;
+        value, QNO30.middle  ;
+
+        value, BI.QNO40.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI.QNO40 );
+        option, -info;
+        QNO40.middle = (pos0mech.x+pos1mech.x)/2;
+        value, QNO40.middle  ;
+        QNO40.height = pos1mech.y - 2433.66 ;
+
+
+
+        value, BI4.DIS1.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.DIS1 );
+        option, -info;
+        DIS1.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DIS1.middle  ;
+
+        value, BI4.DIS2.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.DIS2 );
+        option, -info;
+        DIS2.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DIS2.middle  ;
+
+        value, BI4.DIS3.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.DIS3 );
+        option, -info;
+        DIS3.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DIS3.middle  ;
+
+        value, BI4.DIS4.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.DIS4 );
+        option, -info;
+        DIS4.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DIS4.middle  ;
+
+
+
+        value, BI4.DVT40.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.DVT40 );
+        option, -info;
+        DVT40.middle = (pos0mech.x+pos1mech.x)/2;
+        value, DVT40.middle  ;
+
+        value, BI4.SMV10.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.SMV10 );
+        option, -info;
+        SMV.middle = (pos0mech.x+pos1mech.x)/2;
+        LSMVTEST=sqrt((pos1.x-pos0.x)^2+(pos1.y-pos0.y)^2);
+        value, SMV.middle, LSMVTEST, dl;
+
+        value, BI4.BVT.mechpos  ;
+        exec, calculatecenter("BI4.survey", BI4.BVT10 );
+        option, -info;
+        BVT.middle = (pos0mech.x+pos1mech.x)/2;
+        value, BVT.middle  ;
+
+        print, text="------------------------------------------------";
+
+
+
+ };
+
+!BI.QNO10.mechpos   := 13.619542;
+!exec, matchdeflect;
+!stop;
+
+
+
+
+ match,use_macro;
+        vary, name=BI.DVT30.mechpos  , step = 0.00000001, LOWER=22.70 ,UPPER=22.80;
+        vary, name=BI.QNO30.mechpos  , step = 0.00000001, LOWER=23.90 ,UPPER=24.10;
+        vary, name=BI.QNO40.mechpos  , step = 0.00000001, LOWER=25.10 ,UPPER=25.40;
+
+        vary, name=BI4.DIS1.mechpos  , step = 0.00000001, LOWER=26.00 ,UPPER=27.00;
+        vary, name=BI4.DIS2.mechpos  , step = 0.00000001, LOWER=26.00 ,UPPER=27.00;
+        vary, name=BI4.DIS3.mechpos  , step = 0.00000001, LOWER=26.50 ,UPPER=28.00;
+        vary, name=BI4.DIS4.mechpos  , step = 0.00000001, LOWER=27.00 ,UPPER=28.00;
+
+        vary, name=BI4.DVT40.mechpos , step = 0.00000001, LOWER=27.50 ,UPPER=28.60;
+        vary, name=BI4.SMV10.mechpos , step = 0.00000001, LOWER=35.00 ,UPPER=37.00;
+        vary, name=BI4.BVT.mechpos   , step = 0.00000001, LOWER=38.50 ,UPPER=39.50;
+        vary, name=dl                , step = 0.00000001, LOWER=-0.005 ,UPPER=0.005;
+
+        use_macro,name=matchdeflect;
+
+!// The matching constraints for DVT30, QNO30 and ONO40 comes from the BIcenter.mechpos
+        constraint, expr=DVT30.middle = 22.766000;
+        constraint, expr=QNO30.middle = 23.974695;
+        constraint, expr=QNO40.middle = 25.224149;
+
+!//    The matching constraints for DIS1, DIS2, DIS3 and DIS4 comes from the BIcenter.mechpos
+        constraint, expr=DIS1.middle  = 26.326000;
+        constraint, expr=DIS2.middle  = 26.736000;
+        constraint, expr=DIS3.middle  = 27.146000;
+        constraint, expr=DIS4.middle  = 27.556000;
+
+!//    The matching constraints for DVT40, SMV and BVT comes from the BIcenter.mechpos
+        constraint, expr=DVT40.middle = 28.102500;
+        constraint, expr=SMV.middle   = 36.574000; ! 35.228000 for BI1 ! 36.574000 for BI2.SMV10, BI3.SMV10 & BI4.SMV10
+        constraint, expr=BVT.middle   = 38.976000;
+        constraint, expr=LSMVTEST     = 0.96;
+
+        lmdif,   calls =  500, tolerance = 1.0E-25;
+!       simplex, calls = 1000, tolerance = 1.0E-25;
+ endmatch;
+
+
+
+
+
+
+
+
+

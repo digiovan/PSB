@@ -1,0 +1,90 @@
+option, -echo;                                                                              
+option, info;                                                                               
+option, warn;                                                                               
+                                                                                            
+!--------------------------------------------------------------------------                 
+!  This file gives the mechanical position of the all the elements in the 4 BI lines,       
+!                                                                                           
+!--------------------------------------------------------------------------                 
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/cmd/matching_BT_line            
+! Sequence file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec              
+!--------------------------------------------------------------------------                 
+                                                                                            
+ltb.bhz40.mechpos =   0.4500000000000000 ;
+ltb.mbl10.mechpos =   0.0000000000000000 ;
+ltb.mbl20.mechpos =   0.0000000000000000 ;
+bi.vpi11.mechpos =   1.5800000000000001 ;
+bi.dhz10.mechpos =   6.5640000000000001 ;
+bi.dvt10.mechpos =   6.5640000000000001 ;
+bi.bpm00.mechpos =   7.0510000000000002 ;
+bi.btv10.mechpos =   7.9530000000000003 ;
+bi.stpfa10.mechpos =   8.5289999999999999 ;
+bi.stpsw10.mechpos =  11.7550000000000008 ;
+bi.bpm10.mechpos =  12.5039999999999996 ;
+bi.dhz20.mechpos =  12.9840000000000000 ;
+bi.dvt20.mechpos =  12.9840000000000000 ;
+bi.qno10.mechpos =  13.6240000000000006 ;
+bi.qno20.mechpos =  14.6240000000000006 ;
+bi.bpm20.mechpos =  21.7056000000000004 ;
+bi.bct10.mechpos =  22.1552000000000007 ;
+bi.vvs10.mechpos =  22.5344000000000015 ;
+bi.dhz30.mechpos =  22.7659999999999982 ;
+bi.dvt30.mechpos =  22.7660001030416694 ;
+bi.btv20.mechpos =  23.1570000000000000 ;
+bi.qno30.mechpos =  23.9746952004913751 ;
+bi.bpm30.mechpos =  24.5859999999999985 ;
+bi.qno40.mechpos =  25.2241486335331615 ;
+bi.dis0.mechpos =  25.9160000000000004 ;
+bi1.dis1.mechpos =  26.3260007582429907 ;
+bi2.dis1.mechpos =  26.3260000042760289 ;
+bi3.dis1.mechpos =  26.3259999962111273 ;
+bi4.dis1.mechpos =  26.3260000006130497 ;
+bi1.dis2.mechpos =  26.7360019999608269 ;
+bi2.dis2.mechpos =  26.7360006229641058 ;
+bi3.dis2.mechpos =  26.7359999962137813 ;
+bi4.dis2.mechpos =  26.7360000006169614 ;
+bi1.dis3.mechpos =  27.1460033949794131 ;
+bi2.dis3.mechpos =  27.1460019690417660 ;
+bi3.dis3.mechpos =  27.1460006721488440 ;
+bi4.dis3.mechpos =  27.1460000006145954 ;
+bi1.dis4.mechpos =  27.5560039098892879 ;
+bi2.dis4.mechpos =  27.5560027033720623 ;
+bi3.dis4.mechpos =  27.5560016143685473 ;
+bi4.dis4.mechpos =  27.5560004766662274 ;
+bi.dhz40.mechpos =  28.1024999999999991 ;
+bi1.dvt40.mechpos =  28.1024940228601601 ;
+bi2.dvt40.mechpos =  28.1024961813514373 ;
+bi3.dvt40.mechpos =  28.1024981329970238 ;
+bi4.dvt40.mechpos =  28.1025001616951968 ;
+bi.vpi12.mechpos =  29.9675000000000011 ;
+bi.btv30.mechpos =  34.1854999999999976 ;
+bi1.smv10.mechpos =  35.2316186842413614 ;
+bi.smvhdp.mechpos =  35.8759999999999977 ;
+bi2.smv10.mechpos =  36.5761864863233654 ;
+bi3.smv10.mechpos =  36.5740000000756353 ;
+bi4.smv10.mechpos =  36.5761877429669156 ;
+bi.mbl20.mechpos =  36.0000000000000000 ;
+bi.mbli30.mechpos =  37.5000000000000000 ;
+bi.mbls30.mechpos =  37.5000000000000000 ;
+bi1.bvt.mechpos =  38.9732912079121050 ;
+bi2.bvt.mechpos =  38.9743627350903736 ;
+bi3.bvt.mechpos =  38.9760000011615730 ;
+bi4.bvt.mechpos =  38.9743617048259736 ;
+bi.qno50.mechpos =  39.8759999999999977 ;
+bi.qno60.mechpos =  40.6259999999999977 ;
+bi.dhz50.mechpos =  41.1839999999999975 ;
+bi.dvt50.mechpos =  41.1839999999999975 ;
+bi.bpm40.mechpos =  41.7509999999999977 ;
+bi.btv40.mechpos =  42.9329999999999998 ;
+bi.vpi14.mechpos =  43.4795000000000016 ;
+bi.bct20.mechpos =  43.8780000000000001 ;
+bi.bpm50.mechpos =  44.3239999999999981 ;
+bi.vvs20.mechpos =  44.8459999999999965 ;
+bi.dhz70.mechpos =  47.2460000000000022 ;
+bi.dvt70.mechpos =  47.2460000000000022 ;
+bi.injpt.mechpos =  48.5031999999999996 ;
+ option, info;                                                                              
+ option, warn;                                                                              
+ option, echo;                                                                              
+ return;                                                                                    
+                                                                                            

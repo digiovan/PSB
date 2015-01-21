@@ -1,0 +1,293 @@
+/*****************************************************
+ *
+ * MADX file for the LT-LTB line from LINAC2 to the LBE. This is a measurements line.
+ *
+ * Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/
+ *
+ * Execute with:  >madx < lbe.madx
+ * This file is for Protons at 311 MeV/c (Ekin=50 MeV, BRHO=1.03527 "the magnetic rigidity of our protons")
+ *****************************************************/
+
+
+/*****************************************************************************
+ * TITLE
+ *****************************************************************************/
+ title, 'LT-LTB-LBE 2014 optics. Protons - 311 MeV/c (Ekin=50 MeV)';
+
+ option, echo;
+!option, RBARC=FALSE;
+
+
+
+/*****************************************************************************
+ * LT
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/lt.str';
+ call, file = '../elements/lt.ele';
+ call, file = '../sequence/lt.seq';
+ call, file = '../aperture/lt.dbx';
+
+
+
+/*****************************************************************************
+ * LTB
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/ltb.str';
+ call, file = '../elements/ltb.ele';
+ call, file = '../sequence/ltb.seq';
+ call, file = '../aperture/ltb.dbx';
+
+
+
+/*****************************************************************************
+ * LBE
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/lbe.str';
+ call, file = '../elements/lbe.ele';
+ call, file = '../sequence/lbe.seq';
+
+
+
+/*****************************************************************************
+ * build up the geometry of the beam lines
+ *****************************************************************************/
+ltltblbe: sequence, refer=ENTRY,  l =  97.7105171051 ; ! 82.7080421462 + 15.0024749589
+  lt                           , at =              0 ;
+  ltb                          , at := 53.4728739515 ; ! 53.472856 + 17.9515 um ;
+  lbe                          , at := 82.7080421462 ; ! 53.4728739515 + 29.2351681947.
+endsequence;
+
+
+
+/*****************************************************************************
+ * set initial twiss parameters
+ *****************************************************************************/
+ call, file = '../inp/ltp.inp';
+
+
+
+/*****************************************************************************
+ * store initial parameters in memory block
+ *****************************************************************************/
+INITBETA0: BETA0,
+  BETX=BETX0,
+  ALFX=ALFX0,
+  MUX=MUX0,
+  BETY=BETY0,
+  ALFY=ALFY0,
+  MUY=MUY0,
+  X=X0,
+  PX=PX0,
+  Y=Y0,
+  PY=PY0,
+  T=T0,
+  PT=PT0,
+  DX=DX0,
+  DPX=DPX0,
+  DY=DY0,
+  DPY=DPY0;
+
+
+/*******************************************************************************
+ * Beam
+ * NB! beam->ex == (beam->exn)/(beam->gamma*beam->beta*4)
+ *******************************************************************************/
+ Beam, particle=PROTON,pc=0.311,exn=(12.0E-6)*4.0,eyn=(6.0E-6)*4.0, sige=1E-3;
+
+ set,  format="25.15f";
+
+
+
+
+/*******************************************************************************
+ * survey
+ *******************************************************************************/
+ a1 =             1.92035910512371099657 ;
+ z0 =          1924.28279270772577547177 ;
+ x0 =          1987.78747817067664982460 ;
+ y0 =          2433.66                   ;
+ set,  format="30.20f";
+
+ sur1 : macro={
+               use, sequence=ltltblbe;
+               select, flag=survey,clear;
+               select, flag=survey, column=name,s,l,z,x,y;
+               survey, z0=z0, x0=x0, y0=y0
+                     , theta0:=a1
+                     , file="../out/ltltblbe.sur";
+              }
+ exec, sur1; ! NB: The result of the survey is in the file:  "ltltblbe.sur"
+!stop;
+
+/*************************************
+ * Find the initial angle of the beam.
+ * The angle is: a1=2.63876699
+ * Note that the coordinates used by TS/SU
+ * and in MADX are different:
+ *      MADX    TS/SU
+ *       Z        X
+ *       X        Y
+ *       Y        Z
+ *************************************/
+
+!match, use_macro;
+!   vary, name=angle_LBE_BHZ40;
+!   vary, name=dd;
+!   vary, name=dd1;
+!
+!   use_macro,name=sur1;
+
+!   constraint, expr=table(survey,EBCT20,Z)=1916.54242; ! EBCT20 is a marker of the start of BCT20. See survey file.
+!   constraint, expr=table(survey,EBCT20,X)=2009.02113;
+!   constraint, expr=table(survey,EBCT20,Y)=2433.6600;
+!
+!   constraint, expr=table(survey,SBHZ20,Z)=1916.02706; ! SBHZ20 is a marker of the end of BHZ20. See survey file.
+!   constraint, expr=table(survey,SBHZ20,X)=2010.8006;
+!   constraint, expr=table(survey,SBHZ20,Y)=2433.6600;
+!
+!   constraint, expr=table(survey,EBHZ30,Z)=1913.98285; ! EBHZ30 is a marker of the start of BHZ30. See survey file.
+!   constraint, expr=table(survey,EBHZ30,X)=2039.81584;
+!   constraint, expr=table(survey,EBHZ30,Y)=2433.6600;
+
+
+!   constraint, expr=table(survey,EBHZ40,Z)=1901.35001;
+!   constraint, expr=table(survey,EBHZ40,X)=2066.07541;
+!   constraint, expr=table(survey,EBHZ40,Y)=2433.6600;
+
+!   constraint, expr=table(survey,LBE.KVT9,Z)=1899.80095;
+!   constraint, expr=table(survey,LBE.KVT9,X)=2068.66326;
+!   constraint, expr=table(survey,LBE.KVT9,Y)=2433.6600;
+!
+!   lmdif, calls=1000, tolerance=6E-28;
+!endmatch;
+!
+!exec, sur1;
+! // write, table=survey;
+!value, dd,dd1,angle_LBE_BHZ40;
+!value, table(survey,LBE.BHZ40,Z);
+!stop;
+ /*************************************/
+
+
+
+/*******************************************************************************
+ * Use
+ *******************************************************************************/
+ use, sequence=ltltblbe;
+
+
+
+/*******************************************************************************
+ * twiss
+ *******************************************************************************/
+
+ maketwiss: macro=
+ {
+     ptc_create_universe;
+     ptc_create_layout,model=2,method=6,nst=5,exact;
+     ptc_twiss,table=ptc_twiss,BETA0=INITBETA0,icase=5,no=1; ! ,file="twiss";
+     ptc_end;
+
+
+ };
+
+ exec, maketwiss;
+
+!write,table=ptc_twiss;
+!value,table(ptc_twiss,LTLTBLBE$START,alfa11);
+!value,table(ptc_twiss,LT.DHZ10,beta11);
+
+
+
+
+/***************************************************
+ * Write ptc_twiss table. NB! Values at end of elements
+ ***************************************************/
+ set,  format="-18s";
+ set,  format="10.5f";
+
+! ns    ~ longitudinal number of sigma
+! nt    ~ transverse   number of sigma
+! dimxc ~ size-x with dispersion, dimyc ~ size-y with dispersion,
+! value, beam->ex, beam->ey, beam->sige;
+
+ ns = 2;
+ nt = 3;
+ dimxc := sqrt( nt^2*table(ptc_twiss,beta11)*beam->ex + ns^2*(beam->sige*table(ptc_twiss,disp1))^2 );
+ dimyc := sqrt( nt^2*table(ptc_twiss,beta22)*beam->ey + ns^2*(beam->sige*table(ptc_twiss,disp3))^2 );
+
+
+
+ exec, maketwiss; ! Needs to be executed first, to make beta11, disp1, etc.
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,s,l,alfa11,beta11,disp1,dimxc,alfa22,beta22,disp3,dimyc;
+ exec, maketwiss;
+
+ write,table=ptc_twiss,file="../out/optics_lbe.out";
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+ * Plot ltltblbe
+ *******************************************************************************/
+ option, -info;
+ option, -echo;
+
+ resplot;
+ setplot, post=2;
+
+ plot, title='lbe'  , table=ptc_twiss
+                    , haxis=s
+                    , vaxis1=beta11,beta22
+                    , style:=100,symbol:=4,colour=100
+                    , file = "../out/lbe";
+
+ plot, title='Twiss', table=ptc_twiss
+                    , haxis=s
+                    , vaxis1=beta11,beta22
+                    , vaxis2=disp1
+                    , range=#S/#e
+                    , style:=100, symbol:=4, colour=100;
+
+ plot, title='Twiss', table=ptc_twiss
+                    , haxis=s
+                    , vaxis1=disp1,disp3
+                    , range=#S/#e
+                    , style:=100, symbol:=4, colour=100;
+
+/* Use >gv lbe01.eps  to plot */
+
+
+/*******************************************************************************
+ * Clean up (remove Maxwellian_bend_for_ptc.txt )
+ *******************************************************************************/
+
+system, "rm Maxwellian_bend_for_ptc.txt";
+
+
+
+
+ stop;
+
+
+
+
+
+
+

@@ -1,0 +1,2719 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Title: ltltbbi101.eps
+%%Creator: gx11 version  1.50
+%%CreationDate: 14/08/05 17:47
+%%Orientation: Landscape
+%%BoundingBox:  17  30 573 790
+%%Pages: 0
+%%EndComments
+/$GX11psDict 200 dict def
+$GX11psDict begin
+$GX11psDict /mtrx matrix put /l {lineto} bind def
+/m {moveto} bind def /s {stroke} bind def
+/n {newpath} bind def /gs {gsave} bind def
+/gr {grestore} bind def /clp {closepath} bind def
+/t {translate} bind def /sd {setdash} bind def
+/fft {findfont} bind def /col-1 {} def /r {rotate} bind def
+/sf {scalefont setfont} bind def /sw {stringwidth} bind def
+/stwn { /fs exch def /fn exch def /text exch def fn findfont
+fs sf text sw pop xs add /xs exch def} bind def
+/black {0 0 0 setrgbcolor} bind def
+/blue {0 0 1 setrgbcolor} bind def
+/green {0 1 0 setrgbcolor} bind def
+/cyan {0 1 1 setrgbcolor} bind def
+/red {1 0 0 setrgbcolor} bind def
+/magenta {1 0 1 setrgbcolor} bind def
+/yellow {1 1 0 setrgbcolor} bind def
+/white {1 1 1 setrgbcolor} bind def
+        end
+/$GX11psBegin
+     {$GX11psDict begin /$GX11psEnteredState save def} def
+/$GX11psEnd {$GX11psEnteredState restore end} def
+%%EndProlog
+$GX11psBegin
+0 setlinecap 0 setlinejoin
+  0.250  0.250 scale
+
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953   997 m  1953  2835 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953   997 m  1971   997 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1112 m  1962  1112 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1227 m  1971  1227 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1342 m  1962  1342 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1457 m  1971  1457 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1572 m  1962  1572 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1687 m  1971  1687 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1801 m  1962  1801 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1916 m  1971  1916 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2031 m  1962  2031 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2146 m  1971  2146 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2261 m  1962  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2376 m  1971  2376 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2491 m  1962  2491 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2605 m  1971  2605 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2720 m  1962  2720 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2835 m  1971  2835 l
+col-1 s                                 
+/xs 0 def
+(0.0)
+/Times-Italic    87 stwn
+black 2042  997 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(0.0)
+show xs 2 div 0 t 0 0 m   -90 r -2042  -997 t
+/xs 0 def
+(40.)
+/Times-Italic    87 stwn
+black 2042 1457 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(40.)
+show xs 2 div 0 t 0 0 m   -90 r -2042 -1457 t
+/xs 0 def
+(80.)
+/Times-Italic    87 stwn
+black 2042 1916 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(80.)
+show xs 2 div 0 t 0 0 m   -90 r -2042 -1916 t
+/xs 0 def
+(120.)
+/Times-Italic    87 stwn
+black 2042 2376 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(120.)
+show xs 2 div 0 t 0 0 m   -90 r -2042 -2376 t
+/xs 0 def
+(160.)
+/Times-Italic    87 stwn
+black 2042 2835 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(160.)
+show xs 2 div 0 t 0 0 m   -90 r -2042 -2835 t
+black 2142  997 t    90 r
+/Times-Italic fft     77 sf 0 0 m
+(                               s \(m\))
+show   -90 r -2142  -997 t
+ 3.750 setlinewidth [] 0 sd                 
+black n  405  997 m   405  2835 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  405  997 m  423  997 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1112 m   414  1112 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1227 m   423  1227 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1342 m   414  1342 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1457 m   423  1457 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1572 m   414  1572 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1687 m   423  1687 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1801 m   414  1801 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  1916 m   423  1916 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2031 m   414  2031 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2146 m   423  2146 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2261 m   414  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2376 m   423  2376 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2491 m   414  2491 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2605 m   423  2605 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2720 m   414  2720 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2835 m   423  2835 l
+col-1 s                                 
+black  384  997 t    90 r
+/Times-Italic fft     77 sf 0 0 m
+(bi)
+show   -90 r  -384  -997 t
+/xs 0 def
+(MAD-X 5.02.00  05/08/14 17.47.08)
+/Times-Italic    77 stwn
+black  384 2835 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     77 sf 0 0 m
+(MAD-X 5.02.00  05/08/14 17.47.08)
+show xs 0 t 0 0 m   -90 r  -384 -2835 t
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953   997 m  405  997 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953   997 m  1953   973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1857   997 m  1857   985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1760   997 m  1760   973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1663   997 m  1663   985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1566   997 m  1566   973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1469   997 m  1469   985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1373   997 m  1373   973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1276   997 m  1276   985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1179   997 m  1179   973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1082   997 m  1082   985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  985  997 m  985  973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  889  997 m  889  985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  792  997 m  792  973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  695  997 m  695  985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  598  997 m  598  973 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  501  997 m  501  985 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  405  997 m  405  973 l
+col-1 s                                 
+/xs 0 def
+(0.0)
+/Times-Italic    87 stwn
+black 1977  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(0.0)
+show xs 0 t 0 0 m   -90 r -1977  -937 t
+/xs 0 def
+(2.)
+/Times-Italic    87 stwn
+black 1783  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(2.)
+show xs 0 t 0 0 m   -90 r -1783  -937 t
+/xs 0 def
+(4.)
+/Times-Italic    87 stwn
+black 1590  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(4.)
+show xs 0 t 0 0 m   -90 r -1590  -937 t
+/xs 0 def
+(6.)
+/Times-Italic    87 stwn
+black 1396  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(6.)
+show xs 0 t 0 0 m   -90 r -1396  -937 t
+/xs 0 def
+(8.)
+/Times-Italic    87 stwn
+black 1202  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(8.)
+show xs 0 t 0 0 m   -90 r -1202  -937 t
+/xs 0 def
+(10.)
+/Times-Italic    87 stwn
+black 1009  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(10.)
+show xs 0 t 0 0 m   -90 r -1009  -937 t
+/xs 0 def
+(12.)
+/Times-Italic    87 stwn
+black  815  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(12.)
+show xs 0 t 0 0 m   -90 r  -815  -937 t
+/xs 0 def
+(14.)
+/Times-Italic    87 stwn
+black  622  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(14.)
+show xs 0 t 0 0 m   -90 r  -622  -937 t
+/xs 0 def
+(16.)
+/Times-Italic    87 stwn
+black  428  937 t    90 r xs neg 0 t 0 0 m
+/Times-Italic fft     87 sf 0 0 m
+(16.)
+show xs 0 t 0 0 m   -90 r  -428  -937 t
+/xs 0 def
+(beta11                                          ,                                                    [*10**\(  3\)])
+/Times-Italic    77 stwn
+black  446  418 t   180 r xs neg 0 t 0 0 m
+/Times-Italic fft     77 sf 0 0 m
+(beta11                                          ,                                                    [*10**\(  3\)])
+show xs 0 t 0 0 m  -180 r  -446  -418 t
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2835 m   405  2835 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2835 m  1953  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1857  2835 m  1857  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1760  2835 m  1760  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1663  2835 m  1663  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1566  2835 m  1566  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1469  2835 m  1469  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1373  2835 m  1373  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1276  2835 m  1276  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1179  2835 m  1179  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1082  2835 m  1082  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   985  2835 m   985  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   889  2835 m   889  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   792  2835 m   792  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   695  2835 m   695  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   598  2835 m   598  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   501  2835 m   501  2823 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   405  2835 m   405  2811 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953   997 m  1953  1002 l  1953  1014 l  1953  1019 l
+  1953  1022 l  1953  1025 l  1953  1028 l  1953  1031 l  1953  1033 l
+  1953  1039 l  1953  1060 l  1951  1082 l  1951  1085 l  1951  1088 l
+  1952  1093 l  1952  1096 l  1952  1132 l  1952  1149 l  1952  1152 l
+  1952  1161 l  1952  1164 l  1952  1171 l  1952  1195 l  1951  1207 l
+  1951  1214 l  1951  1217 l  1952  1225 l  1953  1228 l  1953  1232 l
+  1953  1239 l  1953  1247 l  1953  1258 l  1953  1267 l  1953  1279 l
+  1953  1288 l  1953  1297 l  1952  1335 l  1951  1348 l  1951  1351 l
+  1952  1360 l  1952  1365 l  1953  1369 l  1953  1375 l  1953  1388 l
+  1953  1396 l  1953  1399 l  1953  1402 l  1951  1452 l  1951  1455 l
+  1951  1474 l  1951  1477 l  1950  1480 l  1950  1485 l  1948  1497 l
+  1943  1527 l  1943  1532 l  1943  1537 l  1951  1572 l  1952  1575 l
+  1952  1584 l  1953  1592 l  1953  1597 l  1953  1604 l  1953  1612 l
+  1953  1624 l  1953  1632 l  1953  1638 l  1953  1642 l  1952  1648 l
+  1951  1665 l  1951  1668 l  1951  1677 l  1951  1680 l  1951  1683 l
+  1951  1692 l  1951  1696 l  1951  1700 l  1951  1733 l  1951  1739 l
+  1951  1774 l  1951  1780 l  1951  1788 l  1951  1793 l  1952  1799 l
+  1952  1805 l  1951  1858 l  1951  1864 l  1951  1869 l  1950  1893 l
+  1950  1899 l  1950  1904 l  1950  1909 l  1950  1914 l  1952  1924 l
+  1952  1929 l  1952  1934 l  1952  1940 l  1952  1947 l  1953  1958 l
+  1953  1966 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1966 m  1953  2023 l  1953  2028 l  1953  2039 l
+  1953  2045 l  1952  2082 l  1952  2091 l  1952  2097 l  1951  2101 l
+  1952  2107 l  1952  2113 l  1953  2118 l  1952  2197 l  1952  2202 l
+  1952  2206 l  1952  2207 l  1952  2211 l  1952  2213 l  1952  2220 l
+  1952  2225 l  1951  2230 l  1951  2234 l  1951  2240 l  1951  2243 l
+  1951  2247 l  1951  2252 l  1952  2257 l  1952  2261 l  1952  2266 l
+  1952  2268 l  1953  2272 l  1953  2292 l  1953  2340 l  1952  2346 l
+  1952  2358 l  1952  2360 l  1949  2392 l  1949  2400 l  1948  2403 l
+  1949  2409 l  1950  2412 l  1951  2417 l  1951  2421 l  1951  2428 l
+  1951  2441 l  1951  2447 l  1951  2452 l  1951  2457 l  1951  2463 l
+  1951  2491 l  1951  2505 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956   992 m  1951   992 l  1948   995 l  1948  1000 l
+  1951  1003 l  1956  1003 l  1959  1000 l  1959   995 l  1956   992 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956   997 m  1951   997 l  1948  1000 l  1948  1004 l
+  1951  1007 l  1956  1007 l  1959  1004 l  1959  1000 l  1956   997 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1008 m  1951  1008 l  1947  1011 l  1947  1016 l
+  1951  1019 l  1955  1019 l  1959  1016 l  1959  1011 l  1955  1008 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1013 m  1951  1013 l  1947  1016 l  1947  1021 l
+  1951  1024 l  1955  1024 l  1958  1021 l  1958  1016 l  1955  1013 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1016 m  1951  1016 l  1947  1019 l  1947  1024 l
+  1951  1027 l  1955  1027 l  1959  1024 l  1959  1019 l  1955  1016 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1020 m  1951  1020 l  1948  1023 l  1948  1027 l
+  1951  1030 l  1955  1030 l  1959  1027 l  1959  1023 l  1955  1020 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1023 m  1951  1023 l  1948  1026 l  1948  1030 l
+  1951  1033 l  1956  1033 l  1959  1030 l  1959  1026 l  1956  1023 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1025 m  1951  1025 l  1948  1029 l  1948  1033 l
+  1951  1036 l  1956  1036 l  1959  1033 l  1959  1029 l  1956  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1028 m  1951  1028 l  1948  1031 l  1948  1035 l
+  1951  1038 l  1956  1038 l  1959  1035 l  1959  1031 l  1956  1028 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1033 m  1951  1033 l  1948  1036 l  1948  1041 l
+  1951  1044 l  1956  1044 l  1959  1041 l  1959  1036 l  1956  1033 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1055 m  1950  1055 l  1947  1058 l  1947  1063 l
+  1950  1066 l  1955  1066 l  1958  1063 l  1958  1058 l  1955  1055 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1076 m  1949  1076 l  1945  1079 l  1945  1084 l
+  1949  1087 l  1953  1087 l  1957  1084 l  1957  1079 l  1953  1076 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1079 m  1949  1079 l  1945  1082 l  1945  1087 l
+  1949  1090 l  1953  1090 l  1957  1087 l  1957  1082 l  1953  1079 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1082 m  1949  1082 l  1946  1085 l  1946  1090 l
+  1949  1093 l  1954  1093 l  1957  1090 l  1957  1085 l  1954  1082 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1088 m  1950  1088 l  1946  1091 l  1946  1095 l
+  1950  1098 l  1954  1098 l  1957  1095 l  1957  1091 l  1954  1088 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1091 m  1950  1091 l  1946  1094 l  1946  1098 l
+  1950  1101 l  1954  1101 l  1958  1098 l  1958  1094 l  1954  1091 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1127 m  1950  1127 l  1946  1130 l  1946  1134 l
+  1950  1137 l  1954  1137 l  1957  1134 l  1957  1130 l  1954  1127 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1144 m  1949  1144 l  1946  1147 l  1946  1151 l
+  1949  1154 l  1954  1154 l  1957  1151 l  1957  1147 l  1954  1144 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1147 m  1950  1147 l  1946  1150 l  1946  1154 l
+  1950  1157 l  1954  1157 l  1957  1154 l  1957  1150 l  1954  1147 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1155 m  1950  1155 l  1947  1158 l  1947  1163 l
+  1950  1166 l  1954  1166 l  1958  1163 l  1958  1158 l  1954  1155 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1158 m  1950  1158 l  1947  1161 l  1947  1166 l
+  1950  1169 l  1954  1169 l  1958  1166 l  1958  1161 l  1954  1158 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1166 m  1950  1166 l  1946  1169 l  1946  1173 l
+  1950  1177 l  1954  1177 l  1958  1173 l  1958  1169 l  1954  1166 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1189 m  1949  1189 l  1946  1193 l  1946  1197 l
+  1949  1200 l  1954  1200 l  1957  1197 l  1957  1193 l  1954  1189 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1202 m  1949  1202 l  1946  1205 l  1946  1210 l
+  1949  1213 l  1954  1213 l  1957  1210 l  1957  1205 l  1954  1202 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1209 m  1949  1209 l  1946  1212 l  1946  1216 l
+  1949  1219 l  1953  1219 l  1957  1216 l  1957  1212 l  1953  1209 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1211 m  1949  1211 l  1946  1215 l  1946  1219 l
+  1949  1222 l  1954  1222 l  1957  1219 l  1957  1215 l  1954  1211 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1220 m  1950  1220 l  1947  1223 l  1947  1228 l
+  1950  1231 l  1955  1231 l  1958  1228 l  1958  1223 l  1955  1220 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1223 m  1950  1223 l  1947  1226 l  1947  1230 l
+  1950  1234 l  1955  1234 l  1958  1230 l  1958  1226 l  1955  1223 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1226 m  1950  1226 l  1947  1229 l  1947  1234 l
+  1950  1237 l  1955  1237 l  1958  1234 l  1958  1229 l  1955  1226 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1233 m  1950  1233 l  1947  1236 l  1947  1241 l
+  1950  1244 l  1955  1244 l  1958  1241 l  1958  1236 l  1955  1233 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1242 m  1951  1242 l  1947  1245 l  1947  1249 l
+  1951  1253 l  1955  1253 l  1959  1249 l  1959  1245 l  1955  1242 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1253 m  1951  1253 l  1948  1256 l  1948  1260 l
+  1951  1263 l  1955  1263 l  1959  1260 l  1959  1256 l  1955  1253 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1262 m  1951  1262 l  1948  1265 l  1948  1269 l
+  1951  1273 l  1955  1273 l  1959  1269 l  1959  1265 l  1955  1262 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1274 m  1951  1274 l  1948  1277 l  1948  1281 l
+  1951  1285 l  1955  1285 l  1959  1281 l  1959  1277 l  1955  1274 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1282 m  1951  1282 l  1948  1285 l  1948  1290 l
+  1951  1293 l  1955  1293 l  1959  1290 l  1959  1285 l  1955  1282 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1292 m  1951  1292 l  1947  1295 l  1947  1300 l
+  1951  1303 l  1955  1303 l  1959  1300 l  1959  1295 l  1955  1292 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1329 m  1950  1329 l  1946  1332 l  1946  1337 l
+  1950  1340 l  1954  1340 l  1957  1337 l  1957  1332 l  1954  1329 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1342 m  1949  1342 l  1946  1346 l  1946  1350 l
+  1949  1353 l  1954  1353 l  1957  1350 l  1957  1346 l  1954  1342 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1345 m  1949  1345 l  1946  1349 l  1946  1353 l
+  1949  1356 l  1954  1356 l  1957  1353 l  1957  1349 l  1954  1345 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1355 m  1950  1355 l  1946  1358 l  1946  1362 l
+  1950  1366 l  1954  1366 l  1958  1362 l  1958  1358 l  1954  1355 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1360 m  1950  1360 l  1947  1363 l  1947  1367 l
+  1950  1370 l  1955  1370 l  1958  1367 l  1958  1363 l  1955  1360 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1364 m  1950  1364 l  1947  1367 l  1947  1371 l
+  1950  1375 l  1955  1375 l  1958  1371 l  1958  1367 l  1955  1364 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1370 m  1950  1370 l  1947  1373 l  1947  1377 l
+  1950  1380 l  1955  1380 l  1958  1377 l  1958  1373 l  1955  1370 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1383 m  1951  1383 l  1948  1386 l  1948  1391 l
+  1951  1394 l  1955  1394 l  1959  1391 l  1959  1386 l  1955  1383 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1391 m  1951  1391 l  1948  1394 l  1948  1398 l
+  1951  1401 l  1956  1401 l  1959  1398 l  1959  1394 l  1956  1391 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1394 m  1951  1394 l  1948  1397 l  1948  1401 l
+  1951  1404 l  1956  1404 l  1959  1401 l  1959  1397 l  1956  1394 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1396 m  1951  1396 l  1948  1399 l  1948  1404 l
+  1951  1407 l  1956  1407 l  1959  1404 l  1959  1399 l  1956  1396 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1447 m  1949  1447 l  1945  1450 l  1945  1454 l
+  1949  1457 l  1953  1457 l  1957  1454 l  1957  1450 l  1953  1447 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1450 m  1949  1450 l  1945  1453 l  1945  1457 l
+  1949  1460 l  1953  1460 l  1956  1457 l  1956  1453 l  1953  1450 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1469 m  1948  1469 l  1945  1472 l  1945  1476 l
+  1948  1479 l  1953  1479 l  1956  1476 l  1956  1472 l  1953  1469 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1471 m  1948  1471 l  1945  1475 l  1945  1479 l
+  1948  1482 l  1953  1482 l  1956  1479 l  1956  1475 l  1953  1471 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1475 m  1948  1475 l  1945  1478 l  1945  1482 l
+  1948  1485 l  1953  1485 l  1956  1482 l  1956  1478 l  1953  1475 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  1479 m  1947  1479 l  1944  1482 l  1944  1487 l
+  1947  1490 l  1952  1490 l  1955  1487 l  1955  1482 l  1952  1479 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1950  1492 m  1946  1492 l  1943  1495 l  1943  1499 l
+  1946  1503 l  1950  1503 l  1954  1499 l  1954  1495 l  1950  1492 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1946  1522 m  1941  1522 l  1938  1525 l  1938  1529 l
+  1941  1532 l  1946  1532 l  1949  1529 l  1949  1525 l  1946  1522 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1945  1526 m  1940  1526 l  1937  1529 l  1937  1534 l
+  1940  1537 l  1945  1537 l  1948  1534 l  1948  1529 l  1945  1526 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1945  1532 m  1941  1532 l  1937  1535 l  1937  1539 l
+  1941  1542 l  1945  1542 l  1948  1539 l  1948  1535 l  1945  1532 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1566 m  1949  1566 l  1946  1570 l  1946  1574 l
+  1949  1577 l  1954  1577 l  1957  1574 l  1957  1570 l  1954  1566 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1569 m  1949  1569 l  1946  1573 l  1946  1577 l
+  1949  1580 l  1954  1580 l  1957  1577 l  1957  1573 l  1954  1569 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1579 m  1950  1579 l  1947  1582 l  1947  1587 l
+  1950  1590 l  1955  1590 l  1958  1587 l  1958  1582 l  1955  1579 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1586 m  1950  1586 l  1947  1589 l  1947  1594 l
+  1950  1597 l  1955  1597 l  1958  1594 l  1958  1589 l  1955  1586 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1592 m  1951  1592 l  1947  1595 l  1947  1600 l
+  1951  1603 l  1955  1603 l  1959  1600 l  1959  1595 l  1955  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1598 m  1951  1598 l  1948  1601 l  1948  1606 l
+  1951  1609 l  1956  1609 l  1959  1606 l  1959  1601 l  1956  1598 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1606 m  1951  1606 l  1948  1609 l  1948  1614 l
+  1951  1617 l  1956  1617 l  1959  1614 l  1959  1609 l  1956  1606 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1956  1618 m  1951  1618 l  1948  1621 l  1948  1626 l
+  1951  1629 l  1956  1629 l  1959  1626 l  1959  1621 l  1956  1618 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1626 m  1951  1626 l  1947  1629 l  1947  1634 l
+  1951  1637 l  1955  1637 l  1959  1634 l  1959  1629 l  1955  1626 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1632 m  1950  1632 l  1947  1635 l  1947  1640 l
+  1950  1643 l  1955  1643 l  1958  1640 l  1958  1635 l  1955  1632 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1637 m  1950  1637 l  1947  1640 l  1947  1644 l
+  1950  1647 l  1955  1647 l  1958  1644 l  1958  1640 l  1955  1637 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1643 m  1950  1643 l  1947  1646 l  1947  1650 l
+  1950  1653 l  1954  1653 l  1958  1650 l  1958  1646 l  1954  1643 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1660 m  1948  1660 l  1945  1663 l  1945  1668 l
+  1948  1671 l  1953  1671 l  1956  1668 l  1956  1663 l  1953  1660 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1663 m  1948  1663 l  1945  1666 l  1945  1671 l
+  1948  1674 l  1953  1674 l  1956  1671 l  1956  1666 l  1953  1663 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1672 m  1949  1672 l  1946  1675 l  1946  1679 l
+  1949  1682 l  1954  1682 l  1957  1679 l  1957  1675 l  1954  1672 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1675 m  1949  1675 l  1946  1678 l  1946  1682 l
+  1949  1685 l  1954  1685 l  1957  1682 l  1957  1678 l  1954  1675 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1678 m  1949  1678 l  1946  1681 l  1946  1686 l
+  1949  1689 l  1954  1689 l  1957  1686 l  1957  1681 l  1954  1678 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1686 m  1949  1686 l  1946  1689 l  1946  1694 l
+  1949  1697 l  1954  1697 l  1957  1694 l  1957  1689 l  1954  1686 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1690 m  1949  1690 l  1946  1694 l  1946  1698 l
+  1949  1701 l  1954  1701 l  1957  1698 l  1957  1694 l  1954  1690 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1694 m  1949  1694 l  1946  1697 l  1946  1702 l
+  1949  1705 l  1954  1705 l  1957  1702 l  1957  1697 l  1954  1694 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1728 m  1949  1728 l  1946  1731 l  1946  1736 l
+  1949  1739 l  1953  1739 l  1957  1736 l  1957  1731 l  1953  1728 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1734 m  1949  1734 l  1946  1737 l  1946  1741 l
+  1949  1745 l  1953  1745 l  1957  1741 l  1957  1737 l  1953  1734 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1769 m  1949  1769 l  1945  1772 l  1945  1777 l
+  1949  1780 l  1953  1780 l  1957  1777 l  1957  1772 l  1953  1769 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1775 m  1949  1775 l  1945  1778 l  1945  1782 l
+  1949  1785 l  1953  1785 l  1957  1782 l  1957  1778 l  1953  1775 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1782 m  1949  1782 l  1945  1786 l  1945  1790 l
+  1949  1793 l  1953  1793 l  1956  1790 l  1956  1786 l  1953  1782 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1788 m  1949  1788 l  1946  1791 l  1946  1795 l
+  1949  1798 l  1953  1798 l  1957  1795 l  1957  1791 l  1953  1788 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1794 m  1949  1794 l  1946  1797 l  1946  1801 l
+  1949  1805 l  1954  1805 l  1957  1801 l  1957  1797 l  1954  1794 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1799 m  1949  1799 l  1946  1802 l  1946  1807 l
+  1949  1810 l  1954  1810 l  1957  1807 l  1957  1802 l  1954  1799 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1853 m  1949  1853 l  1945  1856 l  1945  1860 l
+  1949  1863 l  1953  1863 l  1957  1860 l  1957  1856 l  1953  1853 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1859 m  1949  1859 l  1945  1862 l  1945  1866 l
+  1949  1870 l  1953  1870 l  1956  1866 l  1956  1862 l  1953  1859 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1864 m  1948  1864 l  1945  1867 l  1945  1872 l
+  1948  1875 l  1953  1875 l  1956  1872 l  1956  1867 l  1953  1864 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1888 m  1948  1888 l  1945  1891 l  1945  1895 l
+  1948  1898 l  1953  1898 l  1956  1895 l  1956  1891 l  1953  1888 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  1894 m  1948  1894 l  1945  1897 l  1945  1901 l
+  1948  1905 l  1952  1905 l  1956  1901 l  1956  1897 l  1952  1894 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  1899 m  1948  1899 l  1944  1902 l  1944  1906 l
+  1948  1909 l  1952  1909 l  1956  1906 l  1956  1902 l  1952  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  1904 m  1948  1904 l  1944  1907 l  1944  1911 l
+  1948  1914 l  1952  1914 l  1955  1911 l  1955  1907 l  1952  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  1909 m  1948  1909 l  1945  1912 l  1945  1916 l
+  1948  1920 l  1953  1920 l  1956  1916 l  1956  1912 l  1953  1909 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1919 m  1949  1919 l  1946  1922 l  1946  1926 l
+  1949  1929 l  1954  1929 l  1957  1926 l  1957  1922 l  1954  1919 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  1924 m  1950  1924 l  1947  1927 l  1947  1931 l
+  1950  1935 l  1954  1935 l  1958  1931 l  1958  1927 l  1954  1924 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1929 m  1950  1929 l  1947  1932 l  1947  1936 l
+  1950  1939 l  1955  1939 l  1958  1936 l  1958  1932 l  1955  1929 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1934 m  1950  1934 l  1947  1938 l  1947  1942 l
+  1950  1945 l  1955  1945 l  1958  1942 l  1958  1938 l  1955  1934 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1942 m  1950  1942 l  1947  1945 l  1947  1950 l
+  1950  1953 l  1955  1953 l  1958  1950 l  1958  1945 l  1955  1942 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1952 m  1950  1952 l  1947  1956 l  1947  1960 l
+  1950  1963 l  1955  1963 l  1958  1960 l  1958  1956 l  1955  1952 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  1960 m  1950  1960 l  1947  1963 l  1947  1968 l
+  1950  1971 l  1955  1971 l  1958  1968 l  1958  1963 l  1955  1960 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2017 m  1951  2017 l  1947  2021 l  1947  2025 l
+  1951  2028 l  1955  2028 l  1958  2025 l  1958  2021 l  1955  2017 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2023 m  1950  2023 l  1947  2026 l  1947  2031 l
+  1950  2034 l  1955  2034 l  1958  2031 l  1958  2026 l  1955  2023 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2033 m  1950  2033 l  1947  2037 l  1947  2041 l
+  1950  2044 l  1955  2044 l  1958  2041 l  1958  2037 l  1955  2033 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2040 m  1950  2040 l  1947  2043 l  1947  2048 l
+  1950  2051 l  1955  2051 l  1958  2048 l  1958  2043 l  1955  2040 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2077 m  1950  2077 l  1946  2080 l  1946  2085 l
+  1950  2088 l  1954  2088 l  1957  2085 l  1957  2080 l  1954  2077 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2086 m  1949  2086 l  1946  2089 l  1946  2093 l
+  1949  2096 l  1954  2096 l  1957  2093 l  1957  2089 l  1954  2086 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2091 m  1949  2091 l  1946  2094 l  1946  2099 l
+  1949  2102 l  1954  2102 l  1957  2099 l  1957  2094 l  1954  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2096 m  1949  2096 l  1946  2099 l  1946  2103 l
+  1949  2107 l  1954  2107 l  1957  2103 l  1957  2099 l  1954  2096 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2101 m  1949  2101 l  1946  2104 l  1946  2109 l
+  1949  2112 l  1954  2112 l  1957  2109 l  1957  2104 l  1954  2101 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2107 m  1950  2107 l  1947  2110 l  1947  2115 l
+  1950  2118 l  1955  2118 l  1958  2115 l  1958  2110 l  1955  2107 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2113 m  1950  2113 l  1947  2116 l  1947  2120 l
+  1950  2123 l  1955  2123 l  1958  2120 l  1958  2116 l  1955  2113 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2191 m  1950  2191 l  1947  2194 l  1947  2199 l
+  1950  2202 l  1955  2202 l  1958  2199 l  1958  2194 l  1955  2191 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2197 m  1950  2197 l  1947  2200 l  1947  2204 l
+  1950  2207 l  1955  2207 l  1958  2204 l  1958  2200 l  1955  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2201 m  1950  2201 l  1947  2204 l  1947  2208 l
+  1950  2212 l  1955  2212 l  1958  2208 l  1958  2204 l  1955  2201 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2202 m  1950  2202 l  1947  2205 l  1947  2209 l
+  1950  2213 l  1955  2213 l  1958  2209 l  1958  2205 l  1955  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2205 m  1950  2205 l  1947  2208 l  1947  2213 l
+  1950  2216 l  1955  2216 l  1958  2213 l  1958  2208 l  1955  2205 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2208 m  1950  2208 l  1947  2211 l  1947  2216 l
+  1950  2219 l  1955  2219 l  1958  2216 l  1958  2211 l  1955  2208 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2215 m  1950  2215 l  1947  2218 l  1947  2222 l
+  1950  2225 l  1954  2225 l  1958  2222 l  1958  2218 l  1954  2215 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2220 m  1950  2220 l  1946  2223 l  1946  2228 l
+  1950  2231 l  1954  2231 l  1957  2228 l  1957  2223 l  1954  2220 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2224 m  1949  2224 l  1946  2228 l  1946  2232 l
+  1949  2235 l  1954  2235 l  1957  2232 l  1957  2228 l  1954  2224 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2229 m  1948  2229 l  1945  2232 l  1945  2237 l
+  1948  2240 l  1953  2240 l  1956  2237 l  1956  2232 l  1953  2229 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2234 m  1948  2234 l  1945  2238 l  1945  2242 l
+  1948  2245 l  1953  2245 l  1956  2242 l  1956  2238 l  1953  2234 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2237 m  1948  2237 l  1945  2241 l  1945  2245 l
+  1948  2248 l  1953  2248 l  1956  2245 l  1956  2241 l  1953  2237 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2242 m  1949  2242 l  1946  2245 l  1946  2250 l
+  1949  2253 l  1953  2253 l  1957  2250 l  1957  2245 l  1953  2242 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2247 m  1949  2247 l  1946  2250 l  1946  2254 l
+  1949  2257 l  1954  2257 l  1957  2254 l  1957  2250 l  1954  2247 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2251 m  1949  2251 l  1946  2255 l  1946  2259 l
+  1949  2262 l  1954  2262 l  1957  2259 l  1957  2255 l  1954  2251 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2256 m  1950  2256 l  1946  2259 l  1946  2264 l
+  1950  2267 l  1954  2267 l  1958  2264 l  1958  2259 l  1954  2256 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2261 m  1950  2261 l  1947  2264 l  1947  2268 l
+  1950  2272 l  1955  2272 l  1958  2268 l  1958  2264 l  1955  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2263 m  1950  2263 l  1947  2266 l  1947  2271 l
+  1950  2274 l  1955  2274 l  1958  2271 l  1958  2266 l  1955  2263 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2267 m  1950  2267 l  1947  2270 l  1947  2274 l
+  1950  2277 l  1955  2277 l  1958  2274 l  1958  2270 l  1955  2267 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2286 m  1951  2286 l  1948  2289 l  1948  2294 l
+  1951  2297 l  1955  2297 l  1959  2294 l  1959  2289 l  1955  2286 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2335 m  1950  2335 l  1947  2338 l  1947  2342 l
+  1950  2345 l  1955  2345 l  1958  2342 l  1958  2338 l  1955  2335 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1955  2341 m  1950  2341 l  1947  2344 l  1947  2349 l
+  1950  2352 l  1955  2352 l  1958  2349 l  1958  2344 l  1955  2341 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2352 m  1949  2352 l  1946  2355 l  1946  2360 l
+  1949  2363 l  1954  2363 l  1957  2360 l  1957  2355 l  1954  2352 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1954  2354 m  1949  2354 l  1946  2357 l  1946  2362 l
+  1949  2365 l  1954  2365 l  1957  2362 l  1957  2357 l  1954  2354 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  2386 m  1947  2386 l  1944  2389 l  1944  2394 l
+  1947  2397 l  1952  2397 l  1955  2394 l  1955  2389 l  1952  2386 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1951  2394 m  1946  2394 l  1943  2398 l  1943  2402 l
+  1946  2405 l  1951  2405 l  1954  2402 l  1954  2398 l  1951  2394 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1951  2398 m  1946  2398 l  1943  2401 l  1943  2406 l
+  1946  2409 l  1951  2409 l  1954  2406 l  1954  2401 l  1951  2398 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1951  2403 m  1947  2403 l  1944  2406 l  1944  2411 l
+  1947  2414 l  1951  2414 l  1955  2411 l  1955  2406 l  1951  2403 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1952  2407 m  1948  2407 l  1945  2410 l  1945  2414 l
+  1948  2417 l  1952  2417 l  1956  2414 l  1956  2410 l  1952  2407 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2412 m  1949  2412 l  1945  2415 l  1945  2420 l
+  1949  2423 l  1953  2423 l  1956  2420 l  1956  2415 l  1953  2412 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2416 m  1949  2416 l  1945  2419 l  1945  2423 l
+  1949  2426 l  1953  2426 l  1956  2423 l  1956  2419 l  1953  2416 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2422 m  1949  2422 l  1945  2425 l  1945  2430 l
+  1949  2433 l  1953  2433 l  1956  2430 l  1956  2425 l  1953  2422 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2436 m  1949  2436 l  1945  2439 l  1945  2443 l
+  1949  2446 l  1953  2446 l  1956  2443 l  1956  2439 l  1953  2436 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2442 m  1949  2442 l  1945  2445 l  1945  2450 l
+  1949  2453 l  1953  2453 l  1956  2450 l  1956  2445 l  1953  2442 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2447 m  1949  2447 l  1945  2450 l  1945  2454 l
+  1949  2457 l  1953  2457 l  1956  2454 l  1956  2450 l  1953  2447 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2452 m  1949  2452 l  1945  2455 l  1945  2459 l
+  1949  2462 l  1953  2462 l  1956  2459 l  1956  2455 l  1953  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2458 m  1949  2458 l  1945  2461 l  1945  2465 l
+  1949  2468 l  1953  2468 l  1956  2465 l  1956  2461 l  1953  2458 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2485 m  1948  2485 l  1945  2488 l  1945  2493 l
+  1948  2496 l  1953  2496 l  1956  2493 l  1956  2488 l  1953  2485 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  1953  2500 m  1948  2500 l  1945  2503 l  1945  2507 l
+  1948  2510 l  1953  2510 l  1956  2507 l  1956  2503 l  1953  2500 l
+col-1 s                                 
+/xs 0 def
+(beta11)
+/Times-Italic   100 stwn
+black  521 1170 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft    100 sf 0 0 m
+(beta11)
+show xs 2 div 0 t 0 0 m   -90 r  -521 -1170 t
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   521  1170 m  1952  1170 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953   997 m  1953  1002 l  1953  1014 l  1953  1019 l
+  1953  1022 l  1952  1025 l  1952  1028 l  1952  1031 l  1952  1033 l
+  1952  1039 l  1953  1060 l  1953  1082 l  1953  1085 l  1953  1088 l
+  1953  1093 l  1953  1096 l  1953  1132 l  1952  1149 l  1952  1152 l
+  1951  1161 l  1951  1164 l  1951  1171 l  1951  1195 l  1951  1207 l
+  1951  1214 l  1951  1217 l  1949  1225 l  1949  1228 l  1949  1232 l
+  1949  1239 l  1950  1247 l  1950  1258 l  1950  1267 l  1951  1279 l
+  1951  1288 l  1951  1297 l  1952  1335 l  1952  1348 l  1952  1351 l
+  1952  1360 l  1951  1365 l  1951  1369 l  1950  1375 l  1949  1388 l
+  1948  1396 l  1948  1399 l  1948  1402 l  1951  1452 l  1951  1455 l
+  1950  1474 l  1950  1477 l  1951  1480 l  1951  1485 l  1951  1497 l
+  1953  1527 l  1953  1532 l  1953  1537 l  1952  1572 l  1952  1575 l
+  1952  1584 l  1952  1592 l  1952  1597 l  1952  1604 l  1952  1612 l
+  1953  1624 l  1953  1632 l  1953  1638 l  1953  1642 l  1953  1648 l
+  1953  1665 l  1952  1668 l  1952  1677 l  1952  1680 l  1952  1683 l
+  1951  1692 l  1951  1696 l  1951  1700 l  1949  1733 l  1949  1739 l
+  1947  1774 l  1946  1780 l  1946  1788 l  1944  1793 l  1941  1799 l
+  1940  1805 l  1946  1858 l  1947  1864 l  1947  1869 l  1949  1893 l
+  1950  1899 l  1950  1904 l  1950  1909 l  1950  1914 l  1949  1924 l
+  1949  1929 l  1949  1934 l  1950  1940 l  1951  1947 l  1952  1958 l
+  1953  1966 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1966 m  1952  2023 l  1951  2028 l  1950  2039 l
+  1949  2045 l  1942  2082 l  1940  2091 l  1939  2097 l  1938  2101 l
+  1932  2107 l  1917  2113 l  1913  2118 l  1950  2197 l  1948  2202 l
+  1945  2206 l  1945  2207 l  1942  2211 l  1940  2213 l  1935  2220 l
+  1933  2225 l  1934  2230 l  1935  2234 l  1932  2240 l  1928  2243 l
+  1921  2247 l  1912  2252 l  1903  2257 l  1893  2261 l  1882  2266 l
+  1877  2268 l  1867  2272 l  1806  2292 l  1584  2340 l  1547  2346 l
+  1489  2358 l  1480  2360 l  1323  2392 l  1280  2400 l  1260  2403 l
+  1040  2409 l   747  2412 l   584  2417 l   733  2421 l   972  2428 l
+  1386  2441 l  1539  2447 l  1636  2452 l  1729  2457 l  1818  2463 l
+  1940  2491 l  1819  2505 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955   992 m  1951   992 l  1948   995 l  1948  1000 l
+  1951  1003 l  1955  1003 l  1959  1000 l  1959   995 l  1955   992 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955   997 m  1951   997 l  1948  1000 l  1948  1004 l
+  1951  1007 l  1955  1007 l  1959  1004 l  1959  1000 l  1955   997 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1008 m  1951  1008 l  1948  1011 l  1948  1016 l
+  1951  1019 l  1955  1019 l  1959  1016 l  1959  1011 l  1955  1008 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1013 m  1951  1013 l  1947  1016 l  1947  1021 l
+  1951  1024 l  1955  1024 l  1959  1021 l  1959  1016 l  1955  1013 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1016 m  1951  1016 l  1947  1019 l  1947  1024 l
+  1951  1027 l  1955  1027 l  1958  1024 l  1958  1019 l  1955  1016 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1020 m  1950  1020 l  1947  1023 l  1947  1027 l
+  1950  1030 l  1955  1030 l  1958  1027 l  1958  1023 l  1955  1020 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1023 m  1950  1023 l  1946  1026 l  1946  1030 l
+  1950  1033 l  1954  1033 l  1958  1030 l  1958  1026 l  1954  1023 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1025 m  1950  1025 l  1946  1029 l  1946  1033 l
+  1950  1036 l  1954  1036 l  1957  1033 l  1957  1029 l  1954  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1028 m  1950  1028 l  1946  1031 l  1946  1035 l
+  1950  1038 l  1954  1038 l  1958  1035 l  1958  1031 l  1954  1028 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1033 m  1950  1033 l  1947  1036 l  1947  1041 l
+  1950  1044 l  1955  1044 l  1958  1041 l  1958  1036 l  1955  1033 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1055 m  1951  1055 l  1947  1058 l  1947  1063 l
+  1951  1066 l  1955  1066 l  1958  1063 l  1958  1058 l  1955  1055 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1956  1076 m  1951  1076 l  1948  1079 l  1948  1084 l
+  1951  1087 l  1956  1087 l  1959  1084 l  1959  1079 l  1956  1076 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1079 m  1951  1079 l  1948  1082 l  1948  1087 l
+  1951  1090 l  1955  1090 l  1959  1087 l  1959  1082 l  1955  1079 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1082 m  1951  1082 l  1948  1085 l  1948  1090 l
+  1951  1093 l  1955  1093 l  1959  1090 l  1959  1085 l  1955  1082 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1088 m  1951  1088 l  1947  1091 l  1947  1095 l
+  1951  1098 l  1955  1098 l  1959  1095 l  1959  1091 l  1955  1088 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1091 m  1951  1091 l  1947  1094 l  1947  1098 l
+  1951  1101 l  1955  1101 l  1959  1098 l  1959  1094 l  1955  1091 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1127 m  1950  1127 l  1947  1130 l  1947  1134 l
+  1950  1137 l  1955  1137 l  1958  1134 l  1958  1130 l  1955  1127 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1144 m  1950  1144 l  1947  1147 l  1947  1151 l
+  1950  1154 l  1954  1154 l  1958  1151 l  1958  1147 l  1954  1144 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1147 m  1950  1147 l  1947  1150 l  1947  1154 l
+  1950  1157 l  1954  1157 l  1958  1154 l  1958  1150 l  1954  1147 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1155 m  1949  1155 l  1946  1158 l  1946  1163 l
+  1949  1166 l  1954  1166 l  1957  1163 l  1957  1158 l  1954  1155 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1158 m  1949  1158 l  1946  1161 l  1946  1166 l
+  1949  1169 l  1954  1169 l  1957  1166 l  1957  1161 l  1954  1158 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1166 m  1949  1166 l  1946  1169 l  1946  1173 l
+  1949  1177 l  1954  1177 l  1957  1173 l  1957  1169 l  1954  1166 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1189 m  1949  1189 l  1946  1193 l  1946  1197 l
+  1949  1200 l  1954  1200 l  1957  1197 l  1957  1193 l  1954  1189 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1202 m  1949  1202 l  1946  1205 l  1946  1210 l
+  1949  1213 l  1954  1213 l  1957  1210 l  1957  1205 l  1954  1202 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1209 m  1949  1209 l  1946  1212 l  1946  1216 l
+  1949  1219 l  1954  1219 l  1957  1216 l  1957  1212 l  1954  1209 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1211 m  1949  1211 l  1945  1215 l  1945  1219 l
+  1949  1222 l  1953  1222 l  1957  1219 l  1957  1215 l  1953  1211 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1220 m  1947  1220 l  1944  1223 l  1944  1228 l
+  1947  1231 l  1951  1231 l  1955  1228 l  1955  1223 l  1951  1220 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1223 m  1947  1223 l  1943  1226 l  1943  1230 l
+  1947  1234 l  1951  1234 l  1954  1230 l  1954  1226 l  1951  1223 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1226 m  1947  1226 l  1943  1229 l  1943  1234 l
+  1947  1237 l  1951  1237 l  1955  1234 l  1955  1229 l  1951  1226 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1233 m  1947  1233 l  1944  1236 l  1944  1241 l
+  1947  1244 l  1952  1244 l  1955  1241 l  1955  1236 l  1952  1233 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1242 m  1947  1242 l  1944  1245 l  1944  1249 l
+  1947  1253 l  1952  1253 l  1955  1249 l  1955  1245 l  1952  1242 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1253 m  1948  1253 l  1944  1256 l  1944  1260 l
+  1948  1263 l  1952  1263 l  1956  1260 l  1956  1256 l  1952  1253 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1262 m  1948  1262 l  1945  1265 l  1945  1269 l
+  1948  1273 l  1953  1273 l  1956  1269 l  1956  1265 l  1953  1262 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1274 m  1948  1274 l  1945  1277 l  1945  1281 l
+  1948  1285 l  1953  1285 l  1956  1281 l  1956  1277 l  1953  1274 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1282 m  1949  1282 l  1945  1285 l  1945  1290 l
+  1949  1293 l  1953  1293 l  1957  1290 l  1957  1285 l  1953  1282 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1292 m  1949  1292 l  1946  1295 l  1946  1300 l
+  1949  1303 l  1954  1303 l  1957  1300 l  1957  1295 l  1954  1292 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1329 m  1950  1329 l  1947  1332 l  1947  1337 l
+  1950  1340 l  1954  1340 l  1958  1337 l  1958  1332 l  1954  1329 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1342 m  1950  1342 l  1947  1346 l  1947  1350 l
+  1950  1353 l  1955  1353 l  1958  1350 l  1958  1346 l  1955  1342 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1345 m  1950  1345 l  1947  1349 l  1947  1353 l
+  1950  1356 l  1955  1356 l  1958  1353 l  1958  1349 l  1955  1345 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1355 m  1949  1355 l  1946  1358 l  1946  1362 l
+  1949  1366 l  1954  1366 l  1957  1362 l  1957  1358 l  1954  1355 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1360 m  1949  1360 l  1946  1363 l  1946  1367 l
+  1949  1370 l  1954  1370 l  1957  1367 l  1957  1363 l  1954  1360 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1364 m  1949  1364 l  1945  1367 l  1945  1371 l
+  1949  1375 l  1953  1375 l  1957  1371 l  1957  1367 l  1953  1364 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1370 m  1948  1370 l  1945  1373 l  1945  1377 l
+  1948  1380 l  1953  1380 l  1956  1377 l  1956  1373 l  1953  1370 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1383 m  1947  1383 l  1944  1386 l  1944  1391 l
+  1947  1394 l  1951  1394 l  1955  1391 l  1955  1386 l  1951  1383 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1391 m  1946  1391 l  1943  1394 l  1943  1398 l
+  1946  1401 l  1951  1401 l  1954  1398 l  1954  1394 l  1951  1391 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1950  1394 m  1946  1394 l  1943  1397 l  1943  1401 l
+  1946  1404 l  1950  1404 l  1954  1401 l  1954  1397 l  1950  1394 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1396 m  1946  1396 l  1943  1399 l  1943  1404 l
+  1946  1407 l  1951  1407 l  1954  1404 l  1954  1399 l  1951  1396 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1447 m  1949  1447 l  1945  1450 l  1945  1454 l
+  1949  1457 l  1953  1457 l  1957  1454 l  1957  1450 l  1953  1447 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1450 m  1949  1450 l  1945  1453 l  1945  1457 l
+  1949  1460 l  1953  1460 l  1957  1457 l  1957  1453 l  1953  1450 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1469 m  1948  1469 l  1945  1472 l  1945  1476 l
+  1948  1479 l  1953  1479 l  1956  1476 l  1956  1472 l  1953  1469 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1471 m  1948  1471 l  1945  1475 l  1945  1479 l
+  1948  1482 l  1953  1482 l  1956  1479 l  1956  1475 l  1953  1471 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1475 m  1948  1475 l  1945  1478 l  1945  1482 l
+  1948  1485 l  1953  1485 l  1956  1482 l  1956  1478 l  1953  1475 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1479 m  1949  1479 l  1945  1482 l  1945  1487 l
+  1949  1490 l  1953  1490 l  1956  1487 l  1956  1482 l  1953  1479 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1492 m  1949  1492 l  1946  1495 l  1946  1499 l
+  1949  1503 l  1954  1503 l  1957  1499 l  1957  1495 l  1954  1492 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1522 m  1950  1522 l  1947  1525 l  1947  1529 l
+  1950  1532 l  1955  1532 l  1958  1529 l  1958  1525 l  1955  1522 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1526 m  1950  1526 l  1947  1529 l  1947  1534 l
+  1950  1537 l  1955  1537 l  1958  1534 l  1958  1529 l  1955  1526 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1532 m  1950  1532 l  1947  1535 l  1947  1539 l
+  1950  1542 l  1955  1542 l  1958  1539 l  1958  1535 l  1955  1532 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1566 m  1950  1566 l  1947  1570 l  1947  1574 l
+  1950  1577 l  1954  1577 l  1958  1574 l  1958  1570 l  1954  1566 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1569 m  1950  1569 l  1946  1573 l  1946  1577 l
+  1950  1580 l  1954  1580 l  1958  1577 l  1958  1573 l  1954  1569 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1579 m  1950  1579 l  1947  1582 l  1947  1587 l
+  1950  1590 l  1954  1590 l  1958  1587 l  1958  1582 l  1954  1579 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1586 m  1950  1586 l  1947  1589 l  1947  1594 l
+  1950  1597 l  1955  1597 l  1958  1594 l  1958  1589 l  1955  1586 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1592 m  1950  1592 l  1947  1595 l  1947  1600 l
+  1950  1603 l  1955  1603 l  1958  1600 l  1958  1595 l  1955  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1598 m  1950  1598 l  1947  1601 l  1947  1606 l
+  1950  1609 l  1955  1609 l  1958  1606 l  1958  1601 l  1955  1598 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1606 m  1950  1606 l  1947  1609 l  1947  1614 l
+  1950  1617 l  1955  1617 l  1958  1614 l  1958  1609 l  1955  1606 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1618 m  1950  1618 l  1947  1621 l  1947  1626 l
+  1950  1629 l  1955  1629 l  1958  1626 l  1958  1621 l  1955  1618 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1626 m  1950  1626 l  1947  1629 l  1947  1634 l
+  1950  1637 l  1955  1637 l  1958  1634 l  1958  1629 l  1955  1626 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1632 m  1950  1632 l  1947  1635 l  1947  1640 l
+  1950  1643 l  1955  1643 l  1958  1640 l  1958  1635 l  1955  1632 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1637 m  1950  1637 l  1947  1640 l  1947  1644 l
+  1950  1647 l  1955  1647 l  1958  1644 l  1958  1640 l  1955  1637 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1643 m  1950  1643 l  1947  1646 l  1947  1650 l
+  1950  1653 l  1955  1653 l  1958  1650 l  1958  1646 l  1955  1643 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1660 m  1950  1660 l  1947  1663 l  1947  1668 l
+  1950  1671 l  1955  1671 l  1958  1668 l  1958  1663 l  1955  1660 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1663 m  1950  1663 l  1947  1666 l  1947  1671 l
+  1950  1674 l  1955  1674 l  1958  1671 l  1958  1666 l  1955  1663 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1672 m  1950  1672 l  1946  1675 l  1946  1679 l
+  1950  1682 l  1954  1682 l  1957  1679 l  1957  1675 l  1954  1672 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1675 m  1949  1675 l  1946  1678 l  1946  1682 l
+  1949  1685 l  1954  1685 l  1957  1682 l  1957  1678 l  1954  1675 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1678 m  1949  1678 l  1946  1681 l  1946  1686 l
+  1949  1689 l  1954  1689 l  1957  1686 l  1957  1681 l  1954  1678 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1686 m  1949  1686 l  1946  1689 l  1946  1694 l
+  1949  1697 l  1954  1697 l  1957  1694 l  1957  1689 l  1954  1686 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1690 m  1949  1690 l  1946  1694 l  1946  1698 l
+  1949  1701 l  1953  1701 l  1957  1698 l  1957  1694 l  1953  1690 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1694 m  1949  1694 l  1945  1697 l  1945  1702 l
+  1949  1705 l  1953  1705 l  1957  1702 l  1957  1697 l  1953  1694 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1728 m  1947  1728 l  1944  1731 l  1944  1736 l
+  1947  1739 l  1952  1739 l  1955  1736 l  1955  1731 l  1952  1728 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1734 m  1947  1734 l  1943  1737 l  1943  1741 l
+  1947  1745 l  1951  1745 l  1954  1741 l  1954  1737 l  1951  1734 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1949  1769 m  1944  1769 l  1941  1772 l  1941  1777 l
+  1944  1780 l  1949  1780 l  1952  1777 l  1952  1772 l  1949  1769 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1948  1775 m  1944  1775 l  1941  1778 l  1941  1782 l
+  1944  1785 l  1948  1785 l  1952  1782 l  1952  1778 l  1948  1775 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1948  1782 m  1943  1782 l  1940  1786 l  1940  1790 l
+  1943  1793 l  1948  1793 l  1951  1790 l  1951  1786 l  1948  1782 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1947  1788 m  1942  1788 l  1939  1791 l  1939  1795 l
+  1942  1798 l  1947  1798 l  1950  1795 l  1950  1791 l  1947  1788 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1944  1794 m  1939  1794 l  1936  1797 l  1936  1801 l
+  1939  1805 l  1944  1805 l  1947  1801 l  1947  1797 l  1944  1794 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1943  1799 m  1938  1799 l  1935  1802 l  1935  1807 l
+  1938  1810 l  1943  1810 l  1946  1807 l  1946  1802 l  1943  1799 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1949  1853 m  1944  1853 l  1941  1856 l  1941  1860 l
+  1944  1863 l  1949  1863 l  1952  1860 l  1952  1856 l  1949  1853 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1949  1859 m  1945  1859 l  1941  1862 l  1941  1866 l
+  1945  1870 l  1949  1870 l  1952  1866 l  1952  1862 l  1949  1859 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1950  1864 m  1945  1864 l  1942  1867 l  1942  1872 l
+  1945  1875 l  1950  1875 l  1953  1872 l  1953  1867 l  1950  1864 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1888 m  1947  1888 l  1944  1891 l  1944  1895 l
+  1947  1898 l  1951  1898 l  1955  1895 l  1955  1891 l  1951  1888 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1894 m  1947  1894 l  1944  1897 l  1944  1901 l
+  1947  1905 l  1952  1905 l  1955  1901 l  1955  1897 l  1952  1894 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1899 m  1948  1899 l  1944  1902 l  1944  1906 l
+  1948  1909 l  1952  1909 l  1955  1906 l  1955  1902 l  1952  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1904 m  1948  1904 l  1945  1907 l  1945  1911 l
+  1948  1914 l  1953  1914 l  1956  1911 l  1956  1907 l  1953  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1909 m  1948  1909 l  1944  1912 l  1944  1916 l
+  1948  1920 l  1952  1920 l  1956  1916 l  1956  1912 l  1952  1909 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1919 m  1946  1919 l  1943  1922 l  1943  1926 l
+  1946  1929 l  1951  1929 l  1954  1926 l  1954  1922 l  1951  1919 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1951  1924 m  1946  1924 l  1943  1927 l  1943  1931 l
+  1946  1935 l  1951  1935 l  1954  1931 l  1954  1927 l  1951  1924 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1929 m  1947  1929 l  1944  1932 l  1944  1936 l
+  1947  1939 l  1952  1939 l  1955  1936 l  1955  1932 l  1952  1929 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  1934 m  1948  1934 l  1945  1938 l  1945  1942 l
+  1948  1945 l  1952  1945 l  1956  1942 l  1956  1938 l  1952  1934 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  1942 m  1949  1942 l  1945  1945 l  1945  1950 l
+  1949  1953 l  1953  1953 l  1957  1950 l  1957  1945 l  1953  1942 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  1952 m  1950  1952 l  1946  1956 l  1946  1960 l
+  1950  1963 l  1954  1963 l  1958  1960 l  1958  1956 l  1954  1952 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1955  1960 m  1950  1960 l  1947  1963 l  1947  1968 l
+  1950  1971 l  1955  1971 l  1958  1968 l  1958  1963 l  1955  1960 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  2017 m  1950  2017 l  1946  2021 l  1946  2025 l
+  1950  2028 l  1954  2028 l  1958  2025 l  1958  2021 l  1954  2017 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1954  2023 m  1949  2023 l  1946  2026 l  1946  2031 l
+  1949  2034 l  1954  2034 l  1957  2031 l  1957  2026 l  1954  2023 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1953  2033 m  1948  2033 l  1945  2037 l  1945  2041 l
+  1948  2044 l  1953  2044 l  1956  2041 l  1956  2037 l  1953  2033 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  2040 m  1947  2040 l  1944  2043 l  1944  2048 l
+  1947  2051 l  1952  2051 l  1955  2048 l  1955  2043 l  1952  2040 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1945  2077 m  1940  2077 l  1937  2080 l  1937  2085 l
+  1940  2088 l  1945  2088 l  1948  2085 l  1948  2080 l  1945  2077 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1943  2086 m  1938  2086 l  1935  2089 l  1935  2093 l
+  1938  2096 l  1943  2096 l  1946  2093 l  1946  2089 l  1943  2086 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1941  2091 m  1937  2091 l  1933  2094 l  1933  2099 l
+  1937  2102 l  1941  2102 l  1944  2099 l  1944  2094 l  1941  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1940  2096 m  1935  2096 l  1932  2099 l  1932  2103 l
+  1935  2107 l  1940  2107 l  1943  2103 l  1943  2099 l  1940  2096 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1934  2101 m  1929  2101 l  1926  2104 l  1926  2109 l
+  1929  2112 l  1934  2112 l  1937  2109 l  1937  2104 l  1934  2101 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1919  2107 m  1914  2107 l  1911  2110 l  1911  2115 l
+  1914  2118 l  1919  2118 l  1922  2115 l  1922  2110 l  1919  2107 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1915  2113 m  1910  2113 l  1907  2116 l  1907  2120 l
+  1910  2123 l  1915  2123 l  1918  2120 l  1918  2116 l  1915  2113 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1952  2191 m  1948  2191 l  1944  2194 l  1944  2199 l
+  1948  2202 l  1952  2202 l  1955  2199 l  1955  2194 l  1952  2191 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1950  2197 m  1945  2197 l  1942  2200 l  1942  2204 l
+  1945  2207 l  1950  2207 l  1953  2204 l  1953  2200 l  1950  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1947  2201 m  1943  2201 l  1940  2204 l  1940  2208 l
+  1943  2212 l  1947  2212 l  1951  2208 l  1951  2204 l  1947  2201 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1947  2202 m  1942  2202 l  1939  2205 l  1939  2209 l
+  1942  2213 l  1947  2213 l  1950  2209 l  1950  2205 l  1947  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1945  2205 m  1940  2205 l  1937  2208 l  1937  2213 l
+  1940  2216 l  1945  2216 l  1948  2213 l  1948  2208 l  1945  2205 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1943  2208 m  1938  2208 l  1935  2211 l  1935  2216 l
+  1938  2219 l  1943  2219 l  1946  2216 l  1946  2211 l  1943  2208 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1937  2215 m  1932  2215 l  1929  2218 l  1929  2222 l
+  1932  2225 l  1937  2225 l  1940  2222 l  1940  2218 l  1937  2215 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1935  2220 m  1931  2220 l  1927  2223 l  1927  2228 l
+  1931  2231 l  1935  2231 l  1938  2228 l  1938  2223 l  1935  2220 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1936  2224 m  1932  2224 l  1928  2228 l  1928  2232 l
+  1932  2235 l  1936  2235 l  1939  2232 l  1939  2228 l  1936  2224 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1937  2229 m  1933  2229 l  1929  2232 l  1929  2237 l
+  1933  2240 l  1937  2240 l  1941  2237 l  1941  2232 l  1937  2229 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1935  2234 m  1930  2234 l  1927  2238 l  1927  2242 l
+  1930  2245 l  1935  2245 l  1938  2242 l  1938  2238 l  1935  2234 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1930  2237 m  1926  2237 l  1922  2241 l  1922  2245 l
+  1926  2248 l  1930  2248 l  1934  2245 l  1934  2241 l  1930  2237 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1923  2242 m  1918  2242 l  1915  2245 l  1915  2250 l
+  1918  2253 l  1923  2253 l  1926  2250 l  1926  2245 l  1923  2242 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1915  2247 m  1910  2247 l  1907  2250 l  1907  2254 l
+  1910  2257 l  1915  2257 l  1918  2254 l  1918  2250 l  1915  2247 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1906  2251 m  1901  2251 l  1898  2255 l  1898  2259 l
+  1901  2262 l  1906  2262 l  1909  2259 l  1909  2255 l  1906  2251 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1895  2256 m  1891  2256 l  1887  2259 l  1887  2264 l
+  1891  2267 l  1895  2267 l  1899  2264 l  1899  2259 l  1895  2256 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1884  2261 m  1880  2261 l  1876  2264 l  1876  2268 l
+  1880  2272 l  1884  2272 l  1887  2268 l  1887  2264 l  1884  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1879  2263 m  1874  2263 l  1871  2266 l  1871  2271 l
+  1874  2274 l  1879  2274 l  1882  2271 l  1882  2266 l  1879  2263 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1869  2267 m  1864  2267 l  1861  2270 l  1861  2274 l
+  1864  2277 l  1869  2277 l  1872  2274 l  1872  2270 l  1869  2267 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1808  2286 m  1803  2286 l  1800  2289 l  1800  2294 l
+  1803  2297 l  1808  2297 l  1811  2294 l  1811  2289 l  1808  2286 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1586  2335 m  1581  2335 l  1578  2338 l  1578  2342 l
+  1581  2345 l  1586  2345 l  1589  2342 l  1589  2338 l  1586  2335 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1549  2341 m  1544  2341 l  1541  2344 l  1541  2349 l
+  1544  2352 l  1549  2352 l  1552  2349 l  1552  2344 l  1549  2341 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1491  2352 m  1486  2352 l  1483  2355 l  1483  2360 l
+  1486  2363 l  1491  2363 l  1494  2360 l  1494  2355 l  1491  2352 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1482  2354 m  1477  2354 l  1474  2357 l  1474  2362 l
+  1477  2365 l  1482  2365 l  1485  2362 l  1485  2357 l  1482  2354 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1325  2386 m  1321  2386 l  1317  2389 l  1317  2394 l
+  1321  2397 l  1325  2397 l  1328  2394 l  1328  2389 l  1325  2386 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1282  2394 m  1277  2394 l  1274  2398 l  1274  2402 l
+  1277  2405 l  1282  2405 l  1285  2402 l  1285  2398 l  1282  2394 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1263  2398 m  1258  2398 l  1255  2401 l  1255  2406 l
+  1258  2409 l  1263  2409 l  1266  2406 l  1266  2401 l  1263  2398 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1042  2403 m  1038  2403 l  1034  2406 l  1034  2411 l
+  1038  2414 l  1042  2414 l  1045  2411 l  1045  2406 l  1042  2403 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n   749  2407 m   745  2407 l   741  2410 l   741  2414 l
+   745  2417 l   749  2417 l   753  2414 l   753  2410 l   749  2407 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n   586  2412 m   582  2412 l   578  2415 l   578  2420 l
+   582  2423 l   586  2423 l   590  2420 l   590  2415 l   586  2412 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n   735  2416 m   730  2416 l   727  2419 l   727  2423 l
+   730  2426 l   735  2426 l   738  2423 l   738  2419 l   735  2416 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n   974  2422 m   969  2422 l   966  2425 l   966  2430 l
+   969  2433 l   974  2433 l   977  2430 l   977  2425 l   974  2422 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1388  2436 m  1384  2436 l  1380  2439 l  1380  2443 l
+  1384  2446 l  1388  2446 l  1392  2443 l  1392  2439 l  1388  2436 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1542  2442 m  1537  2442 l  1534  2445 l  1534  2450 l
+  1537  2453 l  1542  2453 l  1545  2450 l  1545  2445 l  1542  2442 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1638  2447 m  1634  2447 l  1631  2450 l  1631  2454 l
+  1634  2457 l  1638  2457 l  1642  2454 l  1642  2450 l  1638  2447 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1731  2452 m  1727  2452 l  1724  2455 l  1724  2459 l
+  1727  2462 l  1731  2462 l  1735  2459 l  1735  2455 l  1731  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1820  2458 m  1815  2458 l  1812  2461 l  1812  2465 l
+  1815  2468 l  1820  2468 l  1823  2465 l  1823  2461 l  1820  2458 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1943  2485 m  1938  2485 l  1935  2488 l  1935  2493 l
+  1938  2496 l  1943  2496 l  1946  2493 l  1946  2488 l  1943  2485 l
+col-1 s                                 
+ 3.750 setlinewidth [20] 0 sd               
+red n  1821  2500 m  1817  2500 l  1813  2503 l  1813  2507 l
+  1817  2510 l  1821  2510 l  1824  2507 l  1824  2503 l  1821  2500 l
+col-1 s                                 
+/xs 0 def
+(beta22)
+/Times-Italic   100 stwn
+red  521 1514 t    90 r xs 2 div neg 0 t 0 0 m
+/Times-Italic fft    100 sf 0 0 m
+(beta22)
+show xs 2 div 0 t 0 0 m   -90 r  -521 -1514 t
+ 3.750 setlinewidth [2 10] 0 sd             
+red n   521  1514 m  1952  1514 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n  211  997 m   211  1014 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1014 m   151  1014 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1014 m   271  1014 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1014 m   271  1014 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1014 m   151  1014 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1014 m   211  1019 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1019 m   211  1022 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1022 m   131  1022 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1022 m   131  1019 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1019 m   211  1019 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1022 m   211  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1025 m   151  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1025 m   271  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1025 m   271  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1025 m   151  1025 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1025 m   211  1028 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1028 m   211  1031 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1031 m   291  1031 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1031 m   291  1028 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1028 m   211  1028 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1031 m   211  1033 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1033 m   151  1039 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1039 m   271  1039 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1039 m   271  1033 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1033 m   151  1033 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1039 m   211  1082 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1082 m   211  1085 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1085 m   131  1085 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1085 m   131  1082 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1082 m   211  1082 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1085 m   211  1093 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1093 m   211  1096 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1096 m   291  1096 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1096 m   291  1093 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1093 m   211  1093 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1096 m   211  1149 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1149 m   211  1152 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1152 m   131  1152 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1152 m   131  1149 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1149 m   211  1149 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1152 m   211  1161 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1161 m   211  1164 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1164 m   291  1164 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1164 m   291  1161 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1161 m   211  1161 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1164 m   211  1195 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1195 m   151  1195 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1195 m   271  1195 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1195 m   271  1195 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1195 m   151  1195 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1195 m   211  1214 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1214 m   211  1217 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1217 m   131  1217 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1217 m   131  1214 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1214 m   211  1214 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1217 m   211  1225 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1225 m   211  1228 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1228 m   291  1228 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1228 m   291  1225 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1225 m   211  1225 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1228 m   211  1239 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1239 m   151  1239 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1239 m   271  1239 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1239 m   271  1239 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1239 m   151  1239 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1239 m   211  1258 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1258 m   151  1258 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1258 m   271  1258 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1258 m   271  1258 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1258 m   151  1258 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1258 m   211  1267 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1267 m   151  1279 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1279 m   271  1279 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1279 m   271  1267 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1267 m   151  1267 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1279 m   211  1348 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1348 m   211  1351 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1351 m   131  1351 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1351 m   131  1348 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1348 m   211  1348 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1351 m   211  1369 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1369 m   151  1369 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1369 m   271  1369 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1369 m   271  1369 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1369 m   151  1369 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1369 m   211  1388 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1388 m   151  1388 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1388 m   271  1388 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1388 m   271  1388 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1388 m   151  1388 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1388 m   211  1396 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1396 m   211  1399 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1399 m   291  1399 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1399 m   291  1396 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1396 m   211  1396 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1399 m   211  1452 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1452 m   211  1455 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1455 m   131  1455 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1455 m   131  1452 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1452 m   211  1452 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1455 m   211  1474 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1474 m   211  1477 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1477 m   291  1477 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1477 m   291  1474 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1474 m   211  1474 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1477 m   211  1480 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1480 m   151  1485 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1485 m   271  1485 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1485 m   271  1480 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1480 m   151  1480 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1485 m   211  1532 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1532 m   211  1537 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1537 m   131  1537 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1537 m   131  1532 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1532 m   211  1532 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1537 m   211  1572 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1572 m   211  1575 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1575 m   291  1575 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1575 m   291  1572 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1572 m   211  1572 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1575 m   211  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1592 m   151  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1592 m   271  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1592 m   271  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1592 m   151  1592 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1592 m   211  1597 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1597 m   151  1604 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1604 m   271  1604 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1604 m   271  1597 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1597 m   151  1597 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1604 m   211  1612 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1612 m   151  1624 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1624 m   271  1624 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1624 m   271  1612 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1612 m   151  1612 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1624 m   211  1665 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1665 m   211  1668 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1668 m   131  1668 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1668 m   131  1665 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1665 m   211  1665 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1668 m   211  1677 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1677 m   211  1680 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1680 m   291  1680 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1680 m   291  1677 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1677 m   211  1677 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1680 m   211  1683 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1683 m   151  1683 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1683 m   271  1683 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1683 m   271  1683 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1683 m   151  1683 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1683 m   211  1692 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1692 m   151  1692 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1692 m   271  1692 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1692 m   271  1692 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1692 m   151  1692 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1692 m   211  1696 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1696 m   151  1696 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1696 m   271  1696 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1696 m   271  1696 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1696 m   151  1696 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1696 m   211  1733 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1733 m   151  1733 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1733 m   271  1733 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1733 m   271  1733 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1733 m   151  1733 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1733 m   211  1739 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1739 m   151  1739 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1739 m   271  1739 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1739 m   271  1739 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1739 m   151  1739 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1739 m   211  1774 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1774 m   151  1774 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1774 m   271  1774 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1774 m   271  1774 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1774 m   151  1774 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1774 m   211  1788 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1788 m   211  1793 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1793 m   131  1793 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1793 m   131  1788 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1788 m   211  1788 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1793 m   211  1799 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1799 m   211  1805 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1805 m   291  1805 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1805 m   291  1799 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1799 m   211  1799 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1805 m   211  1858 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1858 m   151  1858 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1858 m   271  1858 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1858 m   271  1858 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1858 m   151  1858 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1858 m   211  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1899 m   151  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1899 m   271  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1899 m   271  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1899 m   151  1899 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1899 m   211  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1904 m   151  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1904 m   271  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1904 m   271  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1904 m   151  1904 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1904 m   211  1909 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1909 m   211  1914 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1914 m   131  1914 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1914 m   131  1909 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  1909 m   211  1909 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1914 m   211  1924 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1924 m   211  1929 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1929 m   291  1929 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1929 m   291  1924 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  1924 m   211  1924 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1929 m   211  1940 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1940 m   151  1940 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  1940 m   271  1940 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1940 m   271  1940 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  1940 m   151  1940 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1940 m   211  1947 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1947 m   151  1958 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   151  1958 m   271  1958 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1958 m   271  1947 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   271  1947 m   151  1947 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  1958 m   211  2028 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2028 m   151  2028 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2028 m   271  2028 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2028 m   271  2028 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2028 m   151  2028 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2028 m   211  2039 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2039 m   151  2039 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2039 m   271  2039 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2039 m   271  2039 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2039 m   151  2039 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2039 m   211  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2091 m   151  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2091 m   271  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2091 m   271  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2091 m   151  2091 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2091 m   211  2101 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2101 m   211  2107 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2107 m   131  2107 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  2107 m   131  2101 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  2101 m   211  2101 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2107 m   211  2113 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2113 m   211  2118 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2118 m   291  2118 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  2118 m   291  2113 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  2113 m   211  2113 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2118 m   211  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2197 m   151  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2197 m   271  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2197 m   271  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2197 m   151  2197 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2197 m   211  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2202 m   151  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2202 m   271  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2202 m   271  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2202 m   151  2202 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2202 m   211  2207 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2207 m   161  2211 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2211 m   261  2211 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2211 m   261  2207 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2207 m   161  2207 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2211 m   211  2213 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2213 m   151  2213 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2213 m   271  2213 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2213 m   271  2213 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2213 m   151  2213 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2213 m   211  2220 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2220 m   161  2225 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2225 m   261  2225 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2225 m   261  2220 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2220 m   161  2220 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2225 m   211  2230 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2230 m   151  2230 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2230 m   271  2230 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2230 m   271  2230 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2230 m   151  2230 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2230 m   211  2234 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2234 m   161  2240 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2240 m   261  2240 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2240 m   261  2234 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2234 m   161  2234 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2240 m   211  2247 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2247 m   161  2252 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2252 m   261  2252 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2252 m   261  2247 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2247 m   161  2247 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2252 m   211  2252 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2252 m   161  2257 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2257 m   261  2257 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2257 m   261  2252 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2252 m   161  2252 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2257 m   211  2257 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2257 m   161  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2261 m   261  2261 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2261 m   261  2257 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2257 m   161  2257 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2261 m   211  2262 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2262 m   161  2266 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2266 m   261  2266 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2266 m   261  2262 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2262 m   161  2262 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2266 m   211  2268 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2268 m   161  2272 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2272 m   261  2272 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2272 m   261  2268 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2268 m   161  2268 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2272 m   211  2340 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2340 m   151  2340 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2340 m   271  2340 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2340 m   271  2340 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2340 m   151  2340 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2340 m   211  2346 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2346 m   161  2358 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2358 m   261  2358 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2358 m   261  2346 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2346 m   161  2346 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2358 m   211  2392 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2392 m   161  2400 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   161  2400 m   261  2400 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2400 m   261  2392 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   261  2392 m   161  2392 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2400 m   211  2403 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2403 m   211  2409 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2409 m   131  2409 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  2409 m   131  2403 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   131  2403 m   211  2403 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2409 m   211  2412 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2412 m   211  2417 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2417 m   291  2417 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  2417 m   291  2412 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   291  2412 m   211  2412 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2417 m   211  2428 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2428 m   151  2428 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2428 m   271  2428 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2428 m   271  2428 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2428 m   151  2428 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2428 m   211  2441 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2441 m   151  2441 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2441 m   271  2441 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2441 m   271  2441 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2441 m   151  2441 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2441 m   211  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2452 m   151  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2452 m   271  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2452 m   271  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2452 m   151  2452 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2452 m   211  2457 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2457 m   151  2457 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   151  2457 m   271  2457 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2457 m   271  2457 l
+col-1 s                                 
+ 3.750 setlinewidth [2 10] 0 sd             
+black n   271  2457 m   151  2457 l
+col-1 s                                 
+ 3.750 setlinewidth [] 0 sd                 
+black n   211  2457 m   211  2505 l
+col-1 s                                 
+$GX11psEnd showpage
+%%EOF

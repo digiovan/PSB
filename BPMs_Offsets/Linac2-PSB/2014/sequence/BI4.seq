@@ -1,0 +1,60 @@
+! BI4 sequence, automatically generated from BI4.madx file
+! Sequence starts at the entry flange of the BHZ40 magnet
+! Sequence ends at the injection point into the BOOSTER ??
+
+ BI4: SEQUENCE , REFER = CENTRE,  L = 48.52276259;
+   BEGBI       : MARKER        , at =  0.0000;
+   LTB.BHZ40                   , at =  0.4500;
+   ! LTB.MBL10                 , at =  0.0000;
+   ! LTB.MBL20                 , at =  0.0000;
+   BI.VPI11                    , at =  1.5800;
+   BI.DHZ10                    , at =  6.5640;
+   BI.DVT10                    , at =  6.5640;
+   BI.BPM00                    , at =  7.0510;
+   BI.BTV10                    , at =  7.9530;
+   BI.STPFA10                  , at =  8.5290;
+   BI.STPSW10                  , at = 11.7550;
+   BI.BPM10                    , at = 12.5040;
+   BI.DHZ20                    , at = 12.9840;
+   BI.DVT20                    , at = 12.9840;
+   BI.QNO10                    , at = 13.6240;
+   BI.QNO20                    , at = 14.6240;
+   BI.BPM20                    , at = 21.7056;
+   BI.BCT10                    , at = 22.1552;
+   BI.VVS10                    , at = 22.5344;
+   ! BI.DHZ30                  , at = 22.76600007;
+   BI.DVT30                    , at = 22.76600007;
+   BI.BTV20                    , at = 23.15700049;
+   BI.QNO30                    , at = 23.97469684;
+   BI.BPM30                    , at = 24.58600358;
+   BI.QNO40                    , at = 25.22415413;
+   BI.DIS0                     , at = 25.91600537;
+   BI4.DIS1                    , at = 26.32600537;
+   BI4.DIS2                    , at = 26.73600537;
+   BI4.DIS3                    , at = 27.14600537;
+   BI4.DIS4                    , at = 27.55600569;
+   ! BI.DHZ40                  , at = 28.10250721;
+   BI4.DVT40                   , at = 28.10250721;
+   BI.VPI12                    , at = 29.96751897;
+   BI.BTV30                    , at = 34.18554734;
+   BI.SMVHDP                   , at = 35.86826307;
+   BI4.SMV10                   , at = 36.57555929;
+   ! BI.MBL20                  , at = 35.99339942;
+   ! BI.MBLI30                 , at = 37.50714558;
+   ! BI.MBLS30                 , at = 37.50714558;
+   BI4.BVT10                   , at = 38.99447139;
+   BI4.QNO50                   , at = 39.89556259;
+   BI4.QNO60                   , at = 40.64556259;
+   BI4.DHZ50                   , at = 41.20356259;
+   BI4.DVT50                   , at = 41.20356259;
+   BI4.BPM40                   , at = 41.77056259;
+   BI4.BTV40                   , at = 42.95256259;
+   BI4.VPI14                   , at = 43.49906259;
+   BI4.BCT20                   , at = 43.89756259;
+   BI4.BPM50                   , at = 44.34356259;
+   BI4.VVS20                   , at = 44.86556259;
+   BI4.DHZ70                   , at = 47.26556259;
+   BI4.DVT70                   , at = 47.26556259;
+   BI4.INJPT                   , at = 48.52276259;
+ ENDSEQUENCE;
+

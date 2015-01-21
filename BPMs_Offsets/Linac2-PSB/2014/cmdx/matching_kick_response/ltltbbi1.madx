@@ -1,0 +1,722 @@
+/*****************************************************
+ *
+ * MADX file for the LT-LTB line from LINAC2 to the PS BOOSTER
+ *
+ * Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/
+ *
+ * Execute with:  >madx < ltltbbi1.madx
+ * This file is for Protons at 310.3662354 MeV/c (Ekin=50 MeV, BRHO=1.0352576 "the magnetic rigidity of the protons")
+ *****************************************************/
+
+
+/*****************************************************************************
+ * TITLE
+ *****************************************************************************/
+ title, 'LT-LTB-BI 2014 optics. Protons - 310.3662354 MeV/c (E_kin=50 MeV)';
+
+ option, echo;
+!option, RBARC=FALSE;
+
+
+
+/*****************************************************************************
+ * LT
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../../strength/lt.str';
+ call, file = '../../elements/lt.ele';
+ call, file = '../../sequence/lt.seq';
+ call, file = '../../aperture/lt.dbx';
+
+
+
+/*****************************************************************************
+ * LTB
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../../strength/ltb.str';
+ call, file = '../../elements/ltb.ele';
+ call, file = '../../sequence/ltb.seq';
+ call, file = '../../aperture/ltb.dbx';
+
+
+
+/*****************************************************************************
+ * BI
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../../strength/bi.str';
+ call, file = '../../elements/bi.ele';
+ call, file = '../../sequence/BI1.seq';
+ call, file = '../../aperture/bi.dbx';
+
+
+
+/*****************************************************************************
+ * build up the geometry of the beam lines
+ *****************************************************************************/
+ltltbbi: sequence, refer=ENTRY,  l = 131.2644535262 ;
+  lt                          , at =              0 ;
+  ltb                         , at := 53.4728739515 ; ! 53.472856 + 17.9515 um ;
+  bi1                         , at := 82.7080421462 ; ! 53.4728739515 + 29.2351681947. L=48.5564113800 + 82.7080421462   131.2644535262
+endsequence;
+
+!save, sequence=ltltbbi, file=ltltbbi1.save;
+
+
+
+/*****************************************************************************
+ * set initial twiss parameters
+ *****************************************************************************/
+call, file = '../../inp/ltp.inp';
+
+
+
+/*****************************************************************************
+ * store initial parameters in memory block
+ *****************************************************************************/
+INITBETA0: BETA0,
+  BETX=BETX0,
+  ALFX=ALFX0,
+  MUX=MUX0,
+  BETY=BETY0,
+  ALFY=ALFY0,
+  MUY=MUY0,
+  X=X0,
+  PX=PX0,
+  Y=Y0,
+  PY=PY0,
+  T=T0,
+  PT=PT0,
+  DX=DX0,
+  DPX=DPX0,
+  DY=DY0,
+  DPY=DPY0;
+
+
+/*******************************************************************************
+ * Beam
+ * NB! beam->ex == (beam->exn)/(beam->gamma*beam->beta*4)
+ *******************************************************************************/
+ Beam, particle=PROTON,pc=0.3103662354,exn=(12.0E-6)*4.0,eyn=(6.0E-6)*4.0, sige=1E-3;
+
+
+
+
+/*******************************************************************************
+ * Use
+ *******************************************************************************/
+ use, sequence=ltltbbi;
+
+
+
+
+/*******************************************************************************
+ * twiss
+ *******************************************************************************/
+
+ maketwiss: macro=
+ {
+     ptc_create_universe;
+     ptc_create_layout,model=2,method=6,nst=5,exact;
+     ptc_twiss,table=ptc_twiss,BETA0=INITBETA0,icase=5,no=1; ! ,file="twiss";
+     ptc_end;
+
+
+ };
+
+ exec, maketwiss;
+
+!write,table=ptc_twiss,file=ltltbbi.twiss;
+!value,table(ptc_twiss,LTLTBBI$START,alfa11);
+!value,table(ptc_twiss,LT.DHZ10,beta11);
+
+
+/***************************************************
+ * Write ptc_twiss table. NB! Values at end of elements
+ ***************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,s,x,px,disp1,alfa11,beta11,mu1,
+                                        y,py,disp3,alfa22,beta22,mu2;
+ write,table=ptc_twiss,file="ltltbbi.out";
+!stop;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+ * ltltbbimatchmacro
+ *******************************************************************************/
+ltltbbimachingchmacro : macro={
+   use, period=ltltbbi;
+
+
+   LT.DHZ10->KICK = 0;
+   LT.DVT10->KICK = 0;
+   LT.DHZ20->KICK = 0;
+   LT.DVT20->KICK = 0;
+   LT.DHZ30->KICK = 0;
+   LT.DVT30->KICK = 0;
+   LT.DHZ40->KICK = 0;
+   LT.DVT40->KICK = 0;
+   LT.DHZ50->KICK = 0;
+   LT.DVT50->KICK = 0;
+
+   LTB.DHZ10->KICK = 0;
+   LTB.DVT10->KICK = 0;
+   LTB.DHZ20->KICK = 0;
+   LTB.DVT20->KICK = 0;
+   LTB.DHZ30->KICK = 0;
+   LTB.DVT30->KICK = 0;
+   LTB.DHZ40->KICK = 0;
+   LTB.DVT40->KICK = 0;
+
+   BI.DHZ10->KICK = 0;
+   BI.DVT10->KICK = 0;
+   BI.DHZ20->KICK = 0;
+   BI.DVT20->KICK = 0;
+
+
+
+
+   /* LT.DHZ10    *************************************************************/
+   LT.DHZ10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDHZ10  = (table(twiss, LT.BPM10  , X) - (+0.00092E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LT.BPM20  , X) - (-0.00196E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LT.BPM30  , X) - (-0.00199E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LT.BPM40  , X) - (+0.00025E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LT.BPM50  , X) - (+0.00049E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LTB.BPM10 , X) - (-0.00565E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LTB.BPM20 , X) - (-0.00419E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, LTB.BPM30 , X) - (+0.00046E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM00  , X) - (+0.00364E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (+0.00596E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (+0.00007E+3 * LT.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (-0.00111E+3 * LT.DHZ10->KICK))^2 ;
+
+   LT.DHZ10->KICK = 0.0;
+   /***************************************************************************/
+
+
+    /* LT.DVT10    ************************************************************/
+   LT.DVT10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDVT10  = (table(twiss, LT.BPM10  , Y) - (+0.00111E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LT.BPM20  , Y) - (+0.00192E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LT.BPM30  , Y) - (+0.00106E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LT.BPM40  , Y) - (-0.00651E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LT.BPM50  , Y) - (-0.00683E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LTB.BPM10 , Y) - (-0.00041E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LTB.BPM20 , Y) - (+0.00387E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, LTB.BPM30 , Y) - (+0.00707E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, BI.BPM00  , Y) - (-0.00118E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (-0.00670E+3 * LT.DVT10->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (+0.00294E+3 * LT.DVT10->KICK))^2 ;
+
+   LT.DVT10->KICK = 0.0;
+    /***************************************************************************/
+
+
+
+   /* LT.DHZ20    *************************************************************/
+   LT.DHZ20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDHZ20  = (table(twiss, LT.BPM20  , X) - (+0.00593E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LT.BPM30  , X) - (+0.00620E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LT.BPM40  , X) - (-0.00107E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LT.BPM50  , X) - (-0.00179E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LTB.BPM10 , X) - (+0.01778E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LTB.BPM20 , X) - (+0.01349E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, LTB.BPM30 , X) - (-0.00089E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, BI.BPM00  , X) - (-0.01123E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (-0.01837E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (-0.00036E+3 * LT.DHZ20->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (+0.00323E+3 * LT.DHZ20->KICK))^2 ;
+
+   LT.DHZ20->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DVT20    *************************************************************/
+   LT.DVT20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDVT20  = (table(twiss, LT.BPM20  , Y) - (+0.00488E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LT.BPM30  , Y) - (+0.00951E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LT.BPM40  , Y) - (+0.00852E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LT.BPM50  , Y) - (-0.00073E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LTB.BPM10 , Y) - (-0.00420E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LTB.BPM20 , Y) - (-0.00875E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, LTB.BPM30 , Y) - (-0.00807E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, BI.BPM00  , Y) - (+0.00449E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (+0.01331E+3 * LT.DVT20->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (-0.00687E+3 * LT.DVT20->KICK))^2  ;
+
+   LT.DVT20->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DHZ30    *************************************************************/
+   LT.DHZ30->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDHZ30  = (table(twiss, LT.BPM30  , X) - (+0.00084E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, LT.BPM40  , X) - (+0.00122E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, LT.BPM50  , X) - (-0.00274E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, LTB.BPM10 , X) - (+0.01461E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, LTB.BPM20 , X) - (+0.01334E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, LTB.BPM30 , X) - (+0.00314E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, BI.BPM00  , X) - (-0.00618E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (-0.01277E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (-0.00356E+3 * LT.DHZ30->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (-0.00107E+3 * LT.DHZ30->KICK))^2 ;
+
+   LT.DHZ30->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DVT30    *************************************************************/
+   LT.DVT30->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDVT30  = (table(twiss, LT.BPM30  , Y) - (+0.00046E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, LT.BPM40  , Y) - (+0.02204E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, LT.BPM50  , Y) - (+0.01772E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, LTB.BPM10 , Y) - (-0.00105E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, LTB.BPM20 , Y) - (-0.01446E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, LTB.BPM30 , Y) - (-0.02261E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, BI.BPM00  , Y) - (+0.00518E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (+0.02394E+3 * LT.DVT30->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (-0.01114E+3 * LT.DVT30->KICK))^2 ;
+
+   LT.DVT30->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DHZ40    *************************************************************/
+   LT.DHZ40->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDHZ40  = (table(twiss, LT.BPM40  , X) - (+0.00104E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, LT.BPM50  , X) - (+0.00071E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, LTB.BPM10 , X) - (-0.00968E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, LTB.BPM20 , X) - (-0.00654E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, LTB.BPM30 , X) - (+0.00180E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, BI.BPM00  , X) - (+0.00697E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (+0.01048E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (-0.00086E+3 * LT.DHZ40->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (-0.00288E+3 * LT.DHZ40->KICK))^2 ;
+
+   LT.DHZ40->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DVT40    *************************************************************/
+   LT.DVT40->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDVT40  = (table(twiss, LT.BPM40  , Y) - (+0.00104E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, LT.BPM50  , Y) - (+0.01696E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, LTB.BPM10 , Y) - (+0.00737E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, LTB.BPM20 , Y) - (+0.00386E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, LTB.BPM30 , Y) - (-0.00618E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, BI.BPM00  , Y) - (-0.00388E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (-0.00250E+3 * LT.DVT40->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (+0.00288E+3 * LT.DVT40->KICK))^2 ;
+
+   LT.DVT40->KICK = 0.0;
+   /***************************************************************************/
+
+
+
+   /* LT.DHZ50    *************************************************************/
+   LT.DHZ50->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDHZ50  = (table(twiss, LT.BPM50  , X) - (+0.00090E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, LTB.BPM10 , X) - (+0.00423E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, LTB.BPM20 , X) - (+0.00024E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, LTB.BPM30 , X) - (-0.00501E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, BI.BPM00  , X) - (-0.00621E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (-0.00674E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (+0.00390E+3 * LT.DHZ50->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (+0.00520E+3 * LT.DHZ50->KICK))^2 ;
+
+   LT.DHZ50->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LT.DVT50    *************************************************************/
+   LT.DVT50->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTDVT50  = (table(twiss, LT.BPM50  , Y) - (+0.00117E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, LTB.BPM10 , Y) - (+0.00872E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, LTB.BPM20 , Y) - (+0.01709E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, LTB.BPM30 , Y) - (+0.01415E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, BI.BPM00  , Y) - (-0.00893E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (-0.02517E+3 * LT.DVT50->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (+0.01296E+3 * LT.DVT50->KICK))^2 ;
+
+   LT.DVT50->KICK = 0.0;
+   /***************************************************************************/
+
+
+
+   /* LTB.DHZ10    ************************************************************/
+   LTB.DHZ10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDHZ10  = (table(twiss, LTB.BPM10 , X) - (+0.00379E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, LTB.BPM20 , X) - (+0.00695E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, LTB.BPM30 , X) - (+0.00645E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, BI.BPM00  , X) - (+0.00263E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, BI.BPM10  , X) - (-0.00029E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, BI.BPM20  , X) - (-0.00565E+3 * LTB.DHZ10->KICK))^2
+                    + (table(twiss, BI.BPM30  , X) - (-0.00560E+3 * LTB.DHZ10->KICK))^2 ;
+
+   LTB.DHZ10->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DVT10    ************************************************************/
+   LTB.DVT10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDVT10  = (table(twiss, LTB.BPM10 , Y) - (+0.00618E+3 * LTB.DVT10->KICK))^2
+                    + (table(twiss, LTB.BPM20 , Y) - (+0.01502E+3 * LTB.DVT10->KICK))^2
+                    + (table(twiss, LTB.BPM30 , Y) - (+0.01446E+3 * LTB.DVT10->KICK))^2
+                    + (table(twiss, BI.BPM00  , Y) - (-0.00737E+3 * LTB.DVT10->KICK))^2
+                    + (table(twiss, BI.BPM10  , Y) - (-0.02265E+3 * LTB.DVT10->KICK))^2
+                    + (table(twiss, BI.BPM20  , Y) - (+0.01127E+3 * LTB.DVT10->KICK))^2 ;
+
+   LTB.DVT10->KICK = 0.0;
+   /***************************************************************************/
+
+
+
+   /* LTB.DHZ20    ************************************************************/
+   LTB.DHZ20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDHZ20  = (table(twiss, LTB.BPM20 , X) - (-0.00288E+3 * LTB.DHZ20->KICK))^2
+                    + (table(twiss, LTB.BPM30 , X) - (-0.00519E+3 * LTB.DHZ20->KICK))^2
+                    + (table(twiss, BI.BPM00  , X) - (-0.00428E+3 * LTB.DHZ20->KICK))^2
+                    + (table(twiss, BI.BPM10  , X) - (-0.00330E+3 * LTB.DHZ20->KICK))^2
+                    + (table(twiss, BI.BPM20  , X) - (+0.00430E+3 * LTB.DHZ20->KICK))^2
+                    + (table(twiss, BI.BPM30  , X) - (+0.00498E+3 * LTB.DHZ20->KICK))^2 ;
+
+   LTB.DHZ20->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DVT20    ************************************************************/
+   LTB.DVT20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDVT20  = (table(twiss, LTB.BPM20 , Y) - (+0.00498E+3 * LTB.DVT20->KICK))^2
+                    + (table(twiss, LTB.BPM30 , Y) - (+0.00964E+3 * LTB.DVT20->KICK))^2
+                    + (table(twiss, BI.BPM00  , Y) - (-0.00148E+3 * LTB.DVT20->KICK))^2
+                    + (table(twiss, BI.BPM10  , Y) - (-0.00906E+3 * LTB.DVT20->KICK))^2
+                    + (table(twiss, BI.BPM20  , Y) - (+0.00363E+3 * LTB.DVT20->KICK))^2 ;
+
+   LTB.DVT20->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DHZ30    ************************************************************/
+   LTB.DHZ30->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDHZ30  = (table(twiss, LTB.BPM30 , X) - (+0.00433E+3 * LTB.DHZ30->KICK))^2
+                    + (table(twiss, BI.BPM00  , X) - (+0.00761E+3 * LTB.DHZ30->KICK))^2
+                    + (table(twiss, BI.BPM10  , X) - (+0.00979E+3 * LTB.DHZ30->KICK))^2
+                    + (table(twiss, BI.BPM20  , X) - (-0.00294E+3 * LTB.DHZ30->KICK))^2
+                    + (table(twiss, BI.BPM30  , X) - (-0.00476E+3 * LTB.DHZ30->KICK))^2 ;
+
+   LTB.DHZ30->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DVT30    ************************************************************/
+   LTB.DVT30->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDVT30  = (table(twiss, LTB.BPM30 , Y) - (+0.01186E+3 * LTB.DVT30->KICK))^2
+                    + (table(twiss, BI.BPM00  , Y) - (+0.00278E+3 * LTB.DVT30->KICK))^2
+                    + (table(twiss, BI.BPM10  , Y) - (-0.00302E+3 * LTB.DVT30->KICK))^2
+                    + (table(twiss, BI.BPM20  , Y) - (-0.00064E+3 * LTB.DVT30->KICK))^2 ;
+
+   LTB.DVT30->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DHZ40    ************************************************************/
+   LTB.DHZ40->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDHZ40  = (table(twiss, LTB.BPM30 , X) - (+0.00059E+3 * LTB.DHZ40->KICK))^2
+                    + (table(twiss, BI.BPM00  , X) - (+0.00813E+3 * LTB.DHZ40->KICK))^2
+                    + (table(twiss, BI.BPM10  , X) - (+0.01335E+3 * LTB.DHZ40->KICK))^2
+                    + (table(twiss, BI.BPM20  , X) - (+0.00064E+3 * LTB.DHZ40->KICK))^2
+                    + (table(twiss, BI.BPM30  , X) - (-0.00182E+3 * LTB.DHZ40->KICK))^2 ;
+
+   LTB.DHZ40->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* LTB.DVT40    ************************************************************/
+   LTB.DVT40->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncLTBDVT40  = (table(twiss, LTB.BPM30 , Y) - (+0.00037E+3 * LTB.DVT40->KICK))^2
+                    + (table(twiss, BI.BPM00  , Y) - (+0.00811E+3 * LTB.DVT40->KICK))^2
+                    + (table(twiss, BI.BPM10  , Y) - (+0.01400E+3 * LTB.DVT40->KICK))^2
+                    + (table(twiss, BI.BPM20  , Y) - (-0.00901E+3 * LTB.DVT40->KICK))^2 ;
+
+   LTB.DVT40->KICK = 0.0;
+   /***************************************************************************/
+
+
+
+
+   /* BI.DHZ10    *************************************************************/
+   BI.DHZ10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncBIDHZ10  = (table(twiss, BI.BPM00  , X) - (+0.00055E+3 * BI.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM10  , X) - (+0.00581E+3 * BI.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM20  , X) - (+0.00655E+3 * BI.DHZ10->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (+0.00555E+3 * BI.DHZ10->KICK))^2 ;
+
+   BI.DHZ10->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* BI.DVT10    *************************************************************/
+   BI.DVT10->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncBIDVT10  = (table(twiss, BI.BPM00  , Y) - (+0.00050E+3 * BI.DVT10->KICK))^2
+                   + (table(twiss, BI.BPM10  , Y) - (+0.00574E+3 * BI.DVT10->KICK))^2
+                   + (table(twiss, BI.BPM20  , Y) - (-0.00202E+3 * BI.DVT10->KICK))^2 ;
+
+   BI.DVT10->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* BI.DHZ20    *************************************************************/
+   BI.DHZ20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncBIDHZ20  = (table(twiss, BI.BPM20  , X) - (+0.01137E+3 * BI.DHZ20->KICK))^2
+                   + (table(twiss, BI.BPM30  , X) - (+0.01157E+3 * BI.DHZ20->KICK))^2 ;
+
+   BI.DHZ20->KICK = 0.0;
+   /***************************************************************************/
+
+
+   /* BI.DVT20    *************************************************************/
+   BI.DVT20->KICK = 0.0005;
+   select, flag=twiss, clear;
+   twiss , beta0=initbeta0
+         , DELTAP = 0.0;
+
+   minfuncBIDVT20  = (table(twiss, BI.BPM20  , Y) - (+0.00347E+3 * BI.DVT20->KICK))^2 ;
+
+   BI.DVT20->KICK = 0.0;
+   /***************************************************************************/
+
+
+
+
+    minfunc =
+              minfuncLTDHZ10
+            + minfuncLTDVT10
+            + minfuncLTDHZ20
+            + minfuncLTDVT20
+            + minfuncLTDHZ30
+            + minfuncLTDVT30
+            + minfuncLTDHZ40
+            + minfuncLTDVT40
+            + minfuncLTDHZ50
+            + minfuncLTDVT50
+
+            + minfuncLTBDHZ10
+            + minfuncLTBDVT10
+            + minfuncLTBDHZ20
+            + minfuncLTBDVT20
+            + minfuncLTBDHZ30
+            + minfuncLTBDVT30
+            + minfuncLTBDHZ40
+            + minfuncLTBDVT40
+
+            + minfuncBIDHZ10
+            + minfuncBIDVT10
+            + minfuncBIDHZ20
+            + minfuncBIDVT20 ;
+ ;   value, minfunc;
+
+};
+
+
+
+/*******************************************************************************
+ * Matching
+ *******************************************************************************/
+ match,use_macro;
+ use_macro,name=ltltbbimachingchmacro;
+
+   constraint, expr=sqrt(minfunc) = 0;
+
+!  vary, name=vv ;  ! position
+   vary, name=KLT.QFN10; ! LT.QFN10->K1
+   vary, name=LT.QDN12->K1;
+   vary, name=LT.QFN20->K1;
+   vary, name=LT.QDN22->K1;
+   vary, name=LT.QFN30->K1;
+   vary, name=LT.QDN32->K1;
+   vary, name=LT.QFN40->K1;
+   vary, name=LT.QDN42->K1;
+   vary, name=LT.QFN50->K1;
+   vary, name=LT.QDN55->K1;
+   vary, name=LT.QFN60->K1;
+   vary, name=LT.QFW70->K1;
+   vary, name=LT.QDN75->K1;
+   vary, name=LTB.QFN10->K1;
+   vary, name=LTB.QDN20->K1;
+   vary, name=LTB.QFW30->K1;
+   vary, name=LTB.QDW40->K1;
+   vary, name=LTB.QFW50->K1;
+   vary, name=LTB.QDW60->K1;
+
+
+!  vary, name=dummy; simplex, calls=1, tolerance=1.E-15; endmatch; stop;
+
+ jacobian, calls=55, tolerance=1.0E-15, bisec= 9;
+!lmdif, tolerance=1e-12, calls=400;
+ endmatch;
+
+ stop;
+/****************************************************************************************************/
+
+
+
+
+
+
+/***************************************************
+ * Write ptc_twiss table. NB! Values at end of elements
+ ***************************************************/
+set,  format="-18s";
+set,  format="10.5f";
+
+! ns    ~ longitudinal number of sigma
+! nt    ~ transverse   number of sigma
+! dimxc ~ size-x with dispersion, dimyc ~ size-y with dispersion,
+! value, beam->ex, beam->ey, beam->sige;
+
+ ns = 2;
+ nt = 3;
+ dimxc := sqrt( nt^2*table(ptc_twiss,beta11)*beam->ex + ns^2*(beam->sige*table(ptc_twiss,disp1))^2 );
+ dimyc := sqrt( nt^2*table(ptc_twiss,beta22)*beam->ey + ns^2*(beam->sige*table(ptc_twiss,disp3))^2 );
+
+
+
+ exec, maketwiss; ! Needs to be executed first, to make beta11, disp1, etc.
+
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,angle,k1L,k2L,k3L,beta11,beta22,disp1,disp3,x,y,alfa11,alfa22,mu1,mu2,disp2,disp3,px,py;
+ exec, maketwiss;
+ write,table=ptc_twiss,file="ltltbbi1_optics.out";
+
+
+
+/*******************************************************************************
+ * Clean up (remove Maxwellian_bend_for_ptc.txt )
+ *******************************************************************************/
+
+system, "rm Maxwellian_bend_for_ptc.txt";
+
+
+stop;
+
+
+
+
+
+
+

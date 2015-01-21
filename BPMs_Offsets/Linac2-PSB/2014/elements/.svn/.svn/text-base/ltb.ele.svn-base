@@ -1,0 +1,58 @@
+
+! LTB element definitions
+! Quadrupole length and kick checked with A. Newborough 6/6/2011;
+! Magnetic length changed from 0.44 for LTB.QFW30, QDW40, QFW50 and QDW60.
+
+
+! QUADRUPOLES
+
+LTB.QFN10         : QUADRUPOLE,      L= 0.255,  K1 := KLTB.QFN10;
+LTB.QDN20         : QUADRUPOLE,      L= 0.255,  K1 := KLTB.QDN20;
+LTB.QFW30         : QUADRUPOLE,      L= 0.461,  K1 := KLTB.QFW30;
+LTB.QDW40         : QUADRUPOLE,      L= 0.461,  K1 := KLTB.QDW40;
+LTB.QFW50         : QUADRUPOLE,      L= 0.461,  K1 := KLTB.QFW50;
+LTB.QDW60         : QUADRUPOLE,      L= 0.461,  K1 := KLTB.QDW60;
+
+
+! BENDINGS
+! BHZ40 is used to kick the beam to LBE(emittance meas) or LBS(spectrometer) lines
+LTB.BHZ40         : SBEND,           L= 0.900,  ANGLE :=  0.;
+
+
+! STEERERS
+
+LTB.DHZ10         : HKICKER,         L=0; ! Real length L= 0.292
+LTB.DVT10         : VKICKER,         L=0; ! Real length L= 0.292
+LTB.DHZ20         : HKICKER,         L=0; ! Real length L= 0.292
+LTB.DVT20         : VKICKER,         L=0; ! Real length L= 0.292
+LTB.DHZ30         : HKICKER,         L=0; ! Real length L= 0.292
+LTB.DVT30         : VKICKER,         L=0; ! Real length L= 0.292
+LTB.DHZ40         : HKICKER,         L=0; ! Real length L= 0.292
+LTB.DVT40         : VKICKER,         L=0; ! Real length L= 0.292
+
+
+! Beam instrumentation
+
+LTB.MSF30        : MONITOR;
+LTB.BPM10        : MONITOR;
+LTB.BCT49        : MONITOR;
+LTB.BCT50        : MONITOR;
+LTB.BCT55        : MONITOR;
+LTB.BPM20        : MONITOR;
+LTB.SLH10        : MARKER;   ! Slit
+LTB.SLV10        : MARKER;   ! Slit
+LTB.BCT59        : MONITOR;
+LTB.MSF40        : MONITOR;
+LTB.BCT60        : MONITOR;
+LTB.BPM30        : MONITOR;
+
+! MISCELLANEOUS
+
+LTB.STP10        : MARKER;  ! Beam stopper
+LTB.VVS10        : MARKER;  ! Vacuum valve
+LTB.VPI11        : MARKER;  ! Vacuum pump ionic
+LTB.VPI12        : MARKER;  ! Vacuum pump ionic
+LTB.VPI13        : MARKER;  ! Vacuum pump ionic
+LTB.VGR01        : MARKER;  ! Vacuum pump
+
+return;

@@ -1,0 +1,18 @@
+
+LBS: SEQUENCE, REFER=CENTRE,  l := 16.6707789226;
+   BEGLBS    : MARKER      , AT :=  0.00000;
+   EBHZ40    : MARKER      , AT :=  0.667754677930268; ! Marker used for matching survey positions.
+   LBS.BHZ40               , AT :=  1.1190357524;
+   LBS.VVS10               , AT :=  5.3543390928;
+   LBS.SLV10               , AT :=  5.5183390928;
+   LBS.BCT62               , AT :=  6.9358388857;
+   LBS.BCT63               , AT :=  7.1183381378;
+   LBS.VPI11               , AT :=  7.6873381378;
+   LBS.VGP1                , AT :=  8.0793381378;
+   LBS.VGR1                , AT :=  8.0793381378;
+   LBS.BVT10               , AT := 12.6522236787;
+   LBS.BCT64               , AT := 16.3502823045;
+   LBS.MSGV50              , AT := 16.5282789226;
+   ENDLBS    : MARKER      , AT := 16.6707789226;
+ENDSEQUENCE;
+

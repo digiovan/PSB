@@ -1,0 +1,156 @@
+option, -echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+!  - This file gives the mechanical position of the all the elements in the 4 BI lines,
+!
+!  - The mechanical positions of all the elements except BI.QNO30, BI.QNO40, BI.DIS10, BI.SMV10, the Beam Loss Monitor and the injection point
+!    are extracted from the drawings PS_LMLTB8001-VAE and PSBIHENS0032-vAH.
+!
+!  - The mechanical positions of the Quadrupoles QNO30 and QNO40 are extracted from the Survey GEODE DB.
+!    These positions are the sum of the theoretical position given by GEODE and of the measured errors at beam level given by GEODE.
+!    Example: QNO10 Entry  point = 23.7506942 (GEODE says 23.7507)     QNO30 Entre  ecart =  0.024     i.e. result = 23.7506942 + 0.024 =  23.7746942
+!             QNO10 Sortie point = 24.1506951 (GEODE says 24.1507)     QNO30 Sortie ecart =  0.024     i.e. result = 24.1506951 + 0.024 =  24.1746951
+!
+!             Middle point = (23.7746942 + 24.1746951)/2 = 23.974695
+!
+!  - The mechanical positions of the BI.DIS10 and BI.SMV10 were provided by W. Weterings (EDMS 1178044)
+!
+!  - The positions correspond to the mechanical center of each element (along the BI line at the PS level).
+!
+!  - BI line starts at the entry flange of the LTB.BHZ40 and ends at the injection point
+!
+! - The position of the Beam Loss Monitor (MBL) are commented to prevent conflict with other
+!   elements in MADX. The position of the MBL are a best guess from photos.
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/cmd/
+! Sequence file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+   LTB.BHZ40.mechcenterpos  := 0.450000;  ! 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   LTB.MBL10.mechcenterpos  := 1;
+   LTB.MBL20.mechcenterpos  := 1;
+   BI.VPI11.mechcenterpos   := 1.580000;  ! 30.296 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DHZ10.mechcenterpos   := 6.564000;  ! 35.280 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DVT10.mechcenterpos   := 6.564000;  ! 35.280 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BPM00.mechcenterpos   := 7.051000;  ! 35.767 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BTV10.mechcenterpos   := 7.953000;  ! 36.665 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.STPFA10.mechcenterpos := 8.529000;  ! 37.245 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.STPSW10.mechcenterpos := 11.755000; ! 40.471 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BPM10.mechcenterpos   := 12.504000; ! 41.220 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DHZ20.mechcenterpos   := 12.984000; ! 41.700 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DVT20.mechcenterpos   := 12.984000; ! 41.700 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.QNO10.mechcenterpos   := 13.624000; ! 42.340 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.QNO20.mechcenterpos   := 14.624000; ! 43.340 - 29.166 (from drawing PS_LMLTB8001-VAE) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BPM20.mechcenterpos   := 21.705600; ! 50.4216 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BCT10.mechcenterpos   := 22.155200; ! 50.8712 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.VVS10.mechcenterpos   := 22.534400; ! 51.2504 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DHZ30.mechcenterpos   := 22.766000; ! 51.482 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DVT30.mechcenterpos   := 22.766000; ! 51.482 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.BTV20.mechcenterpos   := 23.157000; ! 51.873 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.QNO30.mechcenterpos   := 23.974695; ! (from GEODE DB)
+   BI.BPM30.mechcenterpos   := 24.586000; ! 53.302 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.QNO40.mechcenterpos   := 25.224149; ! (from GEODE DB)
+   BI.DIS0.mechcenterpos    := 25.916000; ! 54.632 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DIS1.mechcenterpos    := 26.326000; ! 55.042 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DIS2.mechcenterpos    := 26.736000; ! 55.452 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DIS3.mechcenterpos    := 27.146000; ! 55.862 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DIS4.mechcenterpos    := 27.556000; ! 56.272 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+!  BI.MBL10.mechcenterpos   := 28;
+   BI.DHZ40.mechcenterpos   := 28.102500; ! 56.8185 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.DVT40.mechcenterpos   := 28.102500; ! 56.8185 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+!  BI.VGP02.mechcenterpos    := 27.854000; ! 57.020 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+   BI.VPI12.mechcenterpos   := 29.967500; ! 58.6835 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+!  BI.VPI12A.mechcenterpos   := 30.034000; ! 59.20 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+!  BI.VPG01.mechcenterpos    := 31.734000; ! 60.9 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+!  BI.VGR01.mechcenterpos    := 32.534000; ! 61.7 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+!  BI.VGP01.mechcenterpos    := 32.534000; ! 61.7 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+!  BI.VVV.mechcenterpos      := 32.534000; ! 61.7 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+!  BI.VPI13.mechcenterpos    := 33.034000; ! 62.2 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+   BI.BTV30.mechcenterpos   := 34.185500; ! 62.9015 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+!  BI.VPI13A.mechcenterpos   := 34.234000; ! 63.4 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40) !! Approximative value, TBC by JM. Lacroix
+   BI1.SMV10.mechcenterpos  := 35.228000; ! 63.944 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.SMVHDP.mechcenterpos  := 35.876000; ! 64.592 (from Drawings SI3.14102.0) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.SMV10.mechcenterpos  := 36.574000; ! 65.290 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.SMV10.mechcenterpos  := 36.574000; ! 65.290 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.SMV10.mechcenterpos  := 36.574000; ! 65.290 (from EDMS 1178044) - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+!  BI.MBL20.mechcenterpos   := 36;
+!  BI.MBLI30.mechcenterpos  := 37.5;
+!  BI.MBLS30.mechcenterpos  := 37.5;
+   BI1.BVT10.mechcenterpos  := 38.976000; ! 67.692 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.BVT10.mechcenterpos  := 38.976000; ! 67.692 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.BVT10.mechcenterpos  := 38.976000; ! 67.692 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.QNO50.mechcenterpos  := 39.876000; ! 68.592 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.QNO50.mechcenterpos  := 39.876000; ! 68.592 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.QNO50.mechcenterpos  := 39.876000; ! 68.592 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.QNO50.mechcenterpos  := 39.876000; ! 68.592 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.QNO60.mechcenterpos  := 40.626000; ! 69.342 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.QNO60.mechcenterpos  := 40.626000; ! 69.342 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.QNO60.mechcenterpos  := 40.626000; ! 69.342 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.QNO60.mechcenterpos  := 40.626000; ! 69.342 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.DHZ50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.DHZ50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.DHZ50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.DHZ50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.DVT50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.DVT50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.DVT50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.DVT50.mechcenterpos  := 41.184000; ! 69.900 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.BPM40.mechcenterpos  := 41.751000; ! 70.467 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.BPM40.mechcenterpos  := 41.751000; ! 70.467 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.BPM40.mechcenterpos  := 41.751000; ! 70.467 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.BPM40.mechcenterpos  := 41.751000; ! 70.467 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.BTV40.mechcenterpos  := 42.933000; ! 71.649 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.BTV40.mechcenterpos  := 42.933000; ! 71.649 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.BTV40.mechcenterpos  := 42.933000; ! 71.649 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.BTV40.mechcenterpos  := 42.933000; ! 71.649 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI.VPI14.mechcenterpos   := 43.479500; ! 72.1955 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.BCT20.mechcenterpos  := 43.878000; ! 72.594 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.BCT20.mechcenterpos  := 43.878000; ! 72.594 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.BCT20.mechcenterpos  := 43.878000; ! 72.594 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.BCT20.mechcenterpos  := 43.878000; ! 72.594 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.BPM50.mechcenterpos  := 44.324000; ! 73.040 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.BPM50.mechcenterpos  := 44.324000; ! 73.040 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.BPM50.mechcenterpos  := 44.324000; ! 73.040 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.BPM50.mechcenterpos  := 44.324000; ! 73.040 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.VVS20.mechcenterpos  := 44.846000; ! 73.562 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI2.VVS20.mechcenterpos  := 44.846000; ! 73.562 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI3.VVS20.mechcenterpos  := 44.846000; ! 73.562 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI4.VVS20.mechcenterpos  := 44.846000; ! 73.562 - 29.166 (from drawing PSBIHENS0032-vAH) + 0.9/2 (0.9 mechanical length of LTB.BHZ40)
+   BI1.DHZ70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI2.DHZ70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI3.DHZ70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI4.DHZ70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI1.DVT70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI2.DVT70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI3.DVT70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI4.DVT70.mechcenterpos  := 47.246000; !! Approximative value, TBC by JM. Lacroix
+   BI1.INJPT.mechcenterpos  := 48.503200; ! (from GEODE DB)
+   BI2.INJPT.mechcenterpos  := 48.503200; ! (from GEODE DB)
+   BI3.INJPT.mechcenterpos  := 48.503200; ! (from GEODE DB)
+   BI4.INJPT.mechcenterpos  := 48.503200; ! (from GEODE DB)
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

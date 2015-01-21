@@ -1,9 +1,16 @@
 
-* Get the code
+* Get the MADX files
 ** cd [...]/code/PSB/BPMs_Offsets
-** mkdir PSB-PS
+** mkdir PSB-PS Linac2-PSB
 ** scp -r lxplus.cern.ch:/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014/ PSB-PS/
-   
+** scp -r lxplus.cern.ch:/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/ Linac2-PSB/
 * Which input to be used?
-** The input files are the SURVEY files, BTx.sur where x=1,..,4
+** The input files are the SURVEY files, PSB-PS/2014/out/BTx.survey, where x=1,..,4
+** The input files are the SURVEY files, Linac2-PSB/2014/out/ltltbbix.sur, where x=1,..,4
  
+* Commands Examples
+** python -i ./bpms_offsets.py -f PSB-PS/2014/out/
+** python -i ./bpms_offsets.py -f Linac2-PSB/2014/out/
+** add "-s" option to save the plot
+** add "-b" option to produce the plot in batch mode (not displaying it on the screen)
+
