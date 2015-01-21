@@ -1,0 +1,22 @@
+option, -echo;
+option, warn;
+option, info;
+!----------------------------------------------------------------------------------------------------
+! - This optics is for horizontal emittance measurement with large dispersion. 
+!   Gradients of QNO according to report from C.Carli (Qv=4.23):
+!   http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTM/LowWP.ps
+!
+!----------------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Strength file created in August 2012 by V.Raginel, O.Berrig and B. Mikulec
+!----------------------------------------------------------------------------------------------------
+
+dBTBHZ10  = -0.162395; ! BT.BHZ10 bending angle from survey
+dBTMBHZ10 = -0.350736; ! BTM.BHZ10 bending angle from survey
+
+kbtmqno05 = -0.19195;
+kbtmqno10 = -0.29569; 
+kbtmqno20 =  0.63928; 
+
+dbtmdvt10 =  0.0000000000;
+dbtmdhz10 =  0.0000000000;

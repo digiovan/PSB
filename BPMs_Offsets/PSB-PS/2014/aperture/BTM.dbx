@@ -1,0 +1,32 @@
+option, -echo;
+option, warn;
+option, info;
+!-----------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014
+! Aperture file created in January 2013 by O.Berrig, G.P. Di Giovanni, V.Raginel and B. Mikulec
+!-----------------------------------------------------------------------------------------------
+
+BT.BHZ10,     APERTYPE=ELLIPSE,     APERTURE={0.125/2,0.125/2};
+BTM.BTV10,    APERTYPE=CIRCLE,      APERTURE={0.128/2}; ! measured from drawing
+BTM.QNO05,    APERTYPE=CIRCLE,      APERTURE={0.125/2}; ! From J. Hasen 13/08/2013
+BTM.BHZ10,    APERTYPE=ELLIPSE,     APERTURE={0.150/2,0.098/2}; ! From J. Hansen 21/08/2013
+BTM.QNO10,    APERTYPE=CIRCLE,      APERTURE={0.125/2}; ! From J. Hasen 13/08/2013
+BTM.DVT10,    APERTYPE=CIRCLE,      APERTURE={0.145/2};
+BTM.DHZ10,    APERTYPE=CIRCLE,      APERTURE={0.145/2};
+BTM.QNO20,    APERTYPE=CIRCLE,      APERTURE={0.125/2}; ! From J. Hasen 13/08/2013
+BTM.BPM00,    APERTYPE=CIRCLE,      APERTURE={0.145/2}; ! From L. Soby 19/08/13
+BTM.BTV15,    APERTYPE=CIRCLE,      APERTURE={0.145/2};
+BTM.VPI11,    APERTYPE=CIRCLE,      APERTURE={0.145/2};
+BTM.VC,       APERTYPE=ELLIPSE,     APERTURE={0.071,0.0721/2}; ! From J. Hasen 13/08/2013s
+BTM.VPI11a,   APERTYPE=CIRCLE,      APERTURE={0.204/2};
+BTM.BSGH01,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BSGV01,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BSGH02,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BSGV02,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BPM10,    APERTYPE=CIRCLE,      APERTURE={0.145/2}; ! From J. Hasen 13/08/2013 and confirmed by L. Soby 19/08/2013
+BTM.BTV20,    APERTYPE=CIRCLE,      APERTURE={0.300/2};
+BTM.BSGH03,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BSGV03,   APERTYPE=CIRCLE,      APERTURE={0.196/2};
+BTM.BCT10,    APERTYPE=CIRCLE,      APERTURE={0.130/2}; ! From L. Soby 19/08/13
+
+return;

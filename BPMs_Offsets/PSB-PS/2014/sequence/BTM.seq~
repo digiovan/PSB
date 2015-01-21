@@ -1,0 +1,88 @@
+option, -echo;
+option, info;
+option, warn;
+!---------------------------------------------------------------------------
+! - The sequence starts exactly at the entry point of BT.BHZ10 and ends at
+!   the center of the dump core.
+!
+! - BTM line is split into two parts:
+!   1st part: BT.BHZ10 to Entry flange of BTM.BHZ10
+!   2nd part: Entry flange of BTM.BHZ10 to PSB beam dump
+!
+! - The position of the elements are relative to the start of the BT line.
+!   The position of the elements are extracted from the drawing previewdraft5413_ihens031.dwg    
+!   The assumption here is that the deflection point is the BTP one at 35.3350 m (drawing PSBIHENS0030F-vAF)
+!
+!
+! - Offset to add to get position in reference of the entry point of BT.BHZ10
+!   and to take into account beam path in BT.BHZ10
+!   0.7686004012 = 1.5338328814m  (Beam Path in BT.BHZ10) - 1.5304649605/2 m (Half of the geometric trajectory in BT.BHZ10)
+!
+!   The beam path is calculated as following:
+!   The deflection angle is 0.162395289068 rad (drawing PSBIHENS0029-vAE and Geode agrees with reasonable precision)
+!
+!   BeamPath            = Magnetic length * DeflectionAngle     / Sin(DeflectionAngle)
+!   1.5338328814        = 1.5271          * 0.16239528906822892 / Sin(0.16239528906822892 )
+!
+!   GeometricTrajectroy = Magnetic length * Tan(DeflectionAngle     /2) / (DeflectionAngle    /2)
+!   1.5304649605        = 1.5271          * Tan(0.16239528906822892 /2) / (0.16239528906822892/2)
+!
+! - The position of BT.BHZ10 which is half of the beam path in BT.BHZ10.
+!
+!
+!
+! - Offset to add to take into account beam path in BTM.BHZ10
+!   -0.0122444493 = 2.3510320772  (Beam Path in BTM.BHZ10) - 2.3632765265 m (GeometricTrajectory in BTM.BHZ10)
+!
+!   The beam path is calculated as following:
+!   The deflection angle is 0.350736179829213 rad (drawing PSBIHENS0031-vAC and Geode agree)
+!
+!   BeamPath     = Magnetic length * deflection angle  / ( 2 * Sin(DeflectionAngle  /2))
+!   2.3510320772 = 2.339           * 0.350736179829213 / ( 2 * Sin(0.350736179829213/2))
+!
+!   GeometricTrajectroy = Magnetic length * Tan(DeflectionAngle     /2) / (DeflectionAngle    /2)
+!   2.3632765265        = 2.339           * Tan(0.35073617982921300 /2) / (0.35073617982921300/2)
+!
+! - The position of the Beam Loss Monitor (MBL) are commented out to prevent conflict with other
+!   elements in MADX
+!
+!--------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Sequence file created in June 2014 by O.Berrig, G.P. Di Giovanni, V.Raginel and B. Mikulec
+!--------------------------------------------------------------------------------------------
+
+BTM_1: sequence, refer=centre, l = 4.23696213795 ; ! 39.9985 - 35.335 + 0.7686004012 - 2.3632765265/2. (half geom traj in BTM.BHZ10)
+        BT.BHZ10  , at =  0.76691644070 ;  !   Path length/2
+        BTM.VVS10 , at =  2.60010040120 ;  !   37.1665 - 35.335 + 0.7686004012  = 2.6001004012
+        BTM.BTV10 , at =  2.94360040120 ;  !   37.510  - 35.335 + 0.7686004012  = 2.9436004012
+        BTM.QNO05 , at =  3.52810040120 ;  !   38.0945 - 35.335 + 0.7686004012  = 3.5281004012
+endsequence;
+
+
+BTM_2: sequence, refer=centre, l = 21.33289381395;
+        BTM.BHZ10 , at =  1.17551603860 ; !   Path length/2
+        BTM.QNO10 , at =  2.98439381395 ; !   41.800  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.DVT10 , at =  3.71989381395 ; !   42.5355 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.DHZ10 , at =  4.18389381395 ; !   42.9995 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.QNO20 , at =  4.86789381395 ; !   43.6835 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.BPM00 , at =  5.41589381395 ; !   44.2315 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.BTV15 , at =  5.79739381395 ; !   44.613  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.VPI11 , at =  5.99739381395 ; !   44.813  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTY.BVT101, at =  7.16839381395 ; !   45.984  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.VPI11a, at =  8.58939381395 ; !   47.405  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795   
+        BTM.SGHV01, at =  9.27339381395 ; !   48.089  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.SGHV02, at = 11.77339381395 ; !   50.589  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795 
+        BTM.BPM10 , at = 12.56089381395 ; !   51.3765 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.BTV20 , at = 13.60739381395 ; !   52.423  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.SGHV03, at = 14.27339381395 ; !   53.089  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        ! BTM.MBL10, at = ;                                                                          
+        BTM.BCT10 , at = 14.54539381395 ; !   53.361  - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795
+        BTM.TDU10 , at = 21.33289381395 ; !   60.1485 - 35.335  + 0.7686004012  -0.0122444493 - 4.23696213795 (dump ends up at the center)
+endsequence;
+
+BTM: sequence, refer=ENTRY , l = 25.56985595190;
+        BTM_1, at = 0.0;
+        BTM_2, at = 4.23696213795;
+endsequence;
+
+return;

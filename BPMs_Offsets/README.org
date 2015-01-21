@@ -1,0 +1,9 @@
+
+* Get the code
+** cd [...]/code/PSB/BPMs_Offsets
+** mkdir PSB-PS
+** scp -r lxplus.cern.ch:/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014/ PSB-PS/
+   
+* Which input to be used?
+** The input files are the SURVEY files, BTx.sur where x=1,..,4
+ 

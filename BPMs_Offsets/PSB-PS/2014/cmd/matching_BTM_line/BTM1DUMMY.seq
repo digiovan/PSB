@@ -1,0 +1,8 @@
+shared btm1dummy: sequence, l = 4;
+bt.end: marker, at = 0;
+bt.bhz10, at = 0.7669164407;
+btm.vvs10, at = 2.600100401;
+btm.btv10, at = 2.943600401;
+btm.qno05, at = 3.528100401;
+end.dummy, at = 4;
+endsequence;

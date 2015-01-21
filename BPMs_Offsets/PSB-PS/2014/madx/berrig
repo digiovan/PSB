@@ -1,0 +1,20 @@
+
+madx_dev < BT1_BTM.madx
+madx_dev < BT1_BTP.madx
+madx_dev < BT1.madx
+madx_dev < BT2_BTM.madx
+madx_dev < BT2_BTP.madx
+madx_dev < BT2.madx
+madx_dev < BT3_BTM.madx
+madx_dev < BT3_BTP.madx
+madx_dev < BT3.madx
+madx_dev < BT4_BTM.madx
+madx_dev < BT4_BTP.madx
+madx_dev < BT4.madx
+madx_dev < BTM.madx
+madx_dev < BTP.madx
+madx_dev < PSB_BT1_BTP.madx
+madx_dev < PSB_BT2_BTP.madx
+madx_dev < PSB_BT3_BTP.madx
+madx_dev < PSB_BT4_BTP.madx
+

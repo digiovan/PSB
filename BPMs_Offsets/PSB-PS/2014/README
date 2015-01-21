@@ -1,0 +1,65 @@
+
+!!! These files are ready and tested. Made by B.Mikulec, V.Raginel and O.Berrig"
+
+The BT/BTP line from PS-BOOSTER to the PS
+The BT/BTM line from PS-BOOSTER to the BTM measurement line
+In the furture also a line to ISOLDE will be made BT/ISO
+
+---------------------------------------------------------------
+
+All optics are for protons @ 2.12 GeV/c
+The following strength files are available:
+
+For the BT line there are 5 different optics:
+BT_BTP.str
+BT_dump.str
+BT_hor_emit_largeDx.str
+BT_hor_emit_smallDx.str
+BT_ver_emit.str
+
+For the BTP line there is only one optics:
+BTP.str
+
+For the BTM line there are 4 different optics:
+BTM_dump.str
+BTM_hor_emit_largeDx.str
+BTM_hor_emit_smallDx.str
+BTM_ver_emit.str
+
+
+---------------------------------------------------------------
+
+Further information:
+http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTP/defaultBTBTPBTM.htm
+
+---------------------------------------------------------------
+
+Do MADX calculations with: >madx_dev < BT3_BTP.madx
+
+---------------------------------------------------------------
+
+
+ The structure of the files are:
+    <>.ele   Element  file.  The definition of the elements/equipments
+    <>.seq   Sequence file.  The layout of the elements
+    <>.str   Strength files. The strength or currents of the elements - depends on operation mode.
+    <>.dbx   Aperture file.  The apertures of the vacuum chambers.
+    <>.madx  MADX     files. Set-up of a particular operation mode.
+
+ Display plot:  >gv BT3_BTP01.eps
+
+
+ NB! The extension for the MADX files is <>.madx and not <>.mad.
+     The reason is that when the files are read via the web, the
+     .mad extension is taken as Microsoft Access module and not
+     as a text file. By using .madx extension, the files are inter-
+     preted as text files on the web.
+
+ *********************************************************************************
+ Added new strength for the quadrupoles in the BT and BTP lines:
+ New gradients in use from 2004 with Qv=4.23 (old gradients until 2004 were with Qv=5.23)
+ and also a new BETAY0 = 4.22 m.
+ Data from S.Gilardoni and C.Lacroix  25/3/2008  O.Berrig
+ Many name changes, changes in element definition (report will be published) and changes in positions  10/1/2013 O.Berrig, V.Raginel
+ The matching was improved plus several small name changes and other small improvements Jan 2014  O.Berrig, V.Raginel , B.Mikulec
+

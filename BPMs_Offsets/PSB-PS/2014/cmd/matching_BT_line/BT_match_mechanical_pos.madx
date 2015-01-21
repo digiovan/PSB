@@ -1,0 +1,241 @@
+ title, 'Calculate crossing point';
+
+option, echo, info;
+
+ calculatecenter(filename, element): macro = {
+
+!   option, -echo, -info, -warn;
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+!   write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the center point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+    if ( row < 1 ) { print, text="Error: row is less than 1. Stop"; stop; }
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos0.x = Z;
+    pos0.y = X;
+    pos0mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+    pos0mech.y = Y;
+!   value, pos0.x, pos0.y;
+!   value, pos0mech.x, pos0mech.y;
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos1.x = Z;
+    pos1.y = X;
+    pos1mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+    pos1mech.y = Y;
+!   value, pos1.x, pos1.y;
+!   value, pos1mech.x, pos1mech.y;
+    x.center = (pos0.x+pos1.x)/2;
+    y.center = (pos0.y+pos1.y)/2;
+!   value, x.center,  y.center ;
+
+    delete,table=mysurvey;
+    delete,table=mysurveyrow;
+
+    option, echo, info, warn;
+
+};
+
+
+
+
+ calculateSEQandSURVEY: macro = {
+
+
+        set,  format="10.07f";
+
+        system, "rm BTmechanical.seq";
+        call, file="SAVE_BTmechanical_seq.madx";  ! This include the varying variables
+
+
+
+        system, "rm matching_angle_position.prt"; ! These are all the bending angles that were calculated last time by BT.madx
+        system, "rm BT1.seq";
+        system, "rm BT2.seq";
+        system, "rm BT3.seq";
+        system, "rm BT4.seq";
+        system, "madx < BT.madx > /dev/null";     ! BT.madx will re-calculate all the bending angles (they are stored in the file: matching_angle_position.prt)
+                                                  ! and the new sequences: BT1.seq, BT2.seq, BT3.seq and BT4.seq
+
+
+        system, "rm BT1.survey";
+        system, "rm BT2.survey";
+        system, "rm BT3.survey";
+        system, "rm BT4.survey";
+        system, "madx < BT1_survey.madx > /dev/null"; ! this will calculate the survey of BT1
+        system, "madx < BT2_survey.madx > /dev/null"; ! this will calculate the survey of BT2
+        system, "madx < BT3_survey.madx > /dev/null"; ! this will calculate the survey of BT3
+        system, "madx < BT4_survey.madx > /dev/null"; ! this will calculate the survey of BT4
+
+
+};
+
+
+
+
+!------------------------------------------------------------------------------------
+! Initialization
+!------------------------------------------------------------------------------------
+ call, file="BTcenter_drawing.seq";
+ call, file="BTmechanical.seq";
+
+
+!------------------------------------------------------------------------------------
+! Matching macro. Calculates center points for BVT10, SMV10, SMV20, QNO10, QNO20, KFA10 and KFA20
+!------------------------------------------------------------------------------------
+
+ matchdeflect : macro={
+
+        exec, calculateSEQandSURVEY;
+
+
+        system, "rm file_name_row 2> /dev/null";
+
+        value, BT1.SMV10.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT1.survey", BT1.SMV10); ! BT1 matching
+        option, -info;
+        SMV10.x = x.center;
+        SMV10.y = y.center;
+        SMV10.pos0mech.x = pos0mech.x;
+        SMV10.pos0mech.y = pos0mech.y;
+        SMV10.pos1mech.x = pos1mech.x;
+        SMV10.pos1mech.y = pos1mech.y;
+        value, SMV10.x, SMV10.y  ;
+
+        value, BT2.SMV20.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT2.survey", BT2.SMV20);
+        option, -info;
+        SMV20.x = x.center;
+        SMV20.y = y.center;
+        SMV20.pos0mech.x = pos0mech.x;
+        SMV20.pos0mech.y = pos0mech.y;
+        SMV20.pos1mech.x = pos1mech.x;
+        SMV20.pos1mech.y = pos1mech.y;
+        value, SMV20.x, SMV20.y  ;
+
+        value, BT2.KFA10.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT2.survey", BT2.KFA10);
+        option, -info;
+        KFA10.mechcenter = (pos0mech.x + pos1mech.x)/2;
+        value, KFA10.mechcenter  ;
+
+        value, BT2.KFA20.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT2.survey", BT2.KFA20);
+        option, -info;
+        KFA20.mechcenter = (pos0mech.x + pos1mech.x)/2;
+        value, KFA20.mechcenter  ;
+
+        value, BT2.QNO10.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT2.survey", BT2.QNO10);
+        option, -info;
+        QNO10.mechcenter = (pos0mech.x + pos1mech.x)/2;
+        value, QNO10.mechcenter  ;
+
+        value, BT2.QNO20.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT2.survey", BT2.QNO20);
+        option, -info;
+        QNO20.mechcenter = (pos0mech.x + pos1mech.x)/2;
+        value, QNO20.mechcenter  ;
+
+        value, BT3.QNO30.mechpos  ; /*****************************************************************************/
+        exec, calculatecenter("BT3.survey", BT3.QNO30);
+        option, -info;
+        QNO30.mechcenter = (pos0mech.x + pos1mech.x)/2;
+        value, QNO30.mechcenter  ;
+
+
+       /* Special calculation for matching of BT1.SMV10 *****************/
+        a10  = 0.0058; ! angle of the septum SMV10
+        L10  = 0.996; ! Magnetic length of septum SMV10 = 0.996 m. Real length = 1.064
+        Hm10 = 0.0287 + (1.064/2)*Sin(a10) ; ! Height of the middle point of the septum SMV10. This is the REAL height, that is why the leal length is used.
+        xe10 = SMV10.pos0mech.x ; ! Length from the start of the BT line to the "entry" point of the septum
+        ye10 = -(SMV10.pos0mech.y - 2433.3); ! Height of the "entry" point of the septum. Corresponds to BT1
+        xs10 = SMV10.pos1mech.x ; ! Length from the start of the BT line to the "sortie" point of the septum
+        ys10 = -(SMV10.pos1mech.y - 2433.3); ! Height of the "entry" point of the septum
+        value, xe10, ye10;
+        value, xs10, ys10;
+        value, L10;
+!       value, Hm10*Tan(a10) - ye10*Tan(a10) + xe10 + (1/2)*L10*Cos(a10) + (1/2)*L10*Sin(a10)*Tan(a10) ;
+!       value, Hm10*Tan(a10) - ys10*Tan(a10) + xs10 - (1/2)*L10*Cos(a10) - (1/2)*L10*Sin(a10)*Tan(a10) ;
+
+       /* Special calculation for matching of BT2.SMV20 *****************/
+        a20  = 0.00286; ! angle of the septum SMV20
+        L20  = 0.996 ; ! Magnetic length of septum SMV20 = 0.996 m. Real length = 1.064
+        Hm20 = 0.0196 + (1.064/2)*Sin(a20) ; ! Height of the middle point of the septum SMV20. This is the REAL height, that is why the leal length is used.
+        xe20 = SMV20.pos0mech.x ; ! Length from the start of the BT line to the "entry" point of the septum
+        ye20 = -(SMV20.pos0mech.y - 2433.66); ! Height of the "entry" point of the septum. Corresponds to BT2
+        xs20 = SMV20.pos1mech.x ; ! Length from the start of the BT line to the "sortie" point of the septum
+        ys20 = -(SMV20.pos1mech.y - 2433.66); ! Height of the "entry" point of the septum
+!       value, Hm20*Tan(a20) - ye20*Tan(a20) + xe20 + (1/2)*L20*Cos(a20) + (1/2)*L20*Sin(a20)*Tan(a20) ;
+!       value, Hm20*Tan(a20) - ys20*Tan(a20) + xs20 - (1/2)*L20*Cos(a20) - (1/2)*L20*Sin(a20)*Tan(a20) ;
+
+        print, text="------------------------------------------------";
+
+
+ };
+!bt1.qno10.mechpos =   9.388600 ;
+!exec, matchdeflect;
+
+!bt1.qno10.mechpos =   9.424600 ;
+!exec, matchdeflect;
+!stop;
+
+
+
+ match,use_macro;
+        vary, name=BT2.QNO10.mechpos , step = 0.0000001, LOWER= 9.35 ,UPPER= 9.39;
+        vary, name=BT2.QNO20.mechpos , step = 0.0000001, LOWER=11.36 ,UPPER=11.37;
+        vary, name=BT3.QNO30.mechpos , step = 0.0000001, LOWER=22.28 ,UPPER=22.30;
+        vary, name=BT1.SMV10.mechpos , step = 0.0000001, LOWER= 6.80 ,UPPER= 6.87;
+        vary, name=BT2.KFA10.mechpos , step = 0.0000001, LOWER=14.71 ,UPPER=14.73;
+        vary, name=BT2.SMV20.mechpos , step = 0.0000001, LOWER=20.84 ,UPPER=20.87;
+        vary, name=BT2.KFA20.mechpos , step = 0.0000001, LOWER=29.65 ,UPPER=29.67;
+
+        use_macro,name=matchdeflect;
+
+
+!       The matching constraints is the longitudinal mechanical position as given by the drawings
+        constraint, expr=QNO10.mechcenter = bt2.qno10.mechcenterpos;
+        constraint, expr=QNO20.mechcenter = bt2.qno20.mechcenterpos;
+        constraint, expr=QNO30.mechcenter = bt3.qno30.mechcenterpos;
+
+        constraint, expr=KFA10.mechcenter = bt4.kfa10.mechcenterpos;
+        constraint, expr=KFA20.mechcenter = bt2.kfa20.mechcenterpos;
+
+
+
+!       The matching constraints for the SMV are from the file BTmechanical.seq (V.Raginel)
+
+!       bt3.smv10.mechpos =  6.8626000 + 0.305*(1-Cos(a)); The 0.305*(1-Cos(0.0058)) is the extra distance that comes from the angle of the septum
+!       http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTPBTM/SMV10_20/PSCA9989C.pdf
+        constraint, expr=Hm10*Tan(a10) - ye10*Tan(a10) + xe10 + (1/2)*L10*Cos(a10) + (1/2)*L10*Sin(a10)*Tan(a10) = 6.86260513; ! BT1 matching
+
+!       bt3.smv20.mechpos = 20.8666000 + 0.305*(1-Cos(a)); The 0.305*(1-Cos(0.00286)) is the extra distance that comes from the angle of the septum
+!       http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTPBTM/SMV10_20/PSPA9598.pdf
+        constraint, expr=Hm20*Tan(a20) - ye20*Tan(a20) + xe20 + (1/2)*L20*Cos(a20) + (1/2)*L20*Sin(a20)*Tan(a20) = 20.86660125; ! BT2 matching
+
+        simplex, calls = 50, tolerance = 1.0E-25;
+!       lmdif,   calls = 50, tolerance = 1.0E-25;
+ endmatch;
+
+
+
+
+
+
+
+
+

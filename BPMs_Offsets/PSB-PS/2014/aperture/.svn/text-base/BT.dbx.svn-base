@@ -1,0 +1,94 @@
+option, -echo;
+option, warn;
+option, info;
+!----------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Aperture file created in August 2012 by V.Raginel, O.Berrig and B. Mikulec
+!----------------------------------------------------------------------------
+
+/****************************************************************************
+ * BT1
+ ****************************************************************************/
+BT1.BVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT1.BPM00,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT1.DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT1.VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+BT1.KFA10,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+
+/****************************************************************************
+ * BT2
+ ****************************************************************************/
+BT2.DVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT2.BPM00,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT2.DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT2.VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT2.DVT20,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+BT2.BPM10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT2.QNO10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT2.VVS30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT2.QNO20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT2.BVT20,     APERTYPE=ELLIPSE,    APERTURE={0.113/2,  0.113/2  };
+BT2.BPM20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT2.DVT40,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+
+! Magnetic Length of Septum 1 m, real length=0.999, Ltank=1.490, angle=0.00286
+BT2.SMV20,     APERTYPE=RECTANGLE,  APERTURE={0.102/2,  0.02000  };!22.86mm & 20 mm
+
+BT2.KFA20,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+/****************************************************************************
+ * BT3
+ ****************************************************************************/
+BT3.DVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT3.BPM00,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT3.DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT3.VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT3.DVT20,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+BT3.BPM10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT3.QNO10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT3.VVS20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT3.VVS30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT3.QNO20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT3.DVT30,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+BT3.BPM20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT3.DVT40,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+
+BT3.SMV20,     APERTYPE=RECTANGLE,  APERTURE={0.102/2,  0.256/2  };
+
+/****************************************************************************
+ * BT4
+ ****************************************************************************/
+BT4.BVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT4.BPM00,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT4.DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT4.VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+BT4.KFA10,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+
+/****************************************************************************
+ * BT
+ ****************************************************************************/
+BT.VPI22,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.VPI22A,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.BTV20,      APERTYPE=ELLIPSE,    APERTURE={0.100/2,  0.100/2  };
+
+! BT_VPI23 diameter=264mm. It is offset by -40 mm, which cannot be done by MAD
+BT.VPI23,      APERTYPE=ELLIPSE,    APERTURE={0.26400,  0.26400 };
+BT2.BTV30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT3.BTV30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT2.QNO30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT2.QNO30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.BPM30,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT.BCT10,      APERTYPE=ELLIPSE,    APERTURE={0.130/2,  0.130/2  }; ! From L. Soby 19/08/13
+BT.DVT50,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.VPG22,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.BTV40,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.DVT60,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.QNO40,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT.BPM40,      APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  }; ! From L. Soby 19/08/13
+BT.QNO50,      APERTYPE=ELLIPSE,    APERTURE={0.196/2,  0.196/2  };
+
+option, -echo;
+return;

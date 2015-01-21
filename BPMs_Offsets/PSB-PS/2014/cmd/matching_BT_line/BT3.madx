@@ -1,0 +1,240 @@
+option, echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+! File to calculate the "s" position of each element in BT3 line using the
+! recombination vertical angles determined in the BT.matching file.
+! A BT1.seq file isautomaticaly generated.
+!
+! File called by the BT.madx master file
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! S file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+!  Calculate the 's' position of all the elements
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+!* From DTV10 to DTV20 *!
+!-----------!
+angle = dBT3DVT10;
+E1    = 0;
+E2    = angle - E1;
+L     = LBTDVT10;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.DVT10 = Lbeam-Lgeom;
+!-----------!
+BT3.DVT10.spos = BT3.DVT10.mechpos + DL.DVT10/2;
+BT3.BPM00.spos = BT3.DVT10.spos + (BT3.BPM00.mechpos - BT3.DVT10.mechpos)/cos(dBT3DVT10) + DL.DVT10/2;
+BT3.DHZ10.spos = BT3.DVT10.spos + (BT3.DHZ10.mechpos - BT3.DVT10.mechpos)/cos(dBT3DVT10) + DL.DVT10/2;
+BT3.VVS10.spos = BT3.DVT10.spos + (BT3.VVS10.mechpos - BT3.DVT10.mechpos)/cos(dBT3DVT10) + DL.DVT10/2;
+
+!* From DVT20 to QNO10 *!
+!-----------!
+angle = dBT3DVT20;
+E1    = dBT3DVT10;
+E2    = angle - E1;
+L     = LBTDVT20;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.DVT20 = L*(angle-2*tan(angle/2))/(sin(E1)+sin(E2)); ! = Lbeam-Lgeom;
+!-----------!
+BT3.DVT20.spos  = BT3.DVT10.spos + (BT3.DVT20.mechpos  - BT3.DVT10.mechpos)/cos(dBT3DVT10) + DL.DVT10/2 + DL.DVT20/2;
+BT3.VPI11B.spos = BT3.DVT20.spos + (BT3.VPI11B.mechpos - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.SMV10.spos  = BT3.DVT20.spos + (BT3.SMV10.mechpos  - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.VGP11A.spos = BT3.DVT20.spos + (BT3.VGP11A.mechpos - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.VGR11A.spos = BT3.DVT20.spos + (BT3.VGR11A.mechpos - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.VPI11C.spos = BT3.DVT20.spos + (BT3.VPI11C.mechpos - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.BTV10.spos  = BT3.DVT20.spos + (BT3.BTV10.mechpos  - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT.VPG11.spos   = BT3.DVT20.spos + (BT.VPG11.mechpos   - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+BT3.BPM10.spos  = BT3.DVT20.spos + (BT3.BPM10.mechpos  - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10)    + DL.DVT20/2;
+
+!* From QNO10 to QNO20 *!
+!-----------!
+angle = dBT3QNO10;
+E1    = dBT3DVT20-dBT3DVT10;
+E2    = angle - E1;
+L     = LQNO;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.QNO10 = Lbeam-Lgeom;
+!-----------!
+BT3.QNO10.spos = BT3.DVT20.spos + (BT3.QNO10.mechpos - BT3.DVT20.mechpos)/cos(dBT3DVT20-dBT3DVT10) + DL.DVT20/2 + DL.QNO10/2;
+BT3.VVS20.spos = BT3.QNO10.spos + (BT3.VVS20.mechpos - BT3.QNO10.mechpos)/cos(dBT3DVT10-dBT3DVT20+dBT3QNO10)    + DL.QNO10/2;
+BT3.VVS30.spos = BT3.QNO10.spos + (BT3.VVS30.mechpos - BT3.QNO10.mechpos)/cos(dBT3DVT10-dBT3DVT20+dBT3QNO10)    + DL.QNO10/2;
+
+!* From QNO20 to DVT30 *!
+!-----------!
+angle = dBT3QNO20;
+E1    = dBT3QNO20;
+E2    = angle - E1;
+L     = LQNO;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.QNO20 = Lbeam-Lgeom;
+!-----------!
+BT3.QNO20.spos = BT3.QNO10.spos + (BT3.QNO20.mechpos - BT3.QNO10.mechpos)/cos(dBT3DVT10-dBT3DVT20+dBT3QNO10)+ DL.QNO10/2 + DL.QNO20/2;
+BT.VGP21.spos  = BT3.QNO20.spos + (BT.VGP21.mechpos  - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+BT.VGR21.spos  = BT3.QNO20.spos + (BT.VGR21.mechpos  - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+BT.VPI22.spos  = BT3.QNO20.spos + (BT.VPI22.mechpos  - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+BT.VPI22A.spos = BT3.QNO20.spos + (BT.VPI22A.mechpos - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+BT3.KFA10.spos = BT3.QNO20.spos + (BT3.KFA10.mechpos - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+BT.BTV20.spos  = BT3.QNO20.spos + (BT.BTV20.mechpos  - BT3.QNO20.mechpos)/cos(0)                                         + DL.QNO20/2;
+
+!* From DVT30 to DVT40 *!
+!-----------!
+angle = dBTDVT30;
+E1    = 0;
+E2    = angle - E1;
+L     = LBTDVT30;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.DVT30 = Lbeam-Lgeom;
+!-----------!
+BT3.DVT30.spos = BT3.QNO20.spos + (BT3.DVT30.mechpos - BT3.QNO20.mechpos)/cos(0) + DL.QNO20/2 + DL.DVT30/2;
+BT3.BPM20.spos = BT3.DVT30.spos + (BT3.BPM20.mechpos - BT3.DVT30.mechpos)/cos(dBTDVT30)       + DL.DVT30/2;
+
+
+!* From DVT40 to QNO30 *!
+!-----------!
+angle = dBTDVT40;
+E1    = dBTDVT30;
+E2    = angle - E1;
+L     = LBTDVT40;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.DVT40 = Lbeam-Lgeom;
+!-----------!
+BT3.DVT40.spos = BT3.DVT30.spos + (BT3.DVT40.mechpos - BT3.DVT30.mechpos)/cos(dBTDVT30) + DL.DVT30/2 + DL.DVT40/2;
+BT.VPI23.spos  = BT3.DVT40.spos + (BT.VPI23.mechpos  - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT.VGP22.spos  = BT3.DVT40.spos + (BT.VGP22.mechpos  - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT.VGR22.spos  = BT3.DVT40.spos + (BT.VGR22.mechpos  - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT3.SMV20.spos = BT3.DVT40.spos + (BT3.SMV20.mechpos - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT.VPI23A.spos = BT3.DVT40.spos + (BT.VPI23A.mechpos - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT3.BTV30.spos = BT3.DVT40.spos + (BT3.BTV30.mechpos - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+BT.VPI23B.spos = BT3.DVT40.spos + (BT.VPI23B.mechpos - BT3.DVT40.mechpos)/cos(dBTDVT30-dBTDVT40)     + DL.DVT40/2;
+
+!* From QNO30 to END *!
+!-----------!
+angle = dBT3QNO30;
+E1    = dBT3QNO30;
+E2    = angle - E1;
+L     = LQNO;
+!-----------!
+Lbeam    = L*angle/(sin(E1)+sin(E2));
+Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+DL.QNO30 = Lbeam-Lgeom;
+!-----------!
+BT3.QNO30.spos = BT3.DVT40.spos + (BT3.QNO30.mechpos - BT3.DVT40.mechpos )/cos(dBTDVT30-dBTDVT40) + DL.DVT40/2 + DL.QNO30/2;
+BT.BPM30.spos  =  BT3.QNO30.spos  + (BT.BPM30.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.BCT10.spos  =  BT3.QNO30.spos  + (BT.BCT10.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.DVT50.spos  =  BT3.QNO30.spos  + (BT.DVT50.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.VGP23.spos  =  BT3.QNO30.spos  + (BT.VGP23.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.VPG22.spos  =  BT3.QNO30.spos  + (BT.VPG22.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT3.KFA20.spos =  BT3.QNO30.spos  + (BT3.KFA20.mechpos - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.VPI24A.spos =  BT3.QNO30.spos  + (BT.VPI24A.mechpos - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.BTV40.spos  =  BT3.QNO30.spos  + (BT.BTV40.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.DVT60.spos  =  BT3.QNO30.spos  + (BT.DVT60.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.QNO40.spos  =  BT3.QNO30.spos  + (BT.QNO40.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.BPM40.spos  =  BT3.QNO30.spos  + (BT.BPM40.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT.QNO50.spos  =  BT3.QNO30.spos  + (BT.QNO50.mechpos  - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+BT3.END.spos   =  BT3.QNO30.spos  + (BT3.END.mechpos   - BT3.QNO30.mechpos )/cos(0)                              + DL.QNO30/2;
+
+
+
+
+
+
+
+
+
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+!  BT3 sequence
+!
+!  - Some vacuum equipements are commented out to prevent conflict in MADX. These equipements have the same position as other equipments or are overlaping
+!    with other equipments.
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+BT3: sequence, refer = centre, l = BT3.END.spos;
+   BT3.START                 , at =               0;
+   BT3.DVT10                 , at =  BT3.DVT10.spos;
+   BT3.BPM00                 , at =  BT3.BPM00.spos;
+   BT3.DHZ10                 , at =  BT3.DHZ10.spos;
+   BT3.VVS10                 , at =  BT3.VVS10.spos;
+   BT3.DVT20                 , at =  BT3.DVT20.spos;
+   BT3.VPI11B                , at = BT3.VPI11B.spos;
+   BT3.SMV10                 , at =  BT3.SMV10.spos;
+   BT3.VGP11A                , at = BT3.VGP11A.spos;
+   BT3.VGR11A                , at = BT3.VGR11A.spos;
+   BT3.VPI11C                , at = BT3.VPI11C.spos;
+   BT3.BTV10                 , at =  BT3.BTV10.spos;
+   BT.VPG11                  , at =   BT.VPG11.spos;
+   BT3.BPM10                 , at =  BT3.BPM10.spos;
+   BT3.QNO10                 , at =  BT3.QNO10.spos;
+   BT3.VVS20                 , at =  BT3.VVS20.spos;
+   BT3.VVS30                 , at =  BT3.VVS30.spos;
+   BT3.QNO20                 , at =  BT3.QNO20.spos;
+   BT.VGP21                  , at =   BT.VGP21.spos;
+   BT.VGR21                  , at =   BT.VGR21.spos;
+   BT.VPI22                  , at =   BT.VPI22.spos;
+   BT.VPI22A                 , at =  BT.VPI22A.spos;
+   BT3.KFA10                 , at =  BT3.KFA10.spos;
+   BT.BTV20                  , at =   BT.BTV20.spos;
+   BT3.DVT30                 , at =  BT3.DVT30.spos;
+   BT3.BPM20                 , at =  BT3.BPM20.spos;
+   BT3.DVT40                 , at =  BT3.DVT40.spos;
+   BT.VPI23                  , at =   BT.VPI23.spos;
+   BT.VGP22                  , at =   BT.VGP22.spos;
+   BT.VGR22                  , at =   BT.VGR22.spos;
+   BT3.SMV20                 , at =  BT3.SMV20.spos;
+!  BT.VPI23A                 , at =  BT.VPI23A.spos;
+   BT3.BTV30                 , at =  BT3.BTV30.spos;
+   BT.VPI23B                 , at =  BT.VPI23B.spos;
+   BT3.QNO30                 , at =  BT3.QNO30.spos;
+   BT.BPM30                  , at =   BT.BPM30.spos;
+   BT.BCT10                  , at =   BT.BCT10.spos;
+   BT.DVT50                  , at =   BT.DVT50.spos;
+   BT.VGP23                  , at =   BT.VGP23.spos;
+   BT.VPG22                  , at =   BT.VPG22.spos;
+   BT3.KFA20                 , at =  BT3.KFA20.spos;
+   BT.VPI24A                 , at =  BT.VPI24A.spos;
+   BT.BTV40                  , at =   BT.BTV40.spos;
+   BT.DVT60                  , at =   BT.DVT60.spos;
+   BT.QNO40                  , at =   BT.QNO40.spos;
+   BT.BPM40                  , at =   BT.BPM40.spos;
+   BT.QNO50                  , at =   BT.QNO50.spos;
+   BT3.END                   , at =    BT3.END.spos;
+endsequence;
+
+
+option, -warn;
+
+save, sequence=BT3, file='BT3.seq', bare;
+assign, echo="BT3.seq";
+print, text="! BT3 sequence, automatically generated from BT3.madx file ";
+print, text="! Sequence starts at the exit flange of the PSB extraction septum";
+print, text="! Sequence ends at the entry flange of BT.BHZ10";
+assign, echo=terminal;
+
+ system, "cp BT3.seq help ; sed 's/bt3.vpi11b/! bt3.vpi11b/' < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt3.vgp11a/! bt3.vgp11a/' < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt3.vgr11a/! bt3.vgr11a/' < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt3.vpi11c/! bt3.vpi11c/' < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt.vgp22/! bt.vgp22/'     < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt.vgr22/! bt.vgr22/'     < help > BT3.seq ";
+ system, "cp BT3.seq help ; sed 's/bt.vpi24a/! bt.vpi24a/'   < help > BT3.seq ";
+ system, "rm help";
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;
