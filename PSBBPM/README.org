@@ -1,0 +1,9 @@
+
+* Commands
+** python -i orbits.py  -uTOF   -r2
+** python -i orbits.py  -uTOF   -r2
+
+** python -i orbits.py  -uLHC50 -r1
+** python -i orbits.py  -uLHC50 -r2
+** python -i orbits.py  -uLHC50 -r3
+** python -i orbits.py  -uLHC50 -r4
