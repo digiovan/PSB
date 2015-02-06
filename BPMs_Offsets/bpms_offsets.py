@@ -15,6 +15,7 @@ def getSurveyData(survey_file):
     y_start = -999
     x_previous = -999
     y_previous = -999
+    z_previous = -999
     z_ring3 = 2433.660000
     
     line_length = array ('d')
@@ -38,6 +39,7 @@ def getSurveyData(survey_file):
                     y_start = y
                     x_previous = x
                     y_previous = y
+                    z_previous = z
                 else:
                     continue
 
@@ -63,11 +65,12 @@ def getSurveyData(survey_file):
                 L_mid = math.sqrt( (x_mid-x_start)*(x_mid-x_start) + 
                                    (y_mid-y_start)*(y_mid-y_start) )
     
-                print name, L, L_mid, z_diff
+                print name, L, L_mid, z_diff, ( ((z+z_previous)/2.) - z_ring3 )
     
             x_previous = x
             y_previous = y
-            
+            z_previous = z
+
             # exit at the first element representing the END of the line    
             if ("END" in name):
                 continue
@@ -122,7 +125,7 @@ for m in mandatories:
 
 if (opts.BATCH):
     root.gROOT.SetBatch(True)
-
+ 
 #folder = "PSB-PS/2014/out/"
 #folder = "Linac2-PSB/2014/out/"
 
