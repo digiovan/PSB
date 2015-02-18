@@ -109,7 +109,7 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
         graph_M.SetPoint     ( id, lpos_M[id], offs_M[id] )
         graph_M.SetPointError( id,          0,          0 )
 
-        ele_name = root.TLatex(lpos_M[id],offs_M[id],names_M[id])
+        ele_name = root.TLatex(lpos_M[id]+2,offs_M[id],names_M[id])
         ele_name . SetTextSize(0.015)
         ele_name . SetTextColor(root.kAzure+2)
         latex.append( ele_name )
@@ -123,8 +123,8 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
 
         linear_func = root.TF1("linear_func_%d" % id, "[0]*x+[1]", lpos_M[id], lpos_M[id+1]);
         linear_func.SetParameters(slope,offset)
-        linear_func.SetLineColor(root.kViolet)
-        linear_func.SetLineWidth(3)
+        linear_func.SetLineColor(root.kAzure+2)
+        linear_func.SetLineWidth(2)
         
         linear_funcs.append( linear_func )
 
@@ -184,123 +184,120 @@ folder = 'offsets_files/'
 # LT line
 columns_LT = defaultdict(list)
 readCSV(folder + '/'+ 
-        'LT_OFFSETS_28JAN2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LT)
 
 columns_LTB = defaultdict(list)
 readCSV(folder + '/'+ 
-        'LTB_OFFSETS_28JAN2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LTB)
+
+columns_BI = defaultdict(list)
+readCSV(folder + '/'+ 
+        'BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        columns_BI)
+
+columns_PSB = defaultdict(list)
+readCSV(folder + '/'+ 
+        'PSB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        columns_PSB)
+
 
 g_title = ""
 y_title = ""
 y_min, y_max = -0.008, 0.008
-offsets_LT = ""
+
+offsets_LT  = ""
+offsets_LTB = ""
+offsets_BI  = ""
+offsets_PSB = ""
 
 if   (opts.OFFSET=="rad"):
     offsets_LT  = columns_LT [4][1:]
-    #g_title = "LT+LTB+BI Radial Ecarts - Alesage - Spline"
-    g_title = "LT/LTB Radial Ecarts - Alesage - Spline"
+    offsets_LTB = columns_LTB[4][1:]
+    offsets_BI  = columns_BI [4][1:]
+    offsets_PSB = columns_PSB[4][1:]
+    g_title = "LT/LTB/BI Radial Ecarts - Faisceaux - Theorique Bumpees"
     y_title = "radial offset [m]"
 elif (opts.OFFSET=="ver"):
-    offsets_LT =  columns_LT[7][1:]
-    #g_title = "LT+LTB+BI Vertical Ecarts - Alesage - Spline"
-    g_title = "LT/LTB Vertical Ecarts - Alesage - Spline"
+    offsets_LT  = columns_LT [7][1:]
+    offsets_LTB = columns_LTB[7][1:]
+    offsets_BI  = columns_BI [7][1:]
+    offsets_PSB = columns_PSB[7][1:]
+    g_title = "LT/LTB/BI Vertical Ecarts - Faisceaux - Theorique Bumpees"
     y_title = "vertical offset [m]"
 elif (opts.OFFSET=="lon"):
-    offsets_LT  = columns_LT[13][1:]
-    #g_title = "LT+LTB+BI Longitudinal Ecarts - Alesage - Spline"
-    g_title = "LT/LTB Longitudinal Ecarts - Alesage - Spline"
+    offsets_LT  = columns_LT [13][1:]
+    offsets_LTB = columns_LTB[13][1:]
+    offsets_BI  = columns_BI [13][1:]
+    offsets_PSB = columns_PSB[13][1:]
+    g_title = "LT/LTB/BI Longitudinal Ecarts - Faisceaux - Theorique Bumpees"
     y_title = "longitudinal offset [m]"
     y_min, y_max = -0.08, 0.08
 else:
     print "no OFFSET defined! Options are \"rad\",\"ver\",\"lon\""
     exit(-1)
 
-## Quadrupole Magnets
+
+# add the offset of the starting of the LTB line
+LTB_start = 54.44503            # m
+BI_start  = LTB_start + 31.8431 # m
+PSB_start = 0                   # m WHERE SHOULD THE LINE START?
+
+columns_LTB[17][1:] = [float(x)+LTB_start  for x in columns_LTB[17][1:]]
+columns_BI [17][1:] = [float(x)+ BI_start  for x in columns_BI [17][1:]]
+columns_PSB[17][1:] = [float(x)+PSB_start  for x in columns_PSB[17][1:]]
+
+## All the line for calculation purpouses
+## Quadrupole Magnets LT/LTB/BI
+gQuad,gQuad_M,quadnames,fQuad  = getOffset( columns_LT [1][1:] + columns_LTB [1][1:] + columns_BI [1][1:] + columns_PSB [1][1:],
+                                            columns_LT [2][1:] + columns_LTB [2][1:] + columns_BI [2][1:] + columns_PSB [2][1:],
+                                            offsets_LT         + offsets_LTB         + offsets_BI         + offsets_PSB        ,
+                                            columns_LT[17][1:] + columns_LTB[17][1:] + columns_BI[17][1:] + columns_PSB[17][1:],
+                                            ['QFN','QDN','QFW','QDW','QNO','BRMB.1620'] )
+# to debug
+#for i in quadnames:
+#    print i.GetTitle()
+
+# to debug
+#for i in range(gQuad.GetN()):
+#    x, y = root.Double(0),root.Double(0)
+#    gQuad.GetPoint(i,x,y)
+#    print x
+
+## These are useful handles for graphical purpouses
+## Quadrupole Magnets LT
 gQuad_LT,gQuad_LT_M,quadnames_LT,fQuad_LT  = getOffset( columns_LT [1][1:],
                                                         columns_LT [2][1:],
                                                         offsets_LT        ,
                                                         columns_LT[17][1:],
                                                         ['QD','QF'] )
 
-
-## BPMs
-gBPM_LT,gBPM_LT_M,bpmnames_LT,fBPM_LT = getOffset( columns_LT [1][1:],
-                                                   columns_LT [2][1:],
-                                                   offsets_LT        ,
-                                                   columns_LT[17][1:],
-                                                   ['BPM'] )
-
-
-################################################################################
-# LTB line
-columns_LTB = defaultdict(list)
-readCSV(folder + '/'+ 
-        'LTB_OFFSETS_28JAN2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        columns_LTB)
-
-offsets_LTB = ""
-if   (opts.OFFSET=="rad"):
-    offsets_LTB  = columns_LTB [4][1:]
-elif (opts.OFFSET=="ver"):
-    offsets_LTB =  columns_LTB[7][1:]
-elif (opts.OFFSET=="lon"):
-    offsets_LTB  = columns_LTB[13][1:]
-else:
-    print "no OFFSET defined! Options are \"rad\",\"ver\",\"lon\""
-    exit(-1)
-
-
-## quadrupole magnets, horizontal offsets
 gQuad_LTB,gQuad_LTB_M,quadnames_LTB,fQuad_LTB = getOffset( columns_LTB [1][1:],
                                                            columns_LTB [2][1:],
                                                            offsets_LTB        ,
                                                            columns_LTB[17][1:],
-                                                           ['QD','QF'],
-                                                           54.44503 )
+                                                           ['QD','QF'])
 
-## BPMs
-gBPM_LTB,gBPM_LTB_M,bpmnames_LTB,fBPM_LTB = getOffset( columns_LTB [1][1:],
-                                                       columns_LTB [2][1:],
-                                                       offsets_LTB        ,
-                                                       columns_LTB[17][1:],
-                                                       ['BPM'],
-                                                       54.44503 )
-
-################################################################################
-# BI line
-columns_BI = defaultdict(list)
-readCSV(folder + '/'+ 
-        'BI_OFFSETS_28JAN2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        columns_BI)
-
-offsets_BI = ""
-if   (opts.OFFSET=="rad"):
-    offsets_BI  = columns_BI [4][1:]
-elif (opts.OFFSET=="ver"):
-    offsets_BI =  columns_BI[7][1:]
-elif (opts.OFFSET=="lon"):
-    offsets_BI  = columns_BI[13][1:]
-else:
-    print "no OFFSET defined! Options are \"rad\",\"ver\",\"lon\""
-    exit(-1)
-
-## quadrupole magnets, horizontal offsets
 gQuad_BI,gQuad_BI_M,quadnames_BI,fQuad_BI = getOffset( columns_BI [1][1:],
                                                        columns_BI [2][1:],
                                                        offsets_BI        ,
                                                        columns_BI[17][1:],
-                                                       ['QNO'],
-                                                       54.44503+31.8431 )
+                                                       ['QNO'] )
+
+gQuad_PSB,gQuad_PSB_M,quadnames_PSB,fQuad_PSB = getOffset( columns_PSB [1][1:],
+                                                           columns_PSB [2][1:],
+                                                           offsets_PSB        ,
+                                                           columns_PSB[17][1:],
+                                                           ['BRMB.1620'] )
 
 ## BPMs
-gBPM_BI,gBPM_BI_M,bpmnames_BI,fBPM_BI = getOffset( columns_BI [1][1:],
-                                                   columns_BI [2][1:],
-                                                   offsets_BI        ,
-                                                   columns_BI[17][1:],
-                                                   ['BPM'],
-                                                   54.44503+31.8431 )
+gBPM,gBPM_M,bpmnames,fBPM = getOffset( columns_LT [1][1:] + columns_LTB [1][1:] + columns_BI [1][1:],
+                                       columns_LT [2][1:] + columns_LTB [2][1:] + columns_BI [2][1:],
+                                       offsets_LT         + offsets_LTB         + offsets_BI        ,
+                                       columns_LT[17][1:] + columns_LTB[17][1:] + columns_BI[17][1:],
+                                       ['BPM'] )
+
 
 
 
@@ -309,19 +306,18 @@ gBPM_BI,gBPM_BI_M,bpmnames_BI,fBPM_BI = getOffset( columns_BI [1][1:],
 
 # All Quadrupole Magnets
 gQuad_list = []
+#gQuad_list . append(gQuad_M)
+gQuad_list = []
 gQuad_list . append(gQuad_LT_M)
 gQuad_list . append(gQuad_LTB_M)
-#gQuad_list . append(gQuad_BI_M)
-
+gQuad_list . append(gQuad_BI_M)
+gQuad_list . append(gQuad_PSB_M)
 gQuad = addtgrapherrors( gQuad_list )
 
 
 # BPM center
 gBPM_list = []
-gBPM_list . append(gBPM_LT_M)
-gBPM_list . append(gBPM_LTB_M)
-#gBPM_list . append(gBPM_BI_M)
-
+gBPM_list . append(gBPM_M)
 gBPM = addtgrapherrors( gBPM_list )
 
 
@@ -341,8 +337,18 @@ gQuad.GetYaxis().SetTitle( y_title )
 gQuad.GetXaxis().SetTitleOffset(1.2)
 gQuad.GetYaxis().SetTitleOffset(1.4)
 
-gQuad.Draw("AP")
- 
+gQuad.SetLineColor  (root.kBlack)
+#gQuad.SetMarkerColor(root.kAzure+2)
+#gQuad.SetLineStyle(0)
+gQuad.SetLineWidth(2)
+gQuad.SetMarkerStyle(20)
+#gQuad.SetMarkerSize(1)
+gQuad.Draw("AL")
+
+
+#for line in fQuad:
+#    line.Draw("same")
+   
 # LT line style
 gQuad_LT.SetLineColor  (root.kAzure+2)
 gQuad_LT.SetMarkerColor(root.kAzure+2)
@@ -360,8 +366,8 @@ gQuad_LT_M.SetMarkerStyle(20)
 gQuad_LT_M.SetMarkerSize(1)
 gQuad_LT_M.Draw("L")
 
-for line in fQuad_LT:
-    line.Draw("same")
+#for line in fQuad_LT:
+#    line.Draw("same")
 
 # LTB line style
 gQuad_LTB.SetLineColor  (root.kGreen+2)
@@ -382,8 +388,8 @@ gQuad_LTB_M.Draw("L")
 
 
 # BI line style
-gQuad_BI.SetLineColor  (root.kOrange+2)
-gQuad_BI.SetMarkerColor(root.kOrange+2)          
+gQuad_BI.SetLineColor  (root.kRed+2)
+gQuad_BI.SetMarkerColor(root.kRed+2)          
 gQuad_BI.SetLineStyle(0)
 gQuad_BI.SetLineWidth(2)
 gQuad_BI.SetMarkerStyle(20)
@@ -391,14 +397,27 @@ gQuad_BI.SetMarkerSize(1)
 gQuad_BI.Draw("P") 
 
 
-gQuad_BI_M.SetLineColor  (root.kOrange+2)
-gQuad_BI_M.SetMarkerColor(root.kOrange+2)
+gQuad_BI_M.SetLineColor  (root.kRed+2)
+gQuad_BI_M.SetMarkerColor(root.kRed+2)
 gQuad_BI_M.SetLineStyle(0)
 gQuad_BI_M.SetLineWidth(2)
 gQuad_BI_M.SetMarkerStyle(20)
 gQuad_BI_M.SetMarkerSize(1)
 gQuad_BI_M.Draw("L")
 
+# PSB line style
+gQuad_PSB.SetLineColor  (root.kBlack)
+gQuad_PSB.SetMarkerColor(root.kBlack)
+gQuad_PSB.SetLineStyle(0)
+gQuad_PSB.SetLineWidth(2)
+gQuad_PSB.SetMarkerStyle(20)
+gQuad_PSB.SetMarkerSize(1)
+gQuad_PSB.Draw("P")
+
+
+# Add the names of the quadrupole magnets
+#for id in range( 0, len(quadnames) ):
+#    quadnames[id].Draw()
 
 # Add the names of the quadrupole magnets
 for id in range( 0, len(quadnames_LT) ):
@@ -408,37 +427,36 @@ for id in range( 0, len(quadnames_LTB) ):
     quadnames_LTB[id]. SetTextColor(root.kGreen+2)
     quadnames_LTB[id]. Draw()
 
-#for id in range( 0, len(quadnames_BI) ):
-#    quadnames_BI[id]. SetTextColor(root.kOrange+2)
-#    quadnames_BI[id]. Draw()
+for id in range( 0, len(quadnames_BI) ):
+    quadnames_BI[id]. SetTextColor(root.kRed+2)
+    quadnames_BI[id]. Draw()
+
+for id in range( 0, len(quadnames_PSB) ):
+    quadnames_PSB[id]. SetTextColor(root.kBlack)
+    quadnames_PSB[id]. Draw()
 
 
 # Add BPMs center position in the plots
-gBPM.SetLineStyle(0)
+gBPM.SetLineStyle(2)
 gBPM.SetLineWidth(2)
 gBPM.SetMarkerStyle(20)
 gBPM.SetMarkerSize(1)
 gBPM.Draw("P")
 
 # Add the names of the BPMs
-for id in range( 0, len(bpmnames_LT) ):
-    bpmnames_LT[id]. SetTextColor(root.kGray+2)
-    bpmnames_LT[id]. SetX( bpmnames_LT[id].GetX()+0.3 )
-    bpmnames_LT[id]. SetY( -0.006 )
-    bpmnames_LT[id].Draw()
+bpm_list = ['LT.BPM.30', 'LTB.BPM.20','BI.BPM.00','BI.BPM.30','BI.BPM.50']
 
+for id in range( 0, len(bpmnames) ):
+    bpmnames[id]. SetTextColor(root.kGray+2)
+    bpmnames[id]. SetX( bpmnames[id].GetX()-2+0.3 )
+    bpmnames[id]. SetY( -0.006 )
+    print bpmnames[id].GetTitle() 
+    for name in bpm_list:
+        if name == bpmnames[id].GetTitle():
+            bpmnames[id]. SetY( -0.0055 )
 
-for id in range( 0, len(bpmnames_LTB) ):
-    bpmnames_LTB[id]. SetTextColor(root.kGray+2)
-    bpmnames_LTB[id]. SetX( bpmnames_LTB[id].GetX()+0.3 )
-    bpmnames_LTB[id]. SetY( -0.006 )
-    bpmnames_LTB[id]. Draw()
+    bpmnames[id].Draw()
 
-#for id in range( 0, len(bpmnames_BI) ):
-#    bpmnames_BI[id]. SetTextColor(root.kGray+2)
-#    bpmnames_BI[id]. SetX( bpmnames_BI[id].GetX()+0.3 )
-#    bpmnames_BI[id]. SetY( -0.006 )
-#    bpmnames_BI[id]. Draw()
 
 # draw vertical lines at the BPM position to help visualize them
 lineBPM = []
@@ -455,74 +473,112 @@ for id in range( int(gBPM.GetN()) ):
 
 for line in lineBPM:
     line.Draw("same")
-    
- 
-c1.Update()
- 
-# add a spline passing through the center of the quadrupole magnets
-spline3 = root.TSpline3("grSpl3",gQuad)
-spline3.SetLineColor(root.kRed)
-spline3.SetLineWidth(3)
 
-if (opts.OFFSET != "lon"):
-    spline3.Draw("same")
-
+ 
 # add a legend
 leg = root.TLegend(0.13, 0.78, 0.33, 0.93)
 #leg.SetBorderSize(2)
 leg.SetFillColor(0)
 leg.SetTextSize(0.015)
 
-leg.AddEntry(gQuad_LT,  "LT Line",  "l")
-leg.AddEntry(gQuad_LTB, "LTB Line", "l")
-leg.AddEntry(gQuad_BI,  "LT Line",  "l")
-leg.AddEntry(gBPM,      "BPM Offsets", "p")
-leg.AddEntry(spline3,   "Spline", "l")
+leg.AddEntry(gQuad_LT,  " LT Line Offsets", "l")
+leg.AddEntry(gQuad_LTB, "LTB Line Offsets", "l")
+leg.AddEntry(gQuad_BI,  " BI Line Offsets", "l")
+#leg.AddEntry(gQuad,  "LT/LTB/BI Lines (Middle Points)", "l")
+leg.AddEntry(gBPM,   " BPM Offsets (Middle Points)", "lp")
 leg.Draw("same")
 
 c1.Update()
 
+if (opts.SAVE):
+    canvas_name = 'png/LT_LTB_BI_Offsets_'
+    if (opts.OFFSET=="rad"):
+        canvas_name += 'Radial'
+    if (opts.OFFSET=="ver"):
+        canvas_name += 'Vertical'
+    if (opts.OFFSET=="lon"):
+        canvas_name += 'Longitudinal'
 
-# wall... the values are indicative
-gWall = root.TGraphAsymmErrors()
-gWall.SetFillColor(root.kGreen+2)
-gWall.SetLineColor(root.kGreen+2)
-#gWall.SetLineStyle(0)
+    c1.SaveAs(canvas_name + '.png' )
+    c1.SaveAs(canvas_name + '.root')
 
-gWall.SetPoint(0,107.5,y_min) 
-gWall.SetPointError(0,3,0, 0.,0.) 
 
-gWall.SetPoint(1,107.5,y_max) 
-gWall.SetPointError(1,3,0, 0.,0.) 
+### THIS PART IS SORT OF HARDCODED ...
+print "\ncalculate absolute BPM offset w.r.t. to the line connecting the center of the " \
+      "quadrupole magnets\n"
 
-gWall.SetLineWidth(100);
-gWall.SetFillStyle(3005);
+xBPM, yBPM, xQUAD, yQUAD = root.Double(-999), root.Double(-999), root.Double(-999), root.Double(-999)
+
+# LT.BPM10 is calculated w.r.t. to LT.QFN.10
+gBPM .GetPoint(0,xBPM, yBPM)
+gQuad.GetPoint(0,xQUAD,yQUAD)
+print "LT.BPM10 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
    
-#gWall.Draw("l")
+# LT.BPM20 is calculated w.r.t. to the line LT.QDN.32-LT.QFN.40
+gBPM .GetPoint(1,xBPM, yBPM)
+yQUAD = float( fQuad[5].Eval(xBPM) )
+print "LT.BPM20 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
 
-#ps_int = root.TLatex(110,+0.007,"PS Access")
-#ps_int.SetTextColor(root.kRed+2)
-#ps_int.SetTextSize(0.03)
-#ps_int.Draw("")
-#
-#psb_int = root.TLatex(83,+0.007,"PSB Access")
-#psb_int.SetTextColor(root.kRed+2)
-#psb_int.SetTextSize(0.03)
-#psb_int.Draw("")
-### TEST
-#columns_LTB[17][1:] = [float(x)+54.44503 for x in columns_LTB[17][1:]]
-#
-### Quadrupole Magnets
-#gQuad_LT,gQuad_LT_M,quadnames_LT,fQuad_LT  = getOffset( columns_LT [1][1:]+columns_LTB [1][1:],
-#                                                        columns_LT [2][1:]+columns_LTB [2][1:],
-#                                                        offsets_LT        +offsets_LTB        ,
-#                                                        columns_LT[17][1:]+columns_LTB[17][1:],
-#                                                        ['QD','QF'] )
-#
-#
-### BPMs
-#gBPM_LT,gBPM_LT_M,bpmnames_LT,fBPM_LT = getOffset( columns_LT [1][1:],
-#                                                   columns_LT [2][1:],
-#                                                   offsets_LT        ,
-#                                                   columns_LT[17][1:],
-#                                                   ['BPM'] )
+# LT.BPM30 is calculated w.r.t. to the line LT.QDN.42-LT.QFN.50
+gBPM .GetPoint(2,xBPM, yBPM)
+yQUAD = float( fQuad[7].Eval(xBPM) )
+print "LT.BPM30 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+
+# LT.BPM40 is calculated w.r.t. to the line LT.QFN.50-LT.QDN.55
+gBPM .GetPoint(3,xBPM, yBPM)
+yQUAD = float( fQuad[8].Eval(xBPM) )
+print "LT.BPM40 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+
+# LT.BPM50 is calculated w.r.t. to the line LT.QDN.75-LTB.QFN.10
+gBPM .GetPoint(4,xBPM, yBPM)
+yQUAD = float( fQuad[12].Eval(xBPM) )
+print "LT.BPM50 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+# LTB.BPM10/20 are calculated w.r.t. to the line LTB.QDN.20-LTB.QFW.30
+gBPM .GetPoint(5,xBPM, yBPM)
+yQUAD = float( fQuad[14].Eval(xBPM) )
+print "LTB.BPM10 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+gBPM .GetPoint(6,xBPM, yBPM)
+yQUAD = float( fQuad[14].Eval(xBPM) )
+print "LTB.BPM20 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+# LTB.BPM30 is calculated w.r.t. to the line LTB.QDW.60-BI.QNO.10
+gBPM .GetPoint(7,xBPM, yBPM)
+yQUAD = float( fQuad[18].Eval(xBPM) )
+print "LTB.BPM30 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+#BI.BPM00/10 are calculated w.r.t. to the line LTB.QDW.60-BI.QNO.10
+gBPM .GetPoint(8,xBPM, yBPM)
+yQUAD = float( fQuad[18].Eval(xBPM) )
+print "BI.BPM00 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+gBPM .GetPoint(9,xBPM, yBPM)
+yQUAD = float( fQuad[18].Eval(xBPM) )
+print "BI.BPM10 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+#BI.BPM20 is calculated w.r.t. to the line BI.QNO.20-BI.QNO.30
+gBPM .GetPoint(10,xBPM, yBPM)
+yQUAD = float( fQuad[20].Eval(xBPM) )
+print "BI.BPM20 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+#BI.BPM30 is calculated w.r.t. to the line BI.QNO.30-BI.QNO.40
+gBPM .GetPoint(11,xBPM, yBPM)
+yQUAD = float( fQuad[21].Eval(xBPM) )
+print "BI.BPM30 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+
+#BI.BPM40/50 are calculated w.r.t. to the line BI.QNO.60-PSB.BRMB.1620
+gBPM .GetPoint(12,xBPM, yBPM)
+yQUAD = float( fQuad[24].Eval(xBPM) )
+print "BI.BPM40 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+gBPM .GetPoint(13,xBPM, yBPM)
+yQUAD = float( fQuad[24].Eval(xBPM) )
+print "BI.BPM50 Absolute Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
