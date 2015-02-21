@@ -1,0 +1,17 @@
+
+* In the MADX file (http://project-ps-optics.web.cern.ch/project-PS-optics/cps/Psb/2014/psb.seq) the positions are:
+** BI.SMH1L1 at 1.7274   m  and it is long 1.041 m
+** BR.BHZ162 at 9.008652 m
+** A sector is long 9.8175 m
+
+* The BI line (http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2014/sequence/BI3.seq) ends up at
+** BI3.INJPT at 48.50321862 m
+** Assuming this is the entry flange of BI.SMH1L1 one can calculate back the position of BR.BHZ162
+*** position_BI3.INJPT + (L_BI.SMH1L1/2) - position_BI.SMH1L1 - (psb_sector_lengh-position_BR.BHZ162)
+*** 48.50321862 + (1.041/2.) - 1.7274 - (9.8175-9.008652) = 46.48747062 m
+
+* The difference is obtained:
+** BI3.QNO60 is at 40.62601862 m
+** BR.BHZ162 is at 46.48747062 m
+*** difference is (46.48747062 - 40.62601862) = 5.861452 m
+

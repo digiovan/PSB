@@ -4,8 +4,6 @@ import sys
 sys.path.append('../')
 from helpers import *
 
-import re
-
 def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
     
     #########################################################################################
@@ -40,42 +38,16 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
             #print names[i], "-- skip"
             continue
 
-        baseName = lines[i] + "." + names[i].split(".")[0] + names[i].split(".")[1] 
-        print baseName, lonPos[i]
+        #print names[i]
 
-        new_pos = -999
-        with open("madx/lt.seq") as file:
-            for line in file:
-                
-                line_matched = re.match(r"\s+(LT.Q\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)",line, re.I)
-
-                if line_matched:
-                    if (baseName == line_matched.group(1)):
-                        #print line_matched.group(1),line_matched.group(2)  
-                        new_pos = float( line_matched.group(2) )
-
-                        with open("madx/lt.ele") as file_ele:
-                            for line_ele in file_ele:
-                                line_ele_matched = re.match(r"(LT.Q\w+)\s+:\s+\w+,\s+L=\s+(\d+.\d+)",line_ele, re.I)
-                                if line_ele_matched:
-                                    if (baseName == line_ele_matched.group(1)):
-                                        #print line_ele_matched.group(1),line_ele_matched.group(2)  
-                                        if (names[i][-2:] == ".E"):
-                                            new_pos -= float( line_ele_matched.group(2) ) /2.
-                                        if (names[i][-2:] == ".S"):
-                                            new_pos += float( line_ele_matched.group(2) ) /2.
-
-        print new_pos
-                                        
         if (names[i][-2:] == ".E"):
             if (offsets[i]):
+                #print lines[i] + "." + names[i]
                 names_E.append( lines[i] + "." + names[i] )
                 lpos_E .append( float(  lonPos[i]) + start_point )
                 offs_E .append( float( offsets[i]) )
                 lpos   .append( float(  lonPos[i]) + start_point )
                 offs   .append( float( offsets[i]) )
-
-
 
         if (names[i][-2:] == ".S"):
             if (offsets[i]):
@@ -87,13 +59,13 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
 
 
     # debugging        
-    print names_E
-    print lpos_E
-    print offs_E 
+    #print names_E
+    #print lpos_E
+    #print offs_E 
 
-    print names_S
-    print lpos_S
-    print offs_S 
+    #print names_S
+    #print lpos_S
+    #print offs_S 
 
     # middle point
     names_M = []
@@ -273,13 +245,39 @@ else:
 
 
 # add the offset of the starting of the LTB line
-LTB_start = 54.44503                # m
-BI_start  = LTB_start + 31.8431     # m
-PSB_start = BI_start  + 46.48747062 # m 
+# LT ends at entry flange of BHZ30, which is 53.54503 m in offsets_files/LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv
+# since the file offsets_files/LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv starts with the entry point of LTB.BHZ30 at 1.77 m
+# one needs to 53.54503 - 1.77 to have the two files compatible
+LTB_start = 53.54503 - 1.77              # m
+# LTB finishes at the entry flange of BHZ40 which is (30.9431 - 1.77), see offsets_files/LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv,
+# and there is no ambiguity in BI files. It seems to start from entry flange of BHZ40, so no extra calculation is needed
+BI_start  = 53.54503 + (30.9431 - 1.77) # m
+# PSB.BRMB.1620 is located 5.861452 m downstream of BIx.QNO60, see how_to_calc_dist_BIxQNO60_BRxBHZ162.org,
+# BIx.QNO60 is located at (40.4427+40.8427)/2. according to offsets_files/BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv,
+# so the starting point would be (40.4427+40.8427)/2. + 5.861452 = 46.504152 m
+PSB_start = BI_start  + 46.504152        # m 
 
+#LTB_start = 54.44503                # m
+#BI_start  = LTB_start + 31.8431     # m
+#PSB_start = BI_start  + 46.48747062 # m 
+
+# add the starting point of each line as calculated with MADX
 columns_LTB[17][1:] = [float(x)+LTB_start           for x in columns_LTB[17][1:]]
 columns_BI [17][1:] = [float(x)+ BI_start           for x in columns_BI [17][1:]]
 columns_PSB[17][1:] = [float(x)-float(x)+PSB_start  for x in columns_PSB[17][1:]]
+
+# add the longitudinal offsets
+columns_LT [17][1:] = [(float(x) if x else float(0)) + (float(y) if y else float(0)) for x, y in zip(columns_LT [17][1:], columns_LT [13][1:])]
+columns_LTB[17][1:] = [(float(x) if x else float(0)) + (float(y) if y else float(0)) for x, y in zip(columns_LTB[17][1:], columns_LTB[13][1:])]
+columns_BI [17][1:] = [(float(x) if x else float(0)) + (float(y) if y else float(0)) for x, y in zip(columns_BI [17][1:], columns_BI [13][1:])]
+columns_PSB[17][1:] = [(float(x) if x else float(0)) + (float(y) if y else float(0)) for x, y in zip(columns_PSB[17][1:], columns_PSB[13][1:])]
+
+#print columns_LT [17][1:]
+#print columns_LTB[17][1:]
+#print columns_BI [17][1:]
+#print columns_PSB[17][1:]
+
+#exit(0)
 
 ## All the line for calculation purpouses
 ## Quadrupole Magnets LT/LTB/BI
