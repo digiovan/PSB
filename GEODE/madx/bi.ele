@@ -1,0 +1,339 @@
+! Name change for transformers from TRA --> BCT 7/7/2011 BM
+! BI element definitions
+! Quadrupole length and kick checked with A. Newborough 6/6/2011;
+! Magnetic length changed from 0.435 for BI.QNO10/20/30/40 and BI.QNO50/60.
+
+
+!*************************************************************************************************
+! QUADRUPOLES
+!*************************************************************************************************
+
+ BI.QNO10         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO10;
+ BI.QNO20         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO20;
+
+! QNO30 is voluntarily used as a bending magnet
+ LBIQNO30  = 0.462;
+ ABIQNO30  =-dBIQNO30; ! Negative angles moves the beam upwards
+ E1BIQNO30 = dBIDVT30;
+ E2BIQNO30 = ABIQNO30-E1BIQNO30;
+ BI.QNO30         : SBEND, L=LBIQNO30*abs(ABIQNO30/(sin(E1BIQNO30)+sin(E2BIQNO30))), ANGLE=ABIQNO30, K1:=-KBI.QNO30,
+                           TILT=pi/2, E1=E1BIQNO30, E2=E2BIQNO30;    ! K1 is positive. Focusing in HOR plane; Defocusing in VER
+! QNO40 is voluntarily used as a bending magnet
+ LBIQNO40  = 0.462;
+ ABIQNO40  = dBIQNO40;
+ E1BIQNO40 = dBIQNO40;
+ E2BIQNO40 = ABIQNO40-E1BIQNO40;
+ BI.QNO40         : SBEND, L=LBIQNO40*abs(ABIQNO40/(sin(E1BIQNO40)+sin(E2BIQNO40))), ANGLE=ABIQNO40, K1:=-KBI.QNO40,
+                           TILT=pi/2, E1=E1BIQNO40, E2=E2BIQNO40;    ! K1 is negative. Defocusing in HOR plane; Focusing in VER
+
+ BI1.QNO50        : QUADRUPOLE,      L= 0.466,  K1 := KBI1.QNO50;
+ BI2.QNO50        : QUADRUPOLE,      L= 0.466,  K1 := KBI2.QNO50;
+ BI3.QNO50        : QUADRUPOLE,      L= 0.466,  K1 := KBI3.QNO50;
+ BI4.QNO50        : QUADRUPOLE,      L= 0.466,  K1 := KBI4.QNO50;
+ BI1.QNO60        : QUADRUPOLE,      L= 0.466,  K1 := KBI1.QNO60;
+ BI2.QNO60        : QUADRUPOLE,      L= 0.466,  K1 := KBI2.QNO60;
+ BI3.QNO60        : QUADRUPOLE,      L= 0.466,  K1 := KBI3.QNO60;
+ BI4.QNO60        : QUADRUPOLE,      L= 0.466,  K1 := KBI4.QNO60;
+
+!*************************************************************************************************
+! STEERERS
+!*************************************************************************************************
+
+ BI.DHZ10         : HKICKER,         L=0; ! Real length L= 0.292
+ BI.DVT10         : VKICKER,         L=0; ! Real length L= 0.292
+ BI.DHZ20         : HKICKER,         L=0; ! Real length L= 0.292
+ BI.DVT20         : VKICKER,         L=0; ! Real length L= 0.292
+
+! DVT30 is used as a bending magnet, in order to position the beam at 5.2mm for the distributor
+ LBIDVT30  = 0.295;
+ ABIDVT30  =-dBIDVT30;
+ E1BIDVT30 = 0;
+ E2BIDVT30 = ABIDVT30-E1BIDVT30;
+ BI.DVT30         : SBEND, L=LBIDVT30*abs(ABIDVT30/(sin(E1BIDVT30)+sin(E2BIDVT30))), ANGLE=ABIDVT30,
+                           TILT=pi/2, E1=E1BIDVT30, E2=E2BIDVT30;
+
+ BI.DHZ30         : HKICKER,         L=0; ! Real length L= 0.295
+ BI.DHZ30         : HKICKER,         L=0; ! Real length L= 0.295
+ BI.DHZ40         : HKICKER,         L=0; ! Real length L= 0.327
+
+
+ LBIDVT40  = 0.327;
+ ABIDVT40  =-dBI1DVT40;
+ E1BIDVT40 =-dBI1DIS1-dBI1DIS2-dBI1DIS3-dBI1DIS4;
+ E2BIDVT40 = ABIDVT40-E1BIDVT40;
+ BI1.DVT40        : SBEND, L=LBIDVT40*abs(ABIDVT40/(sin(E1BIDVT40)+sin(E2BIDVT40))), ANGLE=ABIDVT40,
+                           TILT=pi/2, E1=E1BIDVT40, E2=E2BIDVT40;
+
+ ABIDVT40  =-dBI2DVT40;
+ E1BIDVT40 =-dBI2DIS2-dBI2DIS3-dBI2DIS4;
+ E2BIDVT40 = ABIDVT40-E1BIDVT40;
+ BI2.DVT40        : SBEND, L=LBIDVT40*abs(ABIDVT40/(sin(E1BIDVT40)+sin(E2BIDVT40))), ANGLE=ABIDVT40,
+                           TILT=pi/2, E1=E1BIDVT40, E2=E2BIDVT40;
+
+ ABIDVT40  =-dBI3DVT40;
+ E1BIDVT40 =-dBI3DIS3-dBI3DIS4;
+ E2BIDVT40 = ABIDVT40-E1BIDVT40;
+ BI3.DVT40        : SBEND, L=LBIDVT40*abs(ABIDVT40/(sin(E1BIDVT40)+sin(E2BIDVT40))), ANGLE=ABIDVT40,
+                           TILT=pi/2, E1=E1BIDVT40, E2=E2BIDVT40;
+
+ ABIDVT40  =-dBI4DVT40;
+ E1BIDVT40 =-dBI4DIS4;
+ E2BIDVT40 = ABIDVT40-E1BIDVT40;
+ BI4.DVT40        : SBEND, L=LBIDVT40*abs(ABIDVT40/(sin(E1BIDVT40)+sin(E2BIDVT40))), ANGLE=ABIDVT40,
+                           TILT=pi/2, E1=E1BIDVT40, E2=E2BIDVT40;
+
+ BI1.DHZ50        : HKICKER,         L=0; ! Real length L= 0.400
+ BI2.DHZ50        : HKICKER,         L=0; ! Real length L= 0.400
+ BI3.DHZ50        : HKICKER,         L=0; ! Real length L= 0.400
+ BI4.DHZ50        : HKICKER,         L=0; ! Real length L= 0.400
+ BI1.DVT50        : VKICKER,         L=0; ! Real length L= 0.400
+ BI2.DVT50        : VKICKER,         L=0; ! Real length L= 0.400
+ BI3.DVT50        : VKICKER,         L=0; ! Real length L= 0.400
+ BI4.DVT50        : VKICKER,         L=0; ! Real length L= 0.400
+ BI1.DHZ70        : HKICKER,         L=0;
+ BI2.DHZ70        : HKICKER,         L=0;
+ BI3.DHZ70        : HKICKER,         L=0;
+ BI4.DHZ70        : HKICKER,         L=0;
+ BI1.DVT70        : VKICKER,         L=0;
+ BI2.DVT70        : VKICKER,         L=0;
+ BI3.DVT70        : VKICKER,         L=0;
+ BI4.DVT70        : VKICKER,         L=0;
+
+
+!*************************************************************************************************
+! MISCELLANEOUS
+!*************************************************************************************************
+
+ BI.SMVHDP        : PLACEHOLDER,     L=0; ! Head dump
+ BI.STPFA10       : MARKER;               ! Fast beam stopper
+ BI.STPSW10       : MARKER;               ! Beam stopper. Regular
+ LTB.MBL10        : PLACEHOLDER,     L=0;
+ LTB.MBL20        : PLACEHOLDER,     L=0;
+ BI.MBL20         : PLACEHOLDER,     L=0;
+ BI.MBLI30        : PLACEHOLDER,     L=0;
+ BI.MBLS30        : PLACEHOLDER,     L=0;
+
+
+!*************************************************************************************************
+! KICKERS
+!*************************************************************************************************
+
+ BI.DIS0          : PLACEHOLDER,  L=0.40;
+
+! The kicker "DIS1" is defined as a bending magnet  **********************************************
+ LBI1DIS1 = 0.40;
+ LBI2DIS1 = 0.40;
+ LBI3DIS1 = 0.40;
+ LBI4DIS1 = 0.40;
+
+ ABIDIS1  = dBI1DIS1;
+ E1BIDIS1 = 0;
+ E2BIDIS1 = ABIDIS1-E1BIDIS1;
+ BI1.DIS1         : SBEND, L=LBI1DIS1*abs(ABIDIS1/(sin(E1BIDIS1)+sin(E2BIDIS1))), ANGLE=ABIDIS1,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS1, E2=E2BIDIS1;
+
+ BI2.DIS1         : PLACEHOLDER, L=LBI2DIS1;
+ BI3.DIS1         : PLACEHOLDER, L=LBI3DIS1;
+ BI4.DIS1         : PLACEHOLDER, L=LBI4DIS1;
+
+
+! The kicker "DIS2" is defined as a bending magnet  **********************************************
+ LBI1DIS2 = 0.40;
+ LBI2DIS2 = 0.40;
+ LBI3DIS2 = 0.40;
+ LBI4DIS2 = 0.40;
+
+ ABIDIS2  = dBI1DIS2;
+ E1BIDIS2 =-dBI1DIS1;
+ E2BIDIS2 = ABIDIS2-E1BIDIS2;
+ BI1.DIS2         : SBEND, L=LBI1DIS2*abs(ABIDIS2/(sin(E1BIDIS2)+sin(E2BIDIS2))), ANGLE=ABIDIS2,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS2, E2=E2BIDIS2;
+
+ ABIDIS2  = dBI2DIS2;
+ E1BIDIS2 = 0;
+ E2BIDIS2 = ABIDIS2-E1BIDIS2;
+ BI2.DIS2         : SBEND, L=LBI2DIS2*abs(ABIDIS2/(sin(E1BIDIS2)+sin(E2BIDIS2))), ANGLE=ABIDIS2,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS2, E2=E2BIDIS2;
+
+ BI3.DIS2         : PLACEHOLDER, L=LBI3DIS2;
+ BI4.DIS2         : PLACEHOLDER, L=LBI4DIS2;
+
+
+! The kicker "DIS3" is defined as a bending magnet  **********************************************
+ LBI1DIS3 = 0.40;
+ LBI2DIS3 = 0.40;
+ LBI3DIS3 = 0.40;
+ LBI4DIS3 = 0.40;
+
+ ABIDIS3  = dBI1DIS3;
+ E1BIDIS3 =-dBI1DIS1-dBI1DIS2;
+ E2BIDIS3 = ABIDIS3-E1BIDIS3;
+ BI1.DIS3         : SBEND, L=LBI1DIS3*abs(ABIDIS3/(sin(E1BIDIS3)+sin(E2BIDIS3))), ANGLE=ABIDIS3,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS3, E2=E2BIDIS3;
+
+ ABIDIS3  = dBI2DIS3;
+ E1BIDIS3 =-dBI2DIS2;
+ E2BIDIS3 = ABIDIS3-E1BIDIS3;
+ BI2.DIS3         : SBEND, L=LBI2DIS3*abs(ABIDIS3/(sin(E1BIDIS3)+sin(E2BIDIS3))), ANGLE=ABIDIS3,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS3, E2=E2BIDIS3;
+
+ ABIDIS3  = dBI3DIS3;
+ E1BIDIS3 = 0;
+ E2BIDIS3 = ABIDIS3-E1BIDIS3;
+ BI3.DIS3         : SBEND, L=LBI3DIS3*abs(ABIDIS3/(sin(E1BIDIS3)+sin(E2BIDIS3))), ANGLE=ABIDIS3,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS3, E2=E2BIDIS3;
+
+ BI4.DIS3         : PLACEHOLDER, L=LBI4DIS3;
+
+! The kicker "DIS4" is defined as a bending magnet
+ LBI1DIS4 = 0.40;
+ LBI2DIS4 = 0.40;
+ LBI3DIS4 = 0.40;
+ LBI4DIS4 = 0.40;
+
+ ABIDIS4  = dBI1DIS4;
+ E1BIDIS4 =-dBI1DIS1-dBI1DIS2-dBI1DIS3;
+ E2BIDIS4 = ABIDIS4-E1BIDIS4;
+ BI1.DIS4         : SBEND, L=LBI1DIS4*abs(ABIDIS4/(sin(E1BIDIS4)+sin(E2BIDIS4))), ANGLE=ABIDIS4,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS4, E2=E2BIDIS4;
+
+ ABIDIS4  = dBI2DIS4;
+ E1BIDIS4 =-dBI2DIS2-dBI2DIS3;
+ E2BIDIS4 = ABIDIS4-E1BIDIS4;
+ BI2.DIS4         : SBEND, L=LBI2DIS4*abs(ABIDIS4/(sin(E1BIDIS4)+sin(E2BIDIS4))), ANGLE=ABIDIS4,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS4, E2=E2BIDIS4;
+
+ ABIDIS4  = dBI3DIS4;
+ E1BIDIS4 =-dBI3DIS3;
+ E2BIDIS4 = ABIDIS4-E1BIDIS4;
+ BI3.DIS4         : SBEND, L=LBI3DIS4*abs(ABIDIS4/(sin(E1BIDIS4)+sin(E2BIDIS4))), ANGLE=ABIDIS4,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS4, E2=E2BIDIS4;
+
+ ABIDIS4  = dBI4DIS4;
+ E1BIDIS4 = 0;
+ E2BIDIS4 = ABIDIS4-E1BIDIS4;
+ BI4.DIS4         : SBEND, L=LBI4DIS4*abs(ABIDIS4/(sin(E1BIDIS4)+sin(E2BIDIS4))), ANGLE=ABIDIS4,  ! Kick the beam into one of the 4 rings in PSB. Distributer
+                           TILT=pi/2, E1=E1BIDIS4, E2=E2BIDIS4;
+
+ BI.DIS2          : VKICKER;              ! Was used for lead ions. Will be removed ASAP
+
+
+!*************************************************************************************************
+! BENDING MAGNETS
+!*************************************************************************************************
+
+! The septum "SMV" is a sector magnet for BI1, BI2 and BI4. For BI3 is is just the space between the septa.
+ LBI1SMV =  0.9639362288 ; ! The lengths are adjusted, so that the projection on the BI-line is 0.96 m long (for BI1,BI2,BI3 and BI4)
+ LBI2SMV =  0.9623015042 ; ! LBI3SMV     =  0.96 (= 64.424-63.464 or 65.77-64.81 see: PBU-MSMIA-EP-0001-01-00.pdf W.Weterings )
+ LBI3SMV =  0.96         ; ! The formula for the pole face angles for BI1.SMV {i.e. (1/2)*(0.1659-0.13125)}
+ LBI4SMV =  0.9623076662 ; ! comes from: PS/BR Note/79-7 P.Bossard, M.Chanel, G.Suberlicq, R.Valbuena
+                           ! and its values {i.e. 0.1659 and 0.13125} comes from PBU-MSMIA-EP-0001-01-00.pdf W.Weterings
+
+
+ ABISMV  = dBI1SMV;
+ E1BISMV = (1/2)*(0.1659-0.13125);
+ E2BISMV = (1/2)*(0.1659-0.13125);
+ BI1.SMV10        : SBEND, L=LBI1SMV*(ABISMV/2)/SIN(ABISMV/2), ANGLE=ABISMV,
+                           TILT=pi/2, E1=E1BISMV, E2=E2BISMV;
+
+ ABISMV  = dBI2SMV;
+ E1BISMV = 0; ! The pole face angles are zero. See: PS/BR Note/79-7 P.Bossard, M.Chanel, G.Suberlicq, R.Valbuena
+ E2BISMV = 0;
+ BI2.SMV10        : SBEND, L=LBI2SMV*(ABISMV/2)/SIN(ABISMV/2), ANGLE=ABISMV,
+                           TILT=pi/2, E1=E1BISMV, E2=E2BISMV;
+
+ BI3.SMV10        : PLACEHOLDER, L=LBI3SMV; ! No septum. Taken from: PS/BR Note/79-7 P.Bossard, M.Chanel, G.Suberlicq, R.Valbuena
+
+ ABISMV  = -dBI4SMV;
+ E1BISMV = 0; ! The pole face angles are zero. See: PS/BR Note/79-7 P.Bossard, M.Chanel, G.Suberlicq, R.Valbuena
+ E2BISMV = 0;
+ BI4.SMV10        : SBEND, L=LBI4SMV*(ABISMV/2)/SIN(ABISMV/2), ANGLE=ABISMV,
+                           TILT=pi/2, E1=E1BISMV, E2=E2BISMV;
+
+
+
+
+! The "BVT" is a rectangular bending magnet
+ LBI1BVT = 0.72; ! http://norma-db.web.cern.ch/cern_norma/magnet/idcard/?id=932#9
+ ABIBVT  =-dBI1BVT;
+ E1BIBVT = ABIBVT+0.091;
+ E2BIBVT = ABIBVT-E1BIBVT; ! = -0.091 file://cern.ch/dfs/Departments/TS/Services/Old%20Drawings/Complexe_PS/BOOSTER/12/PS-SI-1-12-1000.TIF
+ BI1.BVT10      : SBEND, L=LBI1BVT*abs(ABIBVT/(sin(E1BIBVT)+sin(E2BIBVT))), ANGLE=ABIBVT,
+                           TILT=pi/2, E1=E1BIBVT, E2=E2BIBVT;
+
+ ABIBVT  =-dBI2BVT;
+ E1BIBVT = ABIBVT+0.071;
+ E2BIBVT = ABIBVT-E1BIBVT; ! = -0.071
+ BI2.BVT10      : SBEND, L=LBI1BVT*abs(ABIBVT/(sin(E1BIBVT)+sin(E2BIBVT))), ANGLE=ABIBVT,
+                           TILT=pi/2, E1=E1BIBVT, E2=E2BIBVT;
+
+ BI3.BVT10      : PLACEHOLDER, L=0.7183692295317599; ! No bending magnet. file://cern.ch/dfs/Departments/TS/Services/Old%20Drawings/Complexe_PS/BOOSTER/12/PS-SI-1-12-1000.TIF
+
+ ABIBVT  = dBI4BVT;
+ E1BIBVT = ABIBVT-0.071;
+ E2BIBVT = ABIBVT-E1BIBVT; ! = 0.071
+ BI4.BVT10      : SBEND, L=LBI1BVT*abs(ABIBVT/(sin(E1BIBVT)+sin(E2BIBVT))), ANGLE=ABIBVT,
+                           TILT=pi/2, E1=E1BIBVT, E2=E2BIBVT;
+
+
+
+
+!*************************************************************************************************
+! BEAM INSTRUMENTATION
+!*************************************************************************************************
+
+ BI.BPM00         : MONITOR;
+ BI.BTV10         : MONITOR;
+ BI.SIEVE         : MARKER;  ! Taken out. Leak. No date for putting it back
+ BI.BPM10         : MONITOR;
+ BI.BPM20         : MONITOR;
+ BI.BCT10         : MONITOR;
+ BI.BTV20         : MONITOR;
+ BI.BPM30         : MONITOR;
+ BI.BTV30         : MONITOR;
+ BI1.BPM40        : MONITOR;
+ BI2.BPM40        : MONITOR;
+ BI3.BPM40        : MONITOR;
+ BI4.BPM40        : MONITOR;
+ BI3.SIEVE50      : MARKER;
+ BI1.BTV40        : MONITOR;
+ BI2.BTV40        : MONITOR;
+ BI3.BTV40        : MONITOR;
+ BI4.BTV40        : MONITOR;
+ BI1.BCT20        : MONITOR;
+ BI2.BCT20        : MONITOR;
+ BI3.BCT20        : MONITOR;
+ BI4.BCT20        : MONITOR;
+ BI1.BPM50        : MONITOR;
+ BI2.BPM50        : MONITOR;
+ BI3.BPM50        : MONITOR;
+ BI4.BPM50        : MONITOR;
+
+
+!*************************************************************************************************
+! VACUUM EQUIPMENT
+!*************************************************************************************************
+
+ BI.VVS10         : MARKER;
+ BI1.VVS20        : MARKER;
+ BI2.VVS20        : MARKER;
+ BI3.VVS20        : MARKER;
+ BI4.VVS20        : MARKER;
+ BI.VPI11         : MARKER;
+ BI.VPI12         : MARKER;
+ BI1.VPI14        : MARKER;
+ BI2.VPI14        : MARKER;
+ BI3.VPI14        : MARKER;
+ BI4.VPI14        : MARKER;
+
+
+
+!*************************************************************************************************
+! MISCELLANEOUS
+!*************************************************************************************************
+ BI1.INJPT        : MARKER;
+ BI2.INJPT        : MARKER;
+ BI3.INJPT        : MARKER;
+ BI4.INJPT        : MARKER;
+
+return;

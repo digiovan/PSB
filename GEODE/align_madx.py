@@ -4,6 +4,13 @@ import sys
 sys.path.append('../')
 from helpers import *
 
+import re
+
+# add the offset of the starting of the LTB line
+LTB_start = 53.472856                 # m
+BI_start  = LTB_start + 29.2351681947 # m
+PSB_start = BI_start  + 46.48747062   # m 
+
 def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
     
     #########################################################################################
@@ -38,16 +45,61 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
             #print names[i], "-- skip"
             continue
 
-        #print names[i]
+        baseName = lines[i] + "." + names[i].split(".")[0] + names[i].split(".")[1] 
+        # print baseName, lonPos[i]
+
+        madx_lon_pos = -999
+        with open("madx/ltltbbi.seq") as file_seq:
+            for line_seq in file_seq:
+                
+                line_seq_matched = re.match(r"\s+(LT.Q\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)", line_seq, re.I)  or \
+                                   re.match(r"\s+(LTB.Q\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)",line_seq, re.I)  or \
+                                   re.match(r"\s+(BI.Q\w+)\s+,\s+at\s+=\s+(\d+.\d+)",  line_seq, re.I)  or \
+                                   re.match(r"\s+(LT.BP\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)", line_seq, re.I) or \
+                                   re.match(r"\s+(LTB.BP\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)",line_seq, re.I) or \
+                                   re.match(r"\s+(BI.BP\w+)\s+,\s+at\s+=\s+(\d+.\d+)",  line_seq, re.I) 
+
+
+                if line_seq_matched:
+                    if (baseName == line_seq_matched.group(1)):
+                        #print line_seq_matched.group(1),line_seq_matched.group(2)  
+                        madx_lon_pos = float( line_seq_matched.group(2) )
+
+                        with open("madx/ltltbbi.ele") as file_ele:
+                            for line_ele in file_ele:
+                                # for the BPMs I am only interested in the middle point anyway...
+                                line_ele_matched = re.match(r"(LT.Q\w+)\s+:\s+\w+,\s+L=\s+(\d+.\d+)",   line_ele, re.I) or \
+                                                   re.match(r"(LTB.Q\w+)\s+:\s+\w+,\s+L=\s+(\d+.\d+)",  line_ele, re.I) or \
+                                                   re.match(r"\s+(BI.Q\w+)\s+:\s+\w+,\s+L=\s+(\d+.\d+)",line_ele, re.I) 
+            
+                                if line_ele_matched:
+                                    if (baseName == line_ele_matched.group(1)):
+                                        #print line_ele_matched.group(1),line_ele_matched.group(2)  
+                                        if (names[i][-2:] == ".E"):
+                                            madx_lon_pos -= float( line_ele_matched.group(2) ) /2.
+                                        if (names[i][-2:] == ".S"):
+                                            madx_lon_pos += float( line_ele_matched.group(2) ) /2.
+
+        if (madx_lon_pos != -999):                                    
+            lonPos[i] = madx_lon_pos
+            
+            if ('LTB' in baseName):
+                lonPos[i] += LTB_start
+
+            if ('BI' in baseName):
+                lonPos[i] += BI_start
+
+            # print "2)", baseName, lonPos[i]                            
 
         if (names[i][-2:] == ".E"):
             if (offsets[i]):
-                #print lines[i] + "." + names[i]
                 names_E.append( lines[i] + "." + names[i] )
                 lpos_E .append( float(  lonPos[i]) + start_point )
                 offs_E .append( float( offsets[i]) )
                 lpos   .append( float(  lonPos[i]) + start_point )
                 offs   .append( float( offsets[i]) )
+
+
 
         if (names[i][-2:] == ".S"):
             if (offsets[i]):
@@ -59,13 +111,13 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
 
 
     # debugging        
-    #print names_E
-    #print lpos_E
-    #print offs_E 
+    # print names_E
+    # print lpos_E
+    # print offs_E 
 
-    #print names_S
-    #print lpos_S
-    #print offs_S 
+    # print names_S
+    # print lpos_S
+    # print offs_S 
 
     # middle point
     names_M = []
@@ -244,10 +296,6 @@ else:
     exit(-1)
 
 
-# add the offset of the starting of the LTB line
-LTB_start = 54.44503                # m
-BI_start  = LTB_start + 31.8431     # m
-PSB_start = BI_start  + 46.48747062 # m 
 
 columns_LTB[17][1:] = [float(x)+LTB_start           for x in columns_LTB[17][1:]]
 columns_BI [17][1:] = [float(x)+ BI_start           for x in columns_BI [17][1:]]
@@ -456,7 +504,7 @@ for id in range( 0, len(bpmnames) ):
     bpmnames[id]. SetTextColor(root.kGray+2)
     bpmnames[id]. SetX( bpmnames[id].GetX()-2+0.3 )
     bpmnames[id]. SetY( -0.006 )
-    print bpmnames[id].GetTitle() 
+    #print bpmnames[id].GetTitle() 
     for name in bpm_list:
         if name == bpmnames[id].GetTitle():
             bpmnames[id]. SetY( -0.0055 )

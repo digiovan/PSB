@@ -482,7 +482,7 @@ for id in range( 0, len(bpmnames) ):
     bpmnames[id]. SetTextColor(root.kGray+2)
     bpmnames[id]. SetX( bpmnames[id].GetX()-2+0.3 )
     bpmnames[id]. SetY( -0.006 )
-    print bpmnames[id].GetTitle() 
+    #print bpmnames[id].GetTitle() 
     for name in bpm_list:
         if name == bpmnames[id].GetTitle():
             bpmnames[id]. SetY( -0.0055 )

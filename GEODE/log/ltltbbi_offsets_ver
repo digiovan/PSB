@@ -1,0 +1,17 @@
+
+calculate absolute BPM offset w.r.t. to the line connecting the center of the quadrupole magnets
+
+LT.BPM10 Offset = 3.600 mm
+LT.BPM20 Offset = 2.159 mm
+LT.BPM30 Offset = 3.485 mm
+LT.BPM40 Offset = 0.758 mm
+LT.BPM50 Offset = 0.079 mm
+LTB.BPM10 Offset = -0.096 mm
+LTB.BPM20 Offset = 0.210 mm
+LTB.BPM30 Offset = 0.113 mm
+BI.BPM00 Offset = 0.342 mm
+BI.BPM10 Offset = 0.589 mm
+BI.BPM20 Offset = 0.173 mm
+BI.BPM30 Offset = 0.363 mm
+BI.BPM40 Offset = 1.999 mm
+BI.BPM50 Offset = 2.337 mm

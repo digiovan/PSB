@@ -1,0 +1,21 @@
+
+* Lines Definitions:
+** LT  line start at the entry flange of LT.VVS10 and ends at the entry flange of LT.BHZ30
+** LTB line start at the entry flange of LT.BHZ30 and ends at the entry flange of LTB.BHZ40
+** BI3 line start at the entry flange of LTB.BHZ40 and ends at the entry flange of PSB.SMH1L1
+*** Remember that all the calculation for GEODE are done in ring 3
+*** The file how_to_calc_dist_BIxQNO60_BRxBHZ162.org reports the calculation to show how to pass from middle point of PSB.SMH1L1 to the middle point of PSB.BHZ162
+
+* Scripts
+** Just to generate some confusion in people there are 3 scripts depending from where the longitudinal positions are taken
+*** align_withLonOffset.py is the DEFAULT script: longitudinal positions are from GEODE + longitudinal offsets
+
+*** align.py: longitudinal positions are from GEODE
+
+*** align_madx.py: longitudinal positions are from madx files from the 2014 repository, see http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2014/
+
+* Commands
+** python align_withLonOffset.py -o rad -b > log/ltltbbi_offsets_rad
+** python align_withLonOffset.py -o ver -b > log/ltltbbi_offsets_ver
+** python align_withLonOffset.py -o lon
+

@@ -4,8 +4,6 @@ import sys
 sys.path.append('../')
 from helpers import *
 
-import re
-
 def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
     
     #########################################################################################
@@ -40,42 +38,16 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
             #print names[i], "-- skip"
             continue
 
-        baseName = lines[i] + "." + names[i].split(".")[0] + names[i].split(".")[1] 
-        print baseName, lonPos[i]
+        #print names[i]
 
-        new_pos = -999
-        with open("madx/lt.seq") as file:
-            for line in file:
-                
-                line_matched = re.match(r"\s+(LT.Q\w+)\s+,\s+AT\s+:=\s+(\d+.\d+)",line, re.I)
-
-                if line_matched:
-                    if (baseName == line_matched.group(1)):
-                        #print line_matched.group(1),line_matched.group(2)  
-                        new_pos = float( line_matched.group(2) )
-
-                        with open("madx/lt.ele") as file_ele:
-                            for line_ele in file_ele:
-                                line_ele_matched = re.match(r"(LT.Q\w+)\s+:\s+\w+,\s+L=\s+(\d+.\d+)",line_ele, re.I)
-                                if line_ele_matched:
-                                    if (baseName == line_ele_matched.group(1)):
-                                        #print line_ele_matched.group(1),line_ele_matched.group(2)  
-                                        if (names[i][-2:] == ".E"):
-                                            new_pos -= float( line_ele_matched.group(2) ) /2.
-                                        if (names[i][-2:] == ".S"):
-                                            new_pos += float( line_ele_matched.group(2) ) /2.
-
-        print new_pos
-                                        
         if (names[i][-2:] == ".E"):
             if (offsets[i]):
+                #print lines[i] + "." + names[i]
                 names_E.append( lines[i] + "." + names[i] )
                 lpos_E .append( float(  lonPos[i]) + start_point )
                 offs_E .append( float( offsets[i]) )
                 lpos   .append( float(  lonPos[i]) + start_point )
                 offs   .append( float( offsets[i]) )
-
-
 
         if (names[i][-2:] == ".S"):
             if (offsets[i]):
@@ -87,13 +59,13 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
 
 
     # debugging        
-    print names_E
-    print lpos_E
-    print offs_E 
+    #print names_E
+    #print lpos_E
+    #print offs_E 
 
-    print names_S
-    print lpos_S
-    print offs_S 
+    #print names_S
+    #print lpos_S
+    #print offs_S 
 
     # middle point
     names_M = []
