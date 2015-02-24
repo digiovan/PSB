@@ -93,10 +93,11 @@ def getOffset(lines,names,offsets,lonPos,sel_list="",start_point=0):
             if (offs_E[index_E] != "" and offs_S[index_S] != ""):
                 offs_M.append( (float(offs_E[index_E]) + float(offs_S[index_S]) ) / 2. ) 
                 # debugging
-                #print baseName, offs_E[index_E], offs_S[index_S],offs_M[-1] 
+                print baseName, offs_E[index_E], offs_S[index_S],offs_M[-1] 
             else:
                 offs_M.append( -999. ) 
 
+    
     # define the graph for entry and sortie points
     graph   = root.TGraphErrors( int(len(offs  )) )
 
