@@ -200,7 +200,8 @@ readCSV(folder + '/'+
 
 columns_BI = defaultdict(list)
 readCSV(folder + '/'+ 
-        'BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'BI_OFFSETS_24FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_BI)
 
 columns_PSB = defaultdict(list)
