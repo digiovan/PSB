@@ -62,8 +62,8 @@ BI.BPM00 0.00511 0.00511 0.00511
 BI.BPM10 0.00396 0.00396 0.00396
 BI.BPM20 0.00308 0.00308 0.00308
 BI.BPM30 0.00308 0.00311 0.003095
-BI.BPM40 -0.00171 -0.00206 -0.001885
-BI.BPM50 0.00101 0.00076 0.000885
+BI.BPM40 -0.00091 -0.00126 -0.001085
+BI.BPM50 -0.00158 -0.00159 -0.001585
 
 calculate absolute BPM offset w.r.t. to the line connecting the center of the quadrupole magnets
 
@@ -79,5 +79,5 @@ BI.BPM00 Offset = -0.393 mm
 BI.BPM10 Offset = 0.203 mm
 BI.BPM20 Offset = 0.178 mm
 BI.BPM30 Offset = -0.223 mm
-BI.BPM40 Offset = 2.427 mm
-BI.BPM50 Offset = -0.367 mm
+BI.BPM40 Offset = 1.627 mm
+BI.BPM50 Offset = 2.105 mm
