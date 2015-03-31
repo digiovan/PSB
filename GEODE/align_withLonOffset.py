@@ -190,18 +190,21 @@ folder = 'offsets_files/'
 # LT line
 columns_LT = defaultdict(list)
 readCSV(folder + '/'+ 
-        'LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LT_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LT)
 
 columns_LTB = defaultdict(list)
 readCSV(folder + '/'+ 
-        'LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LTB_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LTB)
 
 columns_BI = defaultdict(list)
 readCSV(folder + '/'+ 
         #'BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        'BI_OFFSETS_24FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'BI_OFFSETS_24FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'BI_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_BI)
 
 columns_PSB = defaultdict(list)
