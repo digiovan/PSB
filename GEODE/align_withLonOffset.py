@@ -541,6 +541,23 @@ if (opts.SAVE):
 
 
 ### THIS PART IS SORT OF HARDCODED ...
+"""
+
+The definition is such that the offset will be calculated with a positive
+(negative) sign if the BPM is on the right (left ) or above (below ) the line of
+crossing the quadrupoles with respect to the direction of motion of the beam,
+respectively for the horizontal and vertical plane.
+
+When applying the offset correction it is very important to take into account
+the sign definition of the beam position monitors. For the current BPMs, the
+sign definition is such that the beam position is measured to be positive
+(negative) if the beam is on the right (left) or above (below) with respect to
+the center of the BPM, respectively for the horizontal and vertical
+plane. Therefore, the calculated offsets will have to be a dded to the measured
+position of the BPMs.
+
+"""
+
 print "\ncalculate absolute BPM offset w.r.t. to the line connecting the center of the " \
       "quadrupole magnets\n"
 
@@ -549,73 +566,128 @@ xBPM, yBPM, xQUAD, yQUAD = root.Double(-999), root.Double(-999), root.Double(-99
 # LT.BPM10 is calculated w.r.t. to LT.QFN.10
 gBPM .GetPoint(0,xBPM, yBPM)
 gQuad.GetPoint(0,xQUAD,yQUAD)
-print "LT.BPM10 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+if (opts.OFFSET=="ver"):
+    print "LT.BPM10 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.)  
+else:
+    print "LT.BPM10 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.)  
    
 # LT.BPM20 is calculated w.r.t. to the line LT.QDN.32-LT.QFN.40
 gBPM .GetPoint(1,xBPM, yBPM)
 yQUAD = float( fQuad[5].Eval(xBPM) )
-print "LT.BPM20 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+
+if (opts.OFFSET=="ver"):
+    print "LT.BPM20 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.)  
+else:
+    print "LT.BPM20 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.)  
 
 # LT.BPM30 is calculated w.r.t. to the line LT.QDN.42-LT.QFN.50
 gBPM .GetPoint(2,xBPM, yBPM)
 yQUAD = float( fQuad[7].Eval(xBPM) )
-print "LT.BPM30 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+
+if (opts.OFFSET=="ver"):
+    print "LT.BPM30 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.)  
+else:
+    print "LT.BPM30 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.)  
 
 # LT.BPM40 is calculated w.r.t. to the line LT.QFN.50-LT.QDN.55
 gBPM .GetPoint(3,xBPM, yBPM)
 yQUAD = float( fQuad[8].Eval(xBPM) )
-print "LT.BPM40 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.)  
+
+if (opts.OFFSET=="ver"):
+    print "LT.BPM40 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.)  
+else:
+    print "LT.BPM40 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.)  
 
 # LT.BPM50 is calculated w.r.t. to the line LT.QDN.75-LTB.QFN.10
 gBPM .GetPoint(4,xBPM, yBPM)
 yQUAD = float( fQuad[12].Eval(xBPM) )
-print "LT.BPM50 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "LT.BPM50 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "LT.BPM50 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 # LTB.BPM10/20 are calculated w.r.t. to the line LTB.QDN.20-LTB.QFW.30
 gBPM .GetPoint(5,xBPM, yBPM)
 yQUAD = float( fQuad[14].Eval(xBPM) )
-print "LTB.BPM10 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "LTB.BPM10 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "LTB.BPM10 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 gBPM .GetPoint(6,xBPM, yBPM)
 yQUAD = float( fQuad[14].Eval(xBPM) )
-print "LTB.BPM20 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "LTB.BPM20 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "LTB.BPM20 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 # LTB.BPM30 is calculated w.r.t. to the line LTB.QDW.60-BI.QNO.10
 gBPM .GetPoint(7,xBPM, yBPM)
 yQUAD = float( fQuad[18].Eval(xBPM) )
-print "LTB.BPM30 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "LTB.BPM30 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "LTB.BPM30 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 #BI.BPM00/10 are calculated w.r.t. to the line LTB.QDW.60-BI.QNO.10
 gBPM .GetPoint(8,xBPM, yBPM)
 yQUAD = float( fQuad[18].Eval(xBPM) )
-print "BI.BPM00 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM00 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM00 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 gBPM .GetPoint(9,xBPM, yBPM)
 yQUAD = float( fQuad[18].Eval(xBPM) )
-print "BI.BPM10 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM10 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM10 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 #BI.BPM20 is calculated w.r.t. to the line BI.QNO.20-BI.QNO.30
 gBPM .GetPoint(10,xBPM, yBPM)
 yQUAD = float( fQuad[20].Eval(xBPM) )
-print "BI.BPM20 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM20 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM20 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 #BI.BPM30 is calculated w.r.t. to the line BI.QNO.30-BI.QNO.40
 gBPM .GetPoint(11,xBPM, yBPM)
 yQUAD = float( fQuad[21].Eval(xBPM) )
-print "BI.BPM30 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM30 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM30 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 
 #BI.BPM40/50 are calculated w.r.t. to the line BI.QNO.60-PSB.BRMB.1620
 gBPM .GetPoint(12,xBPM, yBPM)
 yQUAD = float( fQuad[24].Eval(xBPM) )
-print "BI.BPM40 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM40 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM40 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
 gBPM .GetPoint(13,xBPM, yBPM)
 yQUAD = float( fQuad[24].Eval(xBPM) )
-print "BI.BPM50 Offset = %4.3f mm" % ( (yQUAD-yBPM ) * 1000.) 
+
+if (opts.OFFSET=="ver"):
+    print "BI.BPM50 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
+else:
+    print "BI.BPM50 Offset = %4.3f mm" % (       (yQUAD-yBPM ) * 1000.) 
 
