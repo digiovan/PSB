@@ -1,0 +1,31 @@
+
+* Unzip the Files First
+** find ./MD_LHC50_YASP/ -name "*.gz" -exec gunzip {} \;
+
+* Command Examples
+** python -i checkBPMresponse.py -f MD_LHC50_YASP/ -c LT.DHZ10
+*** This command will print the BPM response for all the BPMs for ALL the rings in the default "rings_map" in the line due to kicks coming from LT.DHZ10
+*** The data are stored in the folder MD_LHC50_YASP/
+
+** python -i checkBPMresponse.py -f MD_LHC50_YASP/ -c LT.DHZ10 -r 3
+*** This command will print the BPM response for all the BPMs in ring "3" in the line due to kicks coming from LT.DHZ10
+*** The data are stored in the folder MD_LHC50_YASP/
+*** The data will be saved (-s option)
+
+** python -i checkBPMresponse.py -f MD_LHC50_YASP/ -c LT.DHZ10 -s 
+*** This command will print the BPM response for all the BPMs for ALL the rings in the default "rings_map" in the line due to kicks coming from LT.DHZ10
+*** The data are stored in the folder MD_LHC50_YASP/
+*** The data will be saved (-s option)
+
+** python checkBPMresponse.py -f MD_LHC50_YASP/ -c LT.DHZ10 -s -b  
+*** This command will print the BPM response for all the BPMs for ALL the rings in the default "rings_map" in the line due to kicks coming from LT.DHZ10
+*** The data are stored in the folder MD_LHC50_YASP/
+*** The data will be saved (-s option)
+*** The plots will not be shown (-b option, root batch is active
+
+* Produce All the Plots
+** source RUNME
+* Notes
+** Remember that if you use a kick in the LTB line, we cannot expect the BPMs in the LT line to respond. In LT one would only see a flat line, and the oscillations are due to the noise. Same applies to LTB and LT if one gives a kick in BI line.
+
+
