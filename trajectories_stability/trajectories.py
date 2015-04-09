@@ -234,6 +234,7 @@ for ring_plane in ring_plane_list:
             hAxes = gethAxes(average_bpms, ring_plane)
             SetOwnership( hAxes, 0 )   # 0 = release (not keep), 1 = keep, ot
             hAxes.SetTitle( user + ": " + ring_plane )
+            hAxes.GetXaxis().SetRangeUser(0,5)
             hAxes.Draw("")
 
 
