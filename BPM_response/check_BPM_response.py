@@ -17,7 +17,7 @@ from ROOT import SetOwnership
 ################################################################################
 # LOCAL DEFINITIONS
 ################################################################################
-
+   
 def getId(catEntry):
     return int(catEntry.split()[2])
 
@@ -414,38 +414,38 @@ corr   = opts.CORR
 rings_corr_map = {}
 
 # LT/LTB/BI line horizontal
-rings_corr_map['LT.DHZ10']  =  ['1','2','3','4']   #['3']    
-rings_corr_map['LT.DHZ20']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DHZ30']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DHZ40']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DHZ50']  =  ['1','2','3','4']   #['3']  
+rings_corr_map['LT.DHZ10']  = ['3'] #['1','2','3','4']       
+rings_corr_map['LT.DHZ20']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DHZ30']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DHZ40']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DHZ50']  = ['3'] #['1','2','3','4']     
                                                            
-rings_corr_map['LTB.DHZ10'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DHZ20'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DHZ30'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DHZ40'] =  ['1','2','3','4']   #['3']  
+rings_corr_map['LTB.DHZ10'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DHZ20'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DHZ30'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DHZ40'] = ['3'] #['1','2','3','4']     
                                                            
-rings_corr_map['BI.DHZ10']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DHZ20']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DHZ30']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DHZ40']  =  ['1','2','3','4']   #['3']  
+rings_corr_map['BI.DHZ10']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DHZ20']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DHZ30']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DHZ40']  = ['3'] #['1','2','3','4']     
                                                            
 # LT/LTB/BI line vertical                                  
-rings_corr_map['LT.DVT10']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DVT20']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DVT30']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DVT40']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['LT.DVT50']  =  ['1','2','3','4']   #['3']  
+rings_corr_map['LT.DVT10']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DVT20']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DVT30']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DVT40']  = ['3'] #['1','2','3','4']     
+rings_corr_map['LT.DVT50']  = ['3'] #['1','2','3','4']     
                                                            
-rings_corr_map['LTB.DVT10'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DVT20'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DVT30'] =  ['1','2','3','4']   #['3']  
-rings_corr_map['LTB.DVT40'] =  ['1','2','3','4']   #['3']  
+rings_corr_map['LTB.DVT10'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DVT20'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DVT30'] = ['3'] #['1','2','3','4']     
+rings_corr_map['LTB.DVT40'] = ['3'] #['1','2','3','4']     
                                                            
-rings_corr_map['BI.DVT10']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DVT20']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DVT30']  =  ['1','2','3','4']   #['3']  
-rings_corr_map['BI.DVT40']  =  ['1','2','3','4']   #['3']  
+rings_corr_map['BI.DVT10']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DVT20']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DVT30']  = ['3'] #['1','2','3','4']     
+rings_corr_map['BI.DVT40']  = ['3'] #['1','2','3','4']     
 
 
 # BT1 line
@@ -457,6 +457,8 @@ rings_corr_map['BT2.DVT40']  = ['1','2']
 rings_corr_map['BT2.DHZ10']  = ['2']
 rings_corr_map['BT2.DVT10']  = ['2']
 rings_corr_map['BT2.DVT20']  = ['2']
+
+rings_corr_map['BT2.DVT40']  = ['1','2']
 
 # BT3 line
 rings_corr_map['BT3.DHZ10']  = ['3']
@@ -472,6 +474,11 @@ rings_corr_map['BT4.DHZ10']  = ['4']
 # BT line
 rings_corr_map['BT.DVT50']  = ['1','2','3','4']
 rings_corr_map['BT.DVT60']  = ['1','2','3','4']
+
+# BTM line
+rings_corr_map['BTM.DHZ10DMP']  = ['3']
+
+rings_corr_map['BTM.DVT10DMP']  = ['3']
 
 # BTP line
 rings_corr_map['BTP.DHZ10']  = ['3']
@@ -699,7 +706,7 @@ for p in planes:
             if (p == 'V'):
                 variable = 'Y'
 
-            #print '(table(twiss, %s, %s) - (%+0.5f * %s->KICK))^2' % (bpm.ljust(10), variable, slope, corr)
+            print '(table(twiss, %s, %s) - (%+0.5fE+3 * %s->KICK))^2' % (bpm.ljust(10), variable, slope, corr)
             #print linear_fit.GetChisquare(),"/",linear_fit.GetNDF(), linear_fit.GetProb()
                     
             leg.AddEntry( graph,        "%s" % bpm, "lp")
@@ -715,6 +722,11 @@ for p in planes:
                     canvas.SaveAs("plots/LTLTBBI/r%s/bpm_response_%s_%s_p%s_r%s.png"  % (r,bpm,corr,p,r) )
                     canvas.SaveAs("plots/LTLTBBI/r%s/bpm_response_%s_%s_p%s_r%s.root" % (r,bpm,corr,p,r) )
                     canvas.SaveAs("plots/LTLTBBI/r%s/bpm_response_%s_%s_p%s_r%s.C"    % (r,bpm,corr,p,r) )
+
+                if ('BT' in corr):
+                    canvas.SaveAs("plots/BTBTMBTP/r%s/bpm_response_%s_%s_p%s_r%s.png"  % (r,bpm,corr,p,r) )
+                    canvas.SaveAs("plots/BTBTMBTP/r%s/bpm_response_%s_%s_p%s_r%s.root" % (r,bpm,corr,p,r) )
+                    canvas.SaveAs("plots/BTBTMBTP/r%s/bpm_response_%s_%s_p%s_r%s.C"    % (r,bpm,corr,p,r) )
         
 
 

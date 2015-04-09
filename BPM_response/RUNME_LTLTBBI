@@ -1,0 +1,44 @@
+
+#find ./MD_LHC50_YASP/ -name "*.gz" -exec gunzip {} \;
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DHZ10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DVT10 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DHZ20 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DVT20 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DHZ30 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DVT30 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DHZ40 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DVT40 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DHZ50 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LT.DVT50 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DHZ10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DVT10 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DHZ20 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DVT20 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DHZ30 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DVT30 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DHZ40 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c LTB.DVT40 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DHZ10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DVT10 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DHZ20 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DVT20 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DHZ30 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DVT30 -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DHZ40 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/LT-LTB-BI/ -c BI.DVT40 -s -b
+
+
+
