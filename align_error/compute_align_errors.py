@@ -271,7 +271,7 @@ ele_map = ['BRMB', 'BRQF', 'BRQD', 'BRUES']
 if ('LT_'  in csvfilename or
     'LTB_' in csvfilename or
     'BI_'  in csvfilename  ):
-    ele_map = ['QFN','QDN','QFW','QDW','QNO']
+    ele_map = ['QFN','QDN','QFW','QDW','QNO','BHZ','BPM']
     
 
 for ele in ele_map:
