@@ -111,8 +111,12 @@ if (opts.BATCH):
 user = opts.USER
 ring = opts.RING
 
-filename_corr = user + '/PSB.USER.%s_Ring%s_Bare.dat' % (user, ring)
+#filename_corr = user + '/PSB.USER.%s_Ring%s_Bare.dat' % (user, ring)
+filename_corr = user + '/PSB.USER.%s_Ring%s_EnergyMatching.dat' % (user, ring)
 filename_bare = user + '/PSB.USER.%s_Ring%s_Corr.dat' % (user, ring)
+
+#filename_corr = user + '/PSB.USER.%s_Ring%s_Corr.dat' % (user, ring)
+#filename_bare = user + '/PSB.USER.%s_Ring%s_Bare.dat' % (user, ring)
 
 print 'Opening file: ', filename_corr
 gRMS_hor_corr, gRMS_ver_corr = getOrbit(filename_corr)
@@ -147,19 +151,22 @@ gRMS_hor_corr.SetFillColor  (root.kGreen+2)
 gRMS_hor_bare.Draw("APL")
 gRMS_hor_corr.Draw("PL")
 
-leg_hor = root.TLegend(0.15, 0.76, 0.30, 0.87)
+leg_hor = root.TLegend(0.15, 0.76, 0.40, 0.87)
 leg_hor.SetBorderSize(1)
 leg_hor.SetFillColor(0)
 leg_hor.SetTextSize(0.025)
 # trick to have the legend not disappearing
 SetOwnership( leg_hor, 0 )   # 0 = release (not keep), 1 = keep, ot
 
-leg_hor.AddEntry(gRMS_hor_bare, "Bare Orbit", "l")
-leg_hor.AddEntry(gRMS_hor_corr, "Corr Orbit", "l")
+#leg_hor.AddEntry(gRMS_hor_bare, "Bare Orbit", "l")
+#leg_hor.AddEntry(gRMS_hor_corr, "Corr Orbit", "l")
+leg_hor.AddEntry(gRMS_hor_bare, "Corr Orbit", "l")
+leg_hor.AddEntry(gRMS_hor_corr, "Energy Matched Orbit", "l")
 leg_hor.Draw()
 
 canvas_hor.Update()
-canvas_hor.SaveAs("png/%s_hor_ring%s.png" % (user,ring) )
+#canvas_hor.SaveAs("png/%s_hor_ring%s.png" % (user,ring) )
+canvas_hor.SaveAs("png/%s_hor_ring%s_afterEM.png" % (user,ring) )
 
 # Vertical Plane
 canvas_ver = root.TCanvas("canvas_ver","",0,0,1100,850)
@@ -194,9 +201,12 @@ leg_ver.SetTextSize(0.025)
 # trick to have the legend not disappearing
 SetOwnership( leg_ver, 0 )   # 0 = release (not keep), 1 = keep, ot
 
-leg_ver.AddEntry(gRMS_ver_bare, "Bare Orbit", "l")
-leg_ver.AddEntry(gRMS_ver_corr, "Corr Orbit", "l")
+#leg_ver.AddEntry(gRMS_ver_bare, "Bare Orbit", "l")
+#leg_ver.AddEntry(gRMS_ver_corr, "Corr Orbit", "l")
+leg_ver.AddEntry(gRMS_ver_bare, "Corr Orbit", "l")
+leg_ver.AddEntry(gRMS_ver_corr, "Energy Matched Orbit", "l")
 leg_ver.Draw()
 
 canvas_ver.Update()
-canvas_ver.SaveAs("png/%s_ver_ring%s.png" % (user,ring) )
+#canvas_ver.SaveAs("png/%s_ver_ring%s.png" % (user,ring) )
+canvas_ver.SaveAs("png/%s_ver_ring%s_afterEM.png" % (user,ring) )
