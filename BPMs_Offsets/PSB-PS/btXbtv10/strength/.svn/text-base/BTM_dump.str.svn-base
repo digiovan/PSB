@@ -1,0 +1,22 @@
+option, echo;
+option, warn;
+option, info;
+!----------------------------------------------------------------------------------------------------
+! - This optics is for dumping the beam.
+!   Gradients of QNO according to report from C.Carli (Qv=4.23):
+!   http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTM/LowWP.ps
+!
+!----------------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014/strength
+! Strength file created in August 2012 by O.Berrig, G.P. Di Giovanni, V.Raginel and B. Mikulec
+!----------------------------------------------------------------------------------------------------
+
+dBTBHZ10  = -0.16239603094306485; !  BT.BHZ10 bending angle from survey
+dBTMBHZ10 = -0.350736179829213;   ! BTM.BHZ10 bending angle from survey
+
+kbtmqno05 =  0.62599;
+kbtmqno10 = -0.81000; ! From the pdf report is -0.84173; From the source file -0.81000;
+kbtmqno20 =  0.84011; ! From the pdf report is  +.81000; From the source file +0.84011;
+
+dbtmdvt10 =  0.0000000000;
+dbtmdhz10 =  0.0000000000;

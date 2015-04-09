@@ -1,0 +1,46 @@
+option, echo;
+option, -warn;
+!--------------------------------------------------------------------------------------------
+! - The lengths of BT.BHZ10, BTM.BHZ10, QNOs, DVT and DHZ is the magnetic length
+!
+! - For BT.BHZ10 and BTM.BHZ10, L corresponds to the beam path length
+!
+!--------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014/elements
+! Element file created in June 2014 by O.Berrig, G.P. Di Giovanni, V. Raginel and B. Mikulec
+!--------------------------------------------------------------------------------------------
+
+! The HGAP should be measured on the magnet
+! Magnetic length Lmag = 1.5271
+BT.BHZ10      : SBEND,       L:=1.5271* dBTBHZ10/sin(dBTBHZ10),ANGLE:= dBTBHZ10,E1=0,E2:= dBTBHZ10,FINT=0.3, HGAP=.07;
+BTM.VVS10    :  MARKER;
+BTM.BTV10    :  MARKER;
+BTM.QNO05    :  QUADRUPOLE,  L= 0.56,  K1 := KBTMQNO05;
+! Magnetic length Lmag=2.339
+BTM.BHZ10    :  SBEND,       L:= 2.339 * dBTMBHZ10/(2*sin(dBTMBHZ10/2)) ,ANGLE := dBTMBHZ10, E1:= dBTMBHZ10/2, E2:=dBTMBHZ10/2, FINT=0.3, HGAP=.540;
+BTM.QNO10    :  QUADRUPOLE,  L= 0.56,  K1 := KBTMQNO10;
+BTM.DVT10    :  VKICKER,     L= 0.300, KICK  := dBTMDVT10;
+BTM.DHZ10    :  HKICKER,     L= 0.300, KICK  := dBTMDHZ10;
+BTM.QNO20    :  QUADRUPOLE,  L= 0.56,  K1 := KBTMQNO20;
+BTM.BPM00    :  MARKER;
+BTM.BPM10    :  MARKER;
+BTM.BTV15    :  MARKER;
+BTM.VPI11    :  MARKER;
+BTM.VC       :  MARKER;
+BTM.VPI11A   :  MARKER;
+BTM.BSGH01   :  MARKER;
+BTM.BSGV01   :  MARKER;
+BTM.BSGH02   :  MARKER;
+BTM.BSGV02   :  MARKER;
+BTM.BTV20    :  MARKER;
+BTM.BSGH03   :  MARKER;
+BTM.BSGV03   :  MARKER;
+BTM.BCT10    :  MARKER;
+BTM.TDU10    :  MARKER;
+
+! According to NORMA database and the EDMS document 1159505, Lmag = 1.076/0.945= 1.138624 m
+! The deflection angle to send the beam toward BTY is dBTYBVT101 = 0.199995 rad
+! The magnet is tilted vertically such that E1=E2=dBTYBVT101/2
+BTY.BVT101   :  PLACEHOLDER, L=1.138624/cos(0.199995/2) ;
+
+return;

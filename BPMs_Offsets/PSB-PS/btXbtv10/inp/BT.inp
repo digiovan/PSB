@@ -1,0 +1,9 @@
+! BT input, automatically generated
+! Optics function at the exit flange of the BOOSTER extraction septum
+! Improved calculation September 2013 OB
+ BETX0  =  5.67329623200 ;
+ ALFX0  = -0.02432892705 ;
+ BETY0  =  4.21279245900 ;
+ ALFY0  = -0.05124060898 ;
+ DX0    = -1.34317424200 ;
+ DPX0   =  0.05737692551 ;

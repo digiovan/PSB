@@ -1,0 +1,118 @@
+option, -echo;                                                                              
+option, info;                                                                               
+option, warn;                                                                               
+                                                                                            
+!--------------------------------------------------------------------------                 
+!  This file gives the deflection points of the all the elements in the 4 BT lines,         
+!  they are extracted from the drawing psbihens0029-vAH.                                    
+!  On the drawings, the positions always refers to the crossing point of the lines.         
+!  So the crossing points on the drawings is how the deflection points are defined in MADX. 
+                                                                                            
+!  However, in the drawing psbihens0029-vAH we have two(maybe three) exceptions,            
+!  because for the SMV and the KFA the positions refers to the center of the tank,          
+!  and for the quadrupoles the positions refers to the center the quadrupoles               
+!  i.e. the small excursions of the beam, are not taken into account in the drawing.        
+!  So the positions of the SMV, KFA and the quadrupoles are matched up according to center  
+!  positions and does not come from the drawing.                                            
+                                                                                            
+!  The BT line starts at the exit flange of the SMH15L1.                                    
+!                                                                                           
+!--------------------------------------------------------------------------                 
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/cmd/matching_BT_line            
+! Sequence file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec               
+!--------------------------------------------------------------------------                 
+                                                                                            
+bt2.dvt10.mechpos =  2.8026000 ;
+bt3.dvt10.mechpos =  2.8026000 ;
+bt1.bvt10.mechpos =  3.0026000 ;
+bt4.bvt10.mechpos =  3.0026000 ;
+bt1.bpm00.mechpos =  3.8626000 ;
+bt2.bpm00.mechpos =  3.9026000 ;
+bt3.bpm00.mechpos =  3.9026000 ;
+bt4.bpm00.mechpos =  3.8626000 ;
+bt1.dhz10.mechpos =  4.4626000 ;
+bt2.dhz10.mechpos =  4.4626000 ;
+bt3.dhz10.mechpos =  4.4626000 ;
+bt4.dhz10.mechpos =  4.4626000 ;
+bt1.vvs10.mechpos =  4.7236000 ;
+bt2.vvs10.mechpos =  4.8746000 ;
+bt3.vvs10.mechpos =  4.8746000 ;
+bt4.vvs10.mechpos =  4.7236000 ;
+bt2.dvt20.mechpos =  5.6586000 ;
+bt3.dvt20.mechpos =  5.6586000 ;
+bt2.vpi11.mechpos =  6.5215000 ;
+bt3.vpi11b.mechpos =  6.5215000 ;
+bt1.smv10.mechpos =  6.8621588 ;
+bt2.smv10.mechpos =  6.8626051 ;
+bt3.smv10.mechpos =  6.8626051 ;
+bt4.smv10.mechpos =  6.8621588 ;
+bt2.vgp11.mechpos =  7.0215000 ;
+bt2.vgr11.mechpos =  7.0215000 ;
+bt2.vpi11a.mechpos =  7.0215000 ;
+bt3.vgp11a.mechpos =  7.0215000 ;
+bt3.vgr11a.mechpos =  7.0215000 ;
+bt3.vpi11c.mechpos =  7.0215000 ;
+bt2.btv10.mechpos =  7.4626000 ;
+bt3.btv10.mechpos =  7.4626000 ;
+bt.vpg11.mechpos =  8.1426000 ;
+bt2.bpm10.mechpos =  8.7926000 ;
+bt3.bpm10.mechpos =  8.7926000 ;
+bt1.qno10.mechpos =  9.3626094 ;
+bt2.qno10.mechpos =  9.3625991 ;
+bt3.qno10.mechpos =  9.3625990 ;
+bt4.qno10.mechpos =  9.3626094 ;
+bt3.vvs20.mechpos =  9.9996000 ;
+bt2.vvs30.mechpos = 10.7936000 ;
+bt3.vvs30.mechpos = 10.7936000 ;
+bt1.qno20.mechpos = 11.3625943 ;
+bt2.qno20.mechpos = 11.3625990 ;
+bt3.qno20.mechpos = 11.3625990 ;
+bt4.qno20.mechpos = 11.3625943 ;
+bt.vgp21.mechpos = 13.5081000 ;
+bt.vgr21.mechpos = 13.5081000 ;
+bt.vpi22.mechpos = 13.5081000 ;
+bt.vpi22a.mechpos = 13.5081000 ;
+bt1.kfa10.mechpos = 14.7125857 ;
+bt2.kfa10.mechpos = 14.7126000 ;
+bt3.kfa10.mechpos = 14.7126000 ;
+bt4.kfa10.mechpos = 14.7125857 ;
+bt.btv20.mechpos = 15.9001000 ;
+bt3.dvt30.mechpos = 16.3626000 ;
+bt2.bvt20.mechpos = 16.6136000 ;
+bt2.bpm20.mechpos = 17.4523000 ;
+bt3.bpm20.mechpos = 17.3941000 ;
+bt2.dvt40.mechpos = 18.9139000 ;
+bt3.dvt40.mechpos = 19.4125000 ;
+bt.vpi23.mechpos = 20.0645000 ;
+bt.vgp22.mechpos = 20.4106000 ;
+bt.vgr22.mechpos = 20.4106000 ;
+bt2.smv20.mechpos = 20.8660330 ;
+bt3.smv20.mechpos = 20.8666012 ;
+bt.vpi23a.mechpos = 20.8666000 ;
+bt2.btv30.mechpos = 21.4516000 ;
+bt3.btv30.mechpos = 21.4516000 ;
+bt.vpi23b.mechpos = 21.4516000 ;
+bt2.qno30.mechpos = 22.2826012 ;
+bt3.qno30.mechpos = 22.2825995 ;
+bt.bpm30.mechpos = 25.7431000 ;
+bt.bct10.mechpos = 26.3051000 ;
+bt.dvt50.mechpos = 26.8941000 ;
+bt.vgp23.mechpos = 27.8863000 ;
+bt.vpg22.mechpos = 27.8863000 ;
+bt2.kfa20.mechpos = 29.6625943 ;
+bt3.kfa20.mechpos = 29.6626000 ;
+bt.vpi24a.mechpos = 29.6626000 ;
+bt.btv40.mechpos = 30.8501000 ;
+bt.dvt60.mechpos = 31.2176000 ;
+bt.qno40.mechpos = 31.7076000 ;
+bt.bpm40.mechpos = 32.2851000 ;
+bt.qno50.mechpos = 33.0776000 ;
+bt1.end.mechpos = 34.2293348 ;
+bt2.end.mechpos = 34.2293348 ;
+bt3.end.mechpos = 34.2293348 ;
+bt4.end.mechpos = 34.2293348 ;
+ option, info;                                                                              
+ option, warn;                                                                              
+ option, echo;                                                                              
+ return;                                                                                    
+                                                                                            

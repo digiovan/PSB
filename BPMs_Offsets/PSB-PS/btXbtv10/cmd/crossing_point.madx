@@ -1,0 +1,61 @@
+ title, 'Calculate crossing point';
+
+option, -echo, -info;
+
+ calculatecrossing(filename, element): macro = {
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+!   write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the crossing point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-2;
+    pos0.x = Z;
+    pos0.y = Y;
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos1.x = Z;
+    pos1.y = Y;
+    a1 = (pos1.y-pos0.y)/(pos1.x-pos0.x);
+    b1 = pos1.y-a1*pos1.x;
+!   value, pos0.x, pos0.y;
+!   value, pos1.x, pos1.y;
+!   value, a1, b1;
+
+ // Calculate the second straight line
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos2.x = Z;
+    pos2.y = Y;
+    SETVARS,TABLE=mysurvey,ROW=row+1;
+    pos3.x = Z;
+    pos3.y = Y;
+    a2 = (pos3.y-pos2.y)/(pos3.x-pos2.x);
+    b2 = pos3.y-a2*pos3.x;
+!   value, pos2.x, pos2.y;
+!   value, pos3.x, pos3.y;
+!   value, a2, b2;
+    x.cross = (b1-b2)/(a2-a1);
+    y.cross = a1*x.cross+b1;
+};
+
+
+
+
+!--------------------------------------------------------------------------
+! Crossing point
+!--------------------------------------------------------------------------
+
+ exec, calculatecrossing("../out/BT1.survey", BT1.BVT10 );
+ value, x.cross, y.cross;
+

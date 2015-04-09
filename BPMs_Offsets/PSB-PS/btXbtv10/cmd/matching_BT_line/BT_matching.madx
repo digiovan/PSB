@@ -1,0 +1,165 @@
+option, echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+! Matching file to determine the vertical recombination angles described by
+! the 4 beams. This file is called by the BT.madx master file
+!
+! - The angles of the verican bending magnets BTV10s and BVT20 are calculated from
+! the beam trajectories described in the report PS/OP/BR/Note 81-5.
+! - The angles of the vertical septa (SMV10 & 20) and vertical kickers (KFA10 & 20)
+! are matched using as input their mechanical position (BTmechanical.seq) and the
+! beam  trajectories described in the report PS/OP/BR/Note 81-5. The matching is
+! done in  four steps: the first recombination for Ring 3 (same as Ring 2), the
+! first recombination for Ring 4 (same as Ring 1), the second recombination for
+! Ring 3&4 and the second recombination for Ring 1&2.
+! Based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Matching file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+
+
+/****************************************************************************
+ * BT, mechanical positions
+ ****************************************************************************/
+ call, file = 'BTmechanical.seq';
+
+ option, echo;
+ option, info;
+ option, warn;
+
+
+/****************************************************************************
+ * BT1
+ ****************************************************************************/
+ a1 =  0                                                  ;
+ a2 = -(.36-.063)/(BT1.SMV10.mechpos-BT1.BVT10.mechpos)   ;
+ dBT1BVT10  =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+ a1 = -(.36-.063)/(BT1.SMV10.mechpos-BT1.BVT10.mechpos)   ;
+ a2 = -(.063-.0549)/(BT1.QNO10.mechpos-BT1.SMV10.mechpos) ;
+ dBT1SMV10  =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+ a1 = -(.063-.0549)/(BT1.QNO10.mechpos-BT1.SMV10.mechpos) ;
+ a2 = -(.0549-.0287)/(BT1.QNO20.mechpos-BT1.QNO10.mechpos);
+ dBT1QNO10 =  atan(abs( (a1-a2)/(1+a1*a2) ))              ;
+
+ a1 = -(.0549-.0287)/(BT1.QNO20.mechpos-BT1.QNO10.mechpos);
+ a2 = -(.0287)/(BT1.KFA10.mechpos-BT1.QNO20.mechpos)      ;
+ dBT1QNO20 =  atan(abs( (a1-a2)/(1+a1*a2) ))              ;
+
+
+ a1 = -(.0287)/(BT1.KFA10.mechpos-BT1.QNO20.mechpos)      ;
+ a2 =  0                                                  ;
+ dBT1KF10   =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+
+/****************************************************************************
+ * BT4
+ ****************************************************************************/
+ a1 =  0                                                  ;
+ a2 = -(.36-.063)/(BT4.SMV10.mechpos-BT4.BVT10.mechpos)   ;
+ dBT4BVT10  =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+ a1 = -(.36-.063)/(BT4.SMV10.mechpos-BT4.BVT10.mechpos)   ;
+ a2 = -(.063-.0549)/(BT4.QNO10.mechpos-BT4.SMV10.mechpos) ;
+ dBT4SMV10  =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+ a1 = -(.063-.0549)/(BT4.QNO10.mechpos-BT4.SMV10.mechpos) ;
+ a2 = -(.0549-.0287)/(BT4.QNO20.mechpos-BT4.QNO10.mechpos);
+ dBT4QNO10 =  atan(abs( (a1-a2)/(1+a1*a2) ))              ;
+
+ a1 = -(.0549-.0287)/(BT4.QNO20.mechpos-BT4.QNO10.mechpos);
+ a2 = -(.0287)/(BT4.KFA10.mechpos-BT4.QNO20.mechpos)      ;
+ dBT4QNO20 =  atan(abs( (a1-a2)/(1+a1*a2) ))              ;
+
+
+ a1 = -(.0287)/(BT4.KFA10.mechpos-BT4.QNO20.mechpos)      ;
+ a2 =  0                                                  ;
+ dBT4KF10   =  atan(abs( (a1-a2)/(1+a1*a2) ))             ;
+
+
+/****************************************************************************
+ * BT3
+ ****************************************************************************/
+ a1 =  0                                                      ;
+ a2 =  (0.01321-0.0)/(BT3.DVT20.mechpos-BT3.DVT10.mechpos)    ;
+ dBT3DVT10  =  atan(abs( (a1-a2)/(1+a1*a2)) )                 ;
+
+ a1 =  (0.01321-0.0)/(BT3.DVT20.mechpos-BT3.DVT10.mechpos)    ;
+ a2 = -(0.00832+0.01321)/(BT3.QNO10.mechpos-BT3.DVT20.mechpos);
+ dBT3DVT20  =  atan(abs( (a1-a2)/(1+a1*a2) ))                 ;
+
+ a1 = -(0.00832+0.01321)/(BT3.QNO10.mechpos-BT3.DVT20.mechpos);
+ a2 =  (0.00832)/(BT3.QNO20.mechpos-BT3.QNO10.mechpos)        ;
+ dBT3QNO10 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  (0.00832)/(BT3.QNO20.mechpos-BT3.QNO10.mechpos)        ;
+ a2 =  0                                                      ;
+ dBT3QNO20 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  0                                                      ;
+ a2 = -(0.00813-0.0)/(BT3.DVT40.mechpos-BT3.DVT30.mechpos)    ;
+ dBTDVT30  =  atan(abs( (a1-a2)/(1+a1*a2) ))                 ;
+
+ a1 = -(0.00813-0.0)/(BT3.DVT40.mechpos-BT3.DVT30.mechpos)    ;
+ a2 =  (0.00813-0.0)/(BT3.QNO30.mechpos-BT3.DVT40.mechpos)    ;
+ dBTDVT40  =  atan(abs( (a1-a2)/(1+a1*a2) ))                 ;
+
+ a1 =  (0.00813-0.0)/(BT3.QNO30.mechpos-BT3.DVT40.mechpos)    ;
+ a2 =  0                                                      ;
+ dBT3QNO30 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+
+/****************************************************************************
+ * BT2
+ ****************************************************************************/
+ dBTBVT20 = atan((.36-.044)/(BT2.SMV20.mechpos-BT2.BVT20.mechpos)); ! = 74.16421801e-3 ;
+
+ a1 =  0                                                      ;
+ a2 =  (0.01321-0.0)/(BT2.DVT20.mechpos-BT2.DVT10.mechpos)    ;
+ dBT2DVT10  =  atan(abs( (a1-a2)/(1+a1*a2)) )                 ;
+
+ a1 =  (0.01321-0.0)/(BT2.DVT20.mechpos-BT2.DVT10.mechpos)    ;
+ a2 = -(0.00832+0.01321)/(BT2.QNO10.mechpos-BT2.DVT20.mechpos);
+ dBT2DVT20  =  atan(abs( (a1-a2)/(1+a1*a2) ))                 ;
+
+ a1 = -(0.00832+0.01321)/(BT2.QNO10.mechpos-BT2.DVT20.mechpos);
+ a2 =  (0.00832)/(BT2.QNO20.mechpos-BT2.QNO10.mechpos)        ;
+ dBT2QNO10 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  (0.00832)/(BT2.QNO20.mechpos-BT2.QNO10.mechpos)        ;
+ a2 =  0                                                      ;
+ dBT2QNO20 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  (.36-.044)/(BT2.SMV20.mechpos-BT2.BVT20.mechpos)       ;
+ a2 =  (.044-0.0399432)/(BT2.QNO30.mechpos-BT2.SMV20.mechpos) ;
+ dBTSMV20  =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  (.044-0.0399432)/(BT2.QNO30.mechpos-BT2.SMV20.mechpos) ;
+ a2 =  (0.0399432)/(BT2.KFA20.mechpos-BT2.QNO30.mechpos)      ;
+ dBT2QNO30 =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+ a1 =  (0.0399432)/(BT2.KFA20.mechpos-BT2.QNO30.mechpos)      ;
+ a2 =  0                                                      ;
+ dBTKF20   =  atan(abs( (a1-a2)/(1+a1*a2) ))                  ;
+
+
+/****************************************************************************
+ * Save angles in the file:  "matching_angle_position.prt"
+ ****************************************************************************/
+ assign, echo="matching_angle_position.prt";
+ value, dBT2DVT10, dBT2DVT20, dBT2QNO10, dBT2QNO20;
+ value, dBT3DVT10, dBT3DVT20, dBT3QNO10, dBT3QNO20;
+ value, dBT1BVT10, dBT1SMV10, dBT1QNO10, dBT1QNO20, dBT1KF10;
+ value, dBT4BVT10, dBT4SMV10, dBT4QNO10, dBT4QNO20, dBT4KF10;
+ value, dBTDVT30,  dBTDVT40,  dBT3QNO30;
+ value, dBTBVT20,  dBTSMV20,  dBT2QNO30, dBTKF20;
+ assign, echo=terminal;
+
+ return;
+

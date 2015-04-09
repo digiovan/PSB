@@ -1,0 +1,181 @@
+!--------------------------------------------------------------------------
+! Optics file to calculate the optics of the transferline BT4_BTP. The trajectory is
+! based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud.
+!
+!
+! - BT1 recombines totaly with BT2 after BT1.KF10 and with BT3 after BT2.KFA20.
+! - The QNO10, QNO20 and QN30 are misaligned.
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/madx
+! Optics file created in September 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+ title, 'BT line and BTP line. Protons - 1.4 GeV';
+
+
+/******************************************************************************************
+ * BT
+ ******************************************************************************************/
+ call, file = '../strength/BT_BTP.str';
+ call, file = '../elements/BT.ele';
+ call, file = '../sequence/BT4.seq';
+ call, file = '../aperture/BT.dbx';
+
+
+/******************************************************************************************
+ * BTP
+ ******************************************************************************************/
+ call, file = '../strength/BTP.str';
+ call, file = '../elements/BTP.ele';
+ call, file = '../elements/stray.ele';
+ call, file = '../sequence/stray.seq';
+ call, file = '../sequence/BTP.seq';
+ call, file = '../aperture/BTP.dbx';
+
+
+/******************************************************************************************
+ * set initial twiss parameters
+ ******************************************************************************************/
+ call, file = '../inp/BT.inp';
+
+!-----------------------------------------------------
+! set initial position and angle (x,px) and (y,py)
+! E.g. :
+! x0 := 0.0;
+! px0:= 0.0;
+! y0 := 0.0;
+! py0:= 0.0;
+!-----------------------------------------------------
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+
+
+/******************************************************************************************
+ * Sequence: bt4btp
+ ******************************************************************************************/
+ bt4btp: SEQUENCE, refer=ENTRY  , l  =  69.70659229;
+                   bt4          , at =            0;
+                   btp          , at =  34.24016392;
+ ENDSEQUENCE;
+
+!save, sequence=bt4btp, file=bt4btp.save;
+
+
+/******************************************************************************************
+ * beam and use
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+ use, sequence=bt4btp;
+
+
+/******************************************************************************************
+ * BT4_BTP.twiss
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,angle,k1L,k2L,k3L,beta11,beta22,disp1,disp3,x,y,alfa11,alfa22,mu1,mu2,disp2,disp3,px,py;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;  ! INITBETA0 points to the start of the BT line.
+ write,table=ptc_twiss,file="../out/BT4_BTP.twiss";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BT4_BTP.config
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = keyword,name,parent,l,s;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BT4_BTP.config";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BT4_BTP.tfs
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column =name, keyword, s, l, k0l, k1l,angle, y, py, x, px, BETX, ALFX, BETY, ALFY, DISP1, DISP2, DISP3,DISP4, MU1, MU2;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BT4_BTP.tfs";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BT4_BTP.out
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column =name,s,x,px,y,py,alfa11,beta11,alfa22,beta22,mu1,mu2,disp1,disp2;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BT4_BTP.out";
+ ptc_end;
+
+
+/******************************************************************************************
+ * PLOT
+ ******************************************************************************************/
+ resplot;
+ setplot, post=2;
+
+ plot, title='BT4_BTP'  , table=ptc_twiss
+                                , haxis=s
+                                , vaxis1=beta11,beta22
+                                , style:=100,symbol:=4,colour=100
+                                , file = "../out/BT4_BTP";
+
+
+/******************************************************************************************
+ * Survey
+ ******************************************************************************************/
+ select, flag=survey, clear;
+ select, flag=survey, column=name, s, l, z, x, y;
+
+! New Ejection point given by Drawings and Survey z0=1880.1405971066347, x0=2090.7822669027646
+! Point A(xA,yA) is the ejection point of Survey and Point B(xB,yB) is the deflection point in BT.BHZ10 given by Survey.
+! Point PSBex (xPSBex, yPSBex) is the new BT start point
+! xPSBex =  xA - (34.9976 - Sqrt[((xB - xA)^2 + (yB - yA)^2)])*(xB - xA)/Sqrt[((xB - xA)^2 + (yB - yA)^2)]
+! yPSBex = yA - (34.9976 - Sqrt[((xB - xA)^2 + (yB - yA)^2)])*(yB - yA)/ Sqrt[((xB - xA)^2 + (yB - yA)^2)]
+
+! New start of BT line, exit flange of the SMH15L1
+! z0=1880.1405971066347, x0=2090.7822669027646  and  theta0 = 7.404510501918276 (GEODE 2007)
+
+ set, format="20.15f";
+
+ survey, z0=1880.1405971066347, x0=2090.7822669027646, y0=2433.66+0.36, theta0=7.404510501918276, file="../out/BT4_BTP.survey";
+
+
+/******************************************************************************************
+ * remove: Maxwellian_bend_for_ptc.txt
+ ******************************************************************************************/
+ system,"rm Maxwellian_bend_for_ptc.txt";
+ stop;
+
+
+

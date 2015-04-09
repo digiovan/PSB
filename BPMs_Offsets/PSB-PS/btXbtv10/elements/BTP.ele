@@ -1,0 +1,58 @@
+option, -echo;
+option, -warn;
+
+!--------------------------------------------------------------------------------------------
+! - The lengths of BHZ, QNOs, DHZs, DVTs and the PS septum42 is the magnetic length. For the
+!   other elements, it is the mechanical length
+!
+! - For BT.BHZ10, L corresponds to the beam path length
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Element file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+ dTBHP      :=   0.15708954960146848; ! BT.BHZ10 bending angle from survey
+
+! The HGAP should be measured on the magnet
+! Magnetic length L = 1.5271
+! L                  = 1.5271*dTBHP/(Sin(E1)+Sin(E2)), where E1+E2=dTBHP and E1=0;
+! 1.5333988694       = 1.5271*0.15708954960146848/(Sin(0)+Sin(0.15708954960146848))
+! Ldeflect           = (L/(dTBHP/2))*Tan[(dTBHP/2)]
+! 1.5365599935435688 = (1.5333988694/(0.15708954960146848/2)) * Tan(0.15708954960146848/2)
+
+BT.BHZ10   : SBEND,       L=1.5333988694, ANGLE:=dTBHP, E1=0,E2=dTBHP, FINT=0.3, HGAP=.07;
+BTP.VVS10  : MARKER;
+BTP.BPM00  : MONITOR,     L=0.185;
+BTP.DHZ10  : HKICKER,     L=0.436,  KICK:= kBTPDHZ10;
+BTP.DVT10  : VKICKER,     L=0.436,  KICK:= kBTPDVT10;
+BTP.QNO10  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO10;
+BTP.QNO20  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO20;
+BTP.DHZ20  : HKICKER,     L=0.436,  KICK:= kBTPDHZ20;
+BTP.BPM10  : MONITOR,     L=0.185;
+BTP.DVT20  : VKICKER,     L=0.436,  KICK:= kBTPDVT20;
+BTP.QNO30  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO30;
+BTP.VPI11  : MARKER;
+BTP.STP10  : INSTRUMENT,  L=1.457;
+BTP.QNO40  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO40;
+BTP.DHZ30  : HKICKER,     L=0.436,  KICK:= kBTPDHZ30;
+BTP.BPM20  : MONITOR,     L=0;! Real length L=0.185
+BTP.DVT30  : VKICKER,     L=0.436,  KICK:= kBTPDVT30;
+BTP.QNO50  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO50;
+BTP.VPI12  : MARKER;
+BTP.BCT10  : MONITOR,     L=0.4488;
+BTP.DVT40  : VKICKER,     L=0.436,  KICK:= kBTPDVT40;
+BTP.QNO60  : QUADRUPOLE,  L=0.465,  K1  := kBTPQNO60;
+BTP.BPM30  : MONITOR,     L=0.185;
+BTP.BTV10  : MONITOR,     L=0.270;
+BTP.VVS20  : MARKER;
+BTP.DHZ40  : HKICKER,       KICK:= kBTPDHZ40;  ! L=0.436,  Length commented out; overlapping between DHZ40 and DVT50.
+BTP.DVT50  : VKICKER,       KICK:= kBTPDVT50;  ! L=0.436,
+
+PI.SMH42   : SBEND,       L=0.620004, ANGLE = -.055;
+pointS     : MARKER;
+
+
+option, warn;
+option, echo;
+return;

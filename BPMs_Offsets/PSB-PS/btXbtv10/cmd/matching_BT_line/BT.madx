@@ -1,0 +1,144 @@
+option, -echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+! THIS FILE (BT.madx) IS THE MASTER FILE FOR GENERATING THE 4 BT SEQUENCE FILES: BT1.seq, BT2.seq, BT3.seq and BT4.seq.
+!
+! The MADX model of the BT lines is based on the drawing psbihens0029-vAH
+! (element positions) and on the report PS/OP/BR/Note 81-5 from J.P. Delahaye
+! and J.P. Rinaud (describing the trajectories of the 4 beams).
+!
+! The MASTER file is organizd as following :
+! 1 - Determination of the vertical recombination angles described by the 4 beams
+!     calling the BT_matching.madx file.
+!     The angles of the verican bending magnets BVT10 and BVT20 are calculated from
+!     the beam trajectories described in the report PS/OP/BR/Note 81-5.
+!     The angles of the vertical septa (SMV10 & SMV20) and vertical kickers (KFA10 & KFA20)
+!     are matched using as input their mechanical position (BTmechanical.seq) and the
+!     beam  trajectories described in the report PS/OP/BR/Note 81-5. The matching is
+!     done in  four steps: the first recombination for Ring 3 (same as Ring 2), the
+!     first recombination for Ring 4 (same as Ring 1), the second recombination for
+!     Ring 3&4 and the second recombination for Ring 1&2.
+! 2 - Call of BT1.madx, BT2.madx, BT3.madx, BT4.madx : using the vertical angles determined in the
+!     first step, the "s" position of each element for each line is determined and sequence
+!     files are generated for each line (BT1.seq, BT2.seq, BT3.seq and BT4.seq).
+!
+!
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/cmd
+! Madx file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+!---------------------------------------------------------------------------
+!---------------------------------------------------------------------------
+! 1- BT.matching to determine the vertical angles of the 4 beam
+!---------------------------------------------------------------------------
+!---------------------------------------------------------------------------
+ call, file = 'BT_matching.madx';
+
+!---------------------------------------------------------------------------
+!---------------------------------------------------------------------------
+! 2- Calculate the elements position from the vertical angle determined in
+! BT.matching and generate sequences files
+!---------------------------------------------------------------------------
+!---------------------------------------------------------------------------
+ set,  format="-18s";
+ set,  format="12.8f";
+
+ call, file = '../../elements/BT.ele';
+
+ call, file = 'BT4.madx';
+ call, file = 'BT3.madx';
+ call, file = 'BT2.madx';
+ call, file = 'BT1.madx';
+
+
+value,  BT1.BVT10->L;
+value,  BT1.SMV10->L;
+value,  BT1.QNO10->L;
+value,  BT1.QNO20->L;
+value,  BT1.KFA10->L;
+value,  BT1.DHZ10->L;
+value,  BT1.BPM00->L;
+value,  BT1.VVS10->L;
+value,  BT2.DVT10->L;
+value,  BT2.DVT20->L;
+value,  BT2.QNO10->L;
+value,  BT2.QNO20->L;
+value,  BT2.QNO30->L;
+value,  BT2.BVT20->L;
+value,  BT2.SMV20->L;
+value,  BT2.KFA20->L;
+value,  BT2.DHZ10->L;
+value,  BT2.DVT40->L;
+value,  BT2.BTV10->L;
+value,  BT2.BPM00->L;
+value,  BT2.BPM10->L;
+value,  BT2.BPM20->L;
+value,  BT2.VVS10->L;
+value,  BT2.VPI11->L;
+value,  BT2.VGP11->L;
+value,  BT2.VGR11->L;
+value,  BT2.VPI11A->L;
+value,  BT2.VVS30->L;
+value,  BT2.BTV30->L;
+value,  BT3.DHZ10->L;
+value,  BT3.DVT10->L;
+value,  BT3.DVT20->L;
+value,  BT3.DVT30->L;
+value,  BT3.DVT40->L;
+value,  BT3.QNO10->L;
+value,  BT3.QNO20->L;
+value,   BT3.QNO30->L;
+value,  BT3.SMV10->L;
+value,  BT3.SMV20->L;
+value,  BT3.KFA10->L;
+value,  BT3.KFA20->L;
+value,  BT3.BTV10->L;
+value,  BT3.BPM00->L;
+value,  BT3.BPM10->L;
+value,  BT3.BPM20->L;
+value,  BT3.VVS10->L;
+value,  BT3.VPI11B->L;
+value,  BT3.VGP11A->L;
+value,  BT3.VGR11A->L;
+value,  BT3.VPI11C->L;
+value,  BT3.VVS20->L;
+value,  BT3.VVS30->L;
+value,  BT3.BTV30->L;
+value,  BT4.BVT10->L;
+value,  BT4.SMV10->L;
+value,  BT4.QNO10->L;
+value,  BT4.QNO20->L;
+value,  BT4.KFA10->L;
+value,  BT4.DHZ10->L;
+value,  BT4.BPM00->L;
+value,  BT4.VVS10->L;
+value,  BT.DVT50->L;
+value,  BT.DVT60->L;
+value,  BT.QNO40->L;
+value,  BT.QNO50->L;
+value,  BT.BTV20->L;
+value,  BT.BTV40->L;
+value,  BT.BPM30->L;
+value,  BT.BPM40->L;
+value,  BT.BCT10->L;
+value,  BT.VPG11->L;
+value,  BT.VGP21->L;
+value,  BT.VGR21->L;
+value,  BT.VPI22->L;
+value,  BT.VPI22A->L;
+value,  BT.VPI23->L;
+value,  BT.VGP22->L;
+value,  BT.VGR22->L;
+value,  BT.VPI23A->L;
+value,  BT.VPI23B->L;
+value,  BT.VGP23->L;
+value,  BT.VPG22->L;
+value,  BT.VPI24A->L;
+
+
+
+

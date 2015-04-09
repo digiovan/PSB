@@ -1,0 +1,8 @@
+! BTM3 input, automatically generated from BT3.out file (i.e. ring 3) with BT_dump optics
+! Optics function at the entry flange of the BT.BHZ10
+ BETX0  =   5.710056;
+ ALFX0  =   0.463768;
+ BETY0  =  20.118446;
+ ALFY0  =   0.494329;
+ DX0    =   1.393860;
+ DPX0   =  -0.121226;

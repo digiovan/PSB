@@ -1,0 +1,6 @@
+
+/afs/cern.ch/user/m/madx/bin/madx_dev < BT1.madx
+/afs/cern.ch/user/m/madx/bin/madx_dev < BT2.madx
+/afs/cern.ch/user/m/madx/bin/madx_dev < BT3.madx
+/afs/cern.ch/user/m/madx/bin/madx_dev < BT4.madx
+

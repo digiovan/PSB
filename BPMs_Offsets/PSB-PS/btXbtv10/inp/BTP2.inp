@@ -1,0 +1,8 @@
+! BTP2 input, automatically generated from BT2.out file (i.e. ring 2) with BTP optics
+! Optics function at the entry flange of the BT.BHZ10
+ BETX0  =   2.516732;
+ ALFX0  =   0.730429;
+ BETY0  =  25.541430;
+ ALFY0  =  -0.315758;
+ DX0    =   0.834977;
+ DPX0   =  -0.401298;

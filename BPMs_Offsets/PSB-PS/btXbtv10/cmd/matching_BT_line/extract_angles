@@ -1,0 +1,50 @@
+
+echo ----------------------;
+echo - BT1  BT4            ;
+echo ----------------------;
+
+grep   dbt1bvt10   matching_angle_position.prt
+grep   dbt4bvt10   matching_angle_position.prt
+grep   dbt1smv10   matching_angle_position.prt
+grep   dbt4smv10   matching_angle_position.prt
+grep   dbt1qno10   matching_angle_position.prt
+grep   dbt4qno10   matching_angle_position.prt
+grep   dbt1qno20   matching_angle_position.prt
+grep   dbt4qno20   matching_angle_position.prt
+grep   dbt1kf10    matching_angle_position.prt
+grep   dbt4kf10    matching_angle_position.prt
+
+
+
+echo ----------------------;
+echo - BT2  BT3            ;
+echo ----------------------;
+
+grep  dbt2dvt10   matching_angle_position.prt
+grep  dbt3dvt10   matching_angle_position.prt
+grep  dbt2dvt20   matching_angle_position.prt
+grep  dbt3dvt20   matching_angle_position.prt
+grep  dbt2qno10   matching_angle_position.prt
+grep  dbt3qno10   matching_angle_position.prt
+grep  dbt2qno20   matching_angle_position.prt
+grep  dbt3qno20   matching_angle_position.prt
+
+
+echo ----------------------;
+echo - BT2  BT1            ;
+echo ----------------------;
+
+grep  dbtbvt20    matching_angle_position.prt
+grep  dbtsmv20    matching_angle_position.prt
+grep  dbt3qno30   matching_angle_position.prt
+grep  dbt2qno30   matching_angle_position.prt
+grep  dbtkf20     matching_angle_position.prt
+
+echo ----------------------;
+echo - BT3  BT4            ;
+echo ----------------------;
+
+grep  dbtdvt30    matching_angle_position.prt
+grep  dbtdvt40    matching_angle_position.prt
+
+

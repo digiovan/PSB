@@ -57,7 +57,7 @@ def getSurveyData(survey_file):
                 line_length.append(L)
                 line_height.append(z)
             
-            if ("BPM" in name):
+            if ("BPM" in name or "BTV10" in name):
                 # calculate mid-point
                 x_mid = (x+x_previous)/2.
                 y_mid = (y+y_previous)/2.
