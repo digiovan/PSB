@@ -1,0 +1,34 @@
+!title, 'test';
+!
+!option,-echo,-info;
+!print_value(the_value) : macro={ 
+!                                ! a := the_value;
+!                                value, $the_value;
+!                                }
+!
+!exec, print_value(5);
+!exec, print_value(-5);
+!stop;
+
+/***********************************************************
+ * test_MACRO.madx
+ *
+ * Call this program by: >madx < test_MACRO.madx
+ *
+ ***********************************************************/
+
+title, 'test';
+
+option,-echo,-info;
+
+
+print_value(the_value) : macro={
+                                a = the_value;
+                                value, a;
+                                }
+
+the_value = -5;
+exec, print_value($the_value);
+
+stop;
+

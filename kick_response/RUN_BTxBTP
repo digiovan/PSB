@@ -1,0 +1,35 @@
+
+python kick_response_new.py -c BT1.DHZ10 -k 100 -s
+python kick_response_new.py -c BT2.DHZ10 -k 100 -s
+python kick_response_new.py -c BT3.DHZ10 -k 100 -s
+python kick_response_new.py -c BT4.DHZ10 -k 100 -s
+						   -s
+python kick_response_new.py -c BT2.DVT10 -k 100 -s
+python kick_response_new.py -c BT2.DVT20 -k 100 -s
+python kick_response_new.py -c BT2.DVT40 -k 100 -s
+						   -s
+python kick_response_new.py -c BT3.DVT10 -k 100 -s
+python kick_response_new.py -c BT3.DVT20 -k 100 -s
+# python kick_response_new.py -c BT3.DVT30 -k 100 -s # could not manage to get data
+# python kick_response_new.py -c BT3.DVT40 -k 100 -s # forgot to take the data
+
+python kick_response_new.py -c BT.DVT50 -k 100 -s 
+python kick_response_new.py -c BT.DVT60 -k 100 -s
+
+############ with easta_clone
+
+python kick_response_new.py -c BT3.DHZ10 -k 100 -s
+python kick_response_new.py -c BTP.DHZ10 -k 100 -s
+python kick_response_new.py -c BTP.DHZ20 -k 100 -s
+python kick_response_new.py -c BTP.DHZ30 -k 100 -s
+
+python kick_response_new.py -c BT3.DVT10 -k 100 -s
+python kick_response_new.py -c BT3.DVT20 -k 100 -s
+
+python kick_response_new.py -c BT.DVT50 -k 100 -s
+python kick_response_new.py -c BT.DVT60 -k 100 -s
+
+python kick_response_new.py -c BTP.DVT10 -k 100 -s
+python kick_response_new.py -c BTP.DVT20 -k 100 -s
+python kick_response_new.py -c BTP.DVT30 -k 100 -s
+python kick_response_new.py -c BTP.DVT40 -k 100 -s

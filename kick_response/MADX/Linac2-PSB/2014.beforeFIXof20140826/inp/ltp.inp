@@ -1,0 +1,20 @@
+! input conditions as in Trace file
+
+BETX0 :=  1.342;
+ALFX0 := -0.190;
+MUX0  :=  0.0;
+BETY0 :=  2.48;
+ALFY0 :=  0.103;
+MUY0  :=  0.0;
+X0    :=  0.0;
+PX0   :=  0.0;
+Y0    :=  0.0;
+PY0   :=  0.0;
+T0    :=  0.0;
+PT0   :=  0.0;
+DX0   :=  0.0;
+DPX0  :=  0.0;
+DY0   :=  0.0;
+DPY0  :=  0.0;
+
+return;

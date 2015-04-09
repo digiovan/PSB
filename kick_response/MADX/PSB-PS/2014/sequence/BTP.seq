@@ -1,0 +1,84 @@
+option, -echo;
+option, info;
+option, warn;
+!---------------------------------------------------------------------------
+! - The sequence starts exactly at the entry point of BT.BHZ10 and ends at
+!   the exit flange of the PS injection septum PI (pointS).
+!
+! - All commented positions are extracted from the drawing PSBIHENS0030F-vAF
+!   These positions are all relative to the deflection points.
+!
+! - Deflection angle of BT.BHZ10 is 157.1 mrad (Drawing and Survey agrees)
+!
+! - The position of the elements corresponds to the magnetic center
+!   where applicable otherwise to the mechanical center of each element.
+!   These positions are calculated from the commented position subtracting the
+!   distance from the Deflection Point to the Sortie Point of the BT.BHZ10 (~0.7682799 m)
+!   and adding the beam path in the BT.BHZ10 (~1.5334 m).
+!
+! - The position of BT.BHZ10 which is half of the beam path in BT.BHZ10.
+!
+! - The PI.SMH42 position is caculated adding the BTP.QNO60 position to the
+!   distance between BTP.QNO60 and the entry of the blade of PI.SMH42 - from survey&drawings -
+!   and adding half of the beam path in the PI.SMH42.
+!
+! - The position of the pointS is calculated adding half of the beam path in
+!   the PI.SMH42 and the distance from the end of the blade to the exit flange of SI.MH42
+!   to the 's' position of PI.SHM42.
+!
+! - The position of the Beam Loss Monitor (MBL) are commented to prevent conflict with other
+!   elements in MADX
+!
+!---------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014
+! Sequence file created in May 2014 by V.Raginel, O.Berrig, G.P. Di Giovanni and B. Mikulec
+!---------------------------------------------------------------------------------------------
+! The position of each element is then computed as:
+!    dist w.r.t. deflection point (from drawing) - Ldeflect/2 + L(Path Length)
+!
+! Ldeflect    = 1.5365599935435688/2, see [...]/TransLines/PSB-PS/2014/elements/BTP.ele
+!             = 0.768279996771784379
+!
+! Path length = L = 1.5333988694
+
+ BTP: sequence, refer = centre , l  =  35.4664283726;
+
+ BT.BHZ10                      , at =   0.7666994347; ! Path length/2
+ ! BT.MBL40                    , at =   1.7 ;
+ BTP.VVS10                     , at =   1.9571188726; ! 1.1920 = 36.5270 - 35.3350
+ BTP.STP10                     , at =   2.9671188726; ! 2.2020 = 37.5370 - 35.3350
+ BTP.BPM00                     , at =   4.0686188726; ! 3.3035 = 38.6385 - 35.3350
+ BTP.DHZ10                     , at =   4.7861188726; ! 4.0210 = 39.3560 - 35.3350
+ BTP.DVT10                     , at =   5.2661188726; ! 4.5010 = 39.8360 - 35.3350
+ ! BTP.MBL00                   , at =   5.5 ;
+ BTP.QNO10                     , at =   6.3681188726; ! 5.6030 = 40.9380 - 35.3350
+ ! BTP.MBL10                   , at =  10.8 ;
+ BTP.QNO20                     , at =  11.3641188726; ! 10.5990 = 45.9340 - 35.3350
+ BTP.DHZ20                     , at =  11.9641188726; ! 11.1990 = 46.5340 - 35.3350
+ BTP.BPM10                     , at =  12.4471188726; ! 11.6820 = 47.0170 - 35.3350
+ BTP.DVT20                     , at =  13.2641188726; ! 12.4990 = 47.8340 - 35.3350
+ BTP.QNO30                     , at =  13.8641188726; ! 13.0990 = 48.4340 - 35.3350
+ BTP.VPI11                     , at =  14.9541188726; ! 14.1890 = 49.5240 - 35.3350
+ BTP.QNO40                     , at =  19.1661188726; ! 18.4010 = 53.7360 - 35.3350
+ BTP.DHZ30                     , at =  19.7161188726; ! 18.9510 = 54.2860 - 35.3350
+ BTP.BPM20                     , at =  20.1426188726; ! 19.3775 = 54.7125 - 35.3350
+ BTP.DVT30                     , at =  20.9511188726; ! 20.1860 = 55.5210 - 35.3350
+ BTP.QNO50                     , at =  21.6661188726; ! 20.9010 = 56.2360 - 35.3350
+ BTP.VPI12                     , at =  25.2111188726; ! 24.4460 = 59.7810 - 35.3350
+ BTP.BCT10                     , at =  26.1821188726; ! 25.4170 = 60.7520 - 35.3350
+ BTP.DVT40                     , at =  26.7341188726; ! 25.9690 = 61.3040 - 35.3350
+ BTP.QNO60                     , at =  27.3651188726; ! 26.6000 = 61.9350 - 35.3350
+ BTP.BPM30                     , at =  27.8681188726; ! 27.1030 = 62.4380 - 35.3350
+ BTP.BTV10                     , at =  28.4741188726; ! 27.7090 = 63.0440 - 35.3350
+ BTP.VVS20                     , at =  28.6591188726; ! 27.8940 = 63.2290 - 35.3350
+ BTP.DHZ40                     , at =  28.9321188726; ! 28.1670 = 63.5020 - 35.3350
+ BTP.DVT50                     , at =  29.3191188726; ! 28.5540 = 63.8890 - 35.3350
+ stray                         , at =  29.602760 + 4.86/2 ;
+ PI.SMH42                      , at =  35.0613708726; ! 27.3651188726 (BTP.QNO60 position) + 7.38625 (distance BTP.QNO60 to entry of the septum blade - from survey & drawings) + 0.620004/2 (half of the beam path in the septum)
+ pointS                        , at =  35.4664283726; ! 35.0613708726 (septum42 position) + 0.620004/2 (half of the beam path in the septum) + 0.0950555 (Distance between the sortie of septum blade and the sortie flange of the septum)
+ endsequence;
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;

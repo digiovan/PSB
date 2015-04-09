@@ -1,0 +1,12 @@
+The "k" recipe as I used it :
+
+- take the i value
+
+- divide it by 63 if it is a QN, and by 15 if it is a QW
+
+ -> you get the B' (T/m)
+
+- Divide it by 1.03527 (the magnetic rigidity of our protons)
+
+You get the K1...
+ 

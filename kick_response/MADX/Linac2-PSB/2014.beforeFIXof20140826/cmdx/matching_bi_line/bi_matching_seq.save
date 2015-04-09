@@ -1,0 +1,16 @@
+dbidvt30 = 0.001687693792;
+none = 0;
+lbiqno30 = 0.462;
+kbi.qno30 = 0.8709058989;
+lbiqno40 = 0.462;
+kbi.qno40 = -1.096051375;
+bi.dvt30: vkicker,l:= 0,kick:=tan ( dbidvt30 ) ;
+bi.qno30: quadrupole,l:=lbiqno30 ,k1:=kbi.qno30 ;
+bi.qno40: quadrupole,l:=lbiqno40 ,k1:=kbi.qno40 ;
+bi.end: marker;
+bi_matching_seq: sequence, l = 100;
+bi.dvt30, at = 22.7660001;
+bi.qno30, at = 23.97469691;
+bi.qno40, at = 25.2241542;
+bi.end: marker, at = 100;
+endsequence;

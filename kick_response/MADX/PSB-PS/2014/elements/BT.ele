@@ -1,0 +1,242 @@
+option, -echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+! - The length of any magnetic elements is the magnetic length provide
+!   by A.Newborough.
+!
+! - For the vertical bending magnets, kicker and septa, L corresponds to the
+!   beam path length.
+!
+! - The vertical correctors DVT10, DVT20, DVT30, DVT40 on BT2, BT3, BT4 are
+!   used to compensate the misalignment of the QNO10, QNO20 and QNO30.
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/elements
+! Element file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+
+/****************************************************************************
+ * BT1
+ ****************************************************************************/
+
+ ! Magnetic Length of BT1_BVT10 : .9066 m  from A. Newborough
+ LBTBVT10 = 0.9066;
+ BT1.BVT10     : SBEND, L :=LBTBVT10 * (dBT1BVT10/2)/sin(dBT1BVT10/2), ANGLE:=-dBT1BVT10, TILT=pi/2, E1:=-dBT1BVT10/2,E2:=-dBT1BVT10/2;
+
+
+ ! Magnetic Length of Septum 0.996, real length=1.064. Ltank=1.85,angle=-0.0058
+ LBT1SMV10 = 0.996;
+ BT1.SMV10     : SBEND, L := LBT1SMV10*dBT1SMV10/(abs(sin(dBT1BVT10-0.0058)+sin(-(dBT1BVT10-dBT1SMV10-0.0058)))), ANGLE:=dBT1SMV10, TILT=pi/2, E1:=dBT1BVT10-0.0058, E2:=-(dBT1BVT10-dBT1SMV10-0.0058);
+
+
+ ! QUADRUPOLE DEFINED AS SBEND WITH QUADRUPOLAR COMPONENT
+ LQNO=0.466;
+ BT1.QNO10     : SBEND, L:=LQNO*dBT1QNO10/(abs(sin(dBT1BVT10-dBT1SMV10)+sin(-(dBT1QNO10+dBT1BVT10-dBT1SMV10)))), ANGLE:=-dBT1QNO10, K1:=-kBTQNO10,
+                                                TILT=pi/2, E1:=dBT1BVT10-dBT1SMV10, E2:=-(dBT1QNO10+dBT1BVT10-dBT1SMV10);    ! K1 is negative. Defocusing magnet.
+ BT1.QNO20     : SBEND, L:=LQNO*dBT1QNO20/(abs(sin(dBT1QNO10+dBT1BVT10-dBT1SMV10)+sin(-(dBT1BVT10-dBT1SMV10+dBT1QNO10-dBT1QNO20)))), ANGLE:=dBT1QNO20, K1:=-kBTQNO20,
+                                                TILT=pi/2, E1:=dBT1QNO10+dBT1BVT10-dBT1SMV10, E2:=-(dBT1BVT10-dBT1SMV10+dBT1QNO10-dBT1QNO20);    ! K1 is positive. Focusing magnet.
+
+ ! Recombination kicker
+ LKFA10=0.78*2;
+ BT1.KFA10    : SBEND, L:=LKFA10*dBT1KF10/sin(dBT1KF10), ANGLE:=dBT1KF10, TILT=pi/2, E1:=dBT1KF10, E2:= 0;
+
+ BT1.DHZ10     : HKICKER, L=0.335,     KICK:=dBT1DHZ10;! The magnetic length is 0.335 m
+
+ BT1.BPM00     : MONITOR,     L=0.508;
+
+ BT1.VVS10     : INSTRUMENT,  L=0.100;
+
+
+
+/****************************************************************************
+ * BT2
+ ****************************************************************************/
+
+ ! The vertical correctors DVT10, DVT20 are used as bending
+ ! to compensate the misalignment of the QNO10 and QNO20.
+ LBTDVT10 = 0.4038;
+ BT2.DVT10     : SBEND, L:=LBTDVT10*dBT2DVT10/sin(dBT2DVT10), ANGLE:=dBT2DVT10, TILT=pi/2, E1=0,E2:=dBT2DVT10;
+ LBTDVT20 = 0.4038;
+ BT2.DVT20     : SBEND, L:=LBTDVT20*dBT2DVT20/(abs(sin(dBT2DVT10)+sin(dBT2DVT20-dBT2DVT10))), ANGLE:=-dBT2DVT20, TILT=pi/2, E1=-dBT2DVT10,E2:=-(dBT2DVT20-dBT2DVT10);
+
+ ! Magnetic Length of Septum 1 m, real length=1.064. Ltank=1.85,angle=-0.0058
+ LBT2SMV10 = 1.064*COS(0.0058);
+ BT2.SMV10     : PLACEHOLDER, L := LBT2SMV10;
+
+ ! Recombination kicker
+ LKFA10=0.78*2;
+ BT2.KFA10     : PLACEHOLDER, L := LKFA10;
+
+ ! QUADRUPOLE DEFINED AS SBEND WITH QUADRUPOLAR COMPONENT
+ LQNO=0.466;
+ BT2.QNO10     : SBEND, L:=LQNO*dBT3QNO10/(abs(sin(dBT2DVT20-dBT2DVT10)+sin(dBT3QNO10-dBT2DVT20+dBT2DVT10))), ANGLE:=dBT3QNO10, K1:=-kBTQNO10,
+                                                TILT=pi/2, E1:=dBT2DVT20-dBT2DVT10, E2:= dBT3QNO10-dBT2DVT20+dBT2DVT10;    ! K1 is negative. Defocusing magnet.
+ BT2.QNO20     : SBEND, L:=LQNO*dBT3QNO20/sin(dBT3QNO20), ANGLE:=-dBT3QNO20, K1:=-kBTQNO20,
+                                                TILT=pi/2, E1:=-dBT3QNO20, E2:= 0;    ! K1 is positive. Focusing magnet.
+ BT2.QNO30     : SBEND, L:=LQNO*dBT2QNO30/(abs(sin(dBTBVT20-dBTSMV20)+sin(-(dBT2QNO30+dBTBVT20-dBTSMV20)))), ANGLE:=-dBT2QNO30, K1:=-kBTQNO30,
+                                                TILT=pi/2, E1:=dBTBVT20-dBTSMV20, E2:=-(dBT2QNO30+dBTBVT20-dBTSMV20);    ! K1 is negative. Defocusing magnet.
+
+ ! Magnetic Length of BT2_BVT20 : .9136 m  from A. Newborough
+ ! L= 0.9136 * (dBTBVT20/2)/sin(dBTBVT20/2)
+ LBTBVT20 = 0.9136;
+ BT2.BVT20     : SBEND,       L:=LBTBVT20 * (dBTBVT20/2)/sin(dBTBVT20/2),  ANGLE:=-dBTBVT20, TILT=pi/2, E1:=-dBTBVT20/2,E2:=-dBTBVT20/2;
+
+ ! Magnetic Length of Septum 0.996 m, real length=1.064 m. Ltank=1.85,angle=.00286
+ LBT2SMV20 = 0.996;
+ BT2.SMV20     : SBEND, L := LBT2SMV20*dBTSMV20/(abs(sin(dBTBVT20-0.00286)+sin(dBTSMV20-(dBTBVT20-0.00286)))), ANGLE:=dBTSMV20, TILT=pi/2, E1:=dBTBVT20-0.00286, E2:=dBTSMV20-(dBTBVT20-0.00286);
+
+ ! Recombination kicker
+ ! Straigth Line Length L=0.78*2
+ ! Ltank=2
+ LKFA20=0.78*2;
+ BT2.KFA20     : SBEND, L:=LKFA20*dBTKF20/sin(dBTKF20), ANGLE:=dBTKF20, TILT=pi/2, E1:=dBTKF20, E2:= 0;
+
+ BT2.DHZ10     : HKICKER,     L=0.335,     KICK:=dBT2DHZ10;! The magnetic length is 0.335 m
+
+ BT2.DVT40     : VKICKER,     L=0.335,     KICK:=dBT2DVT40;
+
+ BT2.BTV10     : MONITOR,     L=0;
+
+ BT2.BPM00     : MONITOR,     L=0.508;
+ BT2.BPM10     : MONITOR,     L=0.185;
+ BT2.BPM20     : MONITOR,     L=0.185;
+
+ BT2.VVS10     : INSTRUMENT,  L=0.100;
+ BT2.VPI11     : PLACEHOLDER, L=0;
+ BT2.VGP11     : PLACEHOLDER, L=0;
+ BT2.VGR11     : PLACEHOLDER, L=0;
+ BT2.VPI11A    : PLACEHOLDER, L=0;
+ BT2.VVS30     : INSTRUMENT,  L=0.100;
+ BT2.BTV30     : MONITOR,     L=0;
+
+
+
+/****************************************************************************
+ * BT3
+ ****************************************************************************/
+  BT3.DHZ10     : HKICKER,       L=0.335,    KICK:=dBT3DHZ10;! The magnetic length is 0.335 m
+
+ ! The vertical correctors DVT10, DVT20, DVT30, DVT40 are used to compensate
+ ! the misalignment of the QNOs.
+ LBTDVT10 = 0.4038;
+ BT3.DVT10     : SBEND, L:=LBTDVT10*dBT3DVT10/sin(dBT3DVT10), ANGLE:=-dBT3DVT10, TILT=pi/2, E1=0,E2:=-dBT3DVT10;
+ LBTDVT20 = 0.4038;
+ BT3.DVT20     : SBEND, L:=LBTDVT20*dBT3DVT20/(abs(sin(dBT3DVT10)+sin(dBT3DVT20-dBT3DVT10))), ANGLE:=dBT3DVT20, TILT=pi/2, E1=dBT3DVT10,E2:=dBT3DVT20-dBT3DVT10;
+ LBTDVT30 = 0.3350;
+ BT3.DVT30     : SBEND, L:=LBTDVT30*dBTDVT30/sin(dBTDVT30), ANGLE:=dBTDVT30, TILT=pi/2, E1=0,E2:=dBTDVT30;
+ LBTDVT40 = 0.4038;
+ BT3.DVT40     : SBEND, L:=LBTDVT40*dBTDVT40/(abs(sin(dBTDVT30)+sin(dBTDVT40-dBTDVT30))), ANGLE:=-dBTDVT40, TILT=pi/2, E1=-dBTDVT30,E2:=-(dBTDVT40-dBTDVT30);
+
+ ! QUADRUPOLE DEFINED AS SBEND WITH QUADRUPOLAR COMPONENT
+ LQNO=0.466;
+
+ BT3.QNO10     : SBEND, L:=LQNO*dBT3QNO10/(abs(sin(-(dBT3DVT20-dBT3DVT10))+sin(-(dBT3QNO10-dBT3DVT20+dBT3DVT10)))), ANGLE:=-dBT3QNO10, K1:=-kBTQNO10,
+                                                TILT=pi/2, E1:=-(dBT3DVT20-dBT3DVT10), E2:= -(dBT3QNO10-dBT3DVT20+dBT3DVT10);    ! K1 is negative. Defocusing magnet.
+ BT3.QNO20     : SBEND, L:=LQNO*(dBT3QNO20)/sin(dBT3QNO20), ANGLE:= dBT3QNO20, K1:=-kBTQNO20,
+                                                TILT=pi/2, E1:=dBT3QNO20, E2:= 0;    ! K1 is positive. Focusing magnet.
+ BT3.QNO30     : SBEND, L:=LQNO*dBT3QNO30/sin(dBT3QNO30), ANGLE:=dBT3QNO30, K1:=-kBTQNO30,
+                                                TILT=pi/2, E1:=dBT3QNO30, E2:= 0;    ! K1 is negative. Defocusing magnet.
+
+ ! Real length=1.064. Ltank=1.85,angle=-0.0058
+ LBT3SMV10 = 1.064*COS(0.0058);
+ BT3.SMV10     : PLACEHOLDER, L=LBT3SMV10;
+ ! Real length=1.064. Ltank=1.85,angle=-0.00286
+ LBT3SMV20 = 1.064*COS(0.00286);
+ BT3.SMV20     : PLACEHOLDER, L=LBT3SMV20;
+ ! Real length of Ltank=2 m. Implemented for survey
+ BT3.KFA10    : PLACEHOLDER, L=0.78*2;
+ BT3.KFA20    : PLACEHOLDER, L=0.78*2;
+
+ BT3.BTV10     : MONITOR,     L=0;
+
+ BT3.BPM00     : MONITOR,     L=0.508;
+ BT3.BPM10     : MONITOR,     L=0.185;
+ BT3.BPM20     : MONITOR,     L=0.185;
+
+ BT3.VVS10     : INSTRUMENT,  L=0.100;
+ BT3.VPI11B    : PLACEHOLDER, L=0;
+ BT3.VGP11A    : PLACEHOLDER, L=0;
+ BT3.VGR11A    : PLACEHOLDER, L=0;
+ BT3.VPI11C    : PLACEHOLDER, L=0;
+ BT3.VVS20     : INSTRUMENT,  L=0.100;
+ BT3.VVS30     : INSTRUMENT,  L=0.100;
+ BT3.BTV30     : MONITOR,     L=0;
+
+
+
+/****************************************************************************
+  * BT4
+  ****************************************************************************/
+
+ ! Magnetic Length of BT4_BVT10 : .9066 m  from A. Newborough
+ LBTBVT10 = 0.9066;
+ BT4.BVT10     : SBEND, L:=LBTBVT10 * (dBT4BVT10/2)/sin(dBT4BVT10/2),  ANGLE=dBT4BVT10, TILT=pi/2, E1=dBT4BVT10/2,E2=dBT4BVT10/2;
+
+ ! Magnetic Length of Septum 0.996 m, real length=1.064. Ltank=1.85,angle=-0.0058
+ LBT4SMV10 = 0.996;
+ BT4.SMV10     : SBEND, L:=LBT4SMV10*dBT4SMV10/(abs(sin(-(dBT4BVT10-0.0058))+sin(dBT4BVT10-dBT4SMV10-0.0058))), ANGLE=-dBT4SMV10, TILT=pi/2, E1=-(dBT4BVT10-0.0058), E2=dBT4BVT10-dBT4SMV10-0.0058;
+
+ ! QUADRUPOLE DEFINED AS SBEND WITH QUADRUPOLAR COMPONENT
+ LQNO=0.466;
+ BT4.QNO10     : SBEND, L:=LQNO*dBT4QNO10/(abs(sin(-(dBT4BVT10-dBT4SMV10))+sin(dBT4QNO10+dBT4BVT10-dBT4SMV10))), ANGLE:=dBT4QNO10, K1:=-kBTQNO10,
+                                                TILT=pi/2, E1:=-(dBT4BVT10-dBT4SMV10), E2:=dBT4QNO10+dBT4BVT10-dBT4SMV10;    ! K1 is negative. Defocusing magnet.
+ BT4.QNO20     : SBEND, L:=LQNO*dBT4QNO20/(abs(sin(-(dBT4QNO10+dBT4BVT10-dBT4SMV10))+sin(dBT4BVT10-dBT4SMV10+dBT4QNO10-dBT4QNO20))), ANGLE:=-dBT4QNO20, K1:=-kBTQNO20,
+                                                TILT=pi/2, E1:=-(dBT4QNO10+dBT4BVT10-dBT4SMV10), E2:=dBT4BVT10-dBT4SMV10+dBT4QNO10-dBT4QNO20;    ! K1 is positive. Focusing magnet.
+
+ ! Recombination kicker
+ LKFA10=0.78*2;
+ BT4.KFA10    : SBEND, L:=LKFA10*dBT4KF10/sin(dBT4KF10), ANGLE:=-dBT4KF10, TILT=pi/2, E1:=-dBT4KF10, E2:= 0;
+
+ BT4.DHZ10     : HKICKER, L=0.3350, KICK:=dBT4DHZ10;    ! The magnetic length is 0.3350 m
+ BT4.BPM00     : MONITOR, L=0.508;
+ BT4.VVS10     : INSTRUMENT, L=0.100;
+
+/****************************************************************************
+ * BT
+ ****************************************************************************/
+
+ BT.DVT50      : VKICKER,     L=0.436,     KICK:=dBTDVT50;! The magnetic length is 0.436 m
+ BT.DVT60      : VKICKER,     L=0.436,     KICK:=dBTDVT60;! The magnetic length is 0.436 m
+
+ BT.QNO40      : QUADRUPOLE,  L=.4661,     K1:= kBTQNO40; ! K1 is positive. Focusing magnet.
+ BT.QNO50      : QUADRUPOLE,  L=.3880,     K1:= kBTQNO50; ! K1 is negative. Defocusing magnet.
+
+ BT.BTV20      : MONITOR,     L=0;
+ BT.BTV40      : MONITOR,     L=0;
+
+ BT.BPM30      : MONITOR,     L=0.322;
+ BT.BPM40      : MONITOR,     L=0.185;
+
+ BT.BCT10      : INSTRUMENT,    L=0.314;
+
+ BT.VPG11      : PLACEHOLDER, L=0;
+ BT.VGP21      : PLACEHOLDER, L=0;
+ BT.VGR21      : PLACEHOLDER, L=0;
+ BT.VPI22      : PLACEHOLDER, L=0;
+ BT.VPI22A     : PLACEHOLDER, L=0;
+ BT.VPI23      : PLACEHOLDER, L=0;
+ BT.VGP22      : PLACEHOLDER, L=0;
+ BT.VGR22      : PLACEHOLDER, L=0;
+ BT.VPI23A     : PLACEHOLDER, L=0;
+ BT.VPI23B     : PLACEHOLDER, L=0;
+ BT.VGP23      : PLACEHOLDER, L=0;
+ BT.VPG22      : PLACEHOLDER, L=0;
+ BT.VPI24A     : PLACEHOLDER, L=0;
+
+ BT1.START     : MARKER          ; ! Start of the sequence at 0
+ BT2.START     : MARKER          ;
+ BT3.START     : MARKER          ;
+ BT4.START     : MARKER          ;
+
+ BT1.END       : MARKER          ;
+ BT2.END       : MARKER          ;
+ BT3.END       : MARKER          ;
+ BT4.END       : MARKER          ;
+
+option, warn;
+option, echo;
+return;
+
+

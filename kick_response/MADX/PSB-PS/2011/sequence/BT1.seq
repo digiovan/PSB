@@ -1,0 +1,51 @@
+
+
+ BT1: sequence, refer = centre , l  =  34.5805;  ! Value from survey
+
+   BT1.BVT10                    , at =   3.340515051 ; ! These are ¨s¨positions (=path length)
+   BT1.UES00                    , at =   4.202421759 ;
+   BT1.DHZ10                    , at =   4.804472907 ;
+   BT1.VVS10                    , at =   5.066365157 ;
+   BT1.SMV10                    , at =   7.211495341 ; ! There is no offset for the septa. For the old septa here was;
+   BT2.MTV10                    , at =   7.812023480 ;
+   BT.VPG11                     , at =   8.492038648 ;
+   BT2.UES10                    , at =   9.142053146 ;
+   BT2.QNO10                    , at =   9.712066989 ;
+   BT2.VVS30                    , at =  11.143203050 ;
+   BT2.QNO20                    , at =  11.712255330 ;
+   BT.VGP21                     , at =  13.857837810 ;
+   BT.VGR21                     , at =  13.857837810 ;
+   BT.VPI22                     , at =  13.857837810 ;
+   BT.VPI22A                    , at =  13.857837810 ;
+   BT1.KFA10                    , at =  15.062361650 ;
+   BT.MTV20                     , at =  16.249870710 ;
+   BT2.BVT20                    , at =  16.963856150 ;
+   BT2.UES20                    , at =  17.734340790 ;
+   BT2.DVT40                    , at =  19.270235040 ;
+   BT.VPI23                     , at =  20.424814200 ;
+!  BT.VGP22                     , at =  20.424814200 ; ! position conflict with BT2.SMV20
+!  BT.VGR22                     , at =  20.424814200 ; ! position conflict with BT2.SMV20
+   BT2.SMV20                    , at =  21.228323100 ; ! There is no offset for the septa. For the old septa here was;
+!  BT.VPI23A                    , at =  21.228323100 ; ! position conflict with BT2.SMV20
+   BT.MTV30                     , at =  21.813777790 ;
+   BT.VPI23B                    , at =  21.813777790 ;
+   BT.QNO30                     , at =  22.644872900 ;
+   BT.UES30                     , at =  26.102437660 ;
+   BT.BCT10                     , at =  26.667447480 ;
+   BT.DVT50                     , at =  27.256457730 ;
+   BT.VGP23                     , at =  28.248674980 ;
+   BT.VPG22                     , at =  28.248674980 ;
+   BT2.KFA20                    , at =  30.024997190 ;
+!  BT.VPI24A                    , at =  30.024997190 ; ! position conflict with BT2.SMV20
+   BT.MTV40                     , at =  31.212502120 ;
+   BT.DVT60                     , at =  31.580002150 ;
+   BT.QNO40                     , at =  32.070002200 ;
+   BT.UES40                     , at =  32.577502250 ;
+   BT.QNO50                     , at =  33.440002330 ; !
+   BT1.END    : MARKER          , at =  34.580002330 ; ! distance between QNO50 and END = 1.14m
+ endsequence;  ! The sequence ends exactly at the entrance of BT.BHZ10
+
+
+
+ return;
+

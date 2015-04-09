@@ -1,0 +1,31 @@
+option, -echo;
+option, -warn;
+
+
+/*******************************************************************************
+ * BTP                                                                         *
+ * Gradients according to report from C.Carli (Qv=4.23):
+ * http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTM/LowWP.ps
+ *******************************************************************************/
+
+kBTPDHZ10  :=   0.0;
+kBTPDVT10  :=   0.0;
+kBTPDHZ20  :=   0.0;
+kBTPDVT20  :=   0.0;
+kBTPDHZ30  :=   0.0;
+kBTPDVT30  :=   0.0;
+kBTPDVT40  :=   0.0;
+kBTPDHZ40  :=   0.0;
+kBTPDVT50  :=   0.0;
+
+KBTPQNO10  :=   0.0;
+KBTPQNO20  :=   0.52130;
+KBTPQNO30  :=  -0.48497;
+KBTPQNO40  :=   0.62963;
+KBTPQNO50  :=  -0.53653;
+KBTPQNO60  :=   0.66890;
+
+
+option, warn;
+option, echo;
+return;

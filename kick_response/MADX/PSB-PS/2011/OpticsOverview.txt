@@ -1,0 +1,27 @@
+Optical functions overview, at the end of BT/BTP line
+-----------------------------------------------------
+
+------------------------- OLD MAD8 files  --------------------------------
+                                BETX      ALFX        BETY       ALFY
+BT1toPS_a.Optics: 62.7856     16.8358    1.21499    14.2661    -0.775162
+BT2toPS_a.Optics: 62.7749     17.5560    1.38005    14.4061    -0.795758
+BT3toPS_a.Optics: 62.7639     22.5624    1.77171    14.3933    -0.789196
+BT4toPS_a.Optics: 62.7747     20.9228    1.54772    14.2533    -0.768413
+
+
+------------------------- NEW MADXP files --------------------------------
+
+OPTICS ( The optics functions are correct, but the positions are relative) 
+                                BETX,     ALFX        BETY       ALFY   
+                               BETA11    ALFA11      BETA22     ALFA22     
+opticsbt1btp.out: 64.06900     9.39257  0.21340     18.24505   -1.03726
+opticsbt2btp.out: 64.06900     9.57559  0.33789     18.25139   -1.03710
+opticsbt3btp.out: 64.06900    12.04303  0.46895     18.24933   -1.03725
+opticsbt4btp.out: 64.06900    11.43745  0.33899     18.24300   -1.03742
+
+MATCHING (Positions are correct, but the optics functions are not correct)
+                                BETX      ALFX        BETY       ALFY
+optics_bt1_btp.out: 64.06900  12.04387  0.46899     18.25168   -1.03747
+optics_bt2_btp.out: 64.06900  12.04387  0.46899     18.25168   -1.03747
+optics_bt3_btp.out: 64.06900  12.04387  0.46899     18.25168   -1.03747
+optics_bt4_btp.out: 64.06900  12.04387  0.46899     18.25168   -1.03747

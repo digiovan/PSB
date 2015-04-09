@@ -1,0 +1,21 @@
+
+ KBI.QNO10  =  1.12452 ;
+ KBI.QNO20  = -1.29490 ;
+ KBI.QNO30  =  0.72923 ;
+ KBI.QNO40  = -0.98140 ;
+ ! taking ring 3
+ KBI.QNO50 =  1.21463 ;
+ KBI.QNO60 = -1.32526 ;
+
+ ! KBI1.QNO50 =  1.13646 ;
+ ! KBI2.QNO50 =  1.20212 ;
+ ! KBI3.QNO50 =  1.21463 ;
+ ! KBI4.QNO50 =  1.19659 ;
+ ! KBI1.QNO60 = -1.29881 ;
+ ! KBI2.QNO60 = -1.31324 ;
+ ! KBI3.QNO60 = -1.32526 ;
+ ! KBI4.QNO60 = -1.35292 ;
+
+ return;
+
+

@@ -1,0 +1,144 @@
+!--------------------------------------------------------------------------
+! Optics file to calculate the optics of the transferline BT1_BTP. The trajectory is
+! based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud.
+!
+!
+! - BT1 recombines totaly with BT2 after BT1.KF10 and with BT3 after BT2.KFA20.
+! - The QNO10, QNO20 and QN30 are misaligned.
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/madx
+! Optics file created in September 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+ title, 'BT line and BTP line. Protons - 1.4 GeV';
+
+
+/******************************************************************************************
+ * BT
+ ******************************************************************************************/
+ call, file = '../strength/BT_BTP.str';
+ call, file = '../elements/BT.ele';
+ call, file = '../sequence/BT1.seq';
+ call, file = '../aperture/BT.dbx';
+
+
+/******************************************************************************************
+ * BTP
+ ******************************************************************************************/
+ call, file = '../strength/BTP.str';
+ call, file = '../elements/BTP.ele';
+ call, file = '../elements/stray.ele';
+ call, file = '../sequence/stray.seq';
+ call, file = '../sequence/BTP.seq';
+ call, file = '../aperture/BTP.dbx';
+
+
+/******************************************************************************************
+ * set initial twiss parameters
+ ******************************************************************************************/
+ call, file = '../inp/BT.inp';
+
+!-----------------------------------------------------
+! set initial position and angle (x,px) and (y,py)
+! E.g. :
+! x0 := 0.0;
+! px0:= 0.0;
+! y0 := 0.0;
+! py0:= 0.0;
+!-----------------------------------------------------
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+
+
+/******************************************************************************************
+ * Sequence: bt1btp
+ ******************************************************************************************/
+ bt1btp: SEQUENCE, refer=ENTRY  , l  =  69.71756435;
+                   bt1          , at =            0;
+                   btp          , at =  34.25113598;
+ ENDSEQUENCE;
+
+!save, sequence=bt1btp, file=bt1btp.save;
+
+
+/******************************************************************************************
+ * beam and use
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+
+option,-echo,-info;
+kickresponse(thekicker, thekick) : macro={                                 
+                                 
+                                 kick_rad = thekick*1e-6;
+                                 ! value, kick_rad;
+                                 thekicker->KICK := kick_rad;
+
+                                 use, sequence=bt1btp;
+                                 
+                                 set,  format="-18s";
+                                 set,  format="10.5f";
+
+
+                                 select,flag=twiss,column=name,s,x,y;
+                                 twiss,BETA0=INITBETA0,save,centre,file=twiss.out;
+
+                                 if (thekick > 0) { 
+                                   twiss,BETA0=INITBETA0,save,centre,file="../out/kr_bt1_btp_thekicker_plus.out";
+                                                   }
+                                 if (thekick < 0) { 
+                                   twiss,BETA0=INITBETA0,save,centre,file="../out/kr_bt1_btp_thekicker_minus.out";
+                                                   }
+
+
+                                 ! make sure the kicker is reset to zero                  
+                                 thekicker->KICK := 0.0000;
+                                }
+
+
+/*******************************************************************************
+ * kick response measurements
+ *******************************************************************************/
+
+ kick_pos =  100; ! urad
+ kick_neg = -100; ! urad
+
+
+/*******************************************************************************
+ * BT1->BTP line DHZ
+ *******************************************************************************/
+ 
+exec, kickresponse(BT1.DHZ10, kick_pos); 
+
+exec, kickresponse(BT1.DHZ10, kick_neg); 
+
+/*******************************************************************************
+ * BT1->BTP line DVT
+ *******************************************************************************/
+
+exec, kickresponse(BT2.DVT40, kick_pos); 
+exec, kickresponse(BT.DVT50, kick_pos); 
+exec, kickresponse(BT.DVT60, kick_pos); 
+
+exec, kickresponse(BT2.DVT40, kick_neg); 
+exec, kickresponse(BT.DVT50, kick_neg); 
+exec, kickresponse(BT.DVT60, kick_neg); 
+
+stop;

@@ -1,0 +1,163 @@
+option, echo;
+option, info;
+option, warn;
+
+! The lengths of any element is the magnetic length. B. Mikulec,A.Newborough
+
+/****************************************************************************
+ * BT1
+ ****************************************************************************/
+
+! Magnetic Length of BT1.BVT10 : .907 m  from SL-Note 98-052 MS. L=0.9066 from A. Newborough
+ BT1.BVT10     : RBEND,       L=0.9066,    ANGLE:=-dBTBV10, TILT=pi/2;! Magnetic length=0.9066. Physical length = 0.8 m (to be corrected!)
+
+ BT1.UES00     : MONITOR,     L=0.508;
+ BT1.DHZ10     : HKICKER,     L=0.335;    ! Magnetic length= 0.335 m
+ BT1.VVS10     : INSTRUMENT,  L=0.100;
+
+ ! Magnetic Length of Septum 1 m, real length=0.996. Ltank=1.85,angle=0.0058
+ ! NB. Positive angle is down-direction
+ ! NB. Negative angle is up-direction
+ BT1.SMV10     : RBEND,       L=1,         ANGLE:=pySMV10, TILT=pi/2;
+
+ BT1.KFA10     : RBEND,       L=0.78*2,    ANGLE:= -dBTKF10, TILT=pi/2;! Ltank=2.230
+
+
+
+
+/****************************************************************************
+ * BT2
+ ****************************************************************************/
+
+
+ ! Magnetic Length of BT.BVT20 : .914 m  from SL-Note 98-052 MS. L=0.9136 from A. Newborough
+ ! Sign of angle is always opposite kick
+ BT2.BVT20     : RBEND,       L=0.9136,    ANGLE:=-dBTBV20, TILT=pi/2;! Magnetic length=0.9136. Physical length = 0.8 m (to be corrected!)
+
+ BT2.DHZ10     : HKICKER,     L=0.335,     KICK:=Kbt2_dhz10;! The Magnetic length is 0.335 m
+ BT2.DVT10     : VKICKER,     L=0.4038,    KICK:=-dBTDV10;  ! The magnetic length is 0.4038 m
+ BT2.DVT20     : VKICKER,     L=0.4038,    KICK:=-dBTDV20;  ! The magnetic length is 0.4038 m
+ BT2.DVT40     : VKICKER,     L=0.3350,    KICK:=dBT2DV40;  ! The magnetic length is 0.3350 m
+ BT2.KFA20     : RBEND,       L=0.78*2,    ANGLE:= -dBTKF20, TILT=pi/2;! Ltank=2.230
+ BT2.MTV10     : MONITOR,     L=0;
+
+ ! Magnetic Length of Septum 1 m, real length=0.999, Ltank=1.490, angle=0.00286
+ ! Sign of angle is always opposite kick
+ BT2.SMV20     : RBEND,       L=1,         ANGLE:=pySMV20, TILT=pi/2;
+
+ BT2.UES00     : MONITOR,     L=0.508;
+ BT2.UES10     : MONITOR,     L=0.185;
+ BT2.UES20     : MONITOR,     L=0.185;
+ BT2.VPI11     : PLACEHOLDER, L=0;
+ BT2.VGP11     : PLACEHOLDER, L=0;
+ BT2.VGR11     : PLACEHOLDER, L=0;
+ BT2.VPI11A    : PLACEHOLDER, L=0;
+ BT2.VVS10     : MARKER;
+ BT2.VVS30     : INSTRUMENT,  L=0.100;
+
+
+!BT2.QNO10     : QUADRUPOLE,  L=0.466,     K1:=kBTQNO10; ! K1 is negative. Defocusing magnet.
+ BT2.QNO10     : RBEND,       L=0.466,     K1:=kBTQNO10, ANGLE:=dBTQNO10, TILT=pi/2;
+
+
+!BT2.QNO20     : QUADRUPOLE,  L=0.466,     K1:=kBTQNO20; ! K1 is positive. Focusing magnet
+ BT2.QNO20     : RBEND,       L=0.466,     K1:=kBTQNO20, ANGLE:=dBTQNO20, TILT=pi/2; ! K1 is positive. Focusing magnet
+
+
+
+/****************************************************************************
+ * BT3
+ ****************************************************************************/
+
+ BT3.DHZ10     : HKICKER,     L=0.335,     KICK:=Kbt3_dhz10;! The magnetic length is 0.335 m
+ BT3.DVT10     : VKICKER,     L=0.4038,    KICK:=dBTDV10;   ! The magnetic length is 0.4038 m
+ BT3.DVT20     : VKICKER,     L=0.4038,    KICK:=dBTDV20;   ! The magnetic length is 0.4038 m
+ BT3.DVT30     : VKICKER,     L=0.3350,    KICK:=dBTDV30;   ! The magnetic length is 0.3350 m
+ BT3.DVT40     : VKICKER,     L=0.4038,    KICK:=dBTDV40;   ! The magnetic length is 0.4038 m
+ BT3.MTV10     : MONITOR,     L=0;
+ BT3.UES00     : MONITOR,     L=0.508;
+ BT3.UES10     : MONITOR,     L=0.185;
+ BT3.UES20     : MONITOR,     L=0.185;
+ BT3.VPI11B    : PLACEHOLDER, L=0;
+ BT3.VGP11A    : PLACEHOLDER, L=0;
+ BT3.VGR11A    : PLACEHOLDER, L=0;
+ BT3.VPI11C    : PLACEHOLDER, L=0;
+ BT3.VVS10     : MARKER;
+ BT3.VVS20     : INSTRUMENT,  L=0.100;
+ BT3.VVS30     : INSTRUMENT,  L=0.100;
+
+
+!BT3.QNO10     : QUADRUPOLE,  L=0.466,     K1:=kBTQNO10; ! K1 is negative. Defocusing magnet.
+ BT3.QNO10     : RBEND,       L=0.466,     K1:=kBTQNO10, ANGLE=dBTQNO10, TILT=pi/2;
+
+
+!BT3.QNO20     : QUADRUPOLE,  L=0.466,     K1:=kBTQNO20; ! K1 is positive. Focusing magnet
+ BT3.QNO20     : RBEND,       L=0.466,     K1:=kBTQNO20, ANGLE:=dBTQNO20, TILT=pi/2;
+
+
+ /****************************************************************************
+  * BT4
+  ****************************************************************************/
+
+ ! Magnetic Length of BT4.BVT10 : .907 m  from SL-Note 98-052 MS
+ ! Sign of angle is always opposite kick
+ BT4.BVT10     : RBEND,       L=0.907,     ANGLE:=dBTBV40, TILT=pi/2;! Magnetic length=0.9066. Physical length = 0.8 m (to be corrected!)
+
+ BT4.DHZ10     : HKICKER,     L=0.3350;    ! The magnetic length is 0.3350 m
+ BT4.KFA10     : RBEND,       L=0.78*2,    ANGLE:= -dBT3KF10, TILT=pi/2;! Ltank=2.230
+
+! Magnetic Length of Septum 1 m, real length=0.996. Ltank=1.85,angle=-0.0058
+ BT4.SMV10     : RBEND,       L=1,         ANGLE:=-pySMV10, TILT=pi/2;
+ BT4.UES00     : MONITOR,     L=0.508;
+ BT4.VVS10     : INSTRUMENT,  L=0.100;
+
+
+
+
+
+/****************************************************************************
+ * BT
+ ****************************************************************************/
+ BT.VPI23      : INSTRUMENT,  L=0.0925*2; ! Length taken from VPI22
+
+
+ BT.MTV20      : MONITOR,     L=0;
+ BT.MTV30      : MARKER;      ! Drawing not available
+
+!BT.QNO30      : QUADRUPOLE,  L=.4661,     K1:=kBTQNO30;
+ BT.QNO30      : RBEND,       L=.4661,     K1:=kBTQNO30, ANGLE:=dBTQNO30, TILT=pi/2;
+
+ BT.UES30      : MONITOR,     L=0.318;
+ BT.DVT50      : VKICKER,     L=0.436;    ! The magnetic length is 0.436 m
+ BT.VPI20      : MARKER;
+
+
+ BT.DVT60      : VKICKER,     L=0.436;    ! The magnetic length is 0.436 m
+ BT.QNO40      : QUADRUPOLE,  L=.4661,     K1:= kBTQNO40;
+ BT.UES40      : MONITOR,     L=0.185;
+ BT.QNO50      : QUADRUPOLE,  L=.4098,     K1:= kBTQNO50;
+
+ BT.VPG11      : PLACEHOLDER, L=0;
+ BT.VGP21      : PLACEHOLDER, L=0;
+ BT.VGR21      : PLACEHOLDER, L=0;
+ BT.VPI22      : PLACEHOLDER, L=0;
+ BT.VPI22A     : PLACEHOLDER, L=0;
+ BT.VGP22      : PLACEHOLDER, L=0;
+ BT.VGR22      : PLACEHOLDER, L=0;
+ BT.VPI23A     : PLACEHOLDER, L=0;
+ BT.VPI23B     : PLACEHOLDER, L=0;
+
+ BT.BCT10      : PLACEHOLDER, L=0.314;
+ BT.VGP23      : PLACEHOLDER, L=0;
+ BT.VPG22      : PLACEHOLDER, L=0;
+ BT.VPI24A     : PLACEHOLDER, L=0;
+
+
+ BT.MTV40      : MARKER;
+
+
+
+
+option, warn;
+option, echo;
+return;

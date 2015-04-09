@@ -1,0 +1,109 @@
+option, -echo;
+option, info;
+option, warn;
+!--------------------------------------------------------------------------
+!  This file gives the mechanical position of the all the elements in the 4 BT lines,
+!  they are extracted from the drawing psbihens0029-vAH. The positions correspond to
+!  the magnetic center where applicable otherwise to the mechanical center of each element.
+!  BT line start at the exit flange of the SMH15L1.
+!  From BVT10 and BVT20 the position refer to the deflection point inside the magnet and
+!  not to their magnetic center (~0.5 mm differences).
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/cmd/matching_BT_line
+! Sequence file created in January 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+bt2.dvt10.mechcenterpos =  2.8026000 ;
+bt3.dvt10.mechcenterpos =  2.8026000 ;
+bt1.bvt10.mechcenterpos =  3.0026000 ;
+bt4.bvt10.mechcenterpos =  3.0026000 ;
+bt1.bpm00.mechcenterpos =  3.8626000 ;
+bt2.bpm00.mechcenterpos =  3.9026000 ;
+bt3.bpm00.mechcenterpos =  3.9026000 ;
+bt4.bpm00.mechcenterpos =  3.8626000 ;
+bt1.dhz10.mechcenterpos =  4.4626000 ;
+bt2.dhz10.mechcenterpos =  4.4626000 ;
+bt3.dhz10.mechcenterpos =  4.4626000 ;
+bt4.dhz10.mechcenterpos =  4.4626000 ;
+bt1.vvs10.mechcenterpos =  4.7236000 ;
+bt2.vvs10.mechcenterpos =  4.8746000 ;
+bt3.vvs10.mechcenterpos =  4.8746000 ;
+bt4.vvs10.mechcenterpos =  4.7236000 ;
+bt2.dvt20.mechcenterpos =  5.6586000 ;
+bt3.dvt20.mechcenterpos =  5.6586000 ;
+bt2.vpi11.mechcenterpos =  6.5215000 ;
+bt3.vpi11b.mechcenterpos =  6.5215000 ;
+bt1.smv10.mechcenterpos =  6.8626000 ;
+bt2.smv10.mechcenterpos =  6.8626000 ;
+bt3.smv10.mechcenterpos =  6.8626000 ;
+bt4.smv10.mechcenterpos =  6.8626000 ;
+bt2.vgp11.mechcenterpos =  7.0215000 ;
+bt2.vgr11.mechcenterpos =  7.0215000 ;
+bt2.vpi11a.mechcenterpos =  7.0215000 ;
+bt3.vgp11a.mechcenterpos =  7.0215000 ;
+bt3.vgr11a.mechcenterpos =  7.0215000 ;
+bt3.vpi11c.mechcenterpos =  7.0215000 ;
+bt2.btv10.mechcenterpos =  7.4626000 ;
+bt3.btv10.mechcenterpos =  7.4626000 ;
+bt.vpg11.mechcenterpos =  8.1426000 ;
+bt2.bpm10.mechcenterpos =  8.7926000 ;
+bt3.bpm10.mechcenterpos =  8.7926000 ;
+bt1.qno10.mechcenterpos =  9.3626000 ;
+bt2.qno10.mechcenterpos =  9.3626000 ;
+bt3.qno10.mechcenterpos =  9.3626000 ;
+bt4.qno10.mechcenterpos =  9.3626000 ;
+bt3.vvs20.mechcenterpos =  9.9996000 ;
+bt2.vvs30.mechcenterpos = 10.7936000 ;
+bt3.vvs30.mechcenterpos = 10.7936000 ;
+bt1.qno20.mechcenterpos = 11.3626000 ;
+bt2.qno20.mechcenterpos = 11.3626000 ;
+bt3.qno20.mechcenterpos = 11.3626000 ;
+bt4.qno20.mechcenterpos = 11.3626000 ;
+bt.vgp21.mechcenterpos = 13.5081000 ;
+bt.vgr21.mechcenterpos = 13.5081000 ;
+bt.vpi22.mechcenterpos = 13.5081000 ;
+bt.vpi22a.mechcenterpos = 13.5081000 ;
+bt1.kfa10.mechcenterpos = 14.7126000 ;
+bt2.kfa10.mechcenterpos = 14.7126000 ;
+bt3.kfa10.mechcenterpos = 14.7126000 ;
+bt4.kfa10.mechcenterpos = 14.7126000 ;
+bt.btv20.mechcenterpos = 15.9001000 ;
+bt3.dvt30.mechcenterpos = 16.3626000 ;
+bt2.bvt20.mechcenterpos = 16.6136000 ;
+bt2.bpm20.mechcenterpos = 17.4523000 ;
+bt3.bpm20.mechcenterpos = 17.3941000 ;
+bt2.dvt40.mechcenterpos = 18.9139000 ;
+bt3.dvt40.mechcenterpos = 19.4125000 ;
+bt.vpi23.mechcenterpos = 20.0645000 ;
+bt.vgp22.mechcenterpos = 20.4106000 ;
+bt.vgr22.mechcenterpos = 20.4106000 ;
+bt2.smv20.mechcenterpos = 20.8666000 ;
+bt3.smv20.mechcenterpos = 20.8666000 ;
+bt.vpi23a.mechcenterpos = 20.8666000 ;
+bt2.btv30.mechcenterpos = 21.4516000 ;
+bt3.btv30.mechcenterpos = 21.4516000 ;
+bt.vpi23b.mechcenterpos = 21.4516000 ;
+bt2.qno30.mechcenterpos = 22.2826000 ;
+bt3.qno30.mechcenterpos = 22.2826000 ;
+bt.bpm30.mechcenterpos = 25.7431000 ;
+bt.bct10.mechcenterpos = 26.3051000 ;
+bt.dvt50.mechcenterpos = 26.8941000 ;
+bt.vgp23.mechcenterpos = 27.8863000 ;
+bt.vpg22.mechcenterpos = 27.8863000 ;
+bt2.kfa20.mechcenterpos = 29.6626000 ;
+bt3.kfa20.mechcenterpos = 29.6626000 ;
+bt.vpi24a.mechcenterpos = 29.6626000 ;
+bt.btv40.mechcenterpos = 30.8501000 ;
+bt.dvt60.mechcenterpos = 31.2176000 ;
+bt.qno40.mechcenterpos = 31.7076000 ;
+bt.bpm40.mechcenterpos = 32.2851000 ;
+bt.qno50.mechcenterpos = 33.0776000 ;
+bt1.end.mechcenterpos = 34.2293200 ;
+bt2.end.mechcenterpos = 34.2293200 ;
+bt3.end.mechcenterpos = 34.2293200 ;
+bt4.end.mechcenterpos = 34.2293200 ;
+
+option, info;
+option, warn;
+option, echo;
+
+return;

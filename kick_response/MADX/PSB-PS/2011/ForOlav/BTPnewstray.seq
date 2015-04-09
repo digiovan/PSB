@@ -1,0 +1,49 @@
+option, echo;
+option, -warn;
+
+
+BTPst=37.5;!38.00;
+BTP: sequence, refer = centre , l  =  69.592-BTPst;
+
+BTP_UES00                     , at =  38.3160-BTPst;
+BTP_DHZ10                     , at =  39.3550-BTPst;
+BTP_DVT10                     , at =  39.8350-BTPst;
+BTP_Q10                       , at =  40.9319-BTPst;
+
+BTP_Q20	                      , at =  44.9345-BTPst;
+BTP_DHZ20                     , at =  45.5345-BTPst;
+BTP_UES10                     , at =  46.0175-BTPst;
+BTP_DVT20                     , at =  46.8345-BTPst;
+BTP_Q30	                      , at =  47.4345-BTPst;
+
+BTP_VPI11	              , at =  47.9060-BTPst;!47.4345+0.943/2
+BTP_STP	                      , at =  49.9655-BTPst;!47.4345+1.090+1.441
+
+BTP_Q40	                      , at =  52.7345-BTPst;
+BTP_DHZ30                     , at =  53.2845-BTPst;!52.7345+0.550
+BTP_UES20                     , at =  53.8645-BTPst;
+BTP_DVT30                     , at =  54.5095-BTPst;!55.2245-0.715
+BTP_Q50	                      , at =  55.2245-BTPst;
+
+BTP_VPI12	              , at =  58.7695-BTPst;!60.9235-0.631-0.552-0.971
+BTP_TRA	                      , at =  59.7405-BTPst;!60.9235-0.631-0.552
+BTP_DVT40	              , at =  60.2925-BTPst;!60.9235-0.631
+BTP_Q60	                      , at =  60.9235-BTPst;
+BTP_UES30	              , at =  61.4260-BTPst;!60.9235+0.5025
+BTP_MTV10	              , at =  62.0990-BTPst;
+BTP_VVS20                     , at = (62.0990+BTP_MTV10->L/2)-BTPst;
+BTP_DHZ40	              , at =  63.1630-BTPst;!62.099+0.606+0.458
+BTP_DVT50	              , at =  63.5500-BTPst;!62.099+0.606+0.458+0.387
+
+call, file = 'Lattice/Stray.seq';
+septum42		      , at = 69.192-BTPst; !5.4292;
+pointS			      , at = 69.592-BTPst; !5.8292;
+
+
+
+endsequence;
+
+
+!option, warn;
+!option, echo;
+return;

@@ -1,0 +1,50 @@
+ option, -echo;
+ option, -warn;
+
+
+
+ BTP: sequence, refer = centre , l  =  35.085302969 ; ! The line starts exactly at the entry point of BT.BHZ10
+
+ BTP.BHZ10                     , at =  1.53902/2; ! Path length divided by 2 = 0.76951
+ BTP.STP                       , at =  2.801399 ;
+ BTP.UES00                     , at =  4.082899 ;
+ BTP.DHZ10                     , at =  4.800399 ;
+ BTP.DVT10                     , at =  5.280399 ;
+ BTP.QNO10                     , at =  6.365749 ;
+
+ BTP.QNO20                     , at = 11.365749 ;
+ BTP.DHZ20                     , at = 11.978399 ;
+ BTP.UES10                     , at = 12.461399 ;
+ BTP.DVT20                     , at = 13.278399 ;
+ BTP.QNO30                     , at = 13.865749 ;
+
+ BTP.VPI11                     , at = 14.968399 ;
+ BTP.QNO40                     , at = 19.165749 ;
+ BTP.DHZ30                     , at = 19.730399 ;
+ BTP.UES20                     , at = 20.156899 ;
+ BTP.DVT30                     , at = 20.965399 ;
+ BTP.QNO50                     , at = 21.655749 ;
+
+ BTP.VPI12                     , at = 25.225399 ;
+ BTP.BCT10                     , at = 26.196399 ;
+ BTP.DVT40                     , at = 26.748399 ;
+ BTP.QNO60                     , at = 27.354749 ;   ! Middle point X=1910.503600, Y=2144.1496750 - SU Coordinates)
+ BTP.UES30                     , at = 27.882399 ;
+ BTP.MTV10                     , at = 28.488399 ;
+ BTP.VVS20                     , at = 28.674299 ;
+ BTP.DHZ40                     , at = 28.946399 ;
+ BTP.DVT50                     , at = 29.333399 ;
+
+ BTPst = 34.2276 ;  ! This value is a guesstimate. The stray fields needs to be recalculated by S.Gilardoni
+ call, file = "/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/stray.seq";
+!
+
+!SFLANGEMU41                   , at = 34.419399 ;
+ pointS                        , at = 35.085302969 ;  ! Middle point of SEPTUM 42  (X=1914.9927050, Y=2150.4432750000 - SU coordinats)
+
+ endsequence;
+
+ option, warn;
+ option, echo;
+ return;
+

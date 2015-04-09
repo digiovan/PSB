@@ -1,0 +1,187 @@
+ !******************************************************************************!
+ !
+ !                   Transfer line between PSB-PS: BT-BTP
+ !
+ !******************************************************************************!
+
+ option, -echo, warn;
+
+ title, "Transferline BT/BTP optics. Protons - 1.4 GeV- Injection PS";
+
+ option, RBARC=FALSE;   ! the length of a rectangular magnet
+                        ! is the distance between the polefaces
+                        ! and not the arc length
+
+
+ !------------------------------------------------!
+ ! BT - BTP
+ !------------------------------------------------!
+ option, -echo;
+
+ 	septum42 : RBEND, L=0.8, ANGLE = -.050;
+ 	pointS: marker;
+
+    call, file = 'Lattice/BT.str';
+    call, file = 'Lattice/BT.ele';
+    call, file = 'Lattice/BT.seq';
+!    call, file = 'Lattice/BT.dbx';  ! WARNING. Aperture problems give the error message:
+                         !          DA unstable
+                         !
+                         ! "DA" stands for dynamic aperture
+    call, file = 'Lattice/BTP.str';
+    call, file = 'Lattice/BTP.ele';
+    call, file = 'Lattice/BTP.seq';
+!    call, file = 'Lattice/BTP.dbx';
+    call, file = 'Lattice/Stray.ele';
+    call, file = 'Lattice/Stray.seq';
+    call, file = 'Lattice/BTPnewstray.seq';
+!    call, file = 'BTPnewstray.dbx'; ! WARNING. Aperture problems give the error message:
+                         !        DA unstable
+                         !
+                         ! "DA" stands for dynamic aperture
+
+ !--------------------------------------------------------------------------
+ ! Build up the geometry of the beam lines for OPTICS
+ ! BT1-BTP and BT3-BTP
+ !--------------------------------------------------------------------------
+
+ MOVER1   : MARKER;
+ MOVER2   : MARKER;
+ KICKER1L : VKICKER,   L=0, KICK:= pyBTL_MTV10;
+ KICKER1U : VKICKER,   L=0, KICK:=-pyBTL_MTV10;
+ KICKER2  : VKICKER,   L=0, KICK:= pyBT_MTV30;
+
+ BTBTPO1: sequence, refer=centre,  l =69.592;!64.06900;
+! BTBTPO1: sequence, refer=centre,  l = 64.06900;
+         BT_O_1                , at =        0;
+         BTL_SMV10_O_1         , at =  7.20000;
+         BTL_MTV10             , at =  7.778;
+         MOVER1                , at =  7.778;
+         KICKER1L              , at =  7.778;
+         BTL_O                 , at =  BTLst;
+         BT_VPI23              , at = (20.52888-BT_VPI23->L/2);
+         BT_SMV20_O_L          , at = 21.20000;
+         BT_MTV30              , at = 21.73500;
+         MOVER2                , at = 21.73500;
+         KICKER2               , at = 21.73500;
+         BT                    , at =  BTst;
+         BTP                   , at =  BTPst;
+ endsequence;
+
+
+
+ BTBTPO2:sequence, refer=centre,  l = 64.06900;
+         BT2                   , at =        0;
+         BTL_SMV10_2           , at =  7.20000;
+         BTL_MTV10             , at =  7.778;
+         BTL_O                 , at = BTLst;
+         BT_VPI23              , at = (20.52888-BT_VPI23->L/2);
+         BT_SMV20_O_L          , at = 21.20000;
+         BT_MTV30              , at = 21.73500;
+         MOVER2                , at = 21.73500;
+         KICKER2               , at = 21.73500;
+         BT                    , at = BTst;
+         BTP                   , at = BTPst;
+ endsequence;
+
+ !           BTBTPO3: sequence, refer=centre,  l = 69.592;!64.06900;
+ BTBTPO3:sequence, refer=centre,  l = 64.06900;
+         BT3                   , at =       00;
+         BTU_SMV10_3           , at =  7.20000;
+         BTU_MTV10             , at =  7.778;
+         BTU                   , at = BTUst;
+         BT_VPI23              , at = (20.52888-BT_VPI23->L/2);
+         BT_SMV20_U            , at = 21.20000;
+         BT_MTV30              , at = 21.73500;
+         BT                    , at = BTst;
+         BTP                   , at = BTPst;
+ endsequence;
+
+
+
+ BTBTPO4:sequence, refer=centre,  l = 64.06900;
+         BT_O_4                , at =        0;
+         BTU_SMV10_O_4         , at =  7.20000;
+         BTU_MTV10             , at =  7.778;
+         MOVER1                , at =  7.778;
+         KICKER1U              , at =  7.778;
+         BTU                   , at = BTUst;
+         BT_VPI23              , at = (20.52888-BT_VPI23->L/2);
+         BT_SMV20_U            , at = 21.20000;
+         BT_MTV30              , at = 21.73500;
+         BT                    , at = BTst;
+         BTP                   , at = BTPst;
+ endsequence;
+
+ !--------------------------------------------------------------
+ ! set initial twiss parameters
+ !--------------------------------------------------------------------------
+
+ call, file = 'Lattice/BT.inp';
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+      DELTAP = DELTAP0;
+      EX = EX0;
+      EY = EY0;
+
+!---------------------------------------------------------------------------------------------
+ !no misalignment
+ beam, particle=proton, pc=2.12; use, sequence=BTBTPO1;
+
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss,column = name,s,y,py,alfa11,beta11,alfa22,beta22,disp1,disp2,disp3,disp4;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_align;
+
+ ptc_twiss, table=ptc_twiss,icase=5,no=1, BETA0=INITBETA0, DX=-1.1743, DPX= 0.0649, file="output/ptcoptics_noalign_bt1btp_matched_stray.out";
+ ptc_end;
+
+!---------------------------------------------------------------------------------------------
+!alignment Olav
+ beam, particle=proton, pc=2.12; use, sequence=BTBTPO1;
+ call, file = 'Lattice/BT.align';
+
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss,column = name,s,y,py,alfa11,beta11,alfa22,beta22,disp1,disp2,disp3,disp4;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_align;
+
+ ptc_twiss, table=ptc_twiss,icase=5,no=1, BETA0=INITBETA0, DX=-1.1665, DPX= 0.0644, file="output/ptcoptics_bt1btp_matched_stray.out";
+ ptc_end;
+
+!---------------------------------------------------------------------------------------------
+ ! my alignment
+ beam, particle=proton, pc=2.12; use, sequence=BTBTPO1;
+ call, file = 'Lattice/BTnew.align';
+
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss,column = name,s,y,py,alfa11,beta11,alfa22,beta22,disp1,disp2,disp3,disp4;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_align;
+
+ ptc_twiss, table=ptc_twiss,icase=5,no=1, BETA0=INITBETA0, DX= -1.0984, DPX= 0.0601, file="output/ptcoptics_bt1btp_mymatched_stray.out";
+ ptc_end;
+
+ stop;

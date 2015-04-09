@@ -1,0 +1,86 @@
+option, -echo;
+option, info;
+option, warn;
+!---------------------------------------------------------------------------
+! - The sequence starts exactly at the entry point of BT.BHZ10 and ends at
+!   the center of the dump core.
+!
+! - BTM line is split into two parts:
+!   1st part: BT.BHZ10 to BTY handover point (ISOLDE line)
+!   2nd part: BTY handover point (ISOLDE line) to PSB beam dump
+!
+! - The position of the elements corresponds to the magnetic center
+!   where applicable otherwise to the mechanical center of each element. All
+!   positions are derived from the positions in the drawing PSBIHENS0031-vAC, except
+!   the quadrupoles and the bending magnet BTM.BHZ10 which are derived from GEODE data.
+!   Corrections are made to those values to start the line at the entry point of
+!   BT.BHZ10 and to take into account the differences between the beam path and
+!   the straight line trajectory in BT.BHZ10 and in BTM.BHZ10.
+!
+! - Offset to add to get position in reference of the entry point of BT.BHZ10
+!   and to take into account beam path in BT.BHZ10
+!   = 1.53383m  (Beam Path in BT.BHZ10) - 0.768326 m (distance deflection point to sortie point BT.BHZ10)
+!   The beam path is calculated as following:
+!   BeamPath = length BT.BHZ10 * deflection angle / (Sin[deflection angle])
+!   The deflection angle is 162.3 mrad (drawing PSBIHENS0029-vAE and Geode agree)
+!
+! - The position of BT.BHZ10 which is half of the beam path in BT.BHZ10.
+!
+! - Offset to add to take into account beam path in BTM.BHZ10
+!   = 2.35103  (Beam Path in BTM.BHZ10) - 1.1877m (distance magntic entry BTM.BHZ10 to
+!   deflection point) - 1.18773m (distance deflection point to magnetic sortie BTM.BHZ10)
+!   The beam path is calculated as following:
+!   BeamPath = length BTM.BHZ10 * deflection angle / ( 2 * Sin[deflection angle/2])
+!   The deflection angle is 350.7 mrad (drawing PSBIHENS0031-vAC and Geode agree)
+!
+! - The position of the Beam Loss Monitor (MBL) are commented out to prevent conflict with other
+!   elements in MADX
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013
+! Sequence file created in January 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+BTM_1: sequence, refer=centre, l = 11.39010;
+
+    BT.BHZ10  , at = 0.7669165;  // Path length/2
+        BTM.VVS10 , at = 2.59700;
+        BTM.BTV10 , at = 2.94050;
+        BTM.QNO05 , at = 3.52201;
+        BTM.BHZ10 , at = 5.40040;
+        BTM.QNO10 , at = 7.20328;
+        BTM.DVT10 , at = 7.94160;
+        BTM.DHZ10 , at = 8.40560;
+        BTM.QNO20 , at = 9.08628;
+        BTM.BPM00 , at = 9.63760;
+        BTM.BTV15 , at = 10.01910;
+        BTM.VPI11 , at = 10.21910;
+        ! BTM.MBL101, at = 10.5;
+        BTM.VC    , at = 11.39010;  // hand over point to ISOLDE
+endsequence;
+
+ISOpoint = 11.39010;
+
+BTM_2: sequence, refer=centre, l = 14.16450;
+
+        BTM.VPI11a   , at = 12.81110 - ISOPoint;
+        BTM.BSGH01   , at = 13.34510 - ISOPoint;
+        BTM.BSGV01   , at = 13.49510 - ISOPoint;
+        BTM.BSGH02   , at = 15.84510 - ISOPoint;
+        BTM.BSGV02   , at = 15.99510 - ISOPoint;
+        BTM.BPM10    , at = 16.78260 - ISOPoint;
+        BTM.BTV20    , at = 17.82910 - ISOPoint;
+        BTM.BSGH03   , at = 18.34510 - ISOPoint;
+        BTM.BSGV03   , at = 18.49510 - ISOPoint;
+        ! BTM.MBL10, at = 18.7;
+        BTM.BCT10    , at = 18.76710 - ISOPoint;
+        BTM.TDU10    , at = 25.55460 - ISOPoint;
+
+endsequence;
+
+BTM: sequence, refer=ENTRY , l = 25.55460;
+        BTM_1, at = 0.0;
+        BTM_2, at = ISOPoint;
+endsequence;
+
+return;

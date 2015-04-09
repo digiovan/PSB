@@ -1,0 +1,33 @@
+
+!
+! angle_LBE_BHZ40 = -0.100011299393193 ;
+! rho = 9.0140023888 [  =0.90/Sin(0.100011299393193)  ]
+! Larc  = 0.9015020916 ; [ =rho * angle = 9.0140023888* 0.100011299393193 ]
+! Ldefl = 0.9022542655 ; [ =2* 9.0140023888 *  Tan(0.100011299393193/2)   ]
+
+
+LBE: SEQUENCE, REFER=CENTRE,  l := 15.0024749589 ;
+   BEGLBE    : MARKER      , AT :=  0.0000000000 ;
+   LBE.BHZ40               , AT :=  0.4501875971 ; ! 0.9003751942/2
+   LBE.KVT9                , AT :=  3.0323749589 ; ! ( 3393.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.KHZ9                , AT :=  3.6783749589 ; ! ( 4039.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.VVS10               , AT :=  4.1503749589 ; ! ( 4511.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.KVT10               , AT :=  5.2323749589 ; ! ( 5593.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.KHZ10               , AT :=  5.6783749589 ; ! ( 6039.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.SLH10               , AT :=  6.2123749589 ; ! ( 6573.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.SLV10               , AT :=  6.4373749589 ; ! ( 6798.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.QFW10               , AT :=  6.9503749589 ; ! ( 7311.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.VGP1                , AT :=  7.5876749589 ; ! ( 7948.6 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.VGR1                , AT :=  7.5876749589 ; ! ( 7948.6 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.VPI11               , AT :=  8.0197749589 ; ! ( 8380.7 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.QDW10               , AT :=  8.9503749589 ; ! ( 9311.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.D10                 , AT :=  9.9003749589 ; ! (10261.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.BCT66               , AT := 13.0773749589 ; ! (13438.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.BCT65               , AT := 13.3403749589 ; ! (13701.3 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.MSGH10              , AT := 14.4478749589 ; ! (14808.8 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.MSGV10              , AT := 14.4478749589 ; ! (14808.8 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.MSGHV20             , AT := 14.8388749589 ; ! (15199.8 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   LBE.DUMP                , AT := 14.9804749589 ; ! (15341.4 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+   ENDLBE    : MARKER      , AT := 15.0024749589 ; ! (15363.4 - 811.3)/1000 (From ps_lmltb8005-vAB.plt) +  0.9015020916 (the path through BHZ40) - 0.9022542655/2 (geometric distance in BHZ40/2)
+ENDSEQUENCE;
+

@@ -1,0 +1,60 @@
+
+
+
+ call, file="DVT30_QNO30_QNO40.str";
+ system,"cat ../../elements/bi.ele | grep LBIQNO | grep -v SBEND > length.ele"; call, file="length.ele";
+
+
+ BI.DVT30         : VKICKER,    L=0,         KICK:=tan(angleDVT30);! Modify the definition of DVT30, it is now a kicker
+ BI.QNO30         : QUADRUPOLE, L:=LBIQNO30, K1  :=KBI.QNO30    ;! Modify the definition of QNO30, it is now a quadrupole
+ BI.QNO40         : QUADRUPOLE, L:=LBIQNO40, K1  :=KBI.QNO40    ;! Modify the definition of QNO40, it is now a quadrupole
+
+ bi_matching_seq: sequence, refer = centre, l  = 10;
+ BI.DVT30                     , at = 22.766000 - 22.766+0.5; ! This value is from the drawing: PSBIHENS0032-vAH
+ BI.QNO30                     , at = 23.974695 - 22.766+0.5; ! This value is from GEODE
+ BI.QNO40                     , at = 25.224149 - 22.766+0.5; ! This value is from GEODE
+ BI.END         : MARKER      , at = 10;
+ endsequence;
+ option, -warn;
+ save, sequence=bi_matching_seq, file=bi_matching_seq.save;
+ option, warn;
+
+
+ !-- Matching of the bending angle of DVT30 and the strength of QNO30 --!
+ pt1 : macro={
+    option, -echo;
+    Beam, particle=PROTON;
+    Use, sequence=bi_matching_seq;
+
+    select,flag=ptc_twiss, column = name,keyword, s,y,py;
+
+    ptc_create_universe;
+    ptc_create_layout,model=2,method=6,nst=5,exact,closed_layout=false;
+    ptc_twiss,table=ptc_twiss,betx=1., bety=1., y=.0, icase=5,no=2;
+!   write,table=ptc_twiss,file="DVT30QNO30QNO40.matching";
+    ptc_end;
+    option, echo;
+ };
+
+
+
+ match,use_macro;
+    vary, name=angleDVT30,  step = 0.0001, LOWER= -0.2,  UPPER= 0.2;
+    vary, name=KBI.QNO30, step = 0.0001, LOWER= -3.0,  UPPER= 3.0;
+
+    use_macro,name=pt1;
+    constraint, expr=table(ptc_twiss, BI.QNO40, y)*10000 = 52; ! Multiplied by 10^4 to make the constraint more important
+    constraint, expr=table(ptc_twiss, BI.END,y)   *10000 = 52;
+
+!   lmdif, calls = 500, tolerance = 1.0E-21;
+!   simplex, calls = 1000, tolerance = 1.0E-25;
+    lmdif, calls = 500, tolerance = 1.0E-21;
+ endmatch;
+
+
+value, angleDVT30, KBI.QNO30, KBI.QNO40;
+
+assign, echo="DVT30_QNO30_QNO40.str"; value, angleDVT30,KBI.QNO30,KBI.QNO40; assign, echo=terminal;  ! Contains KBI.QNO40 strength
+
+return;
+

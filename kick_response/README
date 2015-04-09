@@ -1,0 +1,37 @@
+
+cp -r ~/public/ltltbbi/2014.08.22/RM.500urad/ .
+cd RM.500urad/ 
+find ./ -name "*.gz" -exec gunzip {} \;
+
+cd ../
+
+
+mkdir MADX
+cd MADX
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2014/
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2011/
+mv project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/ .
+rm -rf project-ps-optics.web.cern.ch/
+
+2014.08.26
+
+Olav and myself found a problem with the current implementation of the BI.QNO30
+and BI.QNO40. By defining the quadrupole as SBEND with a Quadrupole component,
+when you set a tilt=pi/2 one needs to make sure that the sign of the quadrupole
+strengh is INVERTED w.r.t. the sign of the strengh is the element would be
+defined as quadrupole! E.G.: if the quadrupole is a focusing one, K is positive,
+then the K in the SBEND with tilt=pi/2 has to be negative to have the same
+effect!
+
+2014.09.15
+
+After the access on the PSB few weeks ago, several BPMs in the LT-LTB-BI line
+turned to be inverted as well as some others stopped working. Finally as of
+today all the BPMs in the line are working and have the correct polarity.
+Taken another round of kick measurements to make sure everything is as expected.
+
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/PSB-PS/2014/
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/PSB-PS/2011/
+mv project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/PSB-PS .
+rm -rf project-ps-optics.web.cern.ch/
+

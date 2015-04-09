@@ -1,0 +1,351 @@
+option, -echo;
+option, -info;
+option, warn;
+!--------------------------------------------------------------------------
+! Matching file to determine the vertical recombination angles described by
+! the 4 beams. This file is called by the BI.madx master file
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/cmdx/matching_bi_line
+! Matching file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+
+
+/****************************************************************************
+ * BI, deflection points alias mechanical positions
+ ****************************************************************************/
+ call, file = 'BImechanical.seq';
+ call, file = 'BIcenter.mechpos';
+ option, -echo;
+ option, -info;
+ option, warn;
+
+
+/****************************************************************************
+ * Get the previous deflection angles (and also strengths)
+ ****************************************************************************/
+ call, file = '../../strength/bi.str';
+ call, file = 'matching_angle_position.prt'; ! This contains the new angles AND THE STRENGTH OF QNO30 AND QNO40
+
+
+
+
+
+/*******************************************************************************************************************
+ *******************************************************************************************************************
+ * MATCHING. Calculate angles of DVT30, QNO30 and QNO40
+ *******************************************************************************************************************
+ *******************************************************************************************************************/
+ call, file = '../../elements/bi.ele';
+ call, file = '../../elements/ltb.ele';
+
+ BI.DVT30         : VKICKER,    L=0,         KICK:=tan(dBIDVT30);! Modify the definition of DVT30, it is now a kicker
+ BI.QNO30         : QUADRUPOLE, L:=LBIQNO30, K1  :=KBI.QNO30    ;! Modify the definition of QNO30, it is now a quadrupole
+ BI.QNO40         : QUADRUPOLE, L:=LBIQNO40, K1  :=KBI.QNO40    ;! Modify the definition of QNO40, it is now a quadrupole
+
+
+ BI.DVT30.spos = BI.DVT30.mechpos;
+
+ angle = -dBIQNO30;
+ E1    =  dBIDVT30;
+ E2    = angle - E1;
+ L     = LBIQNO30;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.QNO30 = Lbeam-Lgeom;
+ !-----------!
+ BI.QNO30.spos = BI.DVT30.spos + (BI.QNO30.mechpos - BI.DVT30.mechpos)/cos(dBIDVT30)                   + DL.DVT30/2 + DL.QNO30/2;
+
+
+ !*  QNO40  *!
+ !-----------!
+ angle = dBIQNO40;
+ E1    = dBIQNO40;
+ E2    = angle - E1;
+ L     = LBIQNO40;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.QNO40 = Lbeam-Lgeom;
+ !-----------!
+ BI.QNO40.spos = BI.QNO30.spos + (BI.QNO40.mechpos - BI.QNO30.mechpos)/cos(dBIDVT30+dBIQNO30) + DL.QNO30/2 + DL.QNO40/2;
+
+
+
+ bi_matching_seq: sequence, refer = centre, l  = 100;
+ BI.DVT30                     , at = BI.DVT30.spos;
+ BI.QNO30                     , at = BI.QNO30.spos;
+ BI.QNO40                     , at = BI.QNO40.spos;
+ BI.END         : MARKER      , at = 100;
+ endsequence;
+ option, -warn;
+ save, sequence=bi_matching_seq, file=bi_matching_seq.save;
+ option, warn;
+
+
+ !-- Matching of the bending angle of DVT30,QNO30 and QNO40 --!
+ pt1 : macro={
+    option, -echo;
+    Beam, particle=PROTON;
+    Use, sequence=bi_matching_seq;
+
+    select,flag=ptc_twiss, column = name,keyword, s,y,py;
+
+    ptc_create_universe;
+    ptc_create_layout,model=2,method=6,nst=5,exact,closed_layout=false;
+    ptc_twiss,table=ptc_twiss,betx=1., bety=1., y=.0, icase=5,no=2;
+    write,table=ptc_twiss,file="DVT30QNO30QNO40.matching";
+    ptc_end;
+    option, echo;
+ };
+
+
+
+
+
+ dbidvt30  =  0.001687693438 ;
+ kbi.qno30 =  0.870905823308 ;
+ kbi.qno40 = -1.096051071412 ;
+
+ match,use_macro;
+    vary, name=dBIDVT30,  step = 0.0001, LOWER= 0.001,UPPER= 0.002;
+    vary, name=KBI.QNO30, step = 0.0001, LOWER= 0.7,  UPPER= 1.1;
+    vary, name=KBI.QNO40, step = 0.0001, LOWER=-1.2,  UPPER=-0.5;
+
+    use_macro,name=pt1;
+    ! Constraint for DVT30 taken from the https://edms.cern.ch/file/1178044/1.0/PBU-MSMIA-EP-0001-01-00.pdf
+    constraint, expr=dBIDVT30*1000 =  1.48     ; ! Multiplied by 1000 to make the constraint more important
+    constraint, expr=KBI.QNO30     =  0.813588 ;
+    constraint, expr=KBI.QNO40     = -0.952663 ;
+
+    constraint, expr=table(ptc_twiss, BI.QNO40, y)*1000000000 = 5200000; ! Multiplied by 10^9 to make the constraint more important
+    constraint, expr=table(ptc_twiss, BI.END,y)   *1000000000 = 5200000;
+
+    lmdif, calls = 50, tolerance = 1.0E-21;
+!   simplex, calls = 100, tolerance = 1.0E-25;
+ endmatch;
+
+ hQNO30   =  0 + tan(dBIDVT30)  *(BI.QNO30.mechpos - BI.DVT30.mechpos) ;
+ dBIQNO40 = atan((0.0052-hQNO30)/(BI.QNO40.mechpos - BI.QNO30.mechpos));
+ dBIQNO30 = dBIQNO40 - dBIDVT30                                        ;
+
+
+
+
+
+
+/*******************************************************************************************************************
+ *******************************************************************************************************************
+ * MATCHING. Calculate angles of DIS1, DIS2, DIS3, DIS4 and DVT40
+ *******************************************************************************************************************
+ *******************************************************************************************************************/
+
+ pt2: macro={
+ print, text=" ";
+ print, text="**************************************************************";
+ option, -echo;
+ call, file = '../../elements/bi.ele';
+ call, file = '../../elements/ltb.ele';
+ option, -echo;
+
+!********** BI1 *************************************************************
+ dBI1DIS1  = BI1.DIS1->L/RhoDIS1;
+ dBI1DIS2  = BI1.DIS2->L/RhoDIS2;
+ dBI1DIS3  = BI1.DIS3->L/RhoDIS3;
+ dBI1DIS4  = BI1.DIS4->L/RhoDIS4;
+ dBI1DVT40 = BI1.DVT40->L/RhoDVT40;
+ dBI1SMV   = 0.16595 ; ! Angle for SMV1 taken from the https://edms.cern.ch/file/1178044/1.0/PBU-MSMIA-EP-0001-01-00.pdf
+ dBI1BVT   = dBI1SMV+dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4-dBI1DVT40;
+
+ hBI1DIS2  = 0.005200  - tan(dBI1DIS1)                                        * ( BI1.DIS2.mechpos        - BI1.DIS1.mechpos  );
+ hBI1DIS3  = hBI1DIS2  - tan(dBI1DIS1+dBI1DIS2)                               * ( BI1.DIS3.mechpos        - BI1.DIS2.mechpos  );
+ hBI1DIS4  = hBI1DIS3  - tan(dBI1DIS1+dBI1DIS2+dBI1DIS3)                      * ( BI1.DIS4.mechpos        - BI1.DIS3.mechpos  );
+ hBI1DVT40 = hBI1DIS4  - tan(dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4)             * ( BI1.DVT40.mechpos       - BI1.DIS4.mechpos  );
+ hBI1SMV   = hBI1DVT40 + tan(dBI1DVT40-(dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4)) * ( BI1.SMV10.mechpos       - BI1.DVT40.mechpos );
+ hBI1SMVE  = hBI1DVT40 + tan(dBI1DVT40-(dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4)) * ( BI1.SMV10.mechcenterpos - BI1.SMV->L/2  - BI1.DVT40.mechpos );
+ hBI1BVT   = hBI1SMV   + tan(-dBI1BVT)                                        * ( BI1.BVT.mechpos         - BI1.SMV10.mechpos );
+ value, dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4, BI1.DVT40->L, dBI1DVT40, dBI1SMV, dBI1BVT, dBI1DIS1+dBI1DIS2+dBI1DIS3+dBI1DIS4-dBI1DVT40+dBI1SMV-dBI1BVT, hBI1DVT40, hBI1SMV, hBI1BVT ;
+
+
+!********** BI2 *************************************************************
+ dBI2DIS2  = BI2.DIS2->L/RhoDIS2;
+ dBI2DIS3  = BI2.DIS3->L/RhoDIS3;
+ dBI2DIS4  = BI2.DIS4->L/RhoDIS4;
+ dBI2DVT40 = BI2.DVT40->L/RhoDVT40;
+ dBI2SMV   = 0.1313 ; ! Angle for SMV2 taken from the https://edms.cern.ch/file/1178044/1.0/PBU-MSMIA-EP-0001-01-00.pdf
+ dBI2BVT   = dBI2SMV+dBI2DIS2+dBI2DIS3+dBI2DIS4-dBI2DVT40;
+
+ hBI2DIS3  = 0.005200  - tan(dBI2DIS2)                                        * ( BI2.DIS3.mechpos        - BI2.DIS2.mechpos  );
+ hBI2DIS4  = hBI2DIS3  - tan(dBI2DIS2+dBI2DIS3)                               * ( BI2.DIS4.mechpos        - BI2.DIS3.mechpos  );
+ hBI2DVT40 = hBI2DIS4  - tan(dBI2DIS2+dBI2DIS3+dBI2DIS4)                      * ( BI2.DVT40.mechpos       - BI2.DIS4.mechpos  );
+ hBI2SMV   = hBI2DVT40 + tan(dBI2DVT40-(dBI2DIS2+dBI2DIS3+dBI2DIS4))          * ( BI2.SMV10.mechpos       - BI2.DVT40.mechpos );
+ hBI2SMVE  = hBI2DVT40 + tan(dBI2DVT40-(dBI2DIS2+dBI2DIS3+dBI2DIS4))          * ( BI2.SMV10.mechcenterpos - BI2.SMV->L/2  - BI2.DVT40.mechpos );
+ hBI2BVT   = hBI2SMV   + tan(-dBI2BVT)                                        * ( BI2.BVT.mechpos         - BI2.SMV10.mechpos );
+ value, dBI2DIS2+dBI2DIS3+dBI2DIS4, BI2.DVT40->L, dBI2DVT40, dBI2SMV, dBI2BVT, dBI2DIS2+dBI2DIS3+dBI2DIS4-dBI2DVT40+dBI2SMV-dBI2BVT, hBI2DVT40, hBI2SMV, hBI2BVT ;
+
+
+!********** BI3 *************************************************************
+ dBI3DIS3  = BI3.DIS3->L/RhoDIS3;
+ dBI3DIS4  = BI3.DIS4->L/RhoDIS4;
+ dBI3DVT40 = BI3.DVT40->L/RhoDVT40;
+ dBI3SMV   = 0 ;
+ dBI3BVT   = 0 ;
+
+ hBI3DIS4  = 0.005200  - tan(dBI3DIS3)                                        * ( BI3.DIS4.mechpos        - BI3.DIS3.mechpos  );
+ hBI3DVT40 = hBI3DIS4  - tan(dBI3DIS3+dBI3DIS4)                               * ( BI3.DVT40.mechpos       - BI3.DIS4.mechpos  );
+ hBI3SMV   = hBI3DVT40 + tan(dBI3DVT40-(dBI3DIS3+dBI3DIS4))                   * ( BI3.SMV10.mechpos       - BI3.DVT40.mechpos );
+ hBI3SMVE  = hBI3DVT40 + tan(dBI3DVT40-(dBI3DIS3+dBI3DIS4))                   * ( BI3.SMV10.mechcenterpos - BI3.SMV->L/2  - BI3.DVT40.mechpos );
+ hBI3BVT   = hBI3SMV   + tan(-dBI3BVT)                                        * ( BI3.BVT.mechpos         - BI3.SMV10.mechpos );
+ value, dBI3DIS3+dBI3DIS4, BI3.DVT40->L, dBI3DVT40, dBI3SMV, dBI3BVT, dBI3DIS3+dBI3DIS4-dBI3DVT40+dBI3SMV-dBI3BVT, hBI3DVT40, hBI3SMV, hBI3BVT ;
+
+
+!********** BI4 *************************************************************
+ dBI4DIS4  = BI4.DIS4->L/RhoDIS4;
+ dBI4DVT40 = BI4.DVT40->L/RhoDVT40;
+ dBI4SMV   = 0.1312 ;
+ dBI4BVT   = dBI4SMV+dBI4DVT40-dBI4DIS4;
+
+ hBI4DVT40 = 0.005200  - tan(dBI4DIS4)                                        * ( BI4.DVT40.mechpos       - BI4.DIS4.mechpos  );
+ hBI4SMV   = hBI4DVT40 + tan(dBI4DVT40-dBI4DIS4)                              * ( BI4.SMV10.mechpos       - BI4.DVT40.mechpos );
+ hBI4SMVE  = hBI4DVT40 + tan(dBI4DVT40-dBI4DIS4)                              * ( BI4.SMV10.mechcenterpos - LBI1SMV/2  - BI4.DVT40.mechpos );
+ hBI4BVT   = hBI4SMV   + tan(dBI4BVT)                                         * ( BI4.BVT.mechpos         - BI4.SMV10.mechpos );
+ value, dBI4DIS4, BI4.DVT40->L, dBI4DVT40, dBI4SMV, dBI4BVT, dBI4DIS4-dBI4DVT40+dBI4SMV-dBI4BVT, hBI4DVT40, hBI4SMV, hBI4BVT ;
+
+ print, text=" ";
+ print, text=" ";
+ value, BI1.DIS1->L, BI2.DIS1->L, BI3.DIS1->L, BI4.DIS1->L    ;
+ print, text=" ";
+ value, BI1.DIS2->L, BI2.DIS2->L, BI3.DIS2->L, BI4.DIS2->L    ;
+ print, text=" ";
+ value, BI1.DIS3->L, BI2.DIS3->L, BI3.DIS3->L, BI4.DIS3->L    ;
+ print, text=" ";
+ value, BI1.DIS4->L, BI2.DIS4->L, BI3.DIS4->L, BI4.DIS4->L    ;
+ print, text=" ";
+ print, text=" ";
+ value, dBI1DIS1, dBI2DIS1, dBI3DIS1, dBI4DIS1;
+ print, text=" ";
+ value, dBI1DIS2, dBI2DIS2, dBI3DIS2, dBI4DIS2;
+ print, text=" ";
+ value, dBI1DIS3, dBI2DIS3, dBI3DIS3, dBI4DIS3;
+ print, text=" ";
+ value, dBI1DIS4, dBI2DIS4, dBI3DIS4, dBI4DIS4;
+ print, text=" ";
+ value, dBI1DVT40, dBI2DVT40, dBI3DVT40, dBI4DVT40;
+ print, text=" ";
+ print, text=" ";
+ value, hBI1SMVE, hBI2SMVE, hBI3SMVE, hBI4SMVE;
+ print, text=" ";
+ print, text=" ";
+ value, RhoDVT40, RhoDIS1, RhoDIS2, RhoDIS3, RhoDIS4;
+ print, text=" ";
+ print, text=" ";
+
+ };
+
+
+/********** Set initial values for the matching  ****************************/
+ rhodvt40 =   44.6141138 ;
+ rhodis1  =  102.8690826 ;
+ rhodis2  =  113.0152698 ;
+ rhodis3  =  108.635564  ;
+ rhodis4  =  110.501167  ;
+ exec, pt2;
+
+/********** Macro: pt2  *****************************************************/
+ match,use_macro;
+
+    use_macro,name=pt2;
+    ! Constraint for SMV1 taken from the https://edms.cern.ch/file/1178044/1.0/PBU-MSMIA-EP-0001-01-00.pdf
+    constraint, expr=dBI1DIS1 = 0.00388 ;
+    constraint, expr=dBI1DIS2 = 0.00349 ;
+    constraint, expr=dBI1DIS3 = 0.00365 ;
+    constraint, expr=dBI1DIS4 = 0.00362 ;
+
+    constraint, expr=dBI2DIS1 = 0.00000 ;
+    constraint, expr=dBI2DIS2 = 0.00349 ;
+    constraint, expr=dBI2DIS3 = 0.00365 ;
+    constraint, expr=dBI2DIS4 = 0.00362 ;
+
+    constraint, expr=dBI3DIS1 = 0.00000 ;
+    constraint, expr=dBI3DIS2 = 0.00000 ;
+    constraint, expr=dBI3DIS3 = 0.00365 ;
+    constraint, expr=dBI3DIS4 = 0.00362 ;
+
+    constraint, expr=dBI4DIS1 = 0.00000 ;
+    constraint, expr=dBI4DIS2 = 0.00000 ;
+    constraint, expr=dBI4DIS3 = 0.00000 ;
+    constraint, expr=dBI4DIS4 = 0.00362 ;
+
+    constraint, expr=(dBI3DVT40-dBI3DIS3-dBI3DIS4)*1000000000000  =    0000000 ;
+
+    constraint, expr=hBI1BVT*1000000000  = -720000000 ;
+    constraint, expr=hBI2BVT*1000000000  = -360000000 ;
+    constraint, expr=hBI3BVT*1000000000  =    0000000 ;
+    constraint, expr=hBI4BVT*1000000000  =  360000000 ;
+
+    vary, name=RhoDVT40, step = 0.0000001,  LOWER= 30, UPPER=  60;
+    vary, name=RhoDIS1,  step = 0.0000001,  LOWER= 90, UPPER= 130;
+    vary, name=RhoDIS2,  step = 0.0000001,  LOWER= 90, UPPER= 130;
+    vary, name=RhoDIS3,  step = 0.0000001,  LOWER= 90, UPPER= 130;
+    vary, name=RhoDIS4,  step = 0.0000001,  LOWER= 90, UPPER= 130;
+
+!   vary, name=dummy; lmdif, calls=1, tolerance=1.E-15; endmatch; stop;
+!   simplex, calls = 1000, tolerance = 1.0E-25;
+    lmdif, calls = 500, tolerance = 1.0E-21;
+
+ endmatch;
+
+
+
+
+
+/****************************************************************************
+ * Save angles in the file:  "matching_angle_position.prt"
+ ****************************************************************************/
+ set,  format="20.15f";
+ assign, echo="matching_angle_position.prt";
+ value, DBIDVT30  ;
+ value, KBI.QNO30 ;
+ value, KBI.QNO40 ;
+ value, DBI1DVT40 ;
+ value, DBI2DVT40 ;
+ value, DBI3DVT40 ;
+ value, DBI4DVT40 ;
+ value, DBIQNO30  ;
+ value, DBIQNO40  ;
+ value, DBI1DIS1  ;
+ value, DBI2DIS1  ;
+ value, DBI3DIS1  ;
+ value, DBI4DIS1  ;
+ value, DBI1DIS2  ;
+ value, DBI2DIS2  ;
+ value, DBI3DIS2  ;
+ value, DBI4DIS2  ;
+ value, DBI1DIS3  ;
+ value, DBI2DIS3  ;
+ value, DBI3DIS3  ;
+ value, DBI4DIS3  ;
+ value, DBI1DIS4  ;
+ value, DBI2DIS4  ;
+ value, DBI3DIS4  ;
+ value, DBI4DIS4  ;
+ value, DBI1SMV   ;
+ value, DBI2SMV   ;
+ value, DBI3SMV   ;
+ value, DBI4SMV   ;
+ value, DBI1BVT   ;
+ value, DBI2BVT   ;
+ value, DBI3BVT   ;
+ value, DBI4BVT   ;
+ value, RhoDVT40  ;
+ value, RhoDIS1   ;
+ value, RhoDIS2   ;
+ value, RhoDIS3   ;
+ value, RhoDIS4   ;
+ value, dl; ! to be removed
+ assign, echo=terminal;
+
+
+

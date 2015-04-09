@@ -1,0 +1,311 @@
+ option, echo;
+ option, info;
+ option, warn;
+
+!--------------------------------------------------------------------------
+! File to calculate the "s" position of each element in BI2 line using the
+! recombination vertical angles determined in the BI.matching file.
+! A BI2.seq file isautomaticaly generated.
+!
+! File called by the BI.madx master file
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/cmdx/matching_bi_line
+! S file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+/*****************************************************************************
+ * TITLE
+ *****************************************************************************/
+ title, 'Generate BI2.seq';
+
+
+/*****************************************************************************
+ * CALL element definitions and the BImechanical.seq, which contains the deflection points
+ *****************************************************************************/
+ call, file = 'matching_angle_position.prt';
+ call, file = 'matching_parameters.prt';
+
+
+/*****************************************************************************
+ * CALL element definitions and the BImechanical.seq, which contains the deflection points
+ *****************************************************************************/
+ call, file = '../../elements/ltb.ele';
+ call, file = '../../elements/bi.ele';
+ call, file = 'BImechanical.seq';
+
+
+ !-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ !  Calculate the 's' position of all the elements
+ !-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ !* From LTB.BHZ40 to VVS10 *!
+ !-----------!
+ LTB.BHZ40.spos   =  LTB.BHZ40.mechpos;
+ LTB.MBL10.spos   =  LTB.MBL10.mechpos;
+ LTB.MBL20.spos   =  LTB.MBL20.mechpos;
+  BI.VPI11.spos   =   BI.VPI11.mechpos;
+  BI.DHZ10.spos   =   BI.DHZ10.mechpos;
+  BI.DVT10.spos   =   BI.DVT10.mechpos;
+  BI.BPM00.spos   =   BI.BPM00.mechpos;
+  BI.BTV10.spos   =   BI.BTV10.mechpos;
+  BI.STPFA10.spos = BI.STPFA10.mechpos;
+  BI.STPSW10.spos = BI.STPSW10.mechpos;
+  BI.BPM10.spos   =   BI.BPM10.mechpos;
+  BI.DHZ20.spos   =   BI.DHZ20.mechpos;
+  BI.DVT20.spos   =   BI.DVT20.mechpos;
+  BI.QNO10.spos   =   BI.QNO10.mechpos;
+  BI.QNO20.spos   =   BI.QNO20.mechpos;
+  BI.BPM20.spos   =   BI.BPM20.mechpos;
+  BI.BCT10.spos   =   BI.BCT10.mechpos;
+  BI.VVS10.spos   =   BI.VVS10.mechpos;
+
+
+ angle = -dBIDVT30;
+ E1    = 0;
+ E2    = angle - E1;
+ L     = LBIDVT30;
+ //-----------//
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.DVT30 = Lbeam-Lgeom;
+ !-----------!
+ BI.DVT30.spos = BI.DVT30.mechpos + DL.DVT30/2;
+ BI.DHZ30.spos = BI.DVT30.spos ;  ! DHZ30 and DVT30 are really the same magnet;
+                                  ! Since DVT30 is defined as an SBEND and DHZ as a KICKER, they cannot occupy the same position.
+                                  ! DHZ30 is commented out
+ BI.BTV20.spos = BI.DVT30.spos + (BI.BTV20.mechpos - BI.DVT30.mechpos)/cos(dBIDVT30) + DL.DVT30/2;
+
+
+ !* From QNO30 to UMA30 *!
+ !-----------!
+ angle = -dBIQNO30;
+ E1    =  dBIDVT30;
+ E2    = angle - E1;
+ L     = LBIQNO30;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.QNO30 = Lbeam-Lgeom;
+ !-----------!
+ BI.QNO30.spos = BI.DVT30.spos + (BI.QNO30.mechpos - BI.DVT30.mechpos)/cos(dBIDVT30) + DL.DVT30/2 + DL.QNO30/2;
+ BI.BPM30.spos = BI.QNO30.spos + (BI.BPM30.mechpos - BI.QNO30.mechpos)/cos(dBIDVT30+dBIQNO30)     + DL.QNO30/2;
+
+
+ !*  QNO40  *!
+ !-----------!
+ angle = dBIQNO40;
+ E1    = dBIQNO40;
+ E2    = angle - E1;
+ L     = LBIQNO40;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.QNO40 = Lbeam-Lgeom;
+ !-----------!
+ BI.QNO40.spos = BI.QNO30.spos + (BI.QNO40.mechpos - BI.QNO30.mechpos)/cos(dBIDVT30+dBIQNO30) + DL.QNO30/2 + DL.QNO40/2;
+ BI.DIS0.spos  = BI.QNO40.spos + (BI.DIS0.mechpos  - BI.QNO40.mechpos)/cos(0)                              + DL.QNO40/2;
+ BI.DIS1.spos  = BI.QNO40.spos + (BI2.DIS1.mechpos - BI.QNO40.mechpos)/cos(0)                              + DL.QNO40/2;
+
+
+ !*  DIS2   *!
+ !-----------!
+ angle = dBI2DIS2;
+ E1    = 0;
+ E2    = angle - E1;
+ L     = LBI2DIS2;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.DIS2  = Lbeam-Lgeom;
+ !-----------!
+ BI.DIS2.spos  = BI.QNO40.spos + (BI2.DIS2.mechpos - BI.QNO40.mechpos)/cos(0) + DL.QNO40/2 + DL.DIS2/2;
+
+
+ !*  DIS3   *!
+ !-----------!
+ angle = dBI2DIS3;
+ E1    = -dBI2DIS2;
+ E2    = angle - E1;
+ L     = LBI2DIS3;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.DIS3  = Lbeam-Lgeom;
+ !-----------!
+ BI.DIS3.spos  = BI.DIS2.spos + (BI2.DIS3.mechpos - BI2.DIS2.mechpos)/cos(dBI2DIS2) + DL.DIS2/2 + DL.DIS3/2;
+
+
+ !*  DIS4   *!
+ !-----------!
+ angle = dBI2DIS4;
+ E1    = -dBI2DIS2-dBI2DIS3;
+ E2    = angle - E1;
+ L     = LBI2DIS4;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.DIS4  = Lbeam-Lgeom;
+ !-----------!
+ BI.DIS4.spos  = BI.DIS3.spos + (BI2.DIS4.mechpos - BI2.DIS3.mechpos)/cos(dBI2DIS2+dBI2DIS3) + DL.DIS3/2 + DL.DIS4/2;
+
+
+ !*  DVT40  *!
+ !-----------!
+ angle = -dBI2DVT40;
+ E1    = dBI2DIS2+dBI2DIS3+dBI2DIS4;
+ E2    = angle - E1;
+ L     = LBIDVT40;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.DVT40 = Lbeam-Lgeom;
+ !-----------!
+ BI.DVT40.spos = BI.DIS4.spos + (BI2.DVT40.mechpos  - BI2.DIS4.mechpos)/cos(dBI2DIS2+dBI2DIS3+dBI2DIS4) + DL.DIS4/2 + DL.DVT40/2;
+ BI.DHZ40.spos = BI.DVT40.spos;   ! DHZ40 and DVT40 are really the same magnet;
+                                  ! Since DVT40 is defined as an SBEND and DHZ40 as a KICKER, they cannot occupy the same position.
+                                  ! DHZ40 is commented out
+ BI.VPI12.spos = BI.DVT40.spos + (BI.VPI12.mechpos - BI2.DVT40.mechpos)/cos(dBI2DIS2+dBI2DIS3+dBI2DIS4-dBI2DVT40)    + DL.DVT40/2;
+ BI.BTV30.spos = BI.DVT40.spos + (BI.BTV30.mechpos - BI2.DVT40.mechpos)/cos(dBI2DIS2+dBI2DIS3+dBI2DIS4-dBI2DVT40)    + DL.DVT40/2;
+
+
+ !*  SMV = This is a sector magnet, so the calculations are different    *!
+ !------------------------------------------------------------------------!
+ angle = dBI2SMV;
+ L     = LBI2SMV;
+ !-----------!
+ Lbeam   = L*(angle/2)/sin(angle/2);
+ Lgeom   = L*tan(angle/2)/sin(angle/2);
+ DL.SMV  = Lbeam-Lgeom;
+ !-----------!
+ BI.SMV.spos    = BI.DVT40.spos + (BI2.SMV10.mechpos - BI2.DVT40.mechpos )/cos(dBI2DIS2+dBI2DIS3+dBI2DIS4-dBI2DVT40) + DL.DVT40/2 + DL.SMV/2;
+ BI.SMVHDP.spos = BI.SMV.spos   + (BI.SMVHDP.mechpos - BI2.SMV10.mechpos )/cos(dBI2BVT) + DL.SMV/2;
+ BI.MBL20.spos  = BI.SMV.spos   + (BI.MBL20.mechpos  - BI2.SMV10.mechpos )/cos(dBI2BVT) + DL.SMV/2;
+ BI.MBLI30.spos = BI.SMV.spos   + (BI.MBLI30.mechpos - BI2.SMV10.mechpos )/cos(dBI2BVT) + DL.SMV/2;
+ BI.MBLS30.spos = BI.SMV.spos   + (BI.MBLS30.mechpos - BI2.SMV10.mechpos )/cos(dBI2BVT) + DL.SMV/2;
+
+
+ !* From BVT to END *!
+ !-----------!
+ angle = -dBI2BVT;
+ E1    = angle+0.071; ! file://cern.ch/dfs/Departments/TS/Services/Old%20Drawings/Complexe_PS/BOOSTER/12/PS-SI-1-12-1000.TIF
+ E2    = angle - E1;
+ L     = LBI1BVT;
+ !-----------!
+ Lbeam    = L*angle/(sin(E1)+sin(E2));
+ Lgeom    = 2*L*tan(angle/2)/(sin(E1)+sin(E2));
+ DL.BVT   = Lbeam-Lgeom;
+ !-----------!
+
+ BI.BVT.spos   = BI.SMV.spos + (BI2.BVT.mechpos  - BI2.SMV10.mechpos)/cos(dBI2BVT) + DL.SMV/2 + DL.BVT/2;
+ BI.QNO50.spos = BI.BVT.spos + (BI.QNO50.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.QNO60.spos = BI.BVT.spos + (BI.QNO60.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.DHZ50.spos = BI.BVT.spos + (BI.DHZ50.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.DVT50.spos = BI.BVT.spos + (BI.DVT50.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.BPM40.spos = BI.BVT.spos + (BI.BPM40.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.BTV40.spos = BI.BVT.spos + (BI.BTV40.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.VPI14.spos = BI.BVT.spos + (BI.VPI14.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.BCT20.spos = BI.BVT.spos + (BI.BCT20.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.BPM50.spos = BI.BVT.spos + (BI.BPM50.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.VVS20.spos = BI.BVT.spos + (BI.VVS20.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.DHZ70.spos = BI.BVT.spos + (BI.DHZ70.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.DVT70.spos = BI.BVT.spos + (BI.DVT70.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+ BI.INJPT.spos = BI.BVT.spos + (BI.INJPT.mechpos - BI2.BVT.mechpos)/cos(0)                  + DL.BVT/2;
+
+ BI2.END.spos  =  BI.INJPT.spos;
+
+
+
+
+
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+!  BI2 sequence
+!
+!  - Some vacuum equipements are commented out to prevent conflict in MADX. These equipements have the same position as other equipments or are overlaping
+!    with other equipments.
+!-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ BI2:  SEQUENCE, refer = centre , l  =     BI2.END.spos;
+   BEGBI            : MARKER    , AT =     0.0000000000;
+   LTB.BHZ40                    , AT =   LTB.BHZ40.spos;
+   LTB.MBL10                    , AT =   LTB.MBL10.spos;
+   LTB.MBL20                    , AT =   LTB.MBL20.spos;
+   BI.VPI11                     , AT =    BI.VPI11.spos;
+   BI.DHZ10                     , AT =    BI.DHZ10.spos;
+   BI.DVT10                     , AT =    BI.DVT10.spos;
+   BI.BPM00                     , AT =    BI.BPM00.spos;
+   BI.BTV10                     , AT =    BI.BTV10.spos;
+   BI.STPFA10                   , AT =  BI.STPFA10.spos;
+   BI.STPSW10                   , AT =  BI.STPSW10.spos;
+   BI.BPM10                     , AT =    BI.BPM10.spos;
+   BI.DHZ20                     , AT =    BI.DHZ20.spos;
+   BI.DVT20                     , AT =    BI.DVT20.spos;
+   BI.QNO10                     , AT =    BI.QNO10.spos;
+   BI.QNO20                     , AT =    BI.QNO20.spos;
+   BI.BPM20                     , AT =    BI.BPM20.spos;
+   BI.BCT10                     , AT =    BI.BCT10.spos;
+   BI.VVS10                     , AT =    BI.VVS10.spos;
+   BI.DHZ30                     , AT =    BI.DHZ30.spos;
+   BI.DVT30                     , AT =    BI.DVT30.spos;
+   BI.BTV20                     , AT =    BI.BTV20.spos;
+   BI.QNO30                     , AT =    BI.QNO30.spos;
+   BI.BPM30                     , AT =    BI.BPM30.spos;
+   BI.QNO40                     , AT =    BI.QNO40.spos;
+   BI.DIS0                      , AT =     BI.DIS0.spos;
+   BI2.DIS1                     , AT =     BI.DIS1.spos;
+   BI2.DIS2                     , AT =     BI.DIS2.spos;
+   BI2.DIS3                     , AT =     BI.DIS3.spos;
+   BI2.DIS4                     , AT =     BI.DIS4.spos;
+   BI.DHZ40                     , AT =    BI.DHZ40.spos;
+   BI2.DVT40                    , AT =    BI.DVT40.spos;
+   BI.VPI12                     , AT =    BI.VPI12.spos;
+   BI.BTV30                     , AT =    BI.BTV30.spos;
+   BI.SMVHDP                    , AT =   BI.SMVHDP.spos;
+   BI2.SMV10                    , AT =      BI.SMV.spos;
+   BI.MBL20                     , AT =    BI.MBL20.spos;
+   BI.MBLI30                    , AT =   BI.MBLI30.spos;
+   BI.MBLS30                    , AT =   BI.MBLS30.spos;
+   BI2.BVT10                    , AT =      BI.BVT.spos;
+   BI2.QNO50                    , AT =    BI.QNO50.spos;
+   BI2.QNO60                    , AT =    BI.QNO60.spos;
+   BI2.DHZ50                    , AT =    BI.DHZ50.spos;
+   BI2.DVT50                    , AT =    BI.DVT50.spos;
+   BI2.BPM40                    , AT =    BI.BPM40.spos;
+   BI2.BTV40                    , AT =    BI.BTV40.spos;
+   BI2.VPI14                    , AT =    BI.VPI14.spos;
+   BI2.BCT20                    , AT =    BI.BCT20.spos;
+   BI2.BPM50                    , AT =    BI.BPM50.spos;
+   BI2.VVS20                    , AT =    BI.VVS20.spos;
+   BI2.DHZ70                    , AT =    BI.DHZ70.spos;
+   BI2.DVT70                    , AT =    BI.DVT70.spos;
+   BI2.INJPT        :   MARKER  , AT =    BI.INJPT.spos;
+   ENDSEQUENCE;
+
+ assign, echo="help";
+ print, text="! BI2 sequence, automatically generated from BI2.madx file ";
+ print, text="! Sequence starts at the entry flange of the BHZ40 magnet";
+ print, text="! Sequence ends at the injection point into the BOOSTER ?? ";
+ print, text=" ";
+ assign, echo=terminal;
+
+ option, -warn;
+ save, sequence=BI2, file='BI2.seq', bare;
+
+ system, "cat BI2.seq >> help; cat help > BI2.seq";
+
+
+ system, "cp BI2.seq help ; sed 's/ltb.mbl10/! ltb.mbl10/'   < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/ltb.mbl20/! ltb.mbl20/'   < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/bi.dhz30/! bi.dhz30 /'    < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/bi.dhz40/! bi.dhz40 /'    < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/bi.mbl20/! bi.mbl20 /'    < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/bi.mbli30/! bi.mbli30/'   < help > BI2.seq ";
+ system, "cp BI2.seq help ; sed 's/bi.mbls30/! bi.mbls30/'   < help > BI2.seq ";
+ system, "rm help";
+
+ option, info;
+ option, warn;
+ option, echo;
+
+

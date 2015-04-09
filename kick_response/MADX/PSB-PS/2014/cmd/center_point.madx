@@ -1,0 +1,47 @@
+ title, 'Calculate crossing point';
+
+option, -echo, -info;
+
+ calculatecrossing(filename, element): macro = {
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+    write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the center point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos0.x = Z;
+    pos0.y = Y;
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos1.x = Z;
+    pos1.y = Y;
+    x.center = (pos0.x+pos1.x)/2;
+    y.center = (pos0.y+pos1.y)/2;
+!   value, pos0.x, pos0.y;
+!   value, pos1.x, pos1.y;
+!   value, x.center,  y.center ;
+
+};
+
+
+
+
+!--------------------------------------------------------------------------
+! Crossing point
+!--------------------------------------------------------------------------
+
+ exec, calculatecrossing("../out/BT1.survey", BT1.BVT10 );
+ value, x.center, y.center;
+

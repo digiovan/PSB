@@ -1,0 +1,142 @@
+ TITLE, "Makes the survey of the BT1 line";
+
+
+/******************************************************************************************
+ * INITIALIZATION
+ ******************************************************************************************/
+  option, echo, info;
+
+ calculatecenter(filename, element): macro = {
+
+    option, -echo, -info, -warn;
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+!   write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the center point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+    if ( row < 1 ) { print, text="Error: row is less than 1. Stop"; stop; }
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos0.x = Z;
+    pos0.y = X;
+    pos0mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+    pos0mech.y = Y;
+!   value, pos0.x, pos0.y;
+!   value, pos0mech.x, pos0mech.y;
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos1.x = Z;
+    pos1.y = X;
+    pos1mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+    pos1mech.y = Y;
+!   value, pos1.x, pos1.y;
+!   value, pos1mech.x, pos1mech.y;
+    x.center = (pos0.x+pos1.x)/2;
+    y.center = (pos0.y+pos1.y)/2;
+!   value, x.center,  y.center ;
+
+    delete,table=mysurvey;
+    delete,table=mysurveyrow;
+
+    option, echo, info, warn;
+
+ };
+
+ set,  format="-18s";
+ set,  format="20.15f";
+
+
+/******************************************************************************************
+ * BT1
+ ******************************************************************************************/
+ call, file = "../../strength/BT_dump.str";  ! Strength file. To get the strengths of the quadrupoles
+ call, file = "matching_angle_position.prt"; ! All the bending angles. It overwrites the bending angles from the strength file
+ call, file = "../../elements/BT.ele";
+ call, file = "BT1.seq";
+
+
+/******************************************************************************************
+ * beam
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+
+
+/******************************************************************************************
+ * Matching for SURVEY
+ ******************************************************************************************/
+! Deflection point BT.BHZ10={1895.3466844371555, 2122.303813762359}
+! This deflection point - between the BT and BTP lines - is calculated based on the 2007 GEODE files:
+! http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/PSB-PS/2014/cmd/BT_28-Jun-2007_104726.csv
+! http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/PSB-PS/2014/cmd/BTP_27-Jun-2007_115034.csv
+
+ a1 = 7.404510504073967;
+  s = 40;
+
+
+! Define deflection point: DEFLECT
+ DEFLECT : MARKER;
+
+
+ matchdeflect : macro={
+!       Define new sequence including the DEFLECT point
+        BT: sequence, refer = ENTRY , l  =    50;
+             BT1                    , at =     0;
+             DEFLECT                , at:=     s;
+        endsequence;
+!       option, -warn; save, sequence=BT, file='BT_matching.seq', bare; stop;
+
+        use, sequence=BT;
+
+
+        select, flag=survey, clear;
+        select, flag=survey, column=name, s, l, z, x, y;
+
+!       Start of BT line, exit flange of the SMH15L1
+!       z0=1880.1405971066347, x0=2090.7822669027646
+
+        survey, z0=1880.1405971066347, x0=2090.7822669027646, y0=2433.66-0.72, theta0=a1, file="BT_matching.survey";
+
+        exec, calculatecenter("BT_matching.survey", DEFLECT );
+        option, -info;
+        DEFLECT.x = x.center;
+        DEFLECT.y = y.center;
+        value, DEFLECT.x, DEFLECT.y  ;
+        value, s, a1;
+
+        print, text="------------------------------------------------";
+
+
+
+ };
+!exec, matchdeflect;
+
+
+ match,use_macro;
+        vary, name=a1 , step = 0.0000000001, LOWER= 7.0 ,UPPER= 8.0;
+        vary, name=s  , step = 0.0000000001, LOWER=30.0 ,UPPER=45.0;
+
+        use_macro,name=matchdeflect;
+
+!       The matching constraint for the deflection point
+        constraint, expr=DEFLECT.x = 1895.3466844371555;
+        constraint, expr=DEFLECT.y = 2122.303813762359;
+
+        lmdif,   calls = 500, tolerance = 1.0E-25;
+!       simplex, calls = 500, tolerance = 1.0E-25;
+ endmatch;
+
+ value, a1;
+
+  stop;
+

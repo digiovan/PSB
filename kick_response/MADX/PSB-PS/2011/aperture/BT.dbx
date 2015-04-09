@@ -1,0 +1,146 @@
+!option, -echo;
+
+
+
+/****************************************************************************
+ * BT1
+ ****************************************************************************/
+BT1_BVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT1_UES00,     APERTYPE=ELLIPSE,    APERTURE={0.171/2,  0.171/2  };
+BT1_DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT1_VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+
+
+/****************************************************************************
+ * BT2
+ ****************************************************************************/
+BT2_DVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT2_UES00,     APERTYPE=ELLIPSE,    APERTURE={0.171/2,  0.171/2  };
+BT2_DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT2_VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT2_DVT20,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+
+
+/****************************************************************************
+ * BT3
+ ****************************************************************************/
+BT3_DVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT3_UES00,     APERTYPE=ELLIPSE,    APERTURE={0.171/2,  0.171/2  };
+BT3_DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT3_VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT3_DVT20,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+
+
+/****************************************************************************
+ * BT4
+ ****************************************************************************/
+BT4_BVT10,     APERTYPE=ELLIPSE,    APERTURE={0.0563/2, 0.0563/2 };
+BT4_UES00,     APERTYPE=ELLIPSE,    APERTURE={0.171/2,  0.171/2  };
+BT4_DHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+BT4_VVS10,     APERTYPE=ELLIPSE,    APERTURE={0.085/2,  0.085/2  };
+
+
+
+
+/****************************************************************************
+ * BTU
+ ****************************************************************************/
+BTU_UES10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTU_QN101,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN102,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN103,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN104,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN105,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTU_VVS20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_VC010,     APERTYPE=ELLIPSE,    APERTURE={0.160/2,  0.160/2  };
+BTU_VVS30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTU_QN201,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN202,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN203,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN204,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTU_QN205,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTU_VPI22,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTU_KFA10,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+BTU_MTV20,     APERTYPE=ELLIPSE,    APERTURE={0.100/2,  0.100/2  };
+
+BTU_DVT30,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+BTU_UES20,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+BTU_DVT40,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+
+
+
+/****************************************************************************
+ * BTL
+ ****************************************************************************/
+BTL_UES10,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTL_QN101,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN102,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN103,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN104,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN105,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTL_VVS20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_VC010,     APERTYPE=ELLIPSE,    APERTURE={0.160/2,  0.160/2  };
+BTL_VVS30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTL_QN201,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN202,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN203,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN204,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BTL_QN205,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTL_VPI22,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BTL_KFA10,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+BTL_MTV20,     APERTYPE=ELLIPSE,    APERTURE={0.100/2,  0.100/2  };
+
+BTL_BVT20,     APERTYPE=ELLIPSE,    APERTURE={0.113/2,  0.113/2  };
+BTL_UES20,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+BTL_DVT40,     APERTYPE=ELLIPSE,    APERTURE={0.095/2,  0.095/2  };
+
+
+
+
+
+
+/****************************************************************************
+ * BT
+ ****************************************************************************/
+! BT_VPI23 diameter=264mm. It is offset by -40 mm, which cannot be done by MAD
+BT_VPI23,     APERTYPE=ELLIPSE,    APERTURE={0.26400,  0.26400 };
+
+! Magnetic Length of Septum 1 m, real length=0.999, Ltank=1.490, angle=0.00286
+BT_SMV20_L,   APERTYPE=RECTANGLE,  APERTURE={0.102/2,  0.02000  };!22.86mm & 20 mm
+BT_SMV20_U,   APERTYPE=RECTANGLE,  APERTURE={0.102/2,  0.256/2  };
+BT_MTV30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BT_QN301,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QN302,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QN303,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QN304,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QN305,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+
+BT_UES30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_TRA30,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_DVT50,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_VPI20,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_KFA20,     APERTYPE=RECTANGLE,  APERTURE={0.110/2,  0.053/2  };
+BT_MTV40,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_DVT60,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QNO40,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_UES40,     APERTYPE=ELLIPSE,    APERTURE={0.145/2,  0.145/2  };
+BT_QNO50,     APERTYPE=ELLIPSE,    APERTURE={0.196/2,  0.196/2  };
+BT_BHZ10,     APERTYPE=ELLIPSE,    APERTURE={0.125/2,  0.125/2  };
+                         
+                          
+option, echo;
+return;

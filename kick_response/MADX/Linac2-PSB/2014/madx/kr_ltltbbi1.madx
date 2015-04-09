@@ -1,0 +1,253 @@
+/*****************************************************
+ *
+ * MADX file for the LT-LTB line from LINAC2 to the PS BOOSTER
+ *
+ * Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/
+ *
+ * Execute with:  >madx < ltltbbi1.madx
+ * This file is for Protons at 310.3662354  MeV/c (Ekin=50 MeV, BRHO=1.0352576 "the magnetic rigidity of the protons")
+ *****************************************************/
+
+
+/*****************************************************************************
+ * TITLE
+ *****************************************************************************/
+ title, 'LT-LTB-BI 2014 optics. Protons - 310.3662354 MeV/c (E_kin=50 MeV)';
+
+ option, echo;
+!option, RBARC=FALSE;
+
+
+
+/*****************************************************************************
+ * LT
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/lt.str';
+ call, file = '../elements/lt.ele';
+ call, file = '../sequence/lt.seq';
+ call, file = '../aperture/lt.dbx';
+
+
+
+/*****************************************************************************
+ * LTB
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/ltb.str';
+ call, file = '../elements/ltb.ele';
+ call, file = '../sequence/ltb.seq';
+ call, file = '../aperture/ltb.dbx';
+
+
+
+/*****************************************************************************
+ * BI
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '../strength/bi.str';
+ call, file = '../elements/bi.ele';
+ call, file = '../sequence/BI1.seq';
+ call, file = '../aperture/bi.dbx';
+
+
+/*****************************************************************************
+ * build up the geometry of the beam lines
+ *****************************************************************************/
+ltltbbi: sequence, refer=ENTRY,  l = 131.2644535262 ;
+  lt                          , at =              0 ;
+  ltb                         , at := 53.4728739515 ; ! 53.472856 + 17.9515 um ;
+  bi1                         , at := 82.7080421462 ; ! 53.4728739515 + 29.2351681947. L=48.5564113800 + 82.7080421462   131.2644535262
+endsequence;
+
+!save, sequence=ltltbbi, file=ltltbbi1.save;
+
+
+
+/*****************************************************************************
+ * set initial twiss parameters
+ *****************************************************************************/
+call, file = '../inp/ltp.inp';
+
+
+
+/*****************************************************************************
+ * store initial parameters in memory block
+ *****************************************************************************/
+INITBETA0: BETA0,
+  BETX=BETX0,
+  ALFX=ALFX0,
+  MUX=MUX0,
+  BETY=BETY0,
+  ALFY=ALFY0,
+  MUY=MUY0,
+  X=X0,
+  PX=PX0,
+  Y=Y0,
+  PY=PY0,
+  T=T0,
+  PT=PT0,
+  DX=DX0,
+  DPX=DPX0,
+  DY=DY0,
+  DPY=DPY0;
+
+
+/*******************************************************************************
+ * Beam
+ * NB! beam->ex == (beam->exn)/(beam->gamma*beam->beta*4)
+ *******************************************************************************/
+ Beam, particle=PROTON,pc=0.3103662354,exn=(12.0E-6)*4.0,eyn=(6.0E-6)*4.0, sige=1E-3;
+
+
+option,-echo,-info;
+kickresponse(thekicker, thekick) : macro={                                 
+                                 
+                                 kick_rad = thekick*1e-6;
+                                 ! value, kick_rad;
+                                 thekicker->KICK := kick_rad;
+
+                                 use, sequence=ltltbbi;
+                                 
+                                 set,  format="-18s";
+                                 set,  format="10.5f";
+
+
+                                 select,flag=twiss,column=name,s,x,y;
+                                 twiss,BETA0=INITBETA0,save,centre,file=twiss.out;
+
+                                 if (thekick > 0) { 
+                                   twiss,BETA0=INITBETA0,save,centre,file="../out/kr_ltltbbi1_thekicker_plus.out";
+                                                   }
+                                 if (thekick < 0) { 
+                                   twiss,BETA0=INITBETA0,save,centre,file="../out/kr_ltltbbi1_thekicker_minus.out";
+                                                   }
+
+
+                                 ! make sure the kicker is reset to zero                  
+                                 thekicker->KICK := 0.0000;
+                                }
+
+
+/*******************************************************************************
+ * kick response measurements
+ *******************************************************************************/
+ 
+! kick_pos =  500; ! urad
+! kick_neg = -500; ! urad
+
+kick_pos =  300; ! urad
+kick_neg = -300; ! urad
+
+/*******************************************************************************
+ * LT line DHZ
+ *******************************************************************************/
+ 
+exec, kickresponse(LT.DHZ10, kick_pos); 
+exec, kickresponse(LT.DHZ20, kick_pos); 
+exec, kickresponse(LT.DHZ30, kick_pos); 
+exec, kickresponse(LT.DHZ40, kick_pos); 
+exec, kickresponse(LT.DHZ50, kick_pos); 
+
+
+exec, kickresponse(LT.DHZ10, kick_neg); 
+exec, kickresponse(LT.DHZ20, kick_neg); 
+exec, kickresponse(LT.DHZ30, kick_neg); 
+exec, kickresponse(LT.DHZ40, kick_neg); 
+exec, kickresponse(LT.DHZ50, kick_neg); 
+
+
+/*******************************************************************************
+ * LTB line DHZ
+ *******************************************************************************/
+ 
+exec, kickresponse(LTB.DHZ10, kick_pos); 
+exec, kickresponse(LTB.DHZ20, kick_pos); 
+exec, kickresponse(LTB.DHZ30, kick_pos); 
+exec, kickresponse(LTB.DHZ40, kick_pos); 
+                              
+exec, kickresponse(LTB.DHZ10, kick_neg); 
+exec, kickresponse(LTB.DHZ20, kick_neg); 
+exec, kickresponse(LTB.DHZ30, kick_neg); 
+exec, kickresponse(LTB.DHZ40, kick_neg); 
+
+
+/*******************************************************************************
+ * BI line DHZ
+ *******************************************************************************/
+ 
+exec, kickresponse(BI.DHZ10, kick_pos); 
+exec, kickresponse(BI.DHZ20, kick_pos); 
+exec, kickresponse(BI.DHZ30, kick_pos); 
+exec, kickresponse(BI.DHZ40, kick_pos); 
+                             
+exec, kickresponse(BI.DHZ10, kick_neg); 
+exec, kickresponse(BI.DHZ20, kick_neg); 
+exec, kickresponse(BI.DHZ30, kick_neg); 
+exec, kickresponse(BI.DHZ40, kick_neg); 
+
+
+
+/*******************************************************************************
+ * LT line DVT
+ *******************************************************************************/
+ 
+exec, kickresponse(LT.DVT10, kick_pos); 
+exec, kickresponse(LT.DHZ10, kick_pos); 
+exec, kickresponse(LT.DVT20, kick_pos); 
+exec, kickresponse(LT.DVT30, kick_pos); 
+exec, kickresponse(LT.DVT40, kick_pos); 
+exec, kickresponse(LT.DVT50, kick_pos); 
+ 
+ 
+exec, kickresponse(LT.DVT10, kick_neg); 
+exec, kickresponse(LT.DVT20, kick_neg); 
+exec, kickresponse(LT.DVT30, kick_neg); 
+exec, kickresponse(LT.DVT40, kick_neg); 
+exec, kickresponse(LT.DVT50, kick_neg); 
+ 
+
+/*******************************************************************************
+ * LTB line DVT
+ *******************************************************************************/
+ 
+exec, kickresponse(LTB.DVT10, kick_pos); 
+exec, kickresponse(LTB.DVT20, kick_pos); 
+exec, kickresponse(LTB.DVT30, kick_pos); 
+exec, kickresponse(LTB.DVT40, kick_pos); 
+                              
+exec, kickresponse(LTB.DVT10, kick_neg); 
+exec, kickresponse(LTB.DVT20, kick_neg); 
+exec, kickresponse(LTB.DVT30, kick_neg); 
+exec, kickresponse(LTB.DVT40, kick_neg); 
+
+
+/*******************************************************************************
+ * BI line DVT
+ *******************************************************************************/
+ 
+exec, kickresponse(BI.DVT10, kick_pos); 
+exec, kickresponse(BI.DVT20, kick_pos); 
+exec, kickresponse(BI.DVT30, kick_pos); 
+exec, kickresponse(BI.DVT40, kick_pos); 
+                             
+exec, kickresponse(BI.DVT10, kick_neg); 
+exec, kickresponse(BI.DVT20, kick_neg); 
+exec, kickresponse(BI.DVT30, kick_neg); 
+exec, kickresponse(BI.DVT40, kick_neg); 
+
+
+stop;
+
+
+
+
+
+
+

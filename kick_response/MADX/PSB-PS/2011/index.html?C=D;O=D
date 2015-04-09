@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /project-PS-optics/cps/TransLines/PSB-PS/2011</title>
+ </head>
+ <body>
+<pre>
+
+!!!!!!!! Warning. These files are still under construction.      !!!!!!!!!!!!!!!!!
+!!!!!!!!          A completely new setup is under development    !!!!!!!!!!!!!!!!!
+!!!!!!!!          In collaboration with B.Mikulec and T.Hermanns !!!!!!!!!!!!!!!!!
+
+
+The BT/BTP line from PS-BOOSTER to the PS
+
+---------------------------------------------------------------
+
+There is one optics for protons @ 2.12 GeV/c - BT_BTP.madx
+
+---------------------------------------------------------------
+
+Further information:
+http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTP/defaultBTBTP.htm
+
+---------------------------------------------------------------
+
+Do MADX calculations with: &gt;madxp &lt; BT_BTP.madxp
+
+---------------------------------------------------------------
+
+NB! A new version of madxp was installed,
+    which handles the command: ptc_eplacement
+
+
+ The structure of the files are:
+    &lt;&gt;.ele   Element  file.  The definition of the elements/equipments
+    &lt;&gt;.seq   Sequence file.  The layout of the elements
+    &lt;&gt;.str   Strength files. The strength or currents of the elements - depends on operation mode.
+    &lt;&gt;.dbx   Aperture file.  The apertures of the vacuum chambers.
+    &lt;&gt;.madx  MADX     files. Set-up of a particular operation mode.
+
+ Display plot:  &gt;gv madx.ps
+
+
+ NB! The extension for the MADX files is &lt;&gt;.madx and not &lt;&gt;.mad.
+     The reason is that when the files are read via the web, the
+     .mad extension is taken as Microsoft Access module and not
+     as a text file. By using .madx extension, the files are inter-
+     preted as text files on the web.
+
+ *********************************************************************************
+ Added new strength for the quadrupoles in the BT and BTP lines:
+ New gradients in use from 2004 with Qv=4.23 (old gradients until 2004 were with Qv=5.23)
+ and also a new BETAY0 = 4.22 m.
+ Data from S.Gilardoni and C.Lacroix  25/3/2008  O.Berrig</pre>
+<pre><img src="/icons/blank.gif" alt="Icon "> <a href="?C=N;O=A">Name</a>                                      <a href="?C=M;O=A">Last modified</a>      <a href="?C=S;O=A">Size</a>  <a href="?C=D;O=A">Description</a><hr><img src="/icons/back.gif" alt="[DIR]"> <a href="/project-PS-optics/cps/TransLines/PSB-PS/">Parent Directory</a>                                               -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="strength/">strength/</a>                                 03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="sequence/">sequence/</a>                                 03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="out/">out/</a>                                      03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="madx/">madx/</a>                                     03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="inp/">inp/</a>                                      03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="elements/">elements/</a>                                 03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="aperture/">aperture/</a>                                 03-Apr-2014 23:31    -   
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="alignments/">alignments/</a>                               03-Apr-2014 23:31    -   
+<img src="/icons/text.gif" alt="[TXT]"> <a href="OpticsOverview.txt">OpticsOverview.txt</a>                        02-Mar-2011 11:49  1.5K  
+<img src="/icons/folder.gif" alt="[DIR]"> <a href="ForOlav/">ForOlav/</a>                                  03-Apr-2014 23:31    -   
+<hr></pre>
+</body></html>

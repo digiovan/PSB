@@ -1,0 +1,344 @@
+!--------------------------------------------------------------------------
+! Optics file to calculate the optics of the transferline BT4. The trajectory is
+! based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud.
+!
+!
+! - BT1 recombines totaly with BT2 after BT1.KF10 and with BT3 after BT2.KFA20.
+! - The QNO10, QNO20 and QN30 are misaligned.
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/madx
+! Optics file created in September 2013 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+ title, 'Last turn of PSB, BT line, BTP line. Protons - 1.4 GeV';
+
+
+/******************************************************************************************
+ * BOOSTER
+ ******************************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/Psb/2014/psb.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/Psb/2014/psb.seq';
+ call, file = '/afs/cern.ch/eng/ps/cps/Psb/2014/psb.dbx';
+ call, file = '/afs/cern.ch/eng/ps/cps/Psb/2014/strength/psb_extraction.str';
+
+!save, sequence=PSB4, file=PSB4.save; ! <-- this gives error. It is reported
+
+
+/******************************************************************************************
+ * BT
+ ******************************************************************************************/
+ call, file = '../strength/BT_BTP.str';
+ call, file = '../elements/BT.ele';
+ call, file = '../sequence/BT4.seq';
+ call, file = '../aperture/BT.dbx';
+
+
+/******************************************************************************************
+ * BTP
+ ******************************************************************************************/
+ call, file = '../strength/BTP.str';
+ call, file = '../elements/BTP.ele';
+ call, file = '../elements/stray.ele';
+ call, file = '../sequence/stray.seq';
+ call, file = '../sequence/BTP.seq';
+ call, file = '../aperture/BTP.dbx';
+
+
+
+
+
+/******************************************************************************************
+ ******************************************************************************************
+ *  BOOSTER PART I:   CALCULATE THE OPTICS FUNCTIONS AT START OF PS BOOSTER.
+ *                    THE EXTRACTION BUMP ON. THE EXTRACTION KICKER OFF. THE EXTRACTION SEPTA OFF.
+ ******************************************************************************************
+ ******************************************************************************************/
+
+ /* Extraction bumper strengths **********************/
+ kBEBSW14L4 =  0.010387842 ; ! <-- defined as bends;
+ kBEBSW15L1 = -0.011517913 ;
+ kBEBSW15L4 =  0.010378827 ;
+
+ kBEKFA14L1 = 0; ! Extraction kicker. Defined as kicker
+ kBEKFA15L1 = 0; ! Extraction septum. Defined as kicker
+
+
+/******************************************************************************************
+ * beam and use
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+ use, sequence=PSB4;
+
+
+/******************************************************************************************
+ * PTC_TWISS
+ ******************************************************************************************/
+ select,flag=ptc_twiss, column = name,s,x,px,alfa11,alfa22,beta11,beta22,disp1,disp2,mu1,mu2;
+ ptc_create_universe;
+ ptc_create_layout,model=2,method=6,time=false,nst=5,exact; ! time = false  => gives correct dispersion
+ ptc_twiss,table=ptc_twiss, icase=5,no=2;
+ write,table=ptc_twiss; ! , file="../out/PSB4_ExtractionOptics.out";
+ ptc_end;
+
+
+ INITBETA0:  BETA0,
+      BETX = table(ptc_twiss,PSB4$START,beta11),
+      ALFX = table(ptc_twiss,PSB4$START,alfa11),
+      MUX  = 0,
+      BETY = table(ptc_twiss,PSB4$START,beta22),
+      ALFY = table(ptc_twiss,PSB4$START,alfa22),
+      MUY  = 0,
+      X    = 0,
+      PX   = 0,
+      Y    = 0,
+      PY   = 0,
+      T    = 0,
+      PT   = 0,
+      DX   = table(ptc_twiss,PSB4$START,disp1),
+      DPX  = table(ptc_twiss,PSB4$START,disp2),
+      DY   = 0,
+      DPY  = 0;
+  show INITBETA0;
+
+
+
+
+
+/******************************************************************************************
+ ******************************************************************************************
+ *  BOOSTER PART II:  CALCULATE OPTICS FUNCTIONS AT END OF EXTRACTION CHANNEL OF THE PS BOOSTER.
+ *                    EXTRACTION BUMP IS ON; EXTRACTION KICKER IS ON; AND EXTRACTION SEPTUM IS ON
+ *                    THESE ARE THE VALUES THAT GOES INTO THE FILE: ../inp/BT.inp
+ ******************************************************************************************
+ ******************************************************************************************/
+
+ /* Extraction bumper strengths **********************/
+ ! Strength of the BSWs magnet  (defined as SBEND); Another calculation for position (with kickers)is necessary
+ ! Integrated field value can be found here http://ab-div-bt.web.cern.ch/ab-div-bt/Sections/KPS/
+ ! I is taken from the actual value in the machine (see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1049645)
+ ! Kick = [Integrated Filed Max]/ [Imax]* I[InTheMachine]/(3.3356*Momentum)
+ kBEBSW14L4 =  0.010387842 ;
+ kBEBSW15L1 = -0.011517913 ;
+ kBEBSW15L4 =  0.010378827 ;
+
+
+  /* Set up of the Extraction Kicker *****************/
+ ! Strength of the BE.KFA14L1 magnet (defined as SBEND)
+ ! Design value can be found here: K. Metzmacher "The PSB Ejection and Recombination Kicker Systems for LHC"
+ ! Voltage is taken the actual value in the machine (see http://elogbook.cern.ch/eLogbook/eLogbook.jsp?shiftId=1049645)
+ MKMAG003_ext_bend : SBEND     , L := 2.005789, ANGLE := kBEKFA14L1_angle;  ! PSB KFA 800MeV Fast Extraction kicker
+ kBEKFA14L1_angle = 0.007189859;  ! positive angle because BHZ bending magnets have negative angle
+
+ option, -warn;
+ P14TOP_ext_bend  :  SEQUENCE, REFER = centre, L  = 9.8175; !Ring 4, Period 14
+  BR4.DHZ14L1           : DHZ__001           , AT =  .234928   ;
+  BR4.DVT14L1           : DVT__001           , AT =  .234928   ;
+  BE4.KFA14L1_ext_bend  : MKMAG003_ext_bend  , AT = 1.52379    ;
+  BR.BHZ141                                  , AT = 3.462849   ;
+  BR.STSCRAP141                              , AT = 4.2717     ;
+  BR4.VVS14L2           : VVS                , AT = 4.3725     ;
+  BR.QFO141                                  , AT = 4.889797   ;
+  BR4.ONOH0.14L3        : ONOH0              , AT = 5.467839   ;
+  BR4.QSK14L3           : QSK                , AT = 5.467839   ;
+  BR4.UES14L3           : UES                , AT = 5.467839   ;
+  BR4.XNOH0.14L3        : XNOH0              , AT = 5.467839   ;
+  BR.QDE14                                   , AT = 6.234797   ;
+  BR4.UPH14L4           : UPH__002           , AT = 6.79374    ;
+  BE4.BSW14L4           : MDBAA              , AT = 7.05474    ;
+  BR.QFO142                                  , AT = 7.580797   ;
+  BR.SPSCRAP142                              , AT = 8.1998     ;
+  BR.BHZ142                                  , AT = 9.008652   ;
+ ENDSEQUENCE;
+
+
+
+  /* Set up of the Extraction septa ******************/
+ ! Strength of the BE.SMH15L1 septa magnet (defined as SBEND)
+ ! J.Borburgh "A new set of magnetic septa in the CERN PS complex"
+ SMH__006_ext_bend  : SBEND     , L := 0.950087, ANGLE := kBEKFA15L1_angle ;      ! PSB Extraction Septum. This is ONLY the blade, and that's why the length is changed.
+ kBEKFA15L1_angle = 0.047; ! positive angle because BHZ bending magnets have negative angle
+
+ PSB4_ext_bend     : SEQUENCE, REFER = ENTRY , L  = 138.984892; !Ring 4
+  P01TOP                                     , AT =   0.000000 ;   /* Last turn of the BOOSTER */
+  P02TOP                                     , AT =   9.817500 ;   /* Last turn of the BOOSTER */
+  P03TOP                                     , AT =  19.635000 ;   /* Last turn of the BOOSTER */
+  P04TOP                                     , AT =  29.452500 ;   /* Last turn of the BOOSTER */
+  P05TOP                                     , AT =  39.270000 ;   /* Last turn of the BOOSTER */
+  P06TOP                                     , AT =  49.087500 ;   /* Last turn of the BOOSTER */
+  P07TOP                                     , AT =  58.905000 ;   /* Last turn of the BOOSTER */
+  P08TOP                                     , AT =  68.722500 ;   /* Last turn of the BOOSTER */
+  P09TOP                                     , AT =  78.540000 ;   /* Last turn of the BOOSTER */
+  P10TOP                                     , AT =  88.357500 ;   /* Last turn of the BOOSTER */
+  P11TOP                                     , AT =  98.175000 ;   /* Last turn of the BOOSTER */
+  P12TOP                                     , AT = 107.992500 ;   /* Last turn of the BOOSTER */
+  P13TOP                                     , AT = 117.810000 ;   /* Last turn of the BOOSTER */
+  P14TOP_ext_bend                            , AT = 127.627500 ;   /* Last turn of the BOOSTER */
+  BR.BTV15L1                                 , AT = 137.637000 ;   /* Last turn of the BOOSTER. 137.44500 + .192     = 137.637    */
+  BE4.SMH15_ext_bend     : SMH__006_ext_bend , AT = 138.354892-3.200870e-01 ;   /* Last turn of the BOOSTER. 137.44500 + 0.909892 = 138.354892 */
+  /* BT_START is a special marker to get the optics function that are input to the BT line.                                        */
+  /* Position: end of the septum blade: 0.909892 + 1.26/2 = 1.539892. It is at the end of the septum tank!                         */
+  BR4.BT_START           : MARKER            , AT = 138.984892 ;   /* Last turn of the BOOSTER. 137.44500 + 1.539892 = 138.984892 */
+ ENDSEQUENCE;
+ option, warn;
+
+
+/******************************************************************************************
+ * beam and use
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+ use, sequence=PSB4_ext_bend;
+
+
+/******************************************************************************************
+ * PTC_TWISS
+ ******************************************************************************************/
+ select,flag=ptc_twiss, column = name,s,x,px,alfa11,alfa22,beta11,beta22,disp1,disp2;
+ ptc_create_universe;
+ ptc_create_layout,model=2,method=6,time=false,nst=5,exact,closed_layout=false; ! time = false  => gives correct dispersion
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2; ! INITBETA0 points to the start of the BOOSTER !!!!!
+ write,table=ptc_twiss; ! file="../out/PSB4_LastTurnOptics.out";
+ ptc_end;
+
+
+/******************************************************************************************
+ * Optics functions at the start of the BT line
+ ******************************************************************************************/
+ BETX0 := table(ptc_twiss,BR4.BT_START,beta11);
+ ALFX0 := table(ptc_twiss,BR4.BT_START,alfa11);
+ BETY0 := table(ptc_twiss,BR4.BT_START,beta22);
+ ALFY0 := table(ptc_twiss,BR4.BT_START,alfa22);
+ DX0   := table(ptc_twiss,BR4.BT_START,disp1) ;
+ DPX0  := table(ptc_twiss,BR4.BT_START,disp2) ;
+
+
+!-----------------------------------------------------
+! save in the file  "../inp/BT.inp"
+!-----------------------------------------------------
+!system, "rm ../inp/BT.inp";
+!assign, echo="../inp/BT.inp";
+ print, text="! BT input, automatically generated  ";
+ print, text="! Optics function at the exit flange of the BOOSTER extraction septum";
+ value,  BETX0;
+ value,  ALFX0;
+ value,  BETY0;
+ value,  ALFY0;
+ value,  DX0  ;
+ value,  DPX0 ;
+ assign, echo=terminal;
+
+
+
+
+
+/******************************************************************************************
+ ******************************************************************************************
+ *
+ * PTC OPTICS for BOOSTER/BT4/BTP sequence
+ *
+ ******************************************************************************************
+ ******************************************************************************************/
+
+/******************************************************************************************
+ * Sequence: boosterbtbtp
+ ******************************************************************************************/
+ boosterBT4btp: SEQUENCE, refer=ENTRY        , L  = 208.6914842926 ;   /* 173.22505592 + 35.4664283726 = 208.6914842926   */
+  psb4_ext_bend                              , AT =   0.0000000000 ;   /* Last turn of the BOOSTER                        */
+  BT4                                        , AT = 138.9848920000 ;   /* BT line                                         */
+  btp                                        , AT = 173.2250559200 ;   /* BTP line. 138.984892+34.24016392 = 173.22505592 */
+ ENDSEQUENCE;
+
+!save, sequence=boosterBT4btp, file="boosterBT4btp.save", bare;
+
+
+/******************************************************************************************
+ * beam and use
+ ******************************************************************************************/
+ beam, particle=PROTON, pc=2.14;
+ use, sequence=boosterBT4btp;
+
+
+/******************************************************************************************
+ * BOOSTER_BT4_BTP.twiss
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,angle,k1L,k2L,k3L,beta11,beta22,disp1,disp3,x,y,alfa11,alfa22,mu1,mu2,disp2,disp3,px,py;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;  ! INITBETA0 points to the start of the BOOSTER !!!!!
+ write,table=ptc_twiss,file="../out/BOOSTER_BT4_BTP.twiss";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BOOSTER_BT4_BTP.config
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = keyword,name,parent,l,s;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BOOSTER_BT4_BTP.config";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BOOSTER_BT4_BTP.tfs
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column =name, keyword, s, l, k0l, k1l,angle, y, py, x, px, BETX, ALFX, BETY, ALFY, DISP1, DISP2, DISP3,DISP4, MU1, MU2;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BOOSTER_BT4_BTP.tfs";
+ ptc_end;
+
+
+/******************************************************************************************
+ * BOOSTER_BT4_BTP.out
+ ******************************************************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column =name,s,x,px,y,py,alfa11,beta11,alfa22,beta22,mu1,mu2,disp1,disp2;
+
+ ptc_create_universe;
+ ptc_create_layout,time=false,model=2,method=6,nst=5,exact,closed_layout=false;
+ ptc_twiss,table=ptc_twiss,BETA0=INITBETA0, icase=5,no=2;
+ write,table=ptc_twiss,file="../out/BOOSTER_BT4_BTP.out";
+ ptc_end;
+
+
+/******************************************************************************************
+ * PLOT
+ ******************************************************************************************/
+ resplot;
+ setplot, post=2;
+
+ plot, title='BOOSTER_BT4_BTP'  , table=ptc_twiss
+                                , haxis=s
+                                , vaxis1=beta11,beta22
+                                , style:=100,symbol:=4,colour=100
+                                , file = "../out/BOOSTER_BT4_BTP";
+
+! PLOT, ptc=true,ptc_table=ptc_twiss, VAXIS1=y,HAXIS=s,
+!       SPLINE=FALSE, COLOUR=100, RANGE=#S/#E, FILE="../out/BOOSTER_BT4_BTP";        <---- does not work. to be reported
+!
+! PLOT, ptc=true, ptc_table=ptc_twiss,VAXIS1=beta11,beta22,HAXIS=s,
+!       SPLINE=FALSE, COLOUR=100, RANGE=#S/#E;
+!
+! PLOT, ptc=true, ptc_table=ptc_twiss,VAXIS1=mu1,mu2,HAXIS=s,
+!       SPLINE=FALSE, COLOUR=100, RANGE=#S/#E;
+
+
+
+/******************************************************************************************
+ * remove: Maxwellian_bend_for_ptc.txt
+ ******************************************************************************************/
+ system,"rm Maxwellian_bend_for_ptc.txt";
+ stop;
+
+
+

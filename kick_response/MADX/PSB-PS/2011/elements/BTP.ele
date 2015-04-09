@@ -1,0 +1,51 @@
+option, -echo;
+option, -warn;
+
+
+/****************************************************************************
+ * BTP
+ ****************************************************************************/
+
+! angle=0.15714343509 L=1.5327 according to GEODE
+dTBHP      :=   0.15714343509; ! BT.BHZ10 bending angle
+
+BTP.BHZ10  : SBEND,       L=1.53902,ANGLE=dTBHP,
+                          E1=0,E2=dTBHP,
+                          FINT=0.3, HGAP=.07;  ! The HGAP should be measured on the magnet
+BTP.UES00  : MONITOR,     L=0.185;
+BTP.DHZ10  : HKICKER,     L=0.362,  KICK:= kBTPDHZ10;
+BTP.DVT10  : VKICKER,     L=0.362,  KICK:= kBTPDVT10;
+BTP.QNO10  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO10;  ! Length should be 0.466
+BTP.QNO20  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO20;  ! Length should be 0.466
+BTP.DHZ20  : HKICKER,     L=0.362,  KICK:= kBTPDHZ20;
+BTP.UES10  : MONITOR,     L=0.185;
+BTP.DVT20  : VKICKER,     L=0.362,  KICK:= kBTPDVT20;
+BTP.QNO30  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO30;  ! Length should be 0.466
+BTP.VPI11  : MARKER;
+BTP.STP    : INSTRUMENT,  L=1.457;
+BTP.QNO40  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO40;  ! Length should be 0.466
+BTP.DHZ30  : HKICKER,     L=0.362,  KICK:= kBTPDHZ30;
+BTP.UES20  : MONITOR,     L=0;! Real length L=0.185
+BTP.DVT30  : VKICKER,     L=0.362,  KICK:= kBTPDVT30;
+BTP.QNO50  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO50;  ! Length should be 0.466
+BTP.VPI12  : MARKER;
+BTP.BCT10  : MONITOR,     L=0.4488;
+BTP.DVT40  : VKICKER,     L=0.362,  KICK:= kBTPDVT40;
+BTP.QNO60  : QUADRUPOLE,  L=0.400,  K1  := kBTPQNO60;  ! Length should be 0.466
+BTP.UES30  : MONITOR,     L=0.185;
+BTP.MTV10  : MONITOR,     L=0.270;                     ! Modified according to T.Dobers
+BTP.VVS20  : MARKER;
+BTP.DHZ40  : HKICKER,     L=0.292,  KICK:= kBTPDHZ40;  ! Modified according to T.Dobers
+BTP.DVT50  : VKICKER,     L=0.292,  KICK:= kBTPDVT50;  ! Modified according to T.Dobers
+
+SFLANGEMU41: marker;
+
+septum42   : RBEND,       L=0.8, ANGLE = -.050;
+pointS     : marker;
+
+
+
+
+option, warn;
+option, echo;
+return;

@@ -1,0 +1,86 @@
+option, -echo;
+option, warn;
+option, info;
+
+!--------------------------------------------------------------------------------------
+! - Strength for the horizontal emittance measurement with small dispersion
+!
+! - Gradients of QNO according to report from C.Carli (Qv=4.23):
+!   http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTM/LowWP.ps
+!
+! - Bending angle for septum, bending, kicker and correctors obtained by matching.
+!   Except the angles of the BTV10s and BVT20 are determined from the trajectories described
+!   in the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud
+!--------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2013/strength
+! Strength file created in August 2012 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------------------
+
+
+/****************************************************************************
+ * BT1 + BT4
+ ****************************************************************************/
+
+! dBTBVT10 is based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud
+! dBTBVT10 = atan((.36-.063)/(BT4.SMV10.mechpos-BT4.BVT10.mechpos)); ! = 76.791702273e-3
+ DBT1BVT10 = 0.076800446130 ;
+ DBT4BVT10 = 0.076800446130 ;
+ DBT1SMV10 = 0.073561039910 ;
+ DBT4SMV10 = 0.073561039910 ;
+ DBT1QNO10 = 0.009859962373 ;
+ DBT4QNO10 = 0.009859962373 ;
+ DBT1QNO20 = 0.004532402242 ;
+ DBT4QNO20 = 0.004532402242 ;
+ DBT1KF10  = 0.008566966352 ;
+ DBT4KF10  = 0.008566966352 ;
+ dBT1DHZ10 = 0;
+ dBT2DHZ10 = 0;
+
+/****************************************************************************
+ * BT2 + BT3
+ ****************************************************************************/
+ DBT2DVT10 = 0.004625317156 ;
+ DBT3DVT10 = 0.004625317156 ;
+ DBT2DVT20 = 0.010437889820 ;
+ DBT3DVT20 = 0.010437889820 ;
+ DBT2QNO10 = 0.009972554909 ;
+ DBT3QNO10 = 0.009972554909 ;
+ DBT2QNO20 = 0.004159982243 ;
+ DBT3QNO20 = 0.004159982243 ;
+ DBT2DHZ10 = 0;
+ DBT3DHZ10 = 0;
+
+/****************************************************************************
+ * BT2 + BT1
+ ****************************************************************************/
+
+! dBTBVT20 is based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud
+! dBTBVT20 =  atan((.36-.044)/(BT2.SMV20.mechpos-BT2.BVT20.mechpos));
+ DBTBVT20  = 0.074174070500 ;
+ DBTSMV20  = 0.071310239980 ;
+ DBT3QNO30 = 0.002832753228 ;
+ DBT2QNO30 = 0.002548473694 ;
+ DBTKF20   = 0.005412304215 ;
+
+ /****************************************************************************
+ * BT3 + BT4
+ ****************************************************************************/
+ DBTDVT30 = 0.002665567457 ;
+ DBTDVT40 = 0.005498320686 ;
+
+  /****************************************************************************
+  * BT
+  ****************************************************************************/
+ kBTQNO10  = -0.66749;  ! Defocusing quadrupole
+ kBTQNO20  =  0.59395;
+ kBTQNO30  = -0.28978;
+ kBTQNO40  =  0.68125;
+ kBTQNO50  = -0.89763;
+
+ dBTDVT50 = 0;
+ dBTDVT60 = 0;
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;

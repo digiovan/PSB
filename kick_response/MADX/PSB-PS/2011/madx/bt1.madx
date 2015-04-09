@@ -1,0 +1,641 @@
+
+!--------------------------------------------------------------------------
+! MADXP file for transferline BT/BTP optics calculations
+! The protons from the 4 rings (on top of each other) of the PSB
+! are recombined and transferred to the PS.
+! There are 4 madx files: BT1.madx, BT2.madx, BT3.madx and BT4.madx
+!
+! This file is only for the BT1 line
+!
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/madx
+!
+! Execute with:  >madx < BT1.madx
+!
+! The calculation of the optics functions is done with PTC
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!--------------------------------------------------------------------------
+
+ title, 'Transferline BT1 - from exit of the BOOSTER to entry of the BT.BHZ10 magnet. Protons - 1.4 GeV';
+
+ option, echo;
+
+/*******************************************************************************
+ * Macro definitions
+ *******************************************************************************/
+  readanytable(xx,yy,zz): macro = {val = table(xx,yy,zz);};
+
+! Neither SMV10 nor SMV20 have offsets. I.e. the septa are placed symmetrically inside the tank:
+! See: http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTP/PSCA9989C.pdf
+! See: http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTP/PSPA9598.pdf
+
+
+/*******************************************************************************
+ * BT
+ *******************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/strength/BT.str';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/elements/BT.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/BT1.seq';
+!call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/BT2.seq';
+!call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/BT3.seq';
+!call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/BT4.seq';
+!call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/aperture/BT.dbx';
+
+                         ! WARNING. Aperture problems give the error message:
+                         !          DA unstable
+                         !
+                         ! "DA" stands for dynamic aperture
+
+
+/*******************************************************************************
+ * BEAM and USE
+ *******************************************************************************/
+  beam; use, sequence=BT1;
+
+
+ option, echo;
+
+/*******************************************************************************
+ * MATCHING in order to calculate beam positions. This part is only used by O.Berrig
+ *******************************************************************************
+
+
+!--------------------------------------------------------------------------
+! set initial positions.
+!       These positions are "s" positions (=path length)
+!       These positions are used by MADX. The final positions are in the sequence file.
+!--------------------------------------------------------------------------
+
+ BT1.BVT10.pos   =        3.34054e+00;
+ BT1.UES00.pos   =        4.20254e+00;
+ BT1.DHZ10.pos   =        4.80470e+00;
+ BT1.VVS10.pos   =        5.06663e+00;
+ BT1.SMV10.pos   =        7.12426e+00;
+ BT2.MTV10.pos   =        7.81232e+00;
+ BT.VPG11.pos    =        8.49233e+00;
+ BT2.UES10.pos   =        9.14235e+00;
+ BT2.QNO10.pos   =        9.71236e+00;
+ BT2.VVS30.pos   =        1.11435e+01;
+ BT2.QNO20.pos   =        1.17125e+01;
+ BT.VGP21.pos    =        1.38581e+01;
+ BT1.KFA10.pos   =        1.50627e+01;
+ BT.MTV20.pos    =        1.62502e+01;
+ BT2.BVT20.pos   =        1.69642e+01;
+ BT2.UES20.pos   =        1.77347e+01;
+ BT2.DVT40.pos   =        1.92708e+01;
+ BT.VPI23.pos    =        2.04256e+01;
+ BT2.SMV20.pos   =        2.11438e+01;
+ BT.MTV30.pos    =        2.18143e+01;
+ BT.QNO30.pos    =        2.26454e+01;
+ BT.UES30.pos    =        2.61030e+01;
+ BT.BCT10.pos    =        2.66680e+01;
+ BT.DVT50.pos    =        2.72570e+01;
+ BT.VGP23.pos    =        2.82492e+01;
+ BT2.KFA20.pos   =        3.00255e+01;
+ BT.MTV40.pos    =        3.12130e+01;
+ BT.DVT60.pos    =        3.15805e+01;
+ BT.QNO40.pos    =        3.20705e+01;
+ BT.UES40.pos    =        3.25780e+01;
+ BT.QNO50.pos    =        3.34405e+01;
+
+
+
+
+
+!--------------------------------------------------------------------------
+! Reinstall the elements. The positions are defined as variables.
+!                         This is done so that the matching can change them.
+!--------------------------------------------------------------------------
+ seqedit, sequence=BT1;
+      remove, element=BT1.BVT10;
+      remove, element=BT1.UES00;
+      remove, element=BT1.DHZ10;
+      remove, element=BT1.VVS10;
+      remove, element=BT1.SMV10;
+      remove, element=BT2.MTV10;
+      remove, element=BT.VPG11 ;
+      remove, element=BT2.UES10;
+      remove, element=BT2.QNO10;
+      remove, element=BT2.VVS30;
+      remove, element=BT2.QNO20;
+      remove, element=BT.VGP21 ;
+      remove, element=BT.VGR21 ;
+      remove, element=BT.VPI22 ;
+      remove, element=BT.VPI22A;
+      remove, element=BT1.KFA10;
+      remove, element=BT.MTV20 ;
+      remove, element=BT2.BVT20;
+      remove, element=BT2.UES20;
+      remove, element=BT2.DVT40;
+      remove, element=BT.VPI23 ;
+      remove, element=BT2.SMV20;
+      remove, element=BT.MTV30 ;
+      remove, element=BT.VPI23B;
+      remove, element=BT.QNO30 ;
+      remove, element=BT.UES30 ;
+      remove, element=BT.BCT10 ;
+      remove, element=BT.DVT50 ;
+      remove, element=BT.VGP23 ;
+      remove, element=BT.VPG22 ;
+      remove, element=BT2.KFA20;
+      remove, element=BT.MTV40 ;
+      remove, element=BT.DVT60 ;
+      remove, element=BT.QNO40 ;
+      remove, element=BT.UES40 ;
+      remove, element=BT.QNO50 ;
+
+      Install, element=BT1.BVT10 , at:=BT1.BVT10.pos ;
+      Install, element=BT1.UES00 , at:=BT1.UES00.pos ;
+      Install, element=BT1.DHZ10 , at:=BT1.DHZ10.pos ;
+      Install, element=BT1.VVS10 , at:=BT1.VVS10.pos ;
+      Install, element=BT1.SMV10 , at:=BT1.SMV10.pos ;
+      Install, element=BT2.MTV10 , at:=BT2.MTV10.pos ;
+      Install, element=BT.VPG11  , at:=BT.VPG11.pos  ;
+      Install, element=BT2.UES10 , at:=BT2.UES10.pos ;
+      Install, element=BT2.QNO10 , at:=BT2.QNO10.pos ;
+      Install, element=BT2.VVS30 , at:=BT2.VVS30.pos ;
+      Install, element=BT2.QNO20 , at:=BT2.QNO20.pos ;
+      Install, element=BT.VGP21  , at:=BT.VGP21.pos  ;
+      Install, element=BT.VGR21  , at:=BT.VGP21.pos  ;
+      Install, element=BT.VPI22  , at:=BT.VGP21.pos  ;
+      Install, element=BT.VPI22A , at:=BT.VGP21.pos  ;
+      Install, element=BT1.KFA10 , at:=BT1.KFA10.pos ;
+      Install, element=BT.MTV20  , at:=BT.MTV20.pos  ;
+      Install, element=BT2.BVT20 , at:=BT2.BVT20.pos ;
+      Install, element=BT2.UES20 , at:=BT2.UES20.pos ;
+      Install, element=BT2.DVT40 , at:=BT2.DVT40.pos ;
+      Install, element=BT.VPI23  , at:=BT.VPI23.pos  ;
+      Install, element=BT2.SMV20 , at:=BT2.SMV20.pos ;
+      Install, element=BT.MTV30  , at:=BT.MTV30.pos  ;
+!     Install, element=BT.VPI23B , at:=BT.VPI23B.pos ;
+      Install, element=BT.QNO30  , at:=BT.QNO30.pos  ;
+      Install, element=BT.UES30  , at:=BT.UES30.pos  ;
+      Install, element=BT.BCT10  , at:=BT.BCT10.pos  ;
+      Install, element=BT.DVT50  , at:=BT.DVT50.pos  ;
+      Install, element=BT.VGP23  , at:=BT.VGP23.pos  ;
+      Install, element=BT.VPG22  , at:=BT.VPG23.pos  ;
+      Install, element=BT2.KFA20 , at:=BT2.KFA20.pos ;
+      Install, element=BT.MTV40  , at:=BT.MTV40.pos  ;
+      Install, element=BT.DVT60  , at:=BT.DVT60.pos  ;
+      Install, element=BT.QNO40  , at:=BT.QNO40.pos  ;
+      Install, element=BT.UES40  , at:=BT.UES40.pos  ;
+      Install, element=BT.QNO50  , at:=BT.QNO50.pos  ;
+
+ endedit;
+
+!--------------------------------------------------------------------------
+! beam and use
+!--------------------------------------------------------------------------
+  beam; use, sequence=BT1;
+!pySMV10  =0;
+!
+
+
+
+!--------------------------------------------------------------------------
+! sur1 macro
+!--------------------------------------------------------------------------
+ a1 = 0;
+ sur1 : macro={
+        option, echo;
+        option, -info;
+
+        beam; use, sequence=BT1;
+
+        select, flag=survey,clear;
+        select, flag=survey, column=name,s,l,z,x,y;
+        survey, z0=0, x0=0, y0=-0.720     ! =-0.360-0.360 The BT1 line is the lowest -0.720 m below the BT3 line.
+              , theta0:=a1
+              , file="../out/ps_psb_2011.sur"; ! The output is also in memory, in the table: survey
+
+
+!*************************************
+!* Note that the coordinates used by TS/SU
+!* and in MADX are different:
+!*      MADX    TS/SU
+!*       Z        X
+!*       X        Y
+!*       Y        Z
+!*************************************
+
+!                                                          Entry point                    Sortie point
+        exec, readanytable(survey, Z, $rowBT1.BVT10);   EBT1.BVT10.pos = val;  SBT1.BVT10.pos=table(survey,BT1.BVT10,Z); ! S position (=Z)
+        exec, readanytable(survey, Z, $rowBT1.UES00);   EBT1.UES00.pos = val;  SBT1.UES00.pos=table(survey,BT1.UES00,Z);
+        exec, readanytable(survey, Z, $rowBT1.DHZ10);   EBT1.DHZ10.pos = val;  SBT1.DHZ10.pos=table(survey,BT1.DHZ10,Z);
+        exec, readanytable(survey, Z, $rowBT1.VVS10);   EBT1.VVS10.pos = val;  SBT1.VVS10.pos=table(survey,BT1.VVS10,Z);
+        exec, readanytable(survey, Z, $rowBT1.SMV10);   EBT1.SMV10.pos = val;  SBT1.SMV10.pos=table(survey,BT1.SMV10,Z);
+        exec, readanytable(survey, Y, $rowBT1.SMV10);  EBT1.SMV10.Ypos = val; SBT1.SMV10.Ypos=table(survey,BT1.SMV10,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT2.MTV10);   EBT2.MTV10.pos = val;  SBT2.MTV10.pos=table(survey,BT2.MTV10,Z);
+        exec, readanytable(survey, Z, $rowBT.VPG11 );   EBT.VPG11.pos  = val;  SBT.VPG11.pos =table(survey,BT.VPG11 ,Z);
+        exec, readanytable(survey, Z, $rowBT2.UES10);   EBT2.UES10.pos = val;  SBT2.UES10.pos=table(survey,BT2.UES10,Z);
+        exec, readanytable(survey, Z, $rowBT2.QNO10);   EBT2.QNO10.pos = val;  SBT2.QNO10.pos=table(survey,BT2.QNO10,Z);
+        exec, readanytable(survey, Y, $rowBT2.QNO10);  EBT2.QNO10.Ypos = val; SBT2.QNO10.Ypos=table(survey,BT2.QNO10,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT2.VVS30);   EBT2.VVS30.pos = val;  SBT2.VVS30.pos=table(survey,BT2.VVS30,Z);
+        exec, readanytable(survey, Z, $rowBT2.QNO20);   EBT2.QNO20.pos = val;  SBT2.QNO20.pos=table(survey,BT2.QNO20,Z);
+        exec, readanytable(survey, Y, $rowBT2.QNO20);  EBT2.QNO20.Ypos = val; SBT2.QNO20.Ypos=table(survey,BT2.QNO20,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.VGP21 );   EBT.VGP21.pos  = val;  SBT.VGP21.pos =table(survey,BT.VGP21 ,Z);
+        exec, readanytable(survey, Z, $rowBT.VGR21 );   EBT.VGR21.pos  = val;  SBT.VGR21.pos =table(survey,BT.VGR21 ,Z);
+        exec, readanytable(survey, Z, $rowBT.VPI22 );   EBT.VPI22.pos  = val;  SBT.VPI22.pos =table(survey,BT.VPI22 ,Z);
+        exec, readanytable(survey, Z, $rowBT.VPI22A);   EBT.VPI22A.pos = val;  SBT.VPI22A.pos=table(survey,BT.VPI22A,Z);
+        exec, readanytable(survey, Z, $rowBT1.KFA10);   EBT1.KFA10.pos = val;  SBT1.KFA10.pos=table(survey,BT1.KFA10,Z);
+        exec, readanytable(survey, Y, $rowBT1.KFA10);  EBT1.KFA10.Ypos = val; SBT1.KFA10.Ypos=table(survey,BT1.KFA10,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.MTV20 );   EBT.MTV20.pos  = val;  SBT.MTV20.pos =table(survey,BT.MTV20 ,Z);
+        exec, readanytable(survey, Y, $rowBT.MTV20 );  EBT.MTV20.Ypos  = val; SBT.MTV20.Ypos =table(survey,BT.MTV20 ,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT2.BVT20);   EBT2.BVT20.pos = val;  SBT2.BVT20.pos=table(survey,BT2.BVT20,Z);
+        exec, readanytable(survey, Z, $rowBT2.UES20);   EBT2.UES20.pos = val;  SBT2.UES20.pos=table(survey,BT2.UES20,Z);
+        exec, readanytable(survey, Z, $rowBT2.DVT40);   EBT2.DVT40.pos = val;  SBT2.DVT40.pos=table(survey,BT2.DVT40,Z);
+        exec, readanytable(survey, Z, $rowBT.VPI23 );   EBT.VPI23.pos  = val;  SBT.VPI23.pos =table(survey,BT.VPI23 ,Z);
+        exec, readanytable(survey, Z, $rowBT2.SMV20);   EBT2.SMV20.pos = val;  SBT2.SMV20.pos=table(survey,BT2.SMV20,Z);
+        exec, readanytable(survey, Y, $rowBT2.SMV20);  EBT2.SMV20.Ypos = val; SBT2.SMV20.Ypos=table(survey,BT2.SMV20,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.MTV30 );   EBT.MTV30.pos  = val;  SBT.MTV30.pos =table(survey,BT.MTV30 ,Z);
+!       exec, readanytable(survey, Z, $rowBT.VPI23B);   EBT.VPI23B.pos = val;  SBT.VPI23B.pos=table(survey,BT.VPI23B,Z);
+        exec, readanytable(survey, Z, $rowBT.QNO30 );   EBT.QNO30.pos  = val;  SBT.QNO30.pos =table(survey,BT.QNO30 ,Z);
+        exec, readanytable(survey, Y, $rowBT.QNO30 );  EBT.QNO30.Ypos  = val; SBT.QNO30.Ypos =table(survey,BT.QNO30 ,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.UES30 );   EBT.UES30.pos  = val;  SBT.UES30.pos =table(survey,BT.UES30 ,Z);
+        exec, readanytable(survey, Z, $rowBT.BCT10 );   EBT.BCT10.pos  = val;  SBT.BCT10.pos =table(survey,BT.BCT10 ,Z);
+        exec, readanytable(survey, Z, $rowBT.DVT50 );   EBT.DVT50.pos  = val;  SBT.DVT50.pos =table(survey,BT.DVT50 ,Z);
+        exec, readanytable(survey, Z, $rowBT.VGP23 );   EBT.VGP23.pos  = val;  SBT.VGP23.pos =table(survey,BT.VGP23 ,Z);
+        exec, readanytable(survey, Z, $rowBT.VPG22 );   EBT.VPG22.pos  = val;  SBT.VPG22.pos =table(survey,BT.VPG22 ,Z);
+        exec, readanytable(survey, Z, $rowBT2.KFA20);   EBT2.KFA20.pos = val;  SBT2.KFA20.pos=table(survey,BT2.KFA20,Z);
+        exec, readanytable(survey, Y, $rowBT2.KFA20);  EBT2.KFA20.Ypos = val; SBT2.KFA20.Ypos=table(survey,BT2.KFA20,Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.MTV40 );   EBT.MTV40.pos  = val;  SBT.MTV40.pos =table(survey,BT.MTV40 ,Z);
+        exec, readanytable(survey, Z, $rowBT.DVT60 );   EBT.DVT60.pos  = val;  SBT.DVT60.pos =table(survey,BT.DVT60 ,Z);
+        exec, readanytable(survey, Y, $rowBT.DVT60 );   EBT.DVT60.Ypos = val;  SBT.DVT60.Ypos=table(survey,BT.DVT60, Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.QNO40 );   EBT.QNO40.pos  = val;  SBT.QNO40.pos =table(survey,BT.QNO40 ,Z);
+        exec, readanytable(survey, Y, $rowBT.QNO40 );   EBT.QNO40.Ypos = val;  SBT.QNO40.Ypos=table(survey,BT.QNO40, Y); ! height (=Y)
+        exec, readanytable(survey, Z, $rowBT.UES40 );   EBT.UES40.pos  = val;  SBT.UES40.pos =table(survey,BT.UES40 ,Z);
+        exec, readanytable(survey, Z, $rowBT.QNO50 );   EBT.QNO50.pos  = val;  SBT.QNO50.pos =table(survey,BT.QNO50 ,Z);
+
+
+        value, rowBT1.BVT10, EBT1.BVT10.pos, SBT1.BVT10.pos;
+        print, text=" ";
+       }; ! end of sur1
+
+
+!--------------------------------------------------------------------------
+! execute sur1. This creates an initial survey
+!--------------------------------------------------------------------------
+ exec, sur1; ! NB: The result of the survey is in the file: "../out/ps_psb_2011.sur"
+
+
+
+!--------------------------------------------------------------------------
+! Find row number for each equipment. Stored in "temp_file"
+!--------------------------------------------------------------------------
+   readmytable,file="../out/ps_psb_2011.sur",table=inTable;
+   n_elem  =  table(inTable, tablelength);
+   create,  table=temp_file, column=_name,row_number;
+
+   i_elem = 0;
+   while (i_elem < n_elem) {
+     i_elem = i_elem + 1;
+     setvars, table=inTable, row=i_elem;
+     row_number=i_elem;
+     fill, table=temp_file;
+   }
+
+   write, table=temp_file, file=temp_file;
+
+
+
+!--------------------------------------------------------------------------
+! Give each rownumber a variable name
+!--------------------------------------------------------------------------
+
+ exec, readanytable(temp_file, BT1.BVT10, row_number);  rowBT1.BVT10=val-1; value, rowBT1.BVT10;  ! this is the row number for the entry point of the equipment
+ exec, readanytable(temp_file, BT1.UES00, row_number);  rowBT1.UES00=val-1; value, rowBT1.UES00;
+ exec, readanytable(temp_file, BT1.DHZ10, row_number);  rowBT1.DHZ10=val-1; value, rowBT1.DHZ10;
+ exec, readanytable(temp_file, BT1.VVS10, row_number);  rowBT1.VVS10=val-1; value, rowBT1.VVS10;
+ exec, readanytable(temp_file, BT1.SMV10, row_number);  rowBT1.SMV10=val-1; value, rowBT1.SMV10;
+ exec, readanytable(temp_file, BT2.MTV10, row_number);  rowBT2.MTV10=val-1; value, rowBT2.MTV10;
+ exec, readanytable(temp_file, BT.VPG11 , row_number);  rowBT.VPG11 =val-1; value, rowBT.VPG11 ;
+ exec, readanytable(temp_file, BT2.UES10, row_number);  rowBT2.UES10=val-1; value, rowBT2.UES10;
+ exec, readanytable(temp_file, BT2.QNO10, row_number);  rowBT2.QNO10=val-1; value, rowBT2.QNO10;
+ exec, readanytable(temp_file, BT2.VVS30, row_number);  rowBT2.VVS30=val-1; value, rowBT2.VVS30;
+ exec, readanytable(temp_file, BT2.QNO20, row_number);  rowBT2.QNO20=val-1; value, rowBT2.QNO20;
+ exec, readanytable(temp_file, BT.VGP21 , row_number);  rowBT.VGP21 =val-1; value, rowBT.VGP21 ;
+ exec, readanytable(temp_file, BT.VGR21 , row_number);  rowBT.VGR21 =val-1; value, rowBT.VGR21 ;
+ exec, readanytable(temp_file, BT.VPI22 , row_number);  rowBT.VPI22 =val-1; value, rowBT.VPI22 ;
+ exec, readanytable(temp_file, BT.VPI22A, row_number);  rowBT.VPI22A=val-1; value, rowBT.VPI22A;
+ exec, readanytable(temp_file, BT1.KFA10, row_number);  rowBT1.KFA10=val-1; value, rowBT1.KFA10;
+ exec, readanytable(temp_file, BT.MTV20 , row_number);  rowBT.MTV20 =val-1; value, rowBT.MTV20 ;
+ exec, readanytable(temp_file, BT2.BVT20, row_number);  rowBT2.BVT20=val-1; value, rowBT2.BVT20;
+ exec, readanytable(temp_file, BT2.UES20, row_number);  rowBT2.UES20=val-1; value, rowBT2.UES20;
+ exec, readanytable(temp_file, BT2.DVT40, row_number);  rowBT2.DVT40=val-1; value, rowBT2.DVT40;
+ exec, readanytable(temp_file, BT.VPI23 , row_number);  rowBT.VPI23 =val-1; value, rowBT.VPI23 ;
+ exec, readanytable(temp_file, BT2.SMV20, row_number);  rowBT2.SMV20=val-1; value, rowBT2.SMV20;
+ exec, readanytable(temp_file, BT.MTV30 , row_number);  rowBT.MTV30 =val-1; value, rowBT.MTV30 ;
+!exec, readanytable(temp_file, BT.VPI23B, row_number);  rowBT.VPI23B=val-1; value, rowBT.VPI23B;
+ exec, readanytable(temp_file, BT.QNO30 , row_number);  rowBT.QNO30 =val-1; value, rowBT.QNO30 ;
+ exec, readanytable(temp_file, BT.UES30 , row_number);  rowBT.UES30 =val-1; value, rowBT.UES30 ;
+ exec, readanytable(temp_file, BT.BCT10 , row_number);  rowBT.BCT10 =val-1; value, rowBT.BCT10 ;
+ exec, readanytable(temp_file, BT.DVT50 , row_number);  rowBT.DVT50 =val-1; value, rowBT.DVT50 ;
+ exec, readanytable(temp_file, BT.VGP23 , row_number);  rowBT.VGP23 =val-1; value, rowBT.VGP23 ;
+ exec, readanytable(temp_file, BT.VPG22 , row_number);  rowBT.VPG22 =val-1; value, rowBT.VPG22 ;
+ exec, readanytable(temp_file, BT2.KFA20, row_number);  rowBT2.KFA20=val-1; value, rowBT2.KFA20;
+ exec, readanytable(temp_file, BT.MTV40 , row_number);  rowBT.MTV40 =val-1; value, rowBT.MTV40 ;
+ exec, readanytable(temp_file, BT.DVT60 , row_number);  rowBT.DVT60 =val-1; value, rowBT.DVT60 ;
+ exec, readanytable(temp_file, BT.QNO40 , row_number);  rowBT.QNO40 =val-1; value, rowBT.QNO40 ;
+ exec, readanytable(temp_file, BT.UES40 , row_number);  rowBT.UES40 =val-1; value, rowBT.UES40 ;
+ exec, readanytable(temp_file, BT.QNO50 , row_number);  rowBT.QNO50 =val-1; value, rowBT.QNO50 ;
+
+
+
+
+
+!--------------------------------------------------------------------------
+! execute sur1. This creates an initial survey
+!--------------------------------------------------------------------------
+ exec, sur1; ! NB: The result of the survey is in the file: "../out/ps_psb_2011.sur"
+
+
+
+
+
+
+
+
+ dBTBV10  =            8.46104e-02;
+ pySMV10  =            9.12557e-02;
+ dBTQNO10 =           -2.13595e-02;
+ dBTQNO20 =            6.36874e-03;
+ dBTKF10  =           -8.34552e-03;
+ dBTBV20  =            8.15218e-02;
+ pySMV20  =            9.76154e-02;
+ dBTQNO30 =           -2.19779e-02;
+ dBTKF20  =           -5.455716860E-03;
+
+
+ match, use_macro;
+   vary, name = BT1.BVT10.pos,  step=1e-3;  ! The position is ¨s¨ (=path length). It does not mean sortie.
+   vary, name = BT1.UES00.pos,  step=1e-3;
+   vary, name = BT1.DHZ10.pos,  step=1e-3;
+   vary, name = BT1.VVS10.pos,  step=1e-3;
+   vary, name = BT1.SMV10.pos,  step=1e-3;
+   vary, name = BT2.MTV10.pos,  step=1e-3;
+   vary, name = BT.VPG11.pos ,  step=1e-3;
+   vary, name = BT2.UES10.pos,  step=1e-3;  ! Only "simplex" is concerned with step
+   vary, name = BT2.QNO10.pos,  step=1e-3;
+   vary, name = BT2.VVS30.pos,  step=1e-3;
+   vary, name = BT2.QNO20.pos,  step=1e-3;
+   vary, name = BT.VGP21.pos ,  step=1e-3;
+   vary, name = BT1.KFA10.pos,  step=1e-3;
+   vary, name = BT.MTV20.pos ,  step=1e-3;
+   vary, name = BT2.BVT20.pos,  step=1e-3;
+   vary, name = BT2.UES20.pos,  step=1e-3;
+   vary, name = BT2.DVT40.pos,  step=1e-3;
+   vary, name = BT.VPI23.pos ,  step=1e-3;
+   vary, name = BT2.SMV20.pos,  step=1e-3;
+   vary, name = BT.MTV30.pos ,  step=1e-3;
+!  vary, name = BT.VPI23B.pos,  step=1e-3; ! problem
+   vary, name = BT.QNO30.pos ,  step=1e-3;
+   vary, name = BT.UES30.pos ,  step=1e-3;
+   vary, name = BT.BCT10.pos ,  step=1e-3;
+   vary, name = BT.DVT50.pos ,  step=1e-3;
+   vary, name = BT.VGP23.pos ,  step=1e-3;
+   vary, name = BT2.KFA20.pos,  step=1e-3;
+   vary, name = BT.MTV40.pos ,  step=1e-3;
+   vary, name = BT.DVT60.pos ,  step=1e-3;
+   vary, name = BT.QNO40.pos ,  step=1e-3;
+   vary, name = BT.UES40.pos ,  step=1e-3;
+   vary, name = BT.QNO50.pos ,  step=1e-3;
+!
+   vary, name = dBTBV10      ,  step=1e-1;
+   vary, name = pySMV10      ,  step=1e-1;
+   vary, name = dBTQNO10     ,  step=1e-1;
+   vary, name = dBTQNO20     ,  step=1e-1;
+   vary, name = dBTKF10      ,  step=1e-1;
+   vary, name = dBTBV20      ,  step=1e-1;
+   vary, name = pySMV20      ,  step=1e-1;
+   vary, name = dBTQNO30     ,  step=1e-1;
+   vary, name = dBTKF20      ,  step=1e-1;
+
+
+   use_macro,name=sur1;
+!  See also: http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BTBTP/AugmentationLacceptance_PSB_PS.pdf
+
+   constraint, expr=(EBT1.BVT10.pos + SBT1.BVT10.pos )/2 =  3.3400; ! These position are given by B.Mikulec and V.Raginel
+   constraint, expr=(EBT1.UES00.pos + SBT1.UES00.pos )/2 =  4.2000;
+   constraint, expr=(EBT1.DHZ10.pos + SBT1.DHZ10.pos )/2 =  4.8000;
+   constraint, expr=(EBT1.VVS10.pos + SBT1.VVS10.pos )/2 =  5.0610;
+   constraint, expr=(EBT1.SMV10.pos + SBT1.SMV10.pos )/2 =  7.2000;
+   constraint, expr=(EBT1.SMV10.Ypos+ SBT1.SMV10.Ypos)/2 =  -0.423; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360-0.063 J.P.Delahaye, J.P.Riunaud
+   constraint, expr=(EBT1.SMV10.Ypos - SBT1.SMV10.Ypos) <0; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360-0.063 J.P.Delahaye, J.P.Riunaud
+   constraint, expr=(EBT2.MTV10.pos + SBT2.MTV10.pos )/2 =  7.8000;
+   constraint, expr=(EBT.VPG11.pos  + SBT.VPG11.pos  )/2 =  8.4800;
+   constraint, expr=(EBT2.UES10.pos + SBT2.UES10.pos )/2 =  9.1300;
+   constraint, expr=(EBT2.QNO10.pos + SBT2.QNO10.pos )/2 =  9.7000;
+   constraint, expr=(EBT2.QNO10.Ypos+ SBT2.QNO10.Ypos)/2 = -0.4149; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360-0.0549
+   constraint, expr=(EBT2.VVS30.pos + SBT2.VVS30.pos )/2 = 11.1310;
+   constraint, expr=(EBT2.QNO20.pos + SBT2.QNO20.pos )/2 = 11.7000;
+   constraint, expr=(EBT2.QNO20.Ypos+ SBT2.QNO20.Ypos)/2 = -0.3887; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360-0.0287
+   constraint, expr=(EBT.VGP21.pos  + SBT.VGP21.pos  )/2 = 13.8455;
+   constraint, expr=(EBT1.KFA10.pos + SBT1.KFA10.pos )/2 = 15.0500;
+   constraint, expr=                  SBT1.KFA10.Ypos    = -0.3600; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360
+   constraint, expr=(EBT.MTV20.pos  + SBT.MTV20.pos  )/2 = 16.2375;
+   constraint, expr=(EBT.MTV20.Ypos + SBT.MTV20.Ypos )/2 = -0.3600; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.360
+   constraint, expr=(EBT2.BVT20.pos + SBT2.BVT20.pos )/2 = 16.9510;
+   constraint, expr=(EBT2.UES20.pos + SBT2.UES20.pos )/2 = 17.7200;
+   constraint, expr=(EBT2.DVT40.pos + SBT2.DVT40.pos )/2 = 19.2510;
+   constraint, expr=(EBT.VPI23.pos  + SBT.VPI23.pos  )/2 = 20.4019;
+   constraint, expr=(EBT2.SMV20.pos + SBT2.SMV20.pos )/2 = 21.2040;
+   constraint, expr=(EBT2.SMV20.Ypos+ SBT2.SMV20.Ypos)/2 = -0.044; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.044
+   constraint, expr=(EBT.MTV30.pos  + SBT.MTV30.pos  )/2 = 21.7890;
+!  constraint, expr=(EBT.VPI23B.pos + SBT.VPI23B.pos )/2 = 21.7890;
+   constraint, expr=(EBT.QNO30.pos  + SBT.QNO30.pos  )/2 = 22.6200;
+   constraint, expr=(EBT.QNO30.Ypos + SBT.QNO30.Ypos )/2 = -0.0417; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf -0.0417
+   constraint, expr=(EBT.UES30.pos  + SBT.UES30.pos  )/2 = 26.0775;
+   constraint, expr=(EBT.BCT10.pos  + SBT.BCT10.pos  )/2 = 26.6425;
+   constraint, expr=(EBT.DVT50.pos  + SBT.DVT50.pos  )/2 = 27.2315;
+   constraint, expr=(EBT.VGP23.pos  + SBT.VGP23.pos  )/2 = 28.2237;
+   constraint, expr=(EBT2.KFA20.pos + SBT2.KFA20.pos )/2 = 30.0000;
+   constraint, expr=                  SBT2.KFA20.Ypos    =  0.0000; ! according to the latest report AugmentationLacceptance_PSB_PS.pdf 0.00
+   constraint, expr=(EBT.MTV40.pos  + SBT.MTV40.pos  )/2 = 31.1875;
+   constraint, expr=(EBT.DVT60.pos  + SBT.DVT60.pos  )/2 = 31.5550;
+   constraint, expr=(EBT.DVT60.Ypos + SBT.DVT60.Ypos )/2 =  0.0000;
+   constraint, expr=(EBT.QNO40.pos  + SBT.QNO40.pos  )/2 = 32.0450;
+   constraint, expr=(EBT.QNO40.Ypos + SBT.QNO40.Ypos )/2 =  0.0000;
+   constraint, expr=(EBT.UES40.pos  + SBT.UES40.pos  )/2 = 32.5525;
+   constraint, expr=(EBT.QNO50.pos  + SBT.QNO50.pos  )/2 = 33.4150;
+
+    simplex, calls=100, tolerance=1e-20;
+    lmdif, calls=1000, tolerance=6E-30;
+    jacobian, calls=50, tolerance=1.0E-30, bisec=9;
+ endmatch;
+
+ if (TAR > 1E-9 )
+    {
+     assign,echo=temp_file;
+     print, text=" ";
+     print, text="****** Error: Matching was not successfull         ***********";
+     value, TAR;
+     assign,echo=terminal;
+     stop;
+    }
+
+  value, BT1.BVT10.pos;
+  value, BT1.UES00.pos;
+  value, BT1.DHZ10.pos;
+  value, BT1.VVS10.pos;
+  value, BT1.SMV10.pos;
+  value, BT2.MTV10.pos;
+  value, BT.VPG11.pos ;
+  value, BT2.UES10.pos;
+  value, BT2.QNO10.pos ;
+  value, BT2.VVS30.pos;
+  value, BT2.QNO20.pos ;
+  value, BT.VGP21.pos ;
+  value, BT.VGR21.pos ;
+  value, BT.VPI22.pos ;
+  value, BT.VPI22A.pos;
+  value, BT1.KFA10.pos;
+  value, BT.MTV20.pos ;
+  value, BT2.BVT20.pos;
+  value, BT2.UES20.pos;
+  value, BT2.DVT40.pos;
+  value, BT.VPI23.pos ;
+  value, BT2.SMV20.pos;
+  value, BT.MTV30.pos ;
+  value, BT.VPI23B.pos;
+  value, BT.QNO30.pos ;
+  value, BT.UES30.pos ;
+  value, BT.BCT10.pos ;
+  value, BT.DVT50.pos ;
+  value, BT.VGP23.pos ;
+  value, BT.VPG22.pos ;
+  value, BT2.KFA20.pos;
+  value, BT.MTV40.pos ;
+  value, BT.DVT60.pos ;
+  value, BT.QNO40.pos ;
+  value, BT.UES40.pos ;
+  value, BT.QNO50.pos ;
+
+  value, dBTBV10  ;
+  value, pySMV10  ;
+  value, dBTQNO10 ;
+  value, dBTQNO20 ;
+  value, dBTKF10  ;
+  value, dBTBV20  ;
+  value, pySMV20  ;
+  value, dBTQNO30 ;
+  value, dBTKF20  ;
+  stop;
+ /*****************************************************************************************/
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+ * set initial twiss parameters
+ *******************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2009/inp/BT.inp';
+
+!--------------------------------------------------------------------------
+! set initial position and angle (x,px) and (y,py)
+! E.g. :
+! x0 := 0.0;
+! px0:= 0.0;
+! y0 := 0.0;
+! py0:= 0.0;
+!--------------------------------------------------------------------------
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+
+
+
+
+/*******************************************************************************
+ * save a sequence
+ *******************************************************************************/
+! save, sequence=BTBTP3, file=BT3.save;
+
+
+
+/*******************************************************************************
+ * CALCULATE OPTICS   BT1
+ *******************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2009/strength/BT.str';
+
+ beam; use, sequence=BT1;
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss,column = name,s,y,py,alfa11,beta11,alfa22,beta22;
+
+ ptc_create_universe;
+ ptc_create_layout,model=2,method=6,nst=5,exact, closed_layout=false;
+ ptc_twiss, table=ptc_twiss,icase=5,no=1,BETA0=INITBETA0,file="../out/opticsbt1.out";
+ ptc_end;
+
+
+
+/*******************************************************************************
+ * Plot BT1
+ *******************************************************************************/
+/* Use >gv madx.ps to plot */
+
+!PLOT, VAXIS1=BETX, HAXIS=S,
+!      SPLINE=FALSE, VMIN=-2, VMAX=30, COLOUR=100, RANGE=#S/#E, FILE="../out/madx";
+
+
+   readmytable,file="../out/ps_psb_2011.sur",table=twiss;
+
+ PLOT,   VAXIS1=Y, HAXIS=Z;
+
+stop;
+
+
+
+
+
+
+
+
+
+
+
+
+!--------------------------------------------------------------------------
+! Some useful commands:
+!--------------------------------------------------------------------------
+
+
+
+!show, dfa1kick;
+
+
+
+/*
+Assign, echo="KICKER_STRENGTHX";
+print, text="FAST BUMP";
+show, KICKDFA242, KICKDFA254;
+Assign, echo=terminal;
+*/
+
+
+! exec, pt1;
+! value,table(twiss,BTL$START,py);
+
+
+stop;
+

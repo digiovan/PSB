@@ -1,0 +1,46 @@
+bi:    sequence, refer = centre , l  := 48.49474532;
+   BEGBI            : MARKER    , AT :=  0.0000000;
+   EBHZ40           : MARKER    , AT :=  0.0000000; ! Marker used for matching survey positions.
+   LTB.BHZ40                    , AT :=0.450000000;
+   BI.DHZ10                     , AT :=6.577545322;
+   BI.DVT10                     , AT :=6.577545322;
+   BI.UMA00                     , AT :=7.041045322;
+   BI.MTV10                     , AT :=8.000545322;
+   BI.STPFA                     , AT :=8.526545322;
+ ! BI.SIEVE                     , AT :=9.052045322; ! Taken out. Leak. No date for putting it back
+   BI.STPSW                     , AT :=11.75304532;
+   BI.UMA10                     , AT :=12.50854532;
+   BI.DHZ20                     , AT :=13.00054532;
+   BI.DVT20                     , AT :=13.00054532;
+   BI.QNO10                     , AT :=13.64404532;
+   BI.QNO20                     , AT :=14.64404532;
+   BI.UMA20                     , AT :=21.69924532;
+   BI.BCT10                     , AT :=22.15724532;
+   BI.VVS10                     , AT :=22.53524532;
+   BI.DHZ30                     , AT :=22.76724532;
+   BI.DVT30                     , AT :=22.76724532;
+   BI.MTV20                     , AT :=23.24124532;
+   BI.QNO30                     , AT :=23.95974532;
+   BI.UMA30                     , AT :=24.59424532;
+   BI.QNO40                     , AT :=25.25974532;
+   BI.DIS                       , AT :=26.76074532; ! Vertical kicker. The strength must be zero for aperture reasons.
+   BI.DHZ40                     , AT :=27.68024532;
+   BI.DVT40                     , AT :=27.68024532;
+   BI.DIS2                      , AT :=29.04774532; ! Was used for lead ions. Will be removed ASAP
+   BI.MTV30                     , AT :=34.25224532;
+   BI.SMV                       , AT :=35.88354532; ! Septum. Modelled as SBEND
+   BI.BVT                       , AT :=39.00174532; ! Vertical bending. To make the 4 beams horizontal.
+   BI.QNO50                     , AT :=39.90174532;
+   BI.QNO60                     , AT :=40.65174532;
+   BI.DHZ50                     , AT :=41.19224532;
+   BI.DVT50                     , AT :=41.19224532;
+   BI.UMA40                     , AT :=41.75924532;
+   BI3.SIEVE50                  , AT :=42.15124532; ! Only in ring 3, second from top
+   BI.MTV40                     , AT :=42.93924532;
+   BI.BCT20                     , AT :=43.88494532;
+   BI.UMA50                     , AT :=44.33014532;
+   BI.VVS20                     , AT :=44.85414532;
+   BI.INJPT         : MARKER    , AT :=48.49474532;
+ENDSEQUENCE;
+RETURN;
+

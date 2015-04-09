@@ -1,0 +1,315 @@
+
+!--------------------------------------------------------------------------
+! MADXP file for transferline BTP optics calculations
+! The protons from the 4 rings (on top of each other) of the PSB
+! are recombined and transferred to the PS via the BTP
+!
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011
+! Converted to MADX July 2007 O.Berrig
+!
+! Execute with:  >madx < btp.madx
+! As with all madx files - except for LHC and a few special cases - PTC is used (called from madx).
+!
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2.14176603 GeV/c
+! This file use the new positions from B.Mikulec and V.Raginel 11/12/2011
+!--------------------------------------------------------------------------
+
+ title, 'Transferline BTP optics. Protons - 1.4 GeV';
+
+ option, echo;
+
+ set,  format="-21s";
+ set,  format="12.8f";
+
+
+
+
+
+
+
+/******************************************************************************
+ * BTP
+ ******************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/strength/BTP.str';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/elements/BTP.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/elements/stray.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/sequence/BTP.seq';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/aperture/BTP.dbx';
+                         ! WARNING. Aperture problems give the error message:
+                         !          DA unstable
+                         !
+                         ! "DA" stands for dynamic aperture
+                         ! If this error comes, try to comment out BTP.dbx
+
+
+
+/*******************************************************************************
+ * save a sequence
+ *******************************************************************************/
+! save, sequence=BTP, file=BTP.save;
+! stop;
+
+
+
+/*******************************************************************************
+ * Beam
+ *******************************************************************************/
+ beam, particle=proton, pc=2.14176603;
+
+
+
+/*******************************************************************************
+ * maketwiss macro
+ *******************************************************************************/
+ maketwiss : macro={
+                    ptc_create_universe;
+                    ptc_create_layout,model=2,method=6,nst=5,time=false,exact;
+                    ptc_twiss, table=ptc_twiss, beta0=initbeta0, icase=5, no=1; ! , file="twiss"
+
+                    !-----------------------------------------------------
+                    ! The "ptc_printframes" statement generates a "ROOT" print file.
+                    ! "ROOT" gives a 3-Dimentional drawing of the line.
+                    ! "ROOT" can be installed of linux computers, with the commands:
+                    !  > source ~/madxsetting.sh
+                    !  > root booster.C
+                    !
+                    ! The file ~/madxsetting.sh contains the following commands:
+                    ! setenv ROOTSYS /afs/cern.ch/sw/lcg/external/root/5.14.00g/slc4_ia32_gcc34/root
+                    ! setenv LF95_ROOT /afs/cern.ch/sw/fortran/lahey/lf9562
+                    ! setenv LD_LIBRARY_PATH ${LF95_ROOT}/lib:${ROOTSYS}/lib
+                    ! setenv PATH $ROOTSYS/bin:$LF95_ROOT/bin:$PATH
+                    ptc_printframes, file="BTP.C",format=rootmacro;
+
+                    ptc_end;
+                   }
+!exec, maketwiss;
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************************************
+ ****************************************************************************************************
+ * BTP
+ ****************************************************************************************************
+ ****************************************************************************************************/
+
+
+/******************************************************************************
+ * Set initial twiss parameters for BTP line
+ ******************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2011/inp/BTP.inp';
+
+!--------------------------------------------------------------------------
+! set initial position and angle (x,px) and (y,py)
+! E.g. :
+! x0 := 0.0;
+! px0:= 0.0;
+! y0 := 0.0;
+! py0:= 0.0;
+!--------------------------------------------------------------------------
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+
+
+
+/*******************************************************************************
+ * Use BTP
+ *******************************************************************************/
+ use, sequence=BTP;
+
+
+
+/*******************************************************************************
+ * survey
+ *******************************************************************************
+ a1=1.121357350;
+ sur1 : macro={
+        use, sequence=BTP;
+        select, flag=survey,clear;
+        select, flag=survey, column=name,s,l,z,x,y;
+        survey, z0=1895.01261, x0=2121.61128, y0=2433.66000   ! Start of the BTP line i.e. start of the BHZ10 magnet
+              , theta0:=a1                                    ! These are MADX coordinates, not TS/SU coordinates
+              , file="../out/btp_2011.sur";
+              }
+ exec, sur1; ! NB: The result of the survey is in the file: "btp_2011.sur"
+
+
+/*************************************
+ * Find the initial angle of the beam.
+ * The angle is: a1=2.63876699
+ * Note that the coordinates used by TS/SU
+ * and in MADX are different:
+ *      MADX    TS/SU
+ *       Z        X
+ *       X        Y
+ *       Y        Z
+ *************************************/
+ a1=1.121357350;
+ match, use_macro;
+    vary, name=a1,        step=0.000000000001;
+
+    use_macro,name=sur1;
+
+    constraint, expr=table(survey,BTP_Q60,Z)= 1910.61761; ! Q60 is one of the last equipment in the BTP line. See .seq file
+    constraint, expr=table(survey,BTP_Q60,X)= 2144.31400;
+    constraint, expr=table(survey,BTP_Q60,Y)= 2433.66000;
+    lmdif, calls=1000, tolerance=6E-7;
+ endmatch;
+
+ exec, sur1;
+
+  write, table=survey;
+  value, a1;
+  value, table(survey,BTP_Q20,Z);
+ !save, sequence=ftn, file=btp_sequence.txt;
+ stop;
+ *************************************/
+
+
+
+
+
+
+/*******************************************************************************
+ * matching
+ *******************************************************************************/
+/***
+
+ option, -info;
+ option, -echo;
+
+ match, use_macro;
+          vary, name=DY0 , step=0.01;
+          vary, name=DPY0, step=0.01;
+
+          use_macro,name=maketwiss;
+
+          constraint, expr=table(ptc_twiss,BTP_BHZ10_1,disp3)=-0.04022 ;
+          constraint, expr=table(ptc_twiss,BTP_BHZ10_1,disp4)= 0.00151 ;
+
+!         jacobian,  calls= 25, tolerance=1.0E-15, bisec=9;
+!         simplex,   calls= 15, tolerance=1.0E-12;
+          lmdif,     calls=100, tolerance=1.0E-22;
+ endmatch;
+/***/
+
+option, info;
+option, echo;
+
+
+
+/*******************************************************************************
+ * twiss for BTP line
+ *******************************************************************************/
+! ns    ~ longitudinal number of sigma
+! nt    ~ transverse   number of sigma
+! dimxc ~ size-x with dispersion, dimyc ~ size-y with dispersion,
+
+ ns = 2;
+ nt = 3;
+ dimxc := sqrt( nt^2*table(ptc_twiss,betx)*beam->ex + ns^2*(beam->sige*table(ptc_twiss,dx))^2 );
+ dimyc := sqrt( nt^2*table(ptc_twiss,bety)*beam->ey + ns^2*(beam->sige*table(ptc_twiss,dy))^2 );
+
+ exec, maketwiss;
+
+
+
+/***************************************************
+ * Write ptc_twiss table. NB! Values at end of elements
+ ***************************************************/
+ select,flag=ptc_twiss,clear;
+ select,flag=ptc_twiss, column = name,s,x,px,disp1,disp2,alfa11,beta11,mu1,
+                                        y,py,disp3,disp4,alfa22,beta22,mu2;
+ write,table=ptc_twiss,file="../out/optics_BTP.out";
+
+
+
+
+!-----------------------------------------------------
+! Plot BTP
+!-----------------------------------------------------
+/* Use >gv madx.ps to plot */
+
+!PLOT, VAXIS1=BETX,HAXIS=S,
+!     SPLINE=FALSE, VMIN=-2, VMAX=30, COLOUR=100, RANGE=#S/#E, FILE="../out/madx";
+
+
+
+
+
+
+stop;
+
+
+
+
+
+
+
+
+
+
+
+
+!--------------------------------------------------------------------------
+! Some useful commands:
+!--------------------------------------------------------------------------
+
+
+
+!show, dfa1kick;
+
+
+ /**********************************************************
+ select, flag=twiss,column=name, s, x, px, y, py, alfy,bety;
+ twiss , centre ,
+       , BETX   = BETX0,    ALFX = ALFX0,   MUX  = MUX0
+       , X      = X0   ,    PX   = PX0
+       , DX     = DX0  ,    DPX  = DPX0
+       , BETY   = BETY0,    ALFY = ALFY0,   MUY  = MUY0
+       , Y      = Y0   ,    PY   = PY0
+       , DY     = DY0  ,    DPY  = DPY0
+       , DELTAP = PSHIFT
+       , file=optics.out;
+ ***********************************************************/
+
+
+
+/*
+Assign, echo="KICKER_STRENGTHX";
+print, text="FAST BUMP";
+show, KICKDFA242, KICKDFA254;
+Assign, echo=terminal;
+*/
+
+
+! exec, pt1;
+! value,table(twiss,BTL$START,py);
+
+
+stop;
+

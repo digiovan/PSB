@@ -1,0 +1,283 @@
+!------------------------------------------------------------------------------------------
+! Optics file to calculate the optics of the transferline BT1_BTP. The trajectory is
+! based on the report PS/OP/BR/Note 81-5 from J.P. Delahaye and J.P. Rinaud.
+!
+!
+! - BT1 recombines totaly with BT2 after BT1.KF10 and with BT3 after BT2.KFA20.
+! - The QNO10, QNO20 and QN30 are misaligned.
+!
+! This file is for protons with energy of 1.4 GeV and momentum of 2 GeV/c
+!------------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/PSB-PS/2014/madx
+! Optics file created in June 2014 by O.Berrig, G.P. Di Giovanni, V.Raginel and B. Mikulec
+!------------------------------------------------------------------------------------------
+
+ title, 'BT line and BTM1 line. Protons - 1.4 GeV';
+
+
+ option, echo, info;
+
+ calculatecenter(filename, element): macro = {
+
+!   option, -echo, -info, -warn;
+ // Copy "mysurvey" file to "mysurveyrow" file - adding row number
+    readmytable,file=filename,table=mysurvey;
+    n_elem  =  table(mysurvey, tablelength);
+    create,table=mysurveyrow,column=_NAME,Z,X,Y,row;
+    row=0;
+    while ( row < n_elem ) {
+          row = row+1;
+          setvars, table=mysurvey, row=row;
+          fill,table=mysurveyrow;
+    }
+!   write,table=mysurveyrow,file=file_name_row;
+
+
+ // Read the row number for the element where we want to calculate the center point
+    row = table(mysurveyrow,  element, row);
+!   value, row;
+    if ( row < 1 ) { print, text="Error: row is less than 1. Stop"; stop; }
+
+ // Calculate the first straight line
+    SETVARS,TABLE=mysurvey,ROW=row-1;
+    pos0.x = Z;
+    pos0.y = X;
+!   pos0mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+!   pos0mech.y = Y;
+!   value, pos0.x, pos0.y;
+!   value, pos0mech.x, pos0mech.y;
+    SETVARS,TABLE=mysurvey,ROW=row;
+    pos1.x = Z;
+    pos1.y = X;
+!   pos1mech.x = sqrt((Z-1880.1405971)^2+(X-2090.7822669)^2); !  1880.1405971 and 2090.7822669 represents the starting point of the BT line
+!   pos1mech.y = Y;
+!   value, pos1.x, pos1.y;
+!   value, pos1mech.x, pos1mech.y;
+    x.center = (pos0.x+pos1.x)/2;
+    y.center = (pos0.y+pos1.y)/2;
+!   value, x.center,  y.center ;
+
+    delete,table=mysurvey;
+    delete,table=mysurveyrow;
+
+    option, echo, info, warn;
+
+};
+
+
+
+ option, echo, info;
+
+
+/******************************************************************************************
+ * BT
+ ******************************************************************************************/
+ call, file = '../../strength/BT_BTP.str';
+ call, file = '../../elements/BT.ele';
+ call, file = '../../sequence/BT1.seq';
+ call, file = '../../aperture/BT.dbx';
+
+
+/******************************************************************************************
+ * BTM
+ ******************************************************************************************/
+ call, file = '../../strength/BTM_dump.str';
+ call, file = '../../elements/BTM.ele';
+ call, file = '../../sequence/BTM.seq';
+ call, file = '../../aperture/BTM.dbx';stop;
+
+/******************************************************************************************
+ * set initial twiss parameters
+ ******************************************************************************************/
+ call, file = '../../inp/BT.inp';
+
+!-----------------------------------------------------
+! set initial position and angle (x,px) and (y,py)
+! E.g. :
+! x0 := 0.0;
+! px0:= 0.0;
+! y0 := 0.0;
+! py0:= 0.0;
+!-----------------------------------------------------
+
+ INITBETA0:  BETA0,
+      BETX = BETX0,
+      ALFX = ALFX0,
+      MUX  = MUX0,
+      BETY = BETY0,
+      ALFY = ALFY0,
+      MUY  = MUY0,
+      X    = X0,
+      PX   = PX0,
+      Y    = Y0,
+      PY   = PY0,
+      T    = T0,
+      PT   = PT0,
+      DX   = DX0,
+      DPX  = DPX0,
+      DY   = DY0,
+      DPY  = DPY0;
+
+
+
+/******************************************************************************************
+ * Sequence: BTDUMMY is constructed from a BT1 sequence with a different length
+ ******************************************************************************************/
+ seqedit,  sequence = bt1;
+   END.DUMMY   :   MARKER;
+   install, element=END.DUMMY, at=33.3;
+   extract,sequence=bt1,from=bt1.start,to=END.DUMMY,newname=BTDUMMY;
+ endedit;
+!save, sequence=BTDUMMY, file='BTDUMMY.seq', bare;  stop;
+
+
+ startBTM = 33.4;
+ sur1 : macro={
+           set,  format="-18s";
+           set,  format="20.15f";
+
+
+           bt1btm: SEQUENCE, refer=ENTRY  , l  =          200; ! Artificial length. Give space for moving the BTP line
+                             BTDUMMY      , at =            0;
+                             btm          , at =  startBTM   ;
+           ENDSEQUENCE;
+          !save, sequence=bt1btp, file=bt1btp.save, bare; stop;
+
+           beam, particle=PROTON, pc=2.14;
+           use, sequence=bt1btm;
+
+           select, flag=survey, clear;
+           select, flag=survey, column=name, s, l, z, x, y;
+
+         ! New start of BT line, exit flange of the SMH15L1
+         ! z0=1880.1405971066347, x0=2090.7822669027646  and  theta0 = 7.404510501918276 (GEODE 2007)
+
+           survey, z0=1880.1405971066347, x0=2090.7822669027646, y0=2433.66-0.72, theta0=7.404510501918276, file="DUMMY.survey";
+
+           exec, calculatecenter("DUMMY.survey", BT.BHZ10);
+           option, -info;
+           BHZ10.x = pos1.x;
+           BHZ10.y = pos1.y;
+           value, BHZ10.x, BHZ10.y  ;
+
+           exec, calculatecenter("DUMMY.survey", BTM.VVS10);
+           option, -info;
+           VVS10.x = pos1.x;
+           VVS10.y = pos1.y;
+           value, VVS10.x, VVS10.y  ;
+
+           exec, calculatecenter("DUMMY.survey",BTM.BHZ10);
+           option, -info;
+           BHZM10.x = pos0.x;
+           BHZM10.y = pos0.y;
+           value, startBTM, dBTBHZ10;
+       };
+  exec, sur1; ! NB: The result of the survey is in the file: "DUMMY.survey"
+
+/*************************************
+ * Note that the coordinates used by TS/SU
+ * and in MADX are different:
+ *      MADX    TS/SU
+ *       Z        X
+ *       X        Y
+ *       Y        Z
+ *************************************/
+
+
+
+/******************************************************************************************
+ * Matching
+ ******************************************************************************************/
+ match, use_macro;
+    vary, name=startBTM;
+    vary, name=dBTBHZ10 ;
+
+    use_macro,name=sur1;
+
+    constraint, expr=-4297.57310794+3.38717817352 * BHZ10.x  - BHZ10.y  = 0 ;
+    constraint, expr=-4297.57310794+3.38717817352 * VVS10.x  - VVS10.y  = 0 ;
+    constraint, expr=-4297.57310794+3.38717817352 * BHZM10.x - BHZM10.y = 0 ;
+
+    lmdif, calls=1000, tolerance=6E-30;
+ endmatch;
+
+
+ value, startBTM;
+ value, dBTBHZ10;
+
+ stop;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************************
+ * Survey
+ ******************************************************************************************/
+ sur1 : macro={
+           set,  format="-18s";
+           set,  format="20.15f";
+
+          !save, sequence=btm, file=btm.save, bare; stop;
+
+           beam, particle=PROTON, pc=2.14;
+           use, sequence=btm;
+
+           select, flag=survey, clear;
+           select, flag=survey, column=name, s, l, z, x, y;
+
+         ! Start of BTM line, entry flange of the BT.BHZ10
+         ! z0=1895.012875308754474, x0=2121.611842025202805  and  theta0 = 7.404510501918276 (GEODE 2007)
+
+           survey, z0=1895.012875308754474, x0=2121.611842025202805, y0=2433.66, theta0=7.404510501918276, file="BTM.survey";
+
+       };
+  exec, sur1; ! NB: The result of the survey is in the file: "DUMMY.survey"
+
+/*************************************
+ * Note that the coordinates used by TS/SU
+ * and in MADX are different:
+ *      MADX    TS/SU
+ *       Z        X
+ *       X        Y
+ *       Y        Z
+ *************************************/
+
+
+
+ stop;
+
+
+

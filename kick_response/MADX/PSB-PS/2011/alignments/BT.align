@@ -1,0 +1,71 @@
+option, -echo;
+option, warn;
+
+!--------------------------------------------------------------------------
+! ealign
+!--------------------------------------------------------------------------
+
+/*****  BT1  ********************************/
+ SELECT, FLAG=ERROR, PATTERN="BT1_QN10";
+ EALIGN, DY= -.02350;  ! shifted by 23.50 mm downwards
+ EPRINT ;
+ SELECT, FLAG=ERROR, CLEAR; !Clear "BT1_QN10."
+
+ SELECT, FLAG=ERROR, PATTERN="BT1_QN20";
+ EALIGN, DY= -.01365;  ! shifted by 13.65 mm downwards
+ EPRINT ;
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT1_QN20."
+
+
+
+
+/*****  BT2  ********************************/
+ SELECT, FLAG=ERROR, PATTERN="BT2_QN10.";
+ EALIGN, DY= -.02350;  ! shifted by 23.50 mm downwards
+ SELECT, FLAG=ERROR, CLEAR; !Clear "BT2_QN10."
+
+ SELECT, FLAG=ERROR, PATTERN="BT2_QN20.";
+ EALIGN, DY= -.01365;  ! shifted by 13.65 mm downwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT2_QN20."
+
+
+
+
+/*****  BT3  ********************************/
+ SELECT, FLAG=ERROR, PATTERN="BT3_QN10.";
+ EALIGN, DY= .02350;  ! shifted by 23.50 mm upwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT3_QN10."
+
+ SELECT, FLAG=ERROR, PATTERN="BT3_QN20.";
+ EALIGN, DY= .01365;  ! shifted by 13.65 mm upwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT3_QN20."
+
+
+
+
+/*****  BT4  ********************************/
+ SELECT, FLAG=ERROR, PATTERN="BT4_QN10.";
+ EALIGN, DY= .02350;  ! shifted by 23.50 mm upwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT4_QN10."
+
+ SELECT, FLAG=ERROR, PATTERN="BT4_QN20.";
+ EALIGN, DY= .01365;  ! shifted by 13.65 mm upwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT4_QN20."
+
+
+
+
+
+
+
+
+
+
+/*****  BT   ********************************/
+ SELECT, FLAG=ERROR, PATTERN="BT_QN30.";
+ EALIGN, DY=-.020;    ! shifted by 20.00 mm downwards
+ SELECT, FLAG=ERROR, CLEAR; ! Clear "BT_QN30."
+
+option, warn;
+option, echo;
+return;

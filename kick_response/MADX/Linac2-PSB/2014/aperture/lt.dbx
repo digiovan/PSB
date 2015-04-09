@@ -1,0 +1,48 @@
+option, echo;
+
+! The measurements are taken from the drawings:
+! http://cern-accelerators-optics.web.cern.ch/cern-accelerators-optics/BI/defaultBI.htm
+
+
+! LTP
+
+BEGLT,       APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  };
+LT.DHZ10,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+!LT.BSM
+LT.BPM10,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! from EDMS document 1354982
+LT.QFN10,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.BCT10,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  }; ! Aperture needs to be measured in the machine ?
+LT.QDN12,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.BHZ10,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.QFN20,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.QDN22,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.DHZ20,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.QFN30,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.QDN32,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.BPM20,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! from EDMS document 1354982
+LT.QFN40,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.QDN42,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.DHZ30,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.BPM30,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! from EDMS document 1354982
+LT.CDB10,    APERTYPE=ELLIPSE,  APERTURE={0.145/2,  0.145/2  };
+LT.SRF,      APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  };
+LT.BCT20,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  }; ! Aperture needs to be measured in the machine ?
+LT.BHZ20,    APERTYPE=ELLIPSE,  APERTURE={0.097/2,  0.097/2  };
+LT.STP10,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! From J. Hansen extracted from the drawings
+LT.QFN50,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From J. Hansen extracted from the drawings
+LT.BCT30,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From F. Lenardon 04/03/2014
+LT.DHZ40,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From J. Hansen extracted from the drawings
+LT.BPM40,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! from EDMS document 1354982
+LT.QDN55,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From J. Hansen extracted from the drawings
+LT.VVS20,    APERTYPE=ELLIPSE,  APERTURE={0.150/2,  0.150/2  }; ! From J. Hansen extracted from the drawings
+LT.QFN60,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From J. Hansen extracted from the drawings
+LT.QDN65,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From J. Hansen extracted from the drawings
+LT.BHZ25,    APERTYPE=ELLIPSE,  APERTURE={0.090/2,  0.090/2  }; ! From J. Hansen extracted from the drawings
+LT.VPI25,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! From J. Hansen extracted from the drawings
+LT.QFW70,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! From J. Hansen extracted from the drawings
+LT.QDN75,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  };
+LT.DHZ50,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  };
+LT.BCT40,    APERTYPE=ELLIPSE,  APERTURE={0.095/2,  0.095/2  }; ! From F. Lenardon 04/03/2014
+LT.BPM50,    APERTYPE=ELLIPSE,  APERTURE={0.140/2,  0.140/2  }; ! from EDMS document 1354982
+LT.BHZ30,    APERTYPE=ELLIPSE,  APERTURE={0.135/2,  0.135/2  };
+ENDLT,       APERTYPE=ELLIPSE,  APERTURE={0.145/2,  0.145/2  };

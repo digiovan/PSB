@@ -1,0 +1,64 @@
+! Name change for transformers from TRA --> BCT 7/7/2011 BM
+! BI element definitions
+! Quadrupole length and kick checked with A. Newborough 6/6/2011;
+! Magnetic length changed from 0.435 for BI.QNO10/20/30/40 and BI.QNO50/60.
+
+
+
+! QUADRUPOLES
+
+BI.QNO10         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO10;
+BI.QNO20         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO20;
+BI.QNO30         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO30;
+BI.QNO40         : QUADRUPOLE,      L= 0.462,  K1 := KBI.QNO40;
+BI.QNO50         : QUADRUPOLE,      L= 0.466,  K1 := KBI.QNO50;
+BI.QNO60         : QUADRUPOLE,      L= 0.466,  K1 := KBI.QNO60;
+
+! STEERERS
+
+BI.DHZ10         : HKICKER,         L=0; ! Real length L= 0.292
+BI.DVT10         : VKICKER,         L=0; ! Real length L= 0.292
+BI.DHZ20         : HKICKER,         L=0; ! Real length L= 0.292
+BI.DVT20         : VKICKER,         L=0; ! Real length L= 0.292
+BI.DHZ30         : HKICKER,         L=0; ! Real length L= 0.295
+BI.DVT30         : VKICKER,         L=0; ! Real length L= 0.295
+BI.DHZ40         : HKICKER,         L=0; ! Real length L= 0.327
+BI.DVT40         : VKICKER,         L=0; ! Real length L= 0.327
+BI.DHZ50         : HKICKER,         L=0; ! Real length L= 0.400
+BI.DVT50         : VKICKER,         L=0; ! Real length L= 0.400
+
+
+! MISCELLANEOUS
+
+BI.DIS           : VKICKER;              ! Kick the beam into one of the 4 rings in PSB
+BI.DIS2          : VKICKER;              ! Was used for lead ions. Will be removed ASAP
+BI.SMV           : SBEND,           L=1; ! Septum. Modelled as SBEND. Length not used
+BI.STPFA         : MARKER;               ! Fast beam stopper
+BI.STPSW         : MARKER;               ! Beam stopper. Regular
+BI.BVT           : SBEND,           L=1; ! Vertical bending. To make the 4 beams horizontal. Length not used
+
+
+! BEAM INSTRUMENTATION
+
+BI.UMA00         : MONITOR;
+BI.MTV10         : MONITOR;
+BI.SIEVE         : MARKER;  ! Taken out. Leak. No date for putting it back
+BI.UMA10         : MONITOR;
+BI.UMA20         : MONITOR;
+BI.BCT10         : MONITOR;
+BI.MTV20         : MONITOR;
+BI.UMA30         : MONITOR;
+BI.MTV30         : MONITOR;
+BI.UMA40         : MONITOR;
+BI3.SIEVE50      : MARKER;
+BI.MTV40         : MONITOR;
+BI.BCT20         : MONITOR;
+BI.UMA50         : MONITOR;
+
+
+! VACUUM EQUIPMENT
+
+BI.VVS10         : MARKER;
+BI.VVS20         : MARKER;
+
+return;

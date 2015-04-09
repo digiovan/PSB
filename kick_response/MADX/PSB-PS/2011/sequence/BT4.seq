@@ -1,0 +1,47 @@
+
+ BT4: sequence, refer = centre , l  =  34.555;  ! Value from survey
+
+   BT4.BVT10                    , at =       3.3400;
+   BT4.UES00                    , at =       4.2000;
+   BT4.DHZ10                    , at =       4.8000;
+   BT4.VVS10                    , at =       5.0610;
+   BT4.SMV10                    , at =       7.2000;
+   BT3.MTV10                    , at =       7.8000;
+   BT.VPG11                     , at =       8.4800;
+   BT3.UES10                    , at =       9.1300;
+   BT3.QNO10                    , at =       9.7000;
+   BT3.VVS20                    , at =      10.3370;
+   BT3.VVS30                    , at =      11.1310;
+   BT3.QNO20                    , at =      11.7000;
+   BT.VGP21                     , at =      13.8455;
+   BT.VGR21                     , at =      13.8455;
+   BT.VPI22                     , at =      13.8455;
+   BT.VPI22A                    , at =      13.8455;
+   BT4.KFA10                    , at =      15.0500;
+   BT.MTV20                     , at =      16.2375;
+   BT3.DVT30                    , at =      16.7000;
+   BT3.UES20                    , at =      17.6600;
+   BT3.DVT40                    , at =      19.7500;
+   BT.VPI23                     , at =      20.4019;
+   BT.VGP22                     , at =      20.7480;
+   BT.VGR22                     , at =      20.7480;
+   BT.VPI23A                    , at =      21.2040;
+   BT.MTV30                     , at =      21.7890;
+   BT.VPI23B                    , at =      21.7890;
+   BT.QNO30                     , at =      22.6200;
+   BT.UES30                     , at =      26.0775;
+   BT.BCT10                     , at =      26.6425;
+   BT.DVT50                     , at =      27.2315;
+   BT.VGP23                     , at =      28.2237;
+   BT.VPG22                     , at =      28.2237;
+   BT.VPI24A                    , at =      30.0000;
+   BT.MTV40                     , at =      31.1875;
+   BT.DVT60                     , at =      31.5550;
+   BT.QNO40                     , at =      32.0450;
+   BT.UES40                     , at =      32.5525;
+   BT.QNO50                     , at =      33.4150; ! 33.4150
+   BT4.END     : MARKER         , at =      34.5550; ! distance = 34.5550 - 33.4150 = 1.14m
+ endsequence;  ! The sequence ends exactly at the entrance of BT.BHZ10
+
+
+ return;

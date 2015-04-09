@@ -1,0 +1,39 @@
+ltb:    sequence, refer = centre, l  := 29.16182067;
+   BEGLTB           : MARKER    , AT :=  0.000000000;
+   EBHZ30           : MARKER    , AT :=  0.000000000 + ddEBHZ30; ! Marker used for matching survey positions.
+   LT.BHZ30                     , AT :=  0.452776992;
+   LT.ENDOFBHZ30    : MARKER    , AT :=  0.905555992;   ! 54.4535160 = SBHZ30
+   LTB.DHZ10                    , AT :=  1.680555992;
+   LTB.DVT10                    , AT :=  1.680555992;
+   LTB.STP                      , AT :=  2.190555992;
+   LTB.VVS10                    , AT :=  2.442565992;
+!  LTB.SRF10                    , AT :=  4.280555992;
+   LTB.QFN10                    , AT :=  4.738055992;
+   LTB.QDN20                    , AT :=  5.743055992;
+   LTB.MSF30                    , AT :=  6.173055992;
+   LTB.UMA10                    , AT :=  6.888555992;
+   LTB.BCT49                    , AT :=  7.431555992;
+   LTB.DHZ20                    , AT :=  7.701555992;
+   LTB.DVT20                    , AT :=  7.701555992;
+!  LTB.DHZHS                    , AT :=  10.15655599;
+!  LTB.DVTHS                    , AT :=  10.15655599;
+   LTB.BCT50                    , AT :=  10.53155599;
+   LTB.BCT55                    , AT :=  11.03905599;
+   LTB.UMA20                    , AT :=  14.09955599;
+   LTB.DHZ30                    , AT :=  14.60255599;
+   LTB.DVT30                    , AT :=  14.60255599;
+   LTB.QFW30                    , AT :=  15.50755599;
+   LTB.QDW40                    , AT :=  16.49755599;
+   LTB.SLH10                    , AT :=  20.94255599;
+   LTB.SLV10                    , AT :=  21.17255599;
+   LTB.BCT59                    , AT :=  21.35755599;
+   LTB.MSF40                    , AT :=  24.96255599;
+   LTB.BCT60                    , AT :=  25.39255599;
+   LTB.QFW50                    , AT :=  26.04755599;
+   LTB.QDW60                    , AT :=  27.34755599;
+   LTB.DHZ40                    , AT :=  27.98255599;
+   LTB.DVT40                    , AT :=  27.98255599;
+   LTB.UMA30                    , AT :=  28.50055599;
+   ENDLTB           : MARKER    , AT :=  29.16182067;
+ENDSEQUENCE;
+

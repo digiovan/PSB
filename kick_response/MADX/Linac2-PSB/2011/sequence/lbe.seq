@@ -1,0 +1,27 @@
+
+LBE: SEQUENCE, REFER=CENTRE,  l := 15.67896929;
+   BEGLBE    : MARKER      , AT :=  0.00000;
+   EBHZ40    : MARKER      , AT :=  0.667754677930268; ! Marker used for matching survey positions.
+   LBE.BHZ40               , AT :=  1.1179426779;
+   LBE.KVT9                , AT :=  3.68496929;
+   LBE.KHZ9                , AT :=  4.36096929;
+   LBE.VVS10               , AT :=  4.83296929;
+   LBE.KVT10               , AT :=  5.68496929;
+   LBE.KHZ10               , AT :=  6.36096929;
+   LBE.SLH10               , AT :=  6.87996929;
+   LBE.SLV10               , AT :=  7.10496929;
+   LBE.QFW10               , AT :=  7.61796929;
+   LBE.VGP1                , AT :=  8.37996929;
+   LBE.VGR1                , AT :=  8.37996929;
+   LBE.VPI11               , AT :=  8.68736929;
+   LBE.QDW10               , AT :=  9.61796929;
+   LBE.D10                 , AT := 10.56096929;
+   LBE.BCT66               , AT := 13.73896929;
+   LBE.BCT65               , AT := 14.00896929;
+   LBE.MSGH10              , AT := 15.12046929;
+   LBE.MSGV10              , AT := 15.12046929;
+   LBE.MSGHV20             , AT := 15.50996929;
+   LBE.DUMP                , AT := 15.66896929;
+   ENDLBE    : MARKER      , AT := 15.67896929;
+ENDSEQUENCE;
+

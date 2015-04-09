@@ -1,0 +1,68 @@
+option, -echo;
+option, info;
+option, warn;
+!------------------------------------------------------------------------------------
+! - The sequence starts exactly at the entry flange of LT.BHZ30 and ends at the entry point of LTB.BHZ40.
+!
+! - The position of the elements corresponds to their magnetic center where applicable
+!   otherwise to the mechanical center of each element. These positions are calculated from the
+!   positions extracted from the drawing PS_LMLTB8001-VAE adding correction for the beam path in LT.BHZ30.
+!
+! - The magnetic length of the LT.BHZ30 is Leq=1.045 m from A. Newborough.
+!   The deflection angle of LT.BHZ30 is 0.38395040993805129581 mrad (Drawing and Survey agrees)
+!   The geometric trajectory inside the LT.BHZ30 used in the drawings = 1.0645566674=0.051446528411*2*Tan(0.38395040993805129581/2)/0.38395040993805129581
+!   The trajectory of the beam inside the LT.BHZ30 is = 1.045*0.38395040993805129581/(2*Sin(0.38395040993805129581/2))=1.051446528411 m
+!
+! - The position of the Beam Loss Monitor (MBL) are commented to prevent conflict with other
+!   elements in MADX. The position of the MBL are a best guess from photos.
+!
+!--------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014
+! Sequence file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------------------
+
+LTB:    SEQUENCE, REFER = CENTRE, l  := 29.2351681947;
+   BEGLTB           : MARKER    , AT :=  0.0000000000;
+!  LT.MBL30                     , AT :=  0.1;
+   LT.BHZ30                     , AT :=  0.5257232640; !
+   LTB.DHZ10                    , AT :=  1.7391681947; ! 1.220000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30=Larc*2*Tan(angle/2)/angle)
+   LTB.DVT10                    , AT :=  1.7391681947; ! 1.220000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.STP10                    , AT :=  2.2726681947; ! 1.753500 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.VVS10                    , AT :=  2.6591681947; ! 2.140000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.VPI11                    , AT :=  3.1566681947; ! 2.637500 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QFN10                    , AT :=  4.8191681947; ! 4.300000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QDN20                    , AT :=  5.8191681947; ! 5.300000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.MSF30                    , AT :=  6.2571681947; ! 5.738000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BPM10                    , AT :=  6.9646681947; ! 6.445500 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BCT49                    , AT :=  7.3321681947; ! 6.813000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DHZ20                    , AT :=  7.6691681947; ! 7.150000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DVT20                    , AT :=  7.6691681947; ! 7.150000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BCT50                    , AT := 10.5981681947; ! 0.079000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BCT55                    , AT := 11.1081681947; ! 0.589000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BPM20                    , AT := 14.1691681947; ! 3.650000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DHZ30                    , AT := 14.6691681947; ! 4.150000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DVT30                    , AT := 14.6691681947; ! 4.150000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QFW30                    , AT := 15.5691681947; ! 5.050000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QDW40                    , AT := 16.5691681947; ! 6.050000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BCT59                    , AT := 21.4481681947; ! 0.929000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.VPI12                    , AT := 21.9911681947; ! 1.472000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.VGR01                    , AT := 22.4411681947; ! 1.922000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+!  LTB.VGP01                    , AT := 22.4411681947; ! 1.922000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+!  LTB.VPG12                    , AT := 22.4411681947; ! 1.922000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+!  LTB.VVV                      , AT := 22.4411681947; ! 1.922000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.VPI13                    , AT := 24.5071681947; ! 3.988000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.MSF40                    , AT := 25.0371681947; ! 4.518000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BCT60                    , AT := 25.4691681947; ! 4.950000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QFW50                    , AT := 26.1191681947; ! 5.600000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.QDW60                    , AT := 27.4191681947; ! 6.900000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DHZ40                    , AT := 28.0691681947; ! 7.550000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.DVT40                    , AT := 28.0691681947; ! 7.550000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   LTB.BPM30                    , AT := 28.5731681947; ! 8.054000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)
+   ENDLTB           : MARKER    , AT := 29.2351681947; ! 9.166000 (from Drawings PS_LMLTB8001-VAE) + 1.051446528411 (Beam trajectory inside LT.BHZ30) - 1.0645566674/2 (Geometric trajectory inside LT.BHZ30)   - 0.9/2 (mechanical length of LTB.BHZ40/2)
+ENDSEQUENCE;
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;
+
