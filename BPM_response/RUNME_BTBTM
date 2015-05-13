@@ -1,13 +1,20 @@
 
 #find ./MD_LHC50_YASP/BT-BTM/ -name "*.gz" -exec gunzip {} \;
 
+# HORIZONTAL KICK RESPONSE
+
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT1.DHZ10 -s -b
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT2.DHZ10 -s -b
-# missing BT3.DHZ10 for 700 urad and 1000 urad
-#python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DHZ10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DHZ10 -s -b
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT4.DHZ10 -s -b
 
-python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT1.DHZ10DMP -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BTM.DHZ10DMP -s -b
+
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DHZ10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DHZ20 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DHZ30 -s -b
+
+# VERTICAL KICK RESPONSE
 
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT2.DVT10 -s -b
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DVT10 -s -b
@@ -18,14 +25,17 @@ python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DVT20 -s -b
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DVT30 -s -b
 
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT2.DVT40 -s -b
-# something is currently broken with  BT3.DVT40
-#python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DVT40 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT3.DVT40 -s -b
 
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT.DVT50 -s -b
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BT.DVT60 -s -b
 
 python check_BPM_response.py -f MD_LHC50_YASP/BT-BTM/ -c BTM.DVT10DMP -s -b
 
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DVT10 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DVT20 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DVT30 -s -b
+python check_BPM_response.py -f MD_LHC50_YASP/BTP/ -c BTP.DVT40 -s -b
 
 
 

@@ -46,6 +46,87 @@ def getAbsMax(graph):
    return max
 
 
+################################################################################
+# return a Graph which points are the average coming from a list of
+# graphs
+################################################################################
+def getGraphAverage(listOfGraphs): 
+    #print listOfGraphs
+
+    n_points = 0
+    y_mean = []
+    y_rms  = []
+    
+    # first sanity checks... and some initialization
+    for id in listOfGraphs.keys():
+        
+        graph = listOfGraphs[id]
+        if n_points == 0:
+            n_points = graph.GetN()
+
+        if n_points != graph.GetN():
+            print 'ERROR (getGraphAverage): different number of points in the graphs'
+            exit(1)
+
+        #print listOfGraphs[id]
+
+    # calculate the y_mean for each point
+    for i in range(0,n_points):
+        
+        mean_value = 0
+        for id in listOfGraphs.keys():
+        
+            graph = listOfGraphs[id]
+        
+            x, y = root.Double(0), root.Double(0)
+            graph.GetPoint(int(i), x, y)
+            #print x,y
+            
+            mean_value += y/len(listOfGraphs.keys())
+            
+        #print mean_value   
+        y_mean . append ( mean_value )
+
+#    print y_mean 
+
+    # calculate the RMS w.r.t. the mean/sqrt(n) (standard deviation)
+    for i in range(0,n_points):
+        
+        rms_value = 0
+        for id in listOfGraphs.keys():
+        
+            graph = listOfGraphs[id]
+        
+            x, y = root.Double(0), root.Double(0)
+            graph.GetPoint(int(i), x, y)
+            #print x,y
+            
+            rms_value += root.TMath.Power(y - y_mean[i], 2) 
+            rms_value /= len(listOfGraphs.keys()) 
+            
+            
+        #print mean_value   
+        y_rms . append ( root.TMath.Sqrt(rms_value) )
+    
+#    print y_rms
+
+    # construct the average graph +/- rms
+    graphAverage = root.TGraphErrors( n_points )
+
+    for i in range(0,n_points):
+        
+        # just to get the x-axis
+        graph = listOfGraphs[0]
+        x, y = root.Double(0), root.Double(0)
+        graph.GetPoint(int(i), x, y)
+        
+        graphAverage.SetPoint     ( int(i), x, y_mean[i] )
+        graphAverage.SetPointError( int(i), 0, y_rms [i] )
+        
+#        print y_mean[i], y_rms[i]
+    
+    return graphAverage
+
 
 
 if __name__ == "__main__":
