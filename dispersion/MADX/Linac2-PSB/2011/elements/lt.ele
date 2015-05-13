@@ -1,0 +1,86 @@
+
+! LT element definitions, length as TRACE! K.Hanke 9/12/04
+! Quadrupole length and kick checked with A. Newborough 6/6/2011;
+! Magnetic length changed from 0.467 for LT.QFW70.
+
+
+! QUADRUPOLES
+
+LT.QFN10         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN10;
+LT.QDN12         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN12;
+LT.QFN20         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN20;
+LT.QDN22         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN22;
+LT.QFN30         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN30;
+LT.QDN32         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN32;
+LT.QFN40         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN40;
+LT.QDN42         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN42;
+LT.QFN50         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN50;
+LT.QDN55         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN55;
+LT.QFN60         : QUADRUPOLE,      L= 0.255, K1    := KLT.QFN60;
+LT.QDN65         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN65;
+LT.QFW70         : QUADRUPOLE,      L= 0.462, K1    := KLT.QFW70;
+LT.QDN75         : QUADRUPOLE,      L= 0.255, K1    := KLT.QDN75;
+
+
+! BENDING MAGNET
+
+LT.BHZ10         : RBEND,      L= 0.506,         ANGLE :=  0.;
+LT.BHZ20         : SBEND,      L= 0.90293,       ANGLE := angle_BHZ20; angle_BHZ20 =  0.279226559945359 ; ! L=0.9*angle/(2*SIN(angle/2)). 0.9 = physical length
+LT.BHZ25         : RBEND,      L= 0.40544,       ANGLE :=  0.;
+LT.BHZ30         : SBEND,      L= 0.90555,       ANGLE := angle_BHZ30; angle_BHZ30 = -0.383948487226559 ; ! L=0.9*angle/(2*SIN(angle/2))
+
+
+! STEERERS
+
+LT.DHZ10         : HKICKER,    L= 0; ! Real length L= 0.295
+LT.DVT10         : VKICKER,    L= 0; ! Real length L= 0.295
+LT.DHZ20         : HKICKER,    L= 0; ! Real length L= 0.295
+LT.DVT20         : VKICKER,    L= 0; ! Real length L= 0.295
+LT.DHZ30         : HKICKER,    L= 0; ! Real length L= 0.295
+LT.DVT30         : VKICKER,    L= 0; ! Real length L= 0.295
+LT.DHZ40         : HKICKER,    L= 0; ! Real length L= 0.295
+LT.DVT40         : VKICKER,    L= 0; ! Real length L= 0.295
+LT.DHZ50         : HKICKER,    L= 0; ! Real length L= 0.295
+LT.DVT50         : VKICKER,    L= 0; ! Real length L= 0.295
+
+
+! BI-INSTRUMENTATION
+
+
+LT.UMA20         : MONITOR;
+LT.BSM           : MONITOR;
+LT.UMA10         : MONITOR;
+LT.MTR10         : MONITOR;
+LT.UMA30         : MONITOR;
+LT.BCT20         : MONITOR;
+LT.BCT30         : MONITOR;
+LT.UMA40         : MONITOR;
+LT.BCT40         : MONITOR;
+LT.UMA50         : MONITOR,   L=0.556;
+
+
+! OTHER EQUIPMENT
+
+LT.CDB10         : MARKER; ! De-buncher
+LT.SRF           : MARKER; ! RF-probe
+LT.STP           : MARKER; ! Beam stopper
+LT.BEC1          : MARKER; ! Carbon ring collimator
+LT.BEC2          : MARKER; ! Carbon ring collimator
+LT.BEC3          : MARKER; ! Carbon ring collimator
+LT.BEC4          : MARKER; ! Carbon ring collimator
+
+! VACUUM EQUIPMENT
+
+LT.VVS10         : MARKER; ! Vacuum valve
+LT.VPI10         : MARKER;
+LT.VPG11         : MARKER; ! Vacuum pump
+LT.VPI11         : MARKER; ! Vacuum pump. Ion
+LT.VPI2          : MARKER;
+LT.VVS20         : MARKER;
+LT.VPI13         : MARKER;
+LT.VPI14         : MARKER;
+LT.VPI25         : MARKER;
+LT.VPI26         : MARKER;
+LT.VG12          : MARKER; ! Vacuum gauge
+
+return;

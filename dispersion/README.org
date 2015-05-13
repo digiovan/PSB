@@ -1,0 +1,30 @@
+
+* MADX Simulation
+mkdir MADX
+cd MADX
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2014/
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2011/
+mv project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/ .
+rm -rf project-ps-optics.web.cern.ch/
+
+
+* Create the Dispersion Data
+** Commands
+
+python -i createDispersionData.py -f Dispersion_LTLTBBI_20140923/Datasets/ -d 0.00,0.0007,0.0012,-0.00015,-0.00049
+
+python -i createDispersionData.py -f Dispersion_LTLTBBI_20150429/Datasets/ -d 1.373773e-03,9.237438e-04,4.855576e-04,0.000000e+00,-4.500290e-04,-1.006644e-03,-1.468516e-03
+
+** Output
+A file called "dispersion_data_1"
+
+* Compare the horizontal dispersion between data/MADX/TRACE3D
+** Command
+python -i compare_hor_dispersion.py
+
+* Remarks
+The BIx.BPM40 and BIx.BPM50 have been commented out as in 2015 the
+data are pretty unreliable and this means that I do not want to put
+them in the comparison plot to avoid confusing people (and myself).
+They should be added when data with reliable measurements have been
+done.

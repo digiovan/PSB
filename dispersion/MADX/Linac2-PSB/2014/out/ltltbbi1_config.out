@@ -1,0 +1,345 @@
+@ NAME             %09s "PTC_TWISS"
+@ TYPE             %05s "TWISS"
+@ SEQUENCE         %07s "LTLTBBI"
+@ PARTICLE         %06s "PROTON"
+@ MASS             %le     0.93827
+@ CHARGE           %le     1.00000
+@ ENERGY           %le     0.98827
+@ PC               %le     0.31037
+@ GAMMA            %le     1.05329
+@ KBUNCH           %le     1.00000
+@ BCURRENT         %le     0.00000
+@ SIGE             %le     0.00100
+@ SIGT             %le     0.00000
+@ NPART            %le     0.00000
+@ EX               %le     0.00004
+@ EY               %le     0.00002
+@ ET               %le     1.00000
+@ DELTAP           %le     0.00000
+@ LENGTH           %le   131.26445
+@ ALPHA_C          %le  -1000000.00000
+@ ALPHA_C_P        %le  -1000000.00000
+@ ALPHA_C_P2       %le  -1000000.00000
+@ ALPHA_C_P3       %le  -1000000.00000
+@ ETA_C            %le  -1000000.00000
+@ GAMMA_TR         %le  -1000000.00000
+@ Q1               %le     3.10974
+@ Q2               %le     2.47931
+@ DQ1              %le  -1000000.00000
+@ DQ2              %le  -1000000.00000
+@ QS               %le  -1000000.00000
+@ BETA_X_MIN       %le     0.72590
+@ BETA_X_MAX       %le   112.00711
+@ BETA_Y_MIN       %le     0.27753
+@ BETA_Y_MAX       %le   647.14552
+@ BETA11MIN        %le     0.72590
+@ BETA11MAX        %le   112.00711
+@ BETA12MIN        %le     0.00000
+@ BETA12MAX        %le     0.00000
+@ BETA13MIN        %le     0.00000
+@ BETA13MAX        %le     0.00000
+@ BETA21MIN        %le     0.00000
+@ BETA21MAX        %le     0.00000
+@ BETA22MIN        %le     0.27753
+@ BETA22MAX        %le   647.14552
+@ BETA23MIN        %le     0.00000
+@ BETA23MAX        %le     0.00000
+@ BETA31MIN        %le     0.00000
+@ BETA31MAX        %le     0.00000
+@ BETA32MIN        %le     0.00000
+@ BETA32MAX        %le     0.00000
+@ BETA33MIN        %le     0.00000
+@ BETA33MAX        %le     0.00000
+@ DISP1MIN         %le   -10.39664
+@ DISP1MAX         %le     5.70664
+@ DISP2MIN         %le    -1.19765
+@ DISP2MAX         %le     1.85088
+@ DISP3MIN         %le    -1.59206
+@ DISP3MAX         %le     3.16873
+@ DISP4MIN         %le    -0.62280
+@ DISP4MAX         %le     1.29195
+@ ORBIT_X          %le     0.00000
+@ ORBIT_PX         %le     0.00000
+@ ORBIT_Y          %le     0.00000
+@ ORBIT_PY         %le     0.00000
+@ ORBIT_PT         %le     0.00000
+@ ORBIT_-CT        %le     0.00000
+@ XCORMS           %le     0.00000
+@ PXCORMS          %le     0.00000
+@ YCORMS           %le     0.00000
+@ PYCORMS          %le     0.00000
+@ TCORMS           %le     0.00000
+@ PTCORMS          %le     0.00000
+@ XCOMIN           %le    -0.00000
+@ XCOMAX           %le     0.00000
+@ PXCOMIN          %le    -0.00000
+@ PXCOMAX          %le     0.00000
+@ YCOMIN           %le    -0.00000
+@ YCOMAX           %le     0.00000
+@ PYCOMIN          %le    -0.00000
+@ PYCOMAX          %le     0.00000
+@ TCOMIN           %le     0.00000
+@ TCOMAX           %le     0.00000
+@ PTCOMIN          %le     0.00000
+@ PTCOMAX          %le     0.00000
+@ TITLE            %65s "LT-LTB-BI 2014 optics. Protons - 310.3662354 MeV/c (E_kin=50 MeV)"
+@ ORIGIN           %22s "MAD-X 5.02.00 Linux 32"
+@ DATE             %08s "19/09/14"
+@ TIME             %08s "14.34.52"
+* KEYWORD            NAME               PARENT                      L          S 
+$ %s                 %s                 %s                        %le        %le 
+ "MARKER"            "LTLTBBI$START"     "MARKER"               0.00000    0.00000
+ "MARKER"            "LT$START"          "MARKER"               0.00000    0.00000
+ "MARKER"            "BEGLT"             "MARKER"               0.00000    0.00000
+ "DRIFT"             "DRIFT_0"           "DRIFT"                0.04800    0.04800
+ "MARKER"            "LT.VVS10"          "MARKER"               0.00000    0.04800
+ "DRIFT"             "DRIFT_1"           "DRIFT"                0.35000    0.39800
+ "HKICKER"           "LT.DHZ10"          "HKICKER"              0.00000    0.39800
+ "VKICKER"           "LT.DVT10"          "VKICKER"              0.00000    0.39800
+ "DRIFT"             "DRIFT_2"           "DRIFT"                1.00200    1.40000
+ "MONITOR"           "LT.BPM10"          "MONITOR"              0.00000    1.40000
+ "DRIFT"             "DRIFT_3"           "DRIFT"                0.44950    1.84950
+ "QUADRUPOLE"        "LT.QFN10"          "QUADRUPOLE"           0.25500    2.10450
+ "DRIFT"             "DRIFT_4"           "DRIFT"                0.04250    2.14700
+ "MARKER"            "LT.BEC1"           "MARKER"               0.00000    2.14700
+ "DRIFT"             "DRIFT_5"           "DRIFT"                0.26300    2.41000
+ "MONITOR"           "LT.BCT10"          "MONITOR"              0.00000    2.41000
+ "DRIFT"             "DRIFT_6"           "DRIFT"                0.23950    2.64950
+ "QUADRUPOLE"        "LT.QDN12"          "QUADRUPOLE"           0.25500    2.90450
+ "DRIFT"             "DRIFT_7"           "DRIFT"                0.18450    3.08900
+ "RBEND"             "LT.BHZ10"          "RBEND"                0.50600    3.59500
+ "DRIFT"             "DRIFT_8"           "DRIFT"                1.89000    5.48500
+ "MARKER"            "LT.VPI11"          "MARKER"               0.00000    5.48500
+ "DRIFT"             "DRIFT_9"           "DRIFT"                1.84950    7.33450
+ "QUADRUPOLE"        "LT.QFN20"          "QUADRUPOLE"           0.25500    7.58950
+ "DRIFT"             "DRIFT_10"          "DRIFT"                0.25750    7.84700
+ "MARKER"            "LT.BEC2"           "MARKER"               0.00000    7.84700
+ "DRIFT"             "DRIFT_11"          "DRIFT"                0.48750    8.33450
+ "QUADRUPOLE"        "LT.QDN22"          "QUADRUPOLE"           0.25500    8.58950
+ "DRIFT"             "DRIFT_12"          "DRIFT"                3.13270   11.72220
+ "HKICKER"           "LT.DHZ20"          "HKICKER"              0.00000   11.72220
+ "VKICKER"           "LT.DVT20"          "VKICKER"              0.00000   11.72220
+ "DRIFT"             "DRIFT_13"          "DRIFT"                1.47230   13.19450
+ "QUADRUPOLE"        "LT.QFN30"          "QUADRUPOLE"           0.25500   13.44950
+ "DRIFT"             "DRIFT_14"          "DRIFT"                0.75500   14.20450
+ "QUADRUPOLE"        "LT.QDN32"          "QUADRUPOLE"           0.25500   14.45950
+ "DRIFT"             "DRIFT_15"          "DRIFT"                0.67250   15.13200
+ "MARKER"            "LT.VPI2"           "MARKER"               0.00000   15.13200
+ "DRIFT"             "DRIFT_16"          "DRIFT"                2.04550   17.17750
+ "MONITOR"           "LT.BPM20"          "MONITOR"              0.00000   17.17750
+ "DRIFT"             "DRIFT_17"          "DRIFT"                1.10450   18.28200
+ "MARKER"            "LT.VGP11"          "MARKER"               0.00000   18.28200
+ "DRIFT"             "DRIFT_18"          "DRIFT"                0.56250   18.84450
+ "QUADRUPOLE"        "LT.QFN40"          "QUADRUPOLE"           0.25500   19.09950
+ "DRIFT"             "DRIFT_19"          "DRIFT"                0.74500   19.84450
+ "QUADRUPOLE"        "LT.QDN42"          "QUADRUPOLE"           0.25500   20.09950
+ "DRIFT"             "DRIFT_20"          "DRIFT"                0.29250   20.39200
+ "HKICKER"           "LT.DHZ30"          "HKICKER"              0.00000   20.39200
+ "VKICKER"           "LT.DVT30"          "VKICKER"              0.00000   20.39200
+ "DRIFT"             "DRIFT_21"          "DRIFT"                0.60300   20.99500
+ "MONITOR"           "LT.BPM30"          "MONITOR"              0.00000   20.99500
+ "DRIFT"             "DRIFT_22"          "DRIFT"                0.75200   21.74700
+ "MARKER"            "LT.CDB10"          "MARKER"               0.00000   21.74700
+ "DRIFT"             "DRIFT_23"          "DRIFT"                0.94550   22.69250
+ "MONITOR"           "LT.BCT20"          "MONITOR"              0.00000   22.69250
+ "DRIFT"             "DRIFT_24"          "DRIFT"                0.79187   23.48437
+ "SBEND"             "LT.BHZ20"          "SBEND"                1.04840   24.53277
+ "DRIFT"             "DRIFT_25"          "DRIFT"                0.73437   25.26713
+ "MARKER"            "LT.VGP12"          "MARKER"               0.00000   25.26713
+ "DRIFT"             "DRIFT_26"          "DRIFT"                0.84800   26.11513
+ "MARKER"            "LT.STP10"          "MARKER"               0.00000   26.11513
+ "DRIFT"             "DRIFT_27"          "DRIFT"                3.25000   29.36513
+ "MARKER"            "LT.BEC3"           "MARKER"               0.00000   29.36513
+ "DRIFT"             "DRIFT_28"          "DRIFT"                1.14250   30.50763
+ "QUADRUPOLE"        "LT.QFN50"          "QUADRUPOLE"           0.25500   30.76263
+ "DRIFT"             "DRIFT_29"          "DRIFT"                0.82250   31.58513
+ "MARKER"            "LT.VPI14"          "MARKER"               0.00000   31.58513
+ "DRIFT"             "DRIFT_30"          "DRIFT"                0.42000   32.00513
+ "MARKER"            "LT.BEC4"           "MARKER"               0.00000   32.00513
+ "DRIFT"             "DRIFT_31"          "DRIFT"                0.36100   32.36613
+ "MONITOR"           "LT.BCT30"          "MONITOR"              0.00000   32.36613
+ "DRIFT"             "DRIFT_32"          "DRIFT"                0.51900   32.88513
+ "HKICKER"           "LT.DHZ40"          "HKICKER"              0.00000   32.88513
+ "VKICKER"           "LT.DVT40"          "VKICKER"              0.00000   32.88513
+ "DRIFT"             "DRIFT_33"          "DRIFT"                1.16000   34.04513
+ "MONITOR"           "LT.BPM40"          "MONITOR"              0.00000   34.04513
+ "DRIFT"             "DRIFT_34"          "DRIFT"                0.66250   34.70763
+ "QUADRUPOLE"        "LT.QDN55"          "QUADRUPOLE"           0.25500   34.96263
+ "DRIFT"             "DRIFT_35"          "DRIFT"                0.23450   35.19714
+ "MARKER"            "LT.VVS20"          "MARKER"               0.00000   35.19714
+ "DRIFT"             "DRIFT_36"          "DRIFT"                4.38050   39.57764
+ "QUADRUPOLE"        "LT.QFN60"          "QUADRUPOLE"           0.25500   39.83264
+ "DRIFT"             "DRIFT_37"          "DRIFT"                1.65300   41.48564
+ "QUADRUPOLE"        "LT.QDN65"          "QUADRUPOLE"           0.25500   41.74064
+ "DRIFT"             "DRIFT_38"          "DRIFT"                0.26978   42.01042
+ "RBEND"             "LT.BHZ25"          "RBEND"                0.40544   42.41586
+ "DRIFT"             "DRIFT_39"          "DRIFT"                1.09428   43.51014
+ "MARKER"            "LT.VPI25"          "MARKER"               0.00000   43.51014
+ "DRIFT"             "DRIFT_40"          "DRIFT"                2.59600   46.10614
+ "MARKER"            "LT.VPI26"          "MARKER"               0.00000   46.10614
+ "DRIFT"             "DRIFT_41"          "DRIFT"                0.40800   46.51414
+ "QUADRUPOLE"        "LT.QFW70"          "QUADRUPOLE"           0.46200   46.97614
+ "DRIFT"             "DRIFT_42"          "DRIFT"                3.03150   50.00764
+ "QUADRUPOLE"        "LT.QDN75"          "QUADRUPOLE"           0.25500   50.26264
+ "DRIFT"             "DRIFT_43"          "DRIFT"                0.84250   51.10514
+ "HKICKER"           "LT.DHZ50"          "HKICKER"              0.00000   51.10514
+ "VKICKER"           "LT.DVT50"          "VKICKER"              0.00000   51.10514
+ "DRIFT"             "DRIFT_44"          "DRIFT"                0.63400   51.73914
+ "MONITOR"           "LT.BCT40"          "MONITOR"              0.00000   51.73914
+ "DRIFT"             "DRIFT_45"          "DRIFT"                0.48800   52.22714
+ "MONITOR"           "LT.BPM50"          "MONITOR"              0.55600   52.78314
+ "DRIFT"             "DRIFT_46"          "DRIFT"                0.68972   53.47286
+ "MARKER"            "ENDLT"             "MARKER"               0.00000   53.47286
+ "MARKER"            "LT$END"            "MARKER"               0.00000   53.47286
+ "DRIFT"             "DRIFT_47"          "DRIFT"                0.00002   53.47287
+ "MARKER"            "LTB$START"         "MARKER"               0.00000   53.47287
+ "MARKER"            "BEGLTB"            "MARKER"               0.00000   53.47287
+ "SBEND"             "LT.BHZ30"          "SBEND"                1.05145   54.52432
+ "DRIFT"             "DRIFT_48"          "DRIFT"                0.68772   55.21204
+ "HKICKER"           "LTB.DHZ10"         "HKICKER"              0.00000   55.21204
+ "VKICKER"           "LTB.DVT10"         "VKICKER"              0.00000   55.21204
+ "DRIFT"             "DRIFT_49"          "DRIFT"                0.53350   55.74554
+ "MARKER"            "LTB.STP10"         "MARKER"               0.00000   55.74554
+ "DRIFT"             "DRIFT_50"          "DRIFT"                0.38650   56.13204
+ "MARKER"            "LTB.VVS10"         "MARKER"               0.00000   56.13204
+ "DRIFT"             "DRIFT_51"          "DRIFT"                0.49750   56.62954
+ "MARKER"            "LTB.VPI11"         "MARKER"               0.00000   56.62954
+ "DRIFT"             "DRIFT_52"          "DRIFT"                1.53500   58.16454
+ "QUADRUPOLE"        "LTB.QFN10"         "QUADRUPOLE"           0.25500   58.41954
+ "DRIFT"             "DRIFT_19"          "DRIFT"                0.74500   59.16454
+ "QUADRUPOLE"        "LTB.QDN20"         "QUADRUPOLE"           0.25500   59.41954
+ "DRIFT"             "DRIFT_53"          "DRIFT"                0.31050   59.73004
+ "MONITOR"           "LTB.MSF30"         "MONITOR"              0.00000   59.73004
+ "DRIFT"             "DRIFT_54"          "DRIFT"                0.70750   60.43754
+ "MONITOR"           "LTB.BPM10"         "MONITOR"              0.00000   60.43754
+ "DRIFT"             "DRIFT_55"          "DRIFT"                0.36750   60.80504
+ "MONITOR"           "LTB.BCT49"         "MONITOR"              0.00000   60.80504
+ "DRIFT"             "DRIFT_56"          "DRIFT"                0.33700   61.14204
+ "HKICKER"           "LTB.DHZ20"         "HKICKER"              0.00000   61.14204
+ "VKICKER"           "LTB.DVT20"         "VKICKER"              0.00000   61.14204
+ "DRIFT"             "DRIFT_57"          "DRIFT"                2.92900   64.07104
+ "MONITOR"           "LTB.BCT50"         "MONITOR"              0.00000   64.07104
+ "DRIFT"             "DRIFT_58"          "DRIFT"                0.51000   64.58104
+ "MONITOR"           "LTB.BCT55"         "MONITOR"              0.00000   64.58104
+ "DRIFT"             "DRIFT_59"          "DRIFT"                3.06100   67.64204
+ "MONITOR"           "LTB.BPM20"         "MONITOR"              0.00000   67.64204
+ "DRIFT"             "DRIFT_60"          "DRIFT"                0.50000   68.14204
+ "HKICKER"           "LTB.DHZ30"         "HKICKER"              0.00000   68.14204
+ "VKICKER"           "LTB.DVT30"         "VKICKER"              0.00000   68.14204
+ "DRIFT"             "DRIFT_61"          "DRIFT"                0.66950   68.81154
+ "QUADRUPOLE"        "LTB.QFW30"         "QUADRUPOLE"           0.46100   69.27254
+ "DRIFT"             "DRIFT_62"          "DRIFT"                0.53900   69.81154
+ "QUADRUPOLE"        "LTB.QDW40"         "QUADRUPOLE"           0.46100   70.27254
+ "DRIFT"             "DRIFT_63"          "DRIFT"                4.64850   74.92104
+ "MONITOR"           "LTB.BCT59"         "MONITOR"              0.00000   74.92104
+ "DRIFT"             "DRIFT_64"          "DRIFT"                0.54300   75.46404
+ "MARKER"            "LTB.VPI12"         "MARKER"               0.00000   75.46404
+ "DRIFT"             "DRIFT_65"          "DRIFT"                0.45000   75.91404
+ "MARKER"            "LTB.VGR01"         "MARKER"               0.00000   75.91404
+ "DRIFT"             "DRIFT_66"          "DRIFT"                2.06600   77.98004
+ "MARKER"            "LTB.VPI13"         "MARKER"               0.00000   77.98004
+ "DRIFT"             "DRIFT_67"          "DRIFT"                0.53000   78.51004
+ "MONITOR"           "LTB.MSF40"         "MONITOR"              0.00000   78.51004
+ "DRIFT"             "DRIFT_68"          "DRIFT"                0.43200   78.94204
+ "MONITOR"           "LTB.BCT60"         "MONITOR"              0.00000   78.94204
+ "DRIFT"             "DRIFT_69"          "DRIFT"                0.41950   79.36154
+ "QUADRUPOLE"        "LTB.QFW50"         "QUADRUPOLE"           0.46100   79.82254
+ "DRIFT"             "DRIFT_70"          "DRIFT"                0.83900   80.66154
+ "QUADRUPOLE"        "LTB.QDW60"         "QUADRUPOLE"           0.46100   81.12254
+ "DRIFT"             "DRIFT_69"          "DRIFT"                0.41950   81.54204
+ "HKICKER"           "LTB.DHZ40"         "HKICKER"              0.00000   81.54204
+ "VKICKER"           "LTB.DVT40"         "VKICKER"              0.00000   81.54204
+ "DRIFT"             "DRIFT_71"          "DRIFT"                0.50400   82.04604
+ "MONITOR"           "LTB.BPM30"         "MONITOR"              0.00000   82.04604
+ "DRIFT"             "DRIFT_72"          "DRIFT"                0.66200   82.70804
+ "MARKER"            "ENDLTB"            "MARKER"               0.00000   82.70804
+ "MARKER"            "LTB$END"           "MARKER"               0.00000   82.70804
+ "MARKER"            "BI1$START"         "MARKER"               0.00000   82.70804
+ "MARKER"            "BEGBI"             "MARKER"               0.00000   82.70804
+ "SBEND"             "LTB.BHZ40"         "SBEND"                0.90000   83.60804
+ "DRIFT"             "DRIFT_73"          "DRIFT"                0.68000   84.28804
+ "MARKER"            "BI.VPI11"          "MARKER"               0.00000   84.28804
+ "DRIFT"             "DRIFT_74"          "DRIFT"                4.98400   89.27204
+ "HKICKER"           "BI.DHZ10"          "HKICKER"              0.00000   89.27204
+ "VKICKER"           "BI.DVT10"          "VKICKER"              0.00000   89.27204
+ "DRIFT"             "DRIFT_75"          "DRIFT"                0.48700   89.75904
+ "MONITOR"           "BI.BPM00"          "MONITOR"              0.00000   89.75904
+ "DRIFT"             "DRIFT_76"          "DRIFT"                0.90200   90.66104
+ "MONITOR"           "BI.BTV10"          "MONITOR"              0.00000   90.66104
+ "DRIFT"             "DRIFT_77"          "DRIFT"                0.57600   91.23704
+ "MARKER"            "BI.STPFA10"        "MARKER"               0.00000   91.23704
+ "DRIFT"             "DRIFT_78"          "DRIFT"                3.22600   94.46304
+ "MARKER"            "BI.STPSW10"        "MARKER"               0.00000   94.46304
+ "DRIFT"             "DRIFT_79"          "DRIFT"                0.74900   95.21204
+ "MONITOR"           "BI.BPM10"          "MONITOR"              0.00000   95.21204
+ "DRIFT"             "DRIFT_80"          "DRIFT"                0.48000   95.69204
+ "HKICKER"           "BI.DHZ20"          "HKICKER"              0.00000   95.69204
+ "VKICKER"           "BI.DVT20"          "VKICKER"              0.00000   95.69204
+ "DRIFT"             "DRIFT_81"          "DRIFT"                0.40900   96.10104
+ "QUADRUPOLE"        "BI.QNO10"          "QUADRUPOLE"           0.46200   96.56304
+ "DRIFT"             "DRIFT_82"          "DRIFT"                0.53800   97.10104
+ "QUADRUPOLE"        "BI.QNO20"          "QUADRUPOLE"           0.46200   97.56304
+ "DRIFT"             "DRIFT_83"          "DRIFT"                6.85060  104.41364
+ "MONITOR"           "BI.BPM20"          "MONITOR"              0.00000  104.41364
+ "DRIFT"             "DRIFT_84"          "DRIFT"                0.44960  104.86324
+ "MONITOR"           "BI.BCT10"          "MONITOR"              0.00000  104.86324
+ "DRIFT"             "DRIFT_85"          "DRIFT"                0.37920  105.24244
+ "MARKER"            "BI.VVS10"          "MARKER"               0.00000  105.24244
+ "DRIFT"             "DRIFT_86"          "DRIFT"                0.08410  105.32654
+ "SBEND"             "BI.DVT30"          "SBEND"                0.29500  105.62154
+ "DRIFT"             "DRIFT_87"          "DRIFT"                0.24350  105.86504
+ "MONITOR"           "BI.BTV20"          "MONITOR"              0.00000  105.86504
+ "DRIFT"             "DRIFT_88"          "DRIFT"                0.58670  106.45174
+ "SBEND"             "BI.QNO30"          "SBEND"                0.46200  106.91374
+ "DRIFT"             "DRIFT_89"          "DRIFT"                0.38031  107.29405
+ "MONITOR"           "BI.BPM30"          "MONITOR"              0.00000  107.29405
+ "DRIFT"             "DRIFT_90"          "DRIFT"                0.40715  107.70120
+ "SBEND"             "BI.QNO40"          "SBEND"                0.46200  108.16320
+ "DRIFT"             "DRIFT_91"          "DRIFT"                0.26085  108.42405
+ "PLACEHOLDER"       "BI.DIS0"           "PLACEHOLDER"          0.40000  108.82405
+ "DRIFT"             "DRIFT_92"          "DRIFT"                0.01000  108.83405
+ "SBEND"             "BI1.DIS1"          "SBEND"                0.40000  109.23405
+ "DRIFT"             "DRIFT_93"          "DRIFT"                0.01000  109.24405
+ "SBEND"             "BI1.DIS2"          "SBEND"                0.40001  109.64406
+ "DRIFT"             "DRIFT_94"          "DRIFT"                0.01000  109.65406
+ "SBEND"             "BI1.DIS3"          "SBEND"                0.40002  110.05407
+ "DRIFT"             "DRIFT_95"          "DRIFT"                0.01000  110.06407
+ "SBEND"             "BI1.DIS4"          "SBEND"                0.40003  110.46411
+ "DRIFT"             "DRIFT_96"          "DRIFT"                0.18302  110.64712
+ "SBEND"             "BI1.DVT40"         "SBEND"                0.32702  110.97414
+ "DRIFT"             "DRIFT_97"          "DRIFT"                1.70155  112.67569
+ "MARKER"            "BI.VPI12"          "MARKER"               0.00000  112.67569
+ "DRIFT"             "DRIFT_98"          "DRIFT"                4.21812  116.89381
+ "MONITOR"           "BI.BTV30"          "MONITOR"              0.00000  116.89381
+ "DRIFT"             "DRIFT_99"          "DRIFT"                0.56252  117.45632
+ "SBEND"             "BI1.SMV10"         "SBEND"                0.96504  118.42137
+ "DRIFT"             "DRIFT_100"         "DRIFT"                0.17056  118.59192
+ "PLACEHOLDER"       "BI.SMVHDP"         "PLACEHOLDER"          0.00000  118.59192
+ "DRIFT"             "DRIFT_101"         "DRIFT"                2.78307  121.37500
+ "SBEND"             "BI1.BVT10"         "SBEND"                0.72091  122.09591
+ "DRIFT"             "DRIFT_102"         "DRIFT"                0.30835  122.40425
+ "QUADRUPOLE"        "BI1.QNO50"         "QUADRUPOLE"           0.46600  122.87025
+ "DRIFT"             "DRIFT_103"         "DRIFT"                0.28400  123.15425
+ "QUADRUPOLE"        "BI1.QNO60"         "QUADRUPOLE"           0.46600  123.62025
+ "DRIFT"             "DRIFT_104"         "DRIFT"                0.32500  123.94525
+ "HKICKER"           "BI1.DHZ50"         "HKICKER"              0.00000  123.94525
+ "VKICKER"           "BI1.DVT50"         "VKICKER"              0.00000  123.94525
+ "DRIFT"             "DRIFT_105"         "DRIFT"                0.56700  124.51225
+ "MONITOR"           "BI1.BPM40"         "MONITOR"              0.00000  124.51225
+ "DRIFT"             "DRIFT_106"         "DRIFT"                1.18200  125.69425
+ "MONITOR"           "BI1.BTV40"         "MONITOR"              0.00000  125.69425
+ "DRIFT"             "DRIFT_107"         "DRIFT"                0.54650  126.24075
+ "MARKER"            "BI1.VPI14"         "MARKER"               0.00000  126.24075
+ "DRIFT"             "DRIFT_108"         "DRIFT"                0.39850  126.63925
+ "MONITOR"           "BI1.BCT20"         "MONITOR"              0.00000  126.63925
+ "DRIFT"             "DRIFT_109"         "DRIFT"                0.44600  127.08525
+ "MONITOR"           "BI1.BPM50"         "MONITOR"              0.00000  127.08525
+ "DRIFT"             "DRIFT_110"         "DRIFT"                0.52200  127.60725
+ "MARKER"            "BI1.VVS20"         "MARKER"               0.00000  127.60725
+ "DRIFT"             "DRIFT_111"         "DRIFT"                2.40000  130.00725
+ "HKICKER"           "BI1.DHZ70"         "HKICKER"              0.00000  130.00725
+ "VKICKER"           "BI1.DVT70"         "VKICKER"              0.00000  130.00725
+ "DRIFT"             "DRIFT_112"         "DRIFT"                1.25720  131.26445
+ "MARKER"            "BI1.INJPT"         "MARKER"               0.00000  131.26445
+ "MARKER"            "BI1$END"           "MARKER"               0.00000  131.26445
+ "MARKER"            "LTLTBBI$END"       "MARKER"               0.00000  131.26445

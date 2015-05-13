@@ -1,0 +1,25 @@
+option, -echo;
+option, -info;
+option, warn;
+!--------------------------------------------------------------------------
+! Matching parameters - used by the element files
+!
+!--------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014/cmdx/matching_bi_line
+! Matching file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------
+
+
+
+
+
+/****************************************************************************
+ * Save parameters in the file:  "matching_parameters.prt"
+ ****************************************************************************/
+ set,  format="20.15f";
+ assign, echo="matching_parameters.prt";
+ value, dl;
+ assign, echo=terminal;
+
+
+

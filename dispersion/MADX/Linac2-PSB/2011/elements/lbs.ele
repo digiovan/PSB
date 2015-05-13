@@ -1,0 +1,32 @@
+
+! LBS element definitions B.MIKULEC (Editor)
+
+
+! BENDING MAGNET
+                                                                                                                     //       L=0.9*0.060039070554154/(2*SIN(0.060039070554154/2))
+ LBS.BHZ40       : SBEND,        L= 0.9001351901, ANGLE := angle_LBS_BHZ40, E1:= angle_LBS_BHZ40/2, E2:=angle_LBS_BHZ40/2,  FINT:=0.35, HGAP= 0.05; angle_LBS_BHZ40 = 0.060039070554154; ! L=0.9*angle/(2*SIN(angle/2)). 0.9 = physical length
+ LBS.BVT10       : SBEND,        L= 1.1317, ANGLE := angle_LBS_BVT10, TILT=PI/2; angle_LBS_BVT10 = -0.942481198883949;
+
+
+! BI-INSTRUMENTATION
+
+ LBS.BCT62       : MONITOR,      L= 0;   ! Beam current transformer ( L=0.185 B.M)
+ LBS.BCT63       : MONITOR,      L= 0;   ! Beam current transformer ( L=0.099 B.M)
+ LBS.BCT64       : MONITOR,      L= 0;   ! Beam current transformer  (L=0.1850 B.M.)
+ LBS.MSGV50      : MONITOR,      L= 0;   ! SEM grid   ( L=0.285 B.M)
+
+
+! OTHER EQUIPMENT
+
+ LBS.SLV10       : PLACEHOLDER; !  Vertical slit
+
+
+! VACUUM EQUIPMENT
+
+ LBS.VVS10       : PLACEHOLDER; ! Vacuum valve
+ LBS.VGP1        : PLACEHOLDER; ! Vacuum gauge
+ LBS.VGR1        : PLACEHOLDER; ! Vacuum gauge
+ LBS.VPI11       : PLACEHOLDER; ! Vacuum pump
+
+
+return;

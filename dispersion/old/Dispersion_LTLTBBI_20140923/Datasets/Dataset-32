@@ -1,0 +1,255 @@
+@ YASP %s V3.0
+@ TYPE %s POSITION
+@ NUMBER-BEAMS %d 4
+@ MODE %s STURN
+@ TURN-NO %d 0
+@ BUNCH-ID %d -1
+@ ACCELERATOR %s PSB
+@ TRANSFER %s PSBInjection
+@ TWISS %s PSB_Injection_LT_LTB_BI
+@ SUPER-CONTEXT %s ISOGPS_Clone
+@ CONTEXT %s ISOGPS_Clone
+@ USER %s PSB.USER.MD1
+@ CYCTIME %d 0
+@ SCTIME %d 0
+@ P %f      0.311
+@ DPP %f       0.537      0.433      0.760      0.971
+@ DPP-FORCED %f       0.000      0.000      0.000      0.000
+@ DATE-CODE %d 1411465698791
+@ DATE %s 23/09/14
+@ TIME %s 11-48-18
+@ COMMENT %s " 23/09/14 11-48-18 - dp (meas) =   0.537   0.433   0.760   0.971  - dp (forced) =   0.000   0.000   0.000   0.000  "
+@ RAWDATA %s YES
+@ HW-SETTINGS %s false
+@ MONITOR-H-NUM %d 56
+@ MONITOR-V-NUM %d 56
+@ CORRECTOR-H-NUM %d 56
+@ CORRECTOR-V-NUM %d 56
+# MONITOR  %s micron
+* NAME  PLANE  BEAM  POS  RMS  SUM  HW-STATUS STATUS STATUS-TAG
+ LT.BPM10             H 1     1699.6         0.0         0.2  0  0  OK
+ LT.BPM20             H 1    -4454.5         0.0         0.1  0  0  OK
+ LT.BPM30             H 1    -9954.9         0.0         0.2  0  0  OK
+ LT.BPM40             H 1     -283.3         0.0         0.2  0  0  OK
+ LT.BPM50             H 1     -420.8         0.0         0.1  0  0  OK
+ LTB.BPM10            H 1    -3415.5         0.0         0.1  0  0  OK
+ LTB.BPM20            H 1    -1733.4         0.0         0.1  0  0  OK
+ LTB.BPM30            H 1     -473.2         0.0         0.1  0  0  OK
+ BI.BPM00             H 1     -183.2         0.0         0.1  0  0  OK
+ BI.BPM10             H 1      406.0         0.0         0.1  0  0  OK
+ BI.BPM20             H 1     -241.4         0.0         0.1  0  0  OK
+ BI.BPM30             H 1    -1546.5         0.0         0.2  0  0  OK
+ BI1.BPM40            H 1    -2229.7         0.0         0.2  0  0  OK
+ BI1.BPM50            H 1    -1023.4         0.0         0.1  0  0  OK
+ LT.BPM10             H 2     1666.0         0.0         0.2  0  0  OK
+ LT.BPM20             H 2    -4386.5         0.0         0.2  0  0  OK
+ LT.BPM30             H 2    -9788.8         0.0         0.2  0  0  OK
+ LT.BPM40             H 2     -186.8         0.0         0.2  0  0  OK
+ LT.BPM50             H 2     -580.5         0.0         0.1  0  0  OK
+ LTB.BPM10            H 2    -2571.3         0.0         0.1  0  0  OK
+ LTB.BPM20            H 2    -1039.3         0.0         0.1  0  0  OK
+ LTB.BPM30            H 2     -420.1         0.0         0.1  0  0  OK
+ BI.BPM00             H 2     -585.0         0.0         0.2  0  0  OK
+ BI.BPM10             H 2     -309.5         0.0         0.1  0  0  OK
+ BI.BPM20             H 2     -340.8         0.0         0.1  0  0  OK
+ BI.BPM30             H 2    -1519.6         0.0         0.2  0  0  OK
+ BI2.BPM40            H 2    -1532.3         0.0         0.2  0  0  OK
+ BI2.BPM50            H 2    -1543.2         0.0         0.2  0  0  OK
+ LT.BPM10             H 3     1720.0         0.0         0.2  0  0  OK
+ LT.BPM20             H 3    -4481.7         0.0         0.2  0  0  OK
+ LT.BPM30             H 3    -9834.2         0.0         0.2  0  0  OK
+ LT.BPM40             H 3     -110.6         0.0         0.2  0  0  OK
+ LT.BPM50             H 3     -621.8         0.0         0.2  0  0  OK
+ LTB.BPM10            H 3    -2457.3         0.0         0.1  0  0  OK
+ LTB.BPM20            H 3     -897.4         0.0         0.1  0  0  OK
+ LTB.BPM30            H 3     -332.5         0.0         0.1  0  0  OK
+ BI.BPM00             H 3     -617.3         0.0         0.2  0  0  OK
+ BI.BPM10             H 3     -436.0         0.0         0.1  0  0  OK
+ BI.BPM20             H 3     -418.4         0.0         0.1  0  0  OK
+ BI.BPM30             H 3    -1573.3         0.0         0.2  0  0  OK
+ BI3.BPM40            H 3    -3731.2         0.0         0.2  0  0  OK
+ BI3.BPM50            H 3    -1675.6         0.0         0.1  0  0  OK
+ LT.BPM10             H 4     1814.0         0.0         0.2  0  0  OK
+ LT.BPM20             H 4    -4610.8         0.0         0.1  0  0  OK
+ LT.BPM30             H 4    -9968.3         0.0         0.2  0  0  OK
+ LT.BPM40             H 4     -202.7         0.0         0.2  0  0  OK
+ LT.BPM50             H 4     -491.5         0.0         0.1  0  0  OK
+ LTB.BPM10            H 4    -2900.5         0.0         0.1  0  0  OK
+ LTB.BPM20            H 4    -1192.0         0.0         0.1  0  0  OK
+ LTB.BPM30            H 4     -239.8         0.0         0.1  0  0  OK
+ BI.BPM00             H 4     -359.1         0.0         0.2  0  0  OK
+ BI.BPM10             H 4     -104.4         0.0         0.1  0  0  OK
+ BI.BPM20             H 4     -486.7         0.0         0.1  0  0  OK
+ BI.BPM30             H 4    -1718.0         0.0         0.2  0  0  OK
+ BI4.BPM40            H 4    -4974.7         0.0         0.2  0  0  OK
+ BI4.BPM50            H 4    -1915.8         0.0         0.1  0  0  OK
+ LT.BPM10             V 1      395.1         0.0         0.2  0  0  OK
+ LT.BPM20             V 1    -5774.2         0.0         0.1  0  0  OK
+ LT.BPM30             V 1   -10267.3         0.0         0.2  0  0  OK
+ LT.BPM40             V 1    -8457.2         0.0         0.2  0  0  OK
+ LT.BPM50             V 1      212.5         0.0         0.1  0  0  OK
+ LTB.BPM10            V 1    -1321.8         0.0         0.1  0  0  OK
+ LTB.BPM20            V 1    -1728.3         0.0         0.1  0  0  OK
+ LTB.BPM30            V 1    -3262.7         0.0         0.1  0  0  OK
+ BI.BPM00             V 1     1397.8         0.0         0.1  0  0  OK
+ BI.BPM10             V 1     1731.6         0.0         0.1  0  0  OK
+ BI.BPM20             V 1    -4518.3         0.0         0.1  0  0  OK
+ BI.BPM30             V 1    -2633.1         0.0         0.2  0  0  OK
+ BI1.BPM40            V 1    -2500.2         0.0         0.2  0  0  OK
+ BI1.BPM50            V 1    -2283.4         0.0         0.1  0  0  OK
+ LT.BPM10             V 2      576.2         0.0         0.2  0  0  OK
+ LT.BPM20             V 2    -5831.6         0.0         0.2  0  0  OK
+ LT.BPM30             V 2   -10515.7         0.0         0.2  0  0  OK
+ LT.BPM40             V 2    -9065.7         0.0         0.2  0  0  OK
+ LT.BPM50             V 2     -147.4         0.0         0.1  0  0  OK
+ LTB.BPM10            V 2    -1229.2         0.0         0.1  0  0  OK
+ LTB.BPM20            V 2    -1289.1         0.0         0.1  0  0  OK
+ LTB.BPM30            V 2    -2639.1         0.0         0.1  0  0  OK
+ BI.BPM00             V 2     1208.7         0.0         0.2  0  0  OK
+ BI.BPM10             V 2     1052.9         0.0         0.1  0  0  OK
+ BI.BPM20             V 2    -4145.1         0.0         0.1  0  0  OK
+ BI.BPM30             V 2    -1307.3         0.0         0.2  0  0  OK
+ BI2.BPM40            V 2    -1490.1         0.0         0.2  0  0  OK
+ BI2.BPM50            V 2    -3025.9         0.0         0.2  0  0  OK
+ LT.BPM10             V 3      643.6         0.0         0.2  0  0  OK
+ LT.BPM20             V 3    -5828.5         0.0         0.2  0  0  OK
+ LT.BPM30             V 3   -10593.0         0.0         0.2  0  0  OK
+ LT.BPM40             V 3    -9389.2         0.0         0.2  0  0  OK
+ LT.BPM50             V 3     -370.9         0.0         0.2  0  0  OK
+ LTB.BPM10            V 3    -1215.9         0.0         0.1  0  0  OK
+ LTB.BPM20            V 3    -1070.9         0.0         0.1  0  0  OK
+ LTB.BPM30            V 3    -2223.3         0.0         0.1  0  0  OK
+ BI.BPM00             V 3     1129.7         0.0         0.2  0  0  OK
+ BI.BPM10             V 3      664.7         0.0         0.1  0  0  OK
+ BI.BPM20             V 3    -3975.5         0.0         0.1  0  0  OK
+ BI.BPM30             V 3     -718.0         0.0         0.2  0  0  OK
+ BI3.BPM40            V 3      493.2         0.0         0.2  0  0  OK
+ BI3.BPM50            V 3    -2100.4         0.0         0.1  0  0  OK
+ LT.BPM10             V 4      654.9         0.0         0.2  0  0  OK
+ LT.BPM20             V 4    -5887.4         0.0         0.1  0  0  OK
+ LT.BPM30             V 4   -10643.5         0.0         0.2  0  0  OK
+ LT.BPM40             V 4    -9184.0         0.0         0.2  0  0  OK
+ LT.BPM50             V 4     -177.3         0.0         0.1  0  0  OK
+ LTB.BPM10            V 4    -1189.2         0.0         0.1  0  0  OK
+ LTB.BPM20            V 4    -1119.8         0.0         0.1  0  0  OK
+ LTB.BPM30            V 4    -2286.0         0.0         0.1  0  0  OK
+ BI.BPM00             V 4     1090.2         0.0         0.2  0  0  OK
+ BI.BPM10             V 4      512.2         0.0         0.1  0  0  OK
+ BI.BPM20             V 4    -3885.8         0.0         0.1  0  0  OK
+ BI.BPM30             V 4     -386.6         0.0         0.2  0  0  OK
+ BI4.BPM40            V 4     1341.6         0.0         0.2  0  0  OK
+ BI4.BPM50            V 4    -1976.6         0.0         0.1  0  0  OK
+# CORRECTOR %s microrad
+* NAME  PLANE  BEAM  STRENGTH-NAME  KICK RT-KICK
+ LT.DHZ10             H 1 logical.LT.DHZ10        -702.04       0.00
+ LT.DHZ20             H 1 logical.LT.DHZ20         702.04       0.00
+ LT.DHZ30             H 1 logical.LT.DHZ30         351.02       0.00
+ LT.DHZ40             H 1 logical.LT.DHZ40         702.04       0.00
+ LT.DHZ50             H 1 logical.LT.DHZ50         351.02       0.00
+ LTB.DHZ10            H 1 logical.LTB.DHZ10         34.62       0.00
+ LTB.DHZ20            H 1 logical.LTB.DHZ20        103.86       0.00
+ LTB.DHZ30            H 1 logical.LTB.DHZ30       -173.10       0.00
+ LTB.DHZ40            H 1 logical.LTB.DHZ40        519.30       0.00
+ BI.DHZ10             H 1 logical.BI.DHZ10        -692.40       0.00
+ BI.DHZ20             H 1 logical.BI.DHZ20          69.24       0.00
+ BI.DHZ30             H 1 logical.BI.DHZ30        -450.06       0.00
+ BI.DHZ40             H 1 logical.BI.DHZ40        -306.66       0.00
+ BI1.DHZ50            H 1 logical.BI1.DHZ50       1038.59       0.00
+ LT.DHZ10             H 2 logical.LT.DHZ10        -702.04       0.00
+ LT.DHZ20             H 2 logical.LT.DHZ20         702.04       0.00
+ LT.DHZ30             H 2 logical.LT.DHZ30         351.02       0.00
+ LT.DHZ40             H 2 logical.LT.DHZ40         702.04       0.00
+ LT.DHZ50             H 2 logical.LT.DHZ50         351.02       0.00
+ LTB.DHZ10            H 2 logical.LTB.DHZ10         34.62       0.00
+ LTB.DHZ20            H 2 logical.LTB.DHZ20        103.86       0.00
+ LTB.DHZ30            H 2 logical.LTB.DHZ30       -173.10       0.00
+ LTB.DHZ40            H 2 logical.LTB.DHZ40        519.30       0.00
+ BI.DHZ10             H 2 logical.BI.DHZ10        -692.40       0.00
+ BI.DHZ20             H 2 logical.BI.DHZ20          69.24       0.00
+ BI.DHZ30             H 2 logical.BI.DHZ30        -450.06       0.00
+ BI.DHZ40             H 2 logical.BI.DHZ40        -306.66       0.00
+ BI2.DHZ50            H 2 logical.BI2.DHZ50       -436.21       0.00
+ LT.DHZ10             H 3 logical.LT.DHZ10        -702.04       0.00
+ LT.DHZ20             H 3 logical.LT.DHZ20         702.04       0.00
+ LT.DHZ30             H 3 logical.LT.DHZ30         351.02       0.00
+ LT.DHZ40             H 3 logical.LT.DHZ40         702.04       0.00
+ LT.DHZ50             H 3 logical.LT.DHZ50         351.02       0.00
+ LTB.DHZ10            H 3 logical.LTB.DHZ10         34.62       0.00
+ LTB.DHZ20            H 3 logical.LTB.DHZ20        103.86       0.00
+ LTB.DHZ30            H 3 logical.LTB.DHZ30       -173.10       0.00
+ LTB.DHZ40            H 3 logical.LTB.DHZ40        519.30       0.00
+ BI.DHZ10             H 3 logical.BI.DHZ10        -692.40       0.00
+ BI.DHZ20             H 3 logical.BI.DHZ20          69.24       0.00
+ BI.DHZ30             H 3 logical.BI.DHZ30        -450.06       0.00
+ BI.DHZ40             H 3 logical.BI.DHZ40        -306.66       0.00
+ BI3.DHZ50            H 3 logical.BI3.DHZ50       -242.34       0.00
+ LT.DHZ10             H 4 logical.LT.DHZ10        -702.04       0.00
+ LT.DHZ20             H 4 logical.LT.DHZ20         702.04       0.00
+ LT.DHZ30             H 4 logical.LT.DHZ30         351.02       0.00
+ LT.DHZ40             H 4 logical.LT.DHZ40         702.04       0.00
+ LT.DHZ50             H 4 logical.LT.DHZ50         351.02       0.00
+ LTB.DHZ10            H 4 logical.LTB.DHZ10         34.62       0.00
+ LTB.DHZ20            H 4 logical.LTB.DHZ20        103.86       0.00
+ LTB.DHZ30            H 4 logical.LTB.DHZ30       -173.10       0.00
+ LTB.DHZ40            H 4 logical.LTB.DHZ40        519.30       0.00
+ BI.DHZ10             H 4 logical.BI.DHZ10        -692.40       0.00
+ BI.DHZ20             H 4 logical.BI.DHZ20          69.24       0.00
+ BI.DHZ30             H 4 logical.BI.DHZ30        -450.06       0.00
+ BI.DHZ40             H 4 logical.BI.DHZ40        -306.66       0.00
+ BI4.DHZ50            H 4 logical.BI4.DHZ50       -131.56       0.00
+ LT.DVT10             V 1 logical.LT.DVT10       -1419.51       0.00
+ LT.DVT20             V 1 logical.LT.DVT20       -1064.63       0.00
+ LT.DVT30             V 1 logical.LT.DVT30           0.00       0.00
+ LT.DVT40             V 1 logical.LT.DVT40        -106.46       0.00
+ LT.DVT50             V 1 logical.LT.DVT50        -709.75       0.00
+ LTB.DVT10            V 1 logical.LTB.DVT10          0.00       0.00
+ LTB.DVT20            V 1 logical.LTB.DVT20       -103.86       0.00
+ LTB.DVT30            V 1 logical.LTB.DVT30       -273.50       0.00
+ LTB.DVT40            V 1 logical.LTB.DVT40        242.34       0.00
+ BI.DVT10             V 1 logical.BI.DVT10       -1177.07       0.00
+ BI.DVT20             V 1 logical.BI.DVT20       -1505.96       0.00
+ BI.DVT30             V 1 logical.BI.DVT30        1685.98       0.00
+ BI.DVT40             V 1 logical.BI.DVT40        6483.73       0.00
+ BI1.DVT50            V 1 logical.BI1.DVT50       -720.09       0.00
+ LT.DVT10             V 2 logical.LT.DVT10       -1419.51       0.00
+ LT.DVT20             V 2 logical.LT.DVT20       -1064.63       0.00
+ LT.DVT30             V 2 logical.LT.DVT30           0.00       0.00
+ LT.DVT40             V 2 logical.LT.DVT40        -106.46       0.00
+ LT.DVT50             V 2 logical.LT.DVT50        -709.75       0.00
+ LTB.DVT10            V 2 logical.LTB.DVT10          0.00       0.00
+ LTB.DVT20            V 2 logical.LTB.DVT20       -103.86       0.00
+ LTB.DVT30            V 2 logical.LTB.DVT30       -273.50       0.00
+ LTB.DVT40            V 2 logical.LTB.DVT40        242.34       0.00
+ BI.DVT10             V 2 logical.BI.DVT10       -1177.07       0.00
+ BI.DVT20             V 2 logical.BI.DVT20       -1505.96       0.00
+ BI.DVT30             V 2 logical.BI.DVT30        1685.98       0.00
+ BI.DVT40             V 2 logical.BI.DVT40        6483.73       0.00
+ BI2.DVT50            V 2 logical.BI2.DVT50      -1090.52       0.00
+ LT.DVT10             V 3 logical.LT.DVT10       -1419.51       0.00
+ LT.DVT20             V 3 logical.LT.DVT20       -1064.63       0.00
+ LT.DVT30             V 3 logical.LT.DVT30           0.00       0.00
+ LT.DVT40             V 3 logical.LT.DVT40        -106.46       0.00
+ LT.DVT50             V 3 logical.LT.DVT50        -709.75       0.00
+ LTB.DVT10            V 3 logical.LTB.DVT10          0.00       0.00
+ LTB.DVT20            V 3 logical.LTB.DVT20       -103.86       0.00
+ LTB.DVT30            V 3 logical.LTB.DVT30       -273.50       0.00
+ LTB.DVT40            V 3 logical.LTB.DVT40        242.34       0.00
+ BI.DVT10             V 3 logical.BI.DVT10       -1177.07       0.00
+ BI.DVT20             V 3 logical.BI.DVT20       -1505.96       0.00
+ BI.DVT30             V 3 logical.BI.DVT30        1685.98       0.00
+ BI.DVT40             V 3 logical.BI.DVT40        6483.73       0.00
+ BI3.DVT50            V 3 logical.BI3.DVT50       -138.48       0.00
+ LT.DVT10             V 4 logical.LT.DVT10       -1419.51       0.00
+ LT.DVT20             V 4 logical.LT.DVT20       -1064.63       0.00
+ LT.DVT30             V 4 logical.LT.DVT30           0.00       0.00
+ LT.DVT40             V 4 logical.LT.DVT40        -106.46       0.00
+ LT.DVT50             V 4 logical.LT.DVT50        -709.75       0.00
+ LTB.DVT10            V 4 logical.LTB.DVT10          0.00       0.00
+ LTB.DVT20            V 4 logical.LTB.DVT20       -103.86       0.00
+ LTB.DVT30            V 4 logical.LTB.DVT30       -273.50       0.00
+ LTB.DVT40            V 4 logical.LTB.DVT40        242.34       0.00
+ BI.DVT10             V 4 logical.BI.DVT10       -1177.07       0.00
+ BI.DVT20             V 4 logical.BI.DVT20       -1505.96       0.00
+ BI.DVT30             V 4 logical.BI.DVT30        1685.98       0.00
+ BI.DVT40             V 4 logical.BI.DVT40        6483.73       0.00
+ BI4.DVT50            V 4 logical.BI4.DVT50        193.87       0.00

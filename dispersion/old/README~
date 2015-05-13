@@ -1,0 +1,13 @@
+
+mkdir MADX
+cd MADX
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2014/
+wget -r --no-parent -e robots=off http://project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/2011/
+mv project-ps-optics.web.cern.ch/project-PS-optics/cps/TransLines/Linac2-PSB/ .
+rm -rf project-ps-optics.web.cern.ch/
+
+
+
+python -i createDispersionData.py -f Dispersion_LTLTBBI_20140923/Datasets/ -d 0.00,0.01,0.02,-0.01,-0.02
+
+

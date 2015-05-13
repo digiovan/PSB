@@ -1,0 +1,95 @@
+option, -echo;
+option, info;
+option, warn;
+!------------------------------------------------------------------------------------
+! - The sequence starts exactly at the entry flange of LT.VVS10 (end of Linac2)
+!   and ends at the entry point of LT.BHZ30.
+!
+! - The position of the elements corresponds to their magnetic center where applicable
+!   otherwise to the mechanical center of each element. These positions are calculated from the
+!    positions extracted from the drawing PS_LMLTP8001-vAC adding correction for the beam path in LT.BHZ20 and LT.BHZ30.
+!
+! - The magnetic length of the LT.BHZ20 is Leq=1.045 m from EDMS 859631.
+!   The deflection angle of LT.BHZ20 is φ=279.22518 mrad (Drawing and Survey agrees)
+!   The geometric trajectory inside the LT.BHZ20 used in the drawings = (2∙Leq∙tan⁡(φ⁄2))/(sin⁡E1+sin⁡E2)= 1.0552678 m where E1=E2=φ/2
+!   The trajectory of the beam inside the LT.BHZ20 is = (Leq∙φ/(sin⁡E1+sin⁡E2)=1.0484025 m
+!
+! - The magnetic length of the LT.BHZ30 is Leq=1.045 m from A. Newborough.
+!   The deflection angle of LT.BHZ30 is φ=383.950407 mrad (Drawing and Survey agrees)
+!   The geometric trajectory inside the LT.BHZ30 used in the drawings = (2∙Leq∙tan⁡(φ⁄2))/(sin⁡E1+sin⁡E2)= 1.0645567 m where E1=E2=φ/2
+!   The trajectory of the beam inside the LT.BHZ30 is = (Leq∙φ/(sin⁡E1+sin⁡E2)=1.0514465 m
+!
+! - The position of the Beam Loss Monitor (MBL) are commented to prevent conflict with other
+!   elements in MADX. The position of the MBL are a best guess from photos.
+!
+!--------------------------------------------------------------------------------------
+! Directory: /afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2014
+! Sequence file created in February 2014 by V.Raginel, O.Berrig and B. Mikulec
+!--------------------------------------------------------------------------------------
+
+LT: SEQUENCE, REFER=CENTRE,   l := 53.472856;! Also called LTP line
+   BEGLT:      MARKER     ,  AT :=  0.000000;
+   LT.VVS10               ,  AT :=  0.048000; !  0.04800 (from Drawings PS_LMLTP8001-vAC)
+   LT.DHZ10               ,  AT :=  0.398000; !  0.39800 (from Drawings PS_LMLTP8001-vAC)
+   LT.DVT10               ,  AT :=  0.398000; !  0.39800 (from Drawings PS_LMLTP8001-vAC)
+   LT.BPM10               ,  AT :=  1.400000; !  1.40000 (from Drawings PS_LMLTP8001-vAC)
+!  LT.MBL00               ,  AT :=  1.700000;
+   LT.QFN10               ,  AT :=  1.977000; !  1.97700 (from Drawings PS_LMLTP8001-vAC)
+   LT.BEC1                ,  AT :=  2.147000; !  2.14700 (from Drawings PS_LMLTP8001-vAC)
+   LT.BCT10               ,  AT :=  2.410000; !  2.41000 (from Drawings PS_LMLTP8001-vAC)
+   LT.QDN12               ,  AT :=  2.777000; !  2.77700 (from Drawings PS_LMLTP8001-vAC)
+   LT.BHZ10               ,  AT :=  3.342000; !  3.34200 (from Drawings PS_LMLTP8001-vAC)
+   LT.VPI11               ,  AT :=  5.485000; !  5.48500 (from Drawings PS_LMLTP8001-vAC)
+   LT.QFN20               ,  AT :=  7.462000; !  7.46200 (from Drawings PS_LMLTP8001-vAC)
+   LT.BEC2                ,  AT :=  7.847000; !  7.84700 (from Drawings PS_LMLTP8001-vAC)
+   LT.QDN22               ,  AT :=  8.462000; !  8.46200 (from Drawings PS_LMLTP8001-vAC)
+   LT.DHZ20               ,  AT := 11.722200; ! 11.72200 (from Drawings PS_LMLTP8001-vAC)
+   LT.DVT20               ,  AT := 11.722200; ! 11.72220 (from Drawings PS_LMLTP8001-vAC)
+   LT.QFN30               ,  AT := 13.322000; ! 13.32200 (from Drawings PS_LMLTP8001-vAC)
+   LT.QDN32               ,  AT := 14.332000; ! 14.33200 (from Drawings PS_LMLTP8001-vAC)
+   LT.VPI2                ,  AT := 15.132000; ! 15.13200 (from Drawings PS_LMLTP8001-vAC)
+   LT.BPM20               ,  AT := 17.177500; ! 17.17750 (from Drawings PS_LMLTP8001-vAC)
+   LT.VGP11               ,  AT := 18.282000; ! 18.28200 (from Drawings PS_LMLTP8001-vAC)
+!  LT.VGR11               ,  AT := 18.282000; ! 18.28200 (from Drawings PS_LMLTP8001-vAC)
+   LT.QFN40               ,  AT := 18.972000; ! 18.97200 (from Drawings PS_LMLTP8001-vAC)
+!  LT.MBL10               ,  AT := 18.500000;
+   LT.QDN42               ,  AT := 19.972000; ! 19.97200 (from Drawings PS_LMLTP8001-vAC)
+   LT.DHZ30               ,  AT := 20.392000; ! 20.39200 (from Drawings PS_LMLTP8001-vAC)
+   LT.DVT30               ,  AT := 20.392000; ! 20.39200 (from Drawings PS_LMLTP8001-vAC)
+   LT.BPM30               ,  AT := 20.995000; ! 20.99500 (from Drawings PS_LMLTP8001-vAC)
+!  LT.VPI13               ,  AT := 21.747000; ! 21.74700 (from Drawings PS_LMLTP8001-vAC)
+   LT.CDB10               ,  AT := 21.747000; ! 21.74700 (from Drawings PS_LMLTP8001-vAC)
+   LT.BCT20               ,  AT := 22.692500; ! 22.69250 (from Drawings PS_LMLTP8001-vAC)
+   LT.BHZ20               ,  AT := 24.008567; ! 24.01200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849/2 (Geometric trajectory inside LT.BHZ20/2)+ 1.048402561/2 (Beam trajectory inside LT.BHZ20/2)
+   LT.VGP12               ,  AT := 25.267135; ! 25.27400 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+!  LT.VGR12               ,  AT := 25.267135; ! 25.27400 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.STP10               ,  AT := 26.115135; ! 26.12200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BEC3                ,  AT := 29.365135; ! 29.37200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QFN50               ,  AT := 30.635135; ! 30.64200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.VPI14               ,  AT := 31.585135; ! 31.59200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BEC4                ,  AT := 32.005135; ! 32.01200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BCT30               ,  AT := 32.366135; ! 32.37300 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.DHZ40               ,  AT := 32.885135; ! 32.89200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.DVT40               ,  AT := 32.885135; ! 32.89200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BPM40               ,  AT := 34.045135; ! 34.05200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QDN55               ,  AT := 34.835135; ! 34.84200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.VVS20               ,  AT := 35.197135; ! 35.20400 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QFN60               ,  AT := 39.705135; ! 39.71200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QDN65               ,  AT := 41.613135; ! 41.62000 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BHZ25               ,  AT := 42.213135; ! 42.22000 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.VPI25               ,  AT := 43.510135; ! 43.51700 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.VPI26               ,  AT := 46.106135; ! 46.11300 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QFW70               ,  AT := 46.745135; ! 46.75200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.QDN75               ,  AT := 50.135135; ! 50.14200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.DHZ50               ,  AT := 51.105135; ! 51.11200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.DVT50               ,  AT := 51.105135; ! 51.11200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BCT40               ,  AT := 51.739135; ! 51.74600 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   LT.BPM50               ,  AT := 52.505135; ! 52.51200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20)
+   ENDLT:      MARKER     ,  AT := 53.472856; ! 54.01200 (from Drawings PS_LMLTP8001-vAC) - 1.055267849 (Geometric trajectory inside LT.BHZ20)+ 1.048402561 (Beam trajectory inside LT.BHZ20) - 1.06455667/2 (Geometric trajectory inside LT.BHZ30/2)
+ENDSEQUENCE;                                                                                                                                                                 ! 1.05144652841087249406*2*Tan(0.38395040993805129581/2)/0.38395040993805129581
+
+ option, info;
+ option, warn;
+ option, echo;
+ return;
+

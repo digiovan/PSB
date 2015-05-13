@@ -1,0 +1,50 @@
+
+! LBE element definitions B.MIKULEC (Editor)
+
+
+! QUADRUPOLES
+
+ LBE.QFW10       : QUADRUPOLE,   L= 0.50, K1    := kLBE_QFW10;  ! Magnetic length = 0.48
+ LBE.QDW10       : QUADRUPOLE,   L= 0.50, K1    := kLBE_QDW10;  ! Magnetic length = 0.48
+
+
+! BENDING MAGNET
+
+ LBE.BHZ40       : SBEND,        L:= 0.9*angle_LBE_BHZ40/(2*SIN(angle_LBE_BHZ40/2)) , ANGLE := angle_LBE_BHZ40, E1:= angle_LBE_BHZ40/2, E2:=angle_LBE_BHZ40/2,  FINT:=0.35, HGAP= 0.05; ! BHZ40 is defined in LTB as 0.9m long. 1.045m = magnetic length. 0.9m = physical length
+
+
+! STEERERS
+
+ LBE.KVT9        : HKICKER,      L= 0; ! Real length L= 0.506
+ LBE.KHZ9        : VKICKER,      L= 0; ! Real length L= 0.506
+ LBE.KVT10       : HKICKER,      L= 0; ! Real length L= 0.506
+ LBE.KHZ10       : VKICKER,      L= 0; ! Real length L= 0.506
+ LBE.D10         : KICKER ,      L= 0; ! Real length L= 0.25
+
+
+! BI-INSTRUMENTATION
+
+ LBE.BCT66       : MONITOR,      L= 0.10; ! Beam current transformer  (L=0.0990 B.M.)
+ LBE.BCT65       : MONITOR,      L= 0.19; ! Beam current transformer  (L=0.1850 B.M.)
+ LBE.MSGH10      : MONITOR,      L= 0;  ! SEM grid
+ LBE.MSGV10      : MONITOR,      L= 0;  ! SEM grid
+ LBE.MSGHV20     : MONITOR,      L= 0;  ! SEM grid in beam
+
+
+! OTHER EQUIPMENT
+
+ LBE.SLH10       : PLACEHOLDER; !  Horizontal slit
+ LBE.SLV10       : PLACEHOLDER; !  Vertical slit
+ LBE.DUMP        : PLACEHOLDER,  L=0.02; ! Beam dump. Real length = 0.2
+
+
+! VACUUM EQUIPMENT
+
+ LBE.VVS10       : PLACEHOLDER; ! Vacuum valve
+ LBE.VGP1        : PLACEHOLDER; ! Vacuum gauge
+ LBE.VGR1        : PLACEHOLDER; ! Vacuum gauge
+ LBE.VPI11       : PLACEHOLDER; ! Vacuum pump
+
+
+
+return;

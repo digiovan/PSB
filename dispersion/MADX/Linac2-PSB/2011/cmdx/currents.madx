@@ -1,0 +1,100 @@
+
+option, -echo;
+
+/*****************************************************************************
+ * LTP
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/elements/ltp_trace.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/strength/ltp.str';
+
+
+/*****************************************************************************
+ * LTB
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/elements/ltb_trace.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/strength/ltb.str';
+
+
+
+/*****************************************************************************
+ * BI
+ * NB! The order of the .ele .str and .seq files matter.
+ *     The reason is a >feature< of MADX
+ *
+ *****************************************************************************/
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/elements/bi_trace.ele';
+ call, file = '/afs/cern.ch/eng/ps/cps/TransLines/Linac2-PSB/2010/strength/bi.str';
+
+
+
+!LT
+LTP.QFN10.I = LTP.QFN10->K1 * 63.00; !* 1.03527;
+LTP.QDN12.I = LTP.QDN12->K1 * 63.00; !* 1.03527;
+LTP.QFN20.I = LTP.QFN20->K1 * 63.00; !* 1.03527;
+LTP.QDN22.I = LTP.QDN22->K1 * 63.00; !* 1.03527;
+LTP.QFN30.I = LTP.QFN30->K1 * 63.00; !* 1.03527;
+LTP.QDN32.I = LTP.QDN32->K1 * 63.00; !* 1.03527;
+LTP.QFN40.I = LTP.QFN40->K1 * 63.00; !* 1.03527;
+LTP.QDN42.I = LTP.QDN42->K1 * 63.00; !* 1.03527;
+LTP.QFN50.I = LTP.QFN50->K1 * 63.00; !* 1.03527;
+LTP.QDN55.I = LTP.QDN55->K1 * 63.00; !* 1.03527;
+LTP.QFN60.I = LTP.QFN60->K1 * 63.00; !* 1.03527;
+LTP.QFW65.I = LTP.QDN65->K1 * 63.00; !* 1.03527;
+LTP.QFW70.I = LTP.QFW70->K1 * 13.89; !* 1.03527;
+LTP.QDN75.I = LTP.QDN75->K1 * 63.00; !* 1.03527;
+
+!LTB
+LTB.QFN10.I = LTB.QFN10->K1 * 63.00; !* 1.03527;
+LTB.QDN20.I = LTB.QDN20->K1 * 63.00; !* 1.03527;
+LTB.QFW30.I = LTB.QFW30->K1 * 13.95; !* 1.03527;
+LTB.QDW40.I = LTB.QDW40->K1 * 13.95; !* 1.03527;
+LTB.QFW50.I = LTB.QFW50->K1 * 13.95; !* 1.03527;
+LTB.QDW60.I = LTB.QDW60->K1 * 13.95; !* 1.03527;
+
+!BI
+BI.QNO10.I = BI.QNO10->K1 * 14.17; !* 1.03527;
+BI.QNO20.I = BI.QNO20->K1 * 14.17; !* 1.03527;
+BI.QNO30.I = BI.QNO30->K1 * 14.17; !* 1.03527;
+BI.QNO40.I = BI.QNO40->K1 * 14.17; !* 1.03527;
+BI.QNO50.I = BI.QNO50->K1 * 40.17; !* 1.03527;
+BI.QNO60.I = BI.QNO60->K1 * 40.17; !* 1.03527;
+
+value, LTP.QFN10->K1 * 63.00;
+
+value, LTP.QFN10.I;
+value, LTP.QDN12.I;
+value, LTP.QFN20.I;
+value, LTP.QDN22.I;
+value, LTP.QFN30.I;
+value, LTP.QDN32.I;
+value, LTP.QFN40.I;
+value, LTP.QDN42.I;
+value, LTP.QFN50.I;
+value, LTP.QDN55.I;
+value, LTP.QFN60.I;
+value, LTP.QFW65.I;
+value, LTP.QFW70.I;
+value, LTP.QDN75.I;
+
+value, LTB.QFN10.I;
+value, LTB.QDN20.I;
+value, LTB.QFW30.I;
+value, LTB.QDW40.I;
+value, LTB.QFW50.I;
+value, LTB.QDW60.I;
+
+value, BI.QNO10.I;
+value, BI.QNO20.I;
+value, BI.QNO30.I;
+value, BI.QNO40.I;
+value, BI.QNO50.I;
+value, BI.QNO60.I;
+
+
+stop;
