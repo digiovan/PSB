@@ -191,20 +191,24 @@ folder = 'offsets_files/'
 columns_LT = defaultdict(list)
 readCSV(folder + '/'+ 
         #'LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        'LT_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'LT_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LT_OFFSETS_26FEB2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LT)
 
 columns_LTB = defaultdict(list)
 readCSV(folder + '/'+ 
         #'LTB_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        'LTB_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'LTB_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LTB_OFFSETS_26FEB2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LTB)
 
 columns_BI = defaultdict(list)
 readCSV(folder + '/'+ 
         #'BI_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         #'BI_OFFSETS_24FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        'BI_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'BI_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'BI_OFFSETS_11DEC2015_Faisceau_Derniers_TheoriquesBumpees_Existant_TESTGP.csv', # this file is with PROPOSED changes in BI.QNO40, BI.QNO50 and BI.BPM40 to align along a line from BI.QNO30 and BI.QNO60
+        'BI_OFFSETS_26FEB2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',      
         columns_BI)
 
 columns_PSB = defaultdict(list)
@@ -677,6 +681,7 @@ else:
 #BI.BPM40/50 are calculated w.r.t. to the line BI.QNO.60-PSB.BRMB.1620
 gBPM .GetPoint(12,xBPM, yBPM)
 yQUAD = float( fQuad[24].Eval(xBPM) )
+#print yQUAD
 
 if (opts.OFFSET=="ver"):
     print "BI.BPM40 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
@@ -685,7 +690,7 @@ else:
 
 gBPM .GetPoint(13,xBPM, yBPM)
 yQUAD = float( fQuad[24].Eval(xBPM) )
-
+#print yQUAD
 if (opts.OFFSET=="ver"):
     print "BI.BPM50 Offset = %4.3f mm" % ( -1. * (yQUAD-yBPM ) * 1000.) 
 else:
