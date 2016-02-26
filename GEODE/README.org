@@ -1,4 +1,20 @@
 
+* History
+** 2015: Offsets for 2015 run
+** December 2015: Asked to evaluate possible re-alignment in the BI line and come out with a proposal
+** 2016: Offsets for 2016 run. 
+*** In the new csv files from GEODE, the longitudinal position was updated based on MADX, so all the offsets have changed, in most of the case slightly.
+*** The requested re-alignment were:
+**** VERTICAL:
+***** BI.BPM40: move ENTRY and SORTIE point to -0.16 mm (from its current position of E=-2.04 mm and S=-2.28 mm)
+***** BI.BPM50: move ENTRY and SORTIE point to 0.44 mm (from its current position of E=-2.52 mm and S=-1.27 mm)
+**** RADIAL:
+***** BI.QNO40: move ENTRY and SORTIE point to 2.81 mm (from its current position of E=3.18 mm and S=2.28 mm).
+***** BI.BPM40: move ENTRY and SORTIE point to 0.53 mm (from its current position of E=-0.91 mm and S=-1.26 mm)
+***** BI.BPM50: move ENTRY and SORTIE point to 0.53 mm (from its current position of E=-1.58 mm and S=-1.59 mm)
+***** BI.QNO50: move ENTRY and SORTIE point to 0.65 mm (from its current position of E=-0.87 mm and S=-0.66 mm)
+
+**** It turned out that BI.BPM40 could not be re-aligned. 
 * Lines Definitions:
 ** LT  line start at the entry flange of LT.VVS10 and ends at the entry flange of LT.BHZ30
 ** LTB line start at the entry flange of LT.BHZ30 and ends at the entry flange of LTB.BHZ40
@@ -18,4 +34,3 @@
 ** python align_withLonOffset.py -o rad -b > log/ltltbbi_offsets_rad
 ** python align_withLonOffset.py -o ver -b > log/ltltbbi_offsets_ver
 ** python align_withLonOffset.py -o lon
-
