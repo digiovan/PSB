@@ -192,7 +192,8 @@ columns_LT = defaultdict(list)
 readCSV(folder + '/'+ 
         #'LT_OFFSETS_17FEB2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         #'LT_OFFSETS_31MAR2015_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
-        'LT_OFFSETS_26FEB2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        #'LT_OFFSETS_26FEB2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
+        'LT_OFFSETS_09MAR2016_Faisceau_Derniers_TheoriquesBumpees_Existant.csv',
         columns_LT)
 
 columns_LTB = defaultdict(list)

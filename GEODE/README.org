@@ -15,6 +15,7 @@
 ***** BI.QNO50: move ENTRY and SORTIE point to 0.65 mm (from its current position of E=-0.87 mm and S=-0.66 mm)
 
 **** It turned out that BI.BPM50 could not be re-aligned. 
+*** Tobias mentioned that the offset entered in GEODE with the date 14.12.2014 were incorrect and should not have been used. This was the case in 2015 for LT.QFN10. Now it is fixed...     
 * Lines Definitions:
 ** LT  line start at the entry flange of LT.VVS10 and ends at the entry flange of LT.BHZ30
 ** LTB line start at the entry flange of LT.BHZ30 and ends at the entry flange of LTB.BHZ40
