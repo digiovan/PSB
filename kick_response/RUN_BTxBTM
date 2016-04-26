@@ -1,0 +1,25 @@
+
+python kick_response.py -c BT1.DHZ10 -k 500 -s
+python kick_response.py -c BT2.DHZ10 -k 500 -s
+python kick_response.py -c BT3.DHZ10 -k 500 -s
+python kick_response.py -c BT4.DHZ10 -k 500 -s
+
+python kick_response.py -c BTM.DHZ10 -k 500 -s 
+
+python kick_response.py -c BT2.DVT10 -k 500 -s
+python kick_response.py -c BT3.DVT10 -k 500 -s
+
+python kick_response.py -c BT2.DVT20 -k 500 -s
+python kick_response.py -c BT3.DVT20 -k 500 -s
+
+python kick_response.py -c BT3.DVT30 -k 500 -s 
+
+python kick_response.py -c BT2.DVT40 -k 500 -s
+python kick_response.py -c BT3.DVT40 -k 500 -s
+
+python kick_response.py -c BT.DVT50  -k 500 -s
+python kick_response.py -c BT.DVT60  -k 500 -s
+
+python kick_response.py -c BTM.DVT10 -k 500 -s
+
+

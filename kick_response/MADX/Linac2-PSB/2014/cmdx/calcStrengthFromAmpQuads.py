@@ -20,7 +20,7 @@ cal  = {}
 
 # LT
 curr_2014["LT.QFN10"] =  293.00 # A
-curr_2014["LT.QDN12"] =  225.00 # A
+curr_2014["LT.QDN12"] =  217.00 # A
 curr_2014["LT.QFN20"] =  125.00 # A
 curr_2014["LT.QDN22"] =   85.00 # A
 curr_2014["LT.QFN30"] =   43.20 # A

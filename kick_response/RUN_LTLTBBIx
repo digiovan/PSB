@@ -1,35 +1,35 @@
 
-python ./kick_response.py -c LT.DHZ10
-python ./kick_response.py -c LT.DHZ20
-python ./kick_response.py -c LT.DHZ30
-python ./kick_response.py -c LT.DHZ40
-python ./kick_response.py -c LT.DHZ50
-                               
-python ./kick_response.py -c LTB.DHZ10
-python ./kick_response.py -c LTB.DHZ20
-python ./kick_response.py -c LTB.DHZ30
-python ./kick_response.py -c LTB.DHZ40
+python ./kick_response.py -c LT.DHZ10  -k 500 -s 
+python ./kick_response.py -c LT.DHZ20  -k 500 -s
+python ./kick_response.py -c LT.DHZ30  -k 500 -s
+python ./kick_response.py -c LT.DHZ40  -k 500 -s
+python ./kick_response.py -c LT.DHZ50  -k 500 -s
 
-python ./kick_response.py -c BI.DHZ10
-python ./kick_response.py -c BI.DHZ20
-python ./kick_response.py -c BI.DHZ30
-python ./kick_response.py -c BI.DHZ40
+python ./kick_response.py -c LTB.DHZ10 -k 500 -s
+python ./kick_response.py -c LTB.DHZ20 -k 500 -s
+python ./kick_response.py -c LTB.DHZ30 -k 500 -s
+python ./kick_response.py -c LTB.DHZ40 -k 500 -s
+
+python ./kick_response.py -c BI.DHZ10  -k 500 -s
+python ./kick_response.py -c BI.DHZ20  -k 500 -s
+python ./kick_response.py -c BI.DHZ30  -k 500 -s
+python ./kick_response.py -c BI.DHZ40  -k 500 -s
 
 
-python ./kick_response.py -c LT.DVT10
-python ./kick_response.py -c LT.DVT20
-python ./kick_response.py -c LT.DVT30
-python ./kick_response.py -c LT.DVT40
-python ./kick_response.py -c LT.DVT50
-                               
-python ./kick_response.py -c LTB.DVT10
-python ./kick_response.py -c LTB.DVT20
-python ./kick_response.py -c LTB.DVT30
-python ./kick_response.py -c LTB.DVT40
+python ./kick_response.py -c LT.DVT10  -k 500 -s
+python ./kick_response.py -c LT.DVT20  -k 500 -s
+python ./kick_response.py -c LT.DVT30  -k 500 -s
+python ./kick_response.py -c LT.DVT40  -k 500 -s
+python ./kick_response.py -c LT.DVT50  -k 500 -s
 
-python ./kick_response.py -c BI.DVT10
-python ./kick_response.py -c BI.DVT20
-python ./kick_response.py -c BI.DVT30
-python ./kick_response.py -c BI.DVT40
+python ./kick_response.py -c LTB.DVT10 -k 500 -s
+python ./kick_response.py -c LTB.DVT20 -k 500 -s
+python ./kick_response.py -c LTB.DVT30 -k 500 -s
+python ./kick_response.py -c LTB.DVT40 -k 500 -s
+
+python ./kick_response.py -c BI.DVT10  -k 500 -s
+python ./kick_response.py -c BI.DVT20  -k 500 -s
+python ./kick_response.py -c BI.DVT30  -k 500 -s
+python ./kick_response.py -c BI.DVT40  -k 500 -s
 
 

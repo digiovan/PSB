@@ -1,5 +1,9 @@
 #! /usr/bin/python
 
+#import sys
+#sys.path.append('../')
+#from helpers import *
+
 import os
 import commands
 import random
@@ -41,6 +45,12 @@ parser.add_option('-d', '--debug',
                   default = False, 
                   action = 'store_true')
 
+parser.add_option('-n', '--nobixbpm',
+                  help='if you need to remove BIx.BPM40 and BIx.BPM50 from the data plots',
+                  dest='NOBIXBPM',
+                  default = False, 
+                  action = 'store_true')
+
 
 
 # get the options
@@ -54,7 +64,7 @@ for m in mandatories:
         parser.print_help()
         exit(-1)
 
-################################################################################
+#################################################################################
 class ordered_dict(dict):
     def __init__(self, *args, **kwargs):
         dict.__init__(self, *args, **kwargs)
@@ -169,6 +179,7 @@ def getMax(graph):
    
 def getGraph(dictionary, plane, ring, ele):
 
+    #print ele
     graph = root.TGraph( len(ele) )
 
     id = 0
@@ -189,45 +200,73 @@ def getGraphAverage(listOfGraphs):
     #print listOfGraphs
 
     n_points = 0
-    y_min = []
-    y_max = []
-    
+    y_mean = []
+    y_rms  = []
+
+    # first sanity checks... and some initialization
     for graph in listOfGraphs:
         
         if n_points == 0:
             n_points = graph.GetN()
-            for i in range(n_points):
-                y_min.append(  99999 )
-                y_max.append( -99999 )
+            if (opts.NOBIXBPM):
+                n_points -= 2
 
-        if n_points != graph.GetN():
+        if n_points != graph.GetN() and not opts.NOBIXBPM:
             print 'ERROR (getGraphAverage): different number of points in the graphs'
             exit(1)
 
-        for i in range(0,n_points):
+
+    # calculate the y_mean for each point
+    for i in range(0,n_points):
+        
+        mean_value = 0
+        for graph in listOfGraphs:
+
             x, y = root.Double(0), root.Double(0)
             graph.GetPoint(int(i), x, y)
             #print x,y
             
-            if y < y_min[i]:
-                y_min[i] = y
+            mean_value += y/len(listOfGraphs)
+            
+        #print mean_value   
+        y_mean . append ( mean_value )
 
-            if y > y_max[i]:
-                y_max[i] = y
- 
-        #print y_min
-        #print y_max
+    #print y_mean 
 
+    # calculate the RMS w.r.t. the mean/sqrt(n) (standard deviation)
+    for i in range(0,n_points):
+        
+        rms_value = 0
+        for graph in listOfGraphs:
+        
+            x, y = root.Double(0), root.Double(0)
+            graph.GetPoint(int(i), x, y)
+            #print x,y
+            
+            rms_value += root.TMath.Power(y - y_mean[i], 2) 
+            rms_value /= len(listOfGraphs) 
+            
+            
+        #print mean_value   
+        y_rms . append ( root.TMath.Sqrt(rms_value) )
+    
+#    print y_rms
+
+    # construct the average graph +/- rms
     graphAverage = root.TGraphErrors( n_points )
 
     for i in range(0,n_points):
-        y_avg = (y_min[i]+y_max[i])/2.
-        y_err = (y_max[i]-y_min[i])/2.
-
-        graphAverage.SetPoint     ( int(i), float(i)+0.5, y_avg )
-        graphAverage.SetPointError( int(i),            0, y_err )
-
-
+        
+        # just to get the x-axis
+        graph = listOfGraphs[0]
+        x, y = root.Double(0), root.Double(0)
+        graph.GetPoint(int(i), x, y)
+        
+        graphAverage.SetPoint     ( int(i), x, y_mean[i] )
+        graphAverage.SetPointError( int(i), 0, y_rms [i] )
+        
+        #print y_mean[i], y_rms[i]
+    
     return graphAverage
 
 def getGraphMADX(folder, corr, kick, plane, ring, sim):
@@ -241,6 +280,8 @@ def getGraphMADX(folder, corr, kick, plane, ring, sim):
     else:
         filename_p = 'kr_bt%s_btp_%s_plus.out'  % (ring, corr.lower() )
         filename_m = 'kr_bt%s_btp_%s_minus.out' % (ring, corr.lower() )
+#        filename_p = 'kr_bt%s_btm_%s_plus.out'  % (ring, corr.lower() )
+#        filename_m = 'kr_bt%s_btm_%s_minus.out' % (ring, corr.lower() )
     
     file_p = folder + filename_p
     file_m = folder + filename_m
@@ -262,15 +303,16 @@ def getGraphMADX(folder, corr, kick, plane, ring, sim):
     y_p = []
     y_m = []
     
-    if ('2014' in str(sim)):
-        ele_p = commands.getoutput('cat %s | grep BPM | awk \'{print $1}\'' % file_p).replace("\"","").split()
-        ele_m = commands.getoutput('cat %s | grep BPM | awk \'{print $1}\'' % file_m).replace("\"","").split()
+    print file_p
+    #    if ('2014' in str(sim)):
+    ele_p = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $1}\'' % file_p).replace("\"","").split()
+    ele_m = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $1}\'' % file_m).replace("\"","").split()
 
-        x_p = commands.getoutput('cat %s | grep BPM | awk \'{print $3}\'' % file_p).split()
-        x_m = commands.getoutput('cat %s | grep BPM | awk \'{print $3}\'' % file_m).split()
+    x_p = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $3}\'' % file_p).split()
+    x_m = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $3}\'' % file_m).split()
                                                                                
-        y_p = commands.getoutput('cat %s | grep BPM | awk \'{print $4}\'' % file_p).split()
-        y_m = commands.getoutput('cat %s | grep BPM | awk \'{print $4}\'' % file_m).split()
+    y_p = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $4}\'' % file_p).split()
+    y_m = commands.getoutput('cat %s | grep BPM | grep -v .E | grep -v .S | awk \'{print $4}\'' % file_m).split()
 
     if ('2011' in str(sim)):
         ele_p = commands.getoutput('cat %s | grep UMA | awk \'{print $1}\'' % file_p).replace("\"","").split()
@@ -356,7 +398,7 @@ def getCatalog(folder,corr):
 
     catalog_plus  = commands.getoutput("ls %s | grep -i %s | grep  plus" % (folder, corr) ).split()
     catalog_minus = commands.getoutput("ls %s | grep -i %s | grep minus" % (folder, corr) ).split()
-    
+
     if len(catalog_plus)==0:
         print "ERROR (getCatalog): no positive kick response measurements"
         exit(1)
@@ -389,11 +431,13 @@ corr   = opts.CORR
 #folder = 'RM.%durad.2014.09.24' % kick
 
 folder = ''
-if ('LT' in corr or 'BI' in corr):
-    folder = 'RM.%durad/' % kick
-else:
+#if ('LT' in corr or 'BI' in corr):
+folder = 'RM.%durad/' % kick
+#folder = 'RM.%durad.BTBTM/' % kick
+
+#else:
     #folder = 'ext.rm.%durad.2014.09.26' % kick
-    folder = 'ext.rm.%durad.2014.10.01' % kick
+#    folder = 'ext.rm.%durad.2014.10.01' % kick
 
 planes = []
 if ('DHZ' in corr):
@@ -462,6 +506,11 @@ rings_corr_map['BT4.DHZ10']  = ['4']
 rings_corr_map['BT.DVT50']  = ['1','2','3','4']
 rings_corr_map['BT.DVT60']  = ['1','2','3','4']
 
+# BTM line
+rings_corr_map['BTM.DHZ10']  = ['3']
+
+rings_corr_map['BTM.DVT10']  = ['3']
+
 # BTP line
 rings_corr_map['BTP.DHZ10']  = ['3']
 rings_corr_map['BTP.DHZ20']  = ['3']
@@ -490,28 +539,14 @@ dict_histo  = {}
 
 for p in planes:
     for r in rings:
-        graph_2014, ele = getGraphMADX('madx.%s.%surad/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
-        #graph_2014, ele = getGraphMADX('madx.%s.%surad_offsets/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
-        #graph_2014, ele = getGraphMADX('madx.%s.%surad_olav/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
+        #graph_2014, ele = getGraphMADX('madx.%s.%surad/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
+        graph_2014, ele = getGraphMADX('madx.%s.%surad_polefaceangles_added/' % ('2015', kick), opts.CORR, kick, p, r, '2014')
+        #graph_2014, ele = getGraphMADX('madx.%s.%surad_polefaceangles_hgap_fint/' % ('2015', kick), opts.CORR, kick, p, r, '2014')
         root.SetOwnership(graph_2014,False)
 
-        graph_2014.SetLineColor(root.kViolet)
-        graph_2014.SetLineStyle(3)
+        graph_2014.SetLineColor(629)#root.kViolet+4)
+        graph_2014.SetLineStyle(2)
         graph_2014.SetLineWidth(3)
-
-        graph_2014_offsets, ele = getGraphMADX('madx.%s.%surad_offsets/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
-        root.SetOwnership(graph_2014_offsets,False)
-
-        graph_2014_offsets.SetLineColor(root.kBlue+2)
-        graph_2014_offsets.SetLineStyle(3)
-        graph_2014_offsets.SetLineWidth(3)
-
-        graph_2014_kr, ele = getGraphMADX('madx.%s.%surad_kr/' % ('2014', kick), opts.CORR, kick, p, r, '2014')
-        root.SetOwnership(graph_2014_kr,False)
-
-        graph_2014_kr.SetLineColor(root.kRed+2)
-        graph_2014_kr.SetLineStyle(3)
-        graph_2014_kr.SetLineWidth(3)
 
         if (p not in dict_graphs.keys()):
             dict_graphs[p]     = {}
@@ -530,8 +565,6 @@ for p in planes:
         #if not dict_graphs_sim[p][r]:
         #    dict_graphs_sim[p][r] = graph_2014 
         dict_graphs_sim[p][r].append ( graph_2014 ) 
-        dict_graphs_sim[p][r].append ( graph_2014_offsets ) 
-        dict_graphs_sim[p][r].append ( graph_2014_kr ) 
 
         for filename in catalog_plus:
     
@@ -598,6 +631,7 @@ for p in planes:
 
         hAxes = dict_histo[p][r]
 
+        #hAxes.GetXaxis().SetRangeUser(  0,12)
         hAxes.GetYaxis().SetRangeUser(-20,20)
         hAxes.SetTitle( "Corr: %s Plane: %s Ring: %s" % (corr,p,r) )
         hAxes.Draw("")
@@ -606,19 +640,12 @@ for p in planes:
         root.SetOwnership(graph_hw_av,False)
 
         graph_2014 = dict_graphs_sim[p][r][0]
-        if (graph_hw_av.GetN() != graph_2014.GetN()):
+        if (graph_hw_av.GetN() != graph_2014.GetN() and not opts.NOBIXBPM):
             print "ERROR (main): graphs have different number of points %d != %d" % (graph_hw_av.GetN(), graph_2014.GetN()) 
             exit(-1)
         
 
         graph_2014.Draw("L")
-
-        graph_2014_offsets = dict_graphs_sim[p][r][1]
-        graph_2014_offsets.Draw("L")
-
-        graph_2014_kr = dict_graphs_sim[p][r][2]
-        graph_2014_kr.Draw("L")
-
 
         max      = getMax(graph_hw_av)
         max_2014 = getMax(graph_2014)
@@ -647,15 +674,18 @@ for p in planes:
         SetOwnership( leg, 0 )   # 0 = release (not keep), 1 = keep, ot
 
         leg.AddEntry(graph_hw_av,  " Hardware Response (%d #murad)" % kick, "l")
-        leg.AddEntry(graph_2014,   " MADX Sim 2014 (%d #murad)" % kick,     "l")
+        leg.AddEntry(graph_2014,   " MADX Sim. 2015 (%d #murad)"    % kick, "l")
         leg.Draw()
 
         canvas.Update()
 
         if (opts.SAVE):
-            canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s.png"  % (r,corr,kick,p,r) )
-            canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s.root" % (r,corr,kick,p,r) )
-
+            if (opts.NOBIXBPM):
+                canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s_nobixbpm.png"  % (r,corr,kick,p,r) )
+                canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s_nobixbpm.root" % (r,corr,kick,p,r) )
+            else:
+                canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s.png"  % (r,corr,kick,p,r) )
+                canvas.SaveAs("plots/r%s/kick_response_%s_%surad_p%s_r%s.root" % (r,corr,kick,p,r) )
 
 #print opts.DEBUG
 if (opts.DEBUG):
